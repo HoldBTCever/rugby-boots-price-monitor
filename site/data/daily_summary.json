@@ -1,15 +1,16 @@
 {
-  "generated_at": "2026-08-25T14:56:51.367468+00:00",
+  "generated_at": "2026-08-25T15:07:35.121653+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-25",
   "totals": {
-    "models_tracked": 10,
-    "sources": 2,
+    "models_tracked": 36,
+    "sources": 3,
     "deals_today": 0,
-    "observations": 40
+    "observations": 95
   },
   "sources": [
+    "MercadoLibre Argentina",
     "Rugby Imports",
     "World Rugby Shop"
   ],
@@ -19,15 +20,15 @@
       "brand": "Gilbert",
       "model": "Sidestep X20 PWR 8S",
       "version": "Padrão",
-      "avg_price_usd": 79.17,
-      "n_observations": 6,
+      "avg_price_usd": 78.75,
+      "n_observations": 8,
       "sources": [
         "Rugby Imports"
       ],
       "history": [
         {
           "date": "2026-08-25",
-          "avg_price_usd": 79.17,
+          "avg_price_usd": 78.75,
           "min_price_usd": 75.0
         }
       ],
@@ -36,7 +37,57 @@
       "latest_min_site": "Rugby Imports",
       "latest_min_region": "USA",
       "latest_min_url": "https://www.rugbyimports.com/products/gilbert-sidestep-x20-pwr-8s-rugby-boot-bk-fg",
-      "discount_pct": 0.0527,
+      "discount_pct": 0.0476,
+      "is_deal": false
+    },
+    {
+      "key": "asics|lethal flash it m|padrão",
+      "brand": "ASICS",
+      "model": "Lethal Flash It M",
+      "version": "Padrão",
+      "avg_price_usd": 0.17,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.17,
+          "min_price_usd": 0.17
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.17,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botin-asics-lethal-flash-it-2-m-blackpure-silver/up/MLAU3512240014#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=3&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA2796326792&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "canterbury|phoenix genesis soft|team pro",
+      "brand": "Canterbury",
+      "model": "Phoenix Genesis Soft",
+      "version": "Team Pro",
+      "avg_price_usd": 0.26,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.26,
+          "min_price_usd": 0.26
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.26,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1411847607-botines-de-rugby-canterbury-phoenix-genesis-team-pro-soft-6-_JM?searchVariation=179920374002#polycard_client=search-desktop&searchVariation=179920374002&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=37&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
       "is_deal": false
     },
     {
@@ -45,7 +96,7 @@
       "model": "Phoenix Raze",
       "version": "SG",
       "avg_price_usd": 99.99,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "World Rugby Shop"
       ],
@@ -65,12 +116,37 @@
       "is_deal": false
     },
     {
+      "key": "canterbury|stampede tapones alumi|team",
+      "brand": "Canterbury",
+      "model": "Stampede Tapones Alumi",
+      "version": "Team",
+      "avg_price_usd": 0.19,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.19,
+          "min_price_usd": 0.19
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.19,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1683799992-botines-de-rugby-canterbury-stampede-team-8-tapones-de-alumi-_JM?searchVariation=184121811753#polycard_client=search-desktop&searchVariation=184121811753&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=28&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
       "key": "gilbert|cage pace 6s|pro",
       "brand": "Gilbert",
       "model": "Cage Pace 6S",
       "version": "Pro",
       "avg_price_usd": 75.0,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugby Imports"
       ],
@@ -90,12 +166,37 @@
       "is_deal": false
     },
     {
+      "key": "gilbert|cage pace tapones local|pro",
+      "brand": "Gilbert",
+      "model": "Cage Pace Tapones Local",
+      "version": "Pro",
+      "avg_price_usd": 0.15,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.15,
+          "min_price_usd": 0.15
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.15,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1696278876-botines-rugby-gilbert-cage-pro-pace-6-tapones-local-olivos-_JM?searchVariation=180007421550#polycard_client=search-desktop&searchVariation=180007421550&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=34&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
       "key": "gilbert|cage torq 6s|padrão",
       "brand": "Gilbert",
       "model": "Cage Torq 6S",
       "version": "Padrão",
       "avg_price_usd": 80.0,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugby Imports"
       ],
@@ -120,7 +221,7 @@
       "model": "Cage Torq MSX Firm",
       "version": "Padrão",
       "avg_price_usd": 65.0,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugby Imports"
       ],
@@ -145,7 +246,7 @@
       "model": "Icon Players 6S",
       "version": "Padrão",
       "avg_price_usd": 105.0,
-      "n_observations": 10,
+      "n_observations": 12,
       "sources": [
         "Rugby Imports"
       ],
@@ -170,7 +271,7 @@
       "model": "Icon X 6S",
       "version": "Padrão",
       "avg_price_usd": 85.0,
-      "n_observations": 10,
+      "n_observations": 12,
       "sources": [
         "Rugby Imports"
       ],
@@ -190,12 +291,87 @@
       "is_deal": false
     },
     {
+      "key": "gilbert|side step tapones ideal|v1",
+      "brand": "Gilbert",
+      "model": "Side Step Tapones Ideal",
+      "version": "V1",
+      "avg_price_usd": 0.08,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.08,
+          "min_price_usd": 0.08
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.08,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-744152301-botines-de-rugby-side-step-v1-8-tapones-gilbert-ideal-foward-_JM?searchVariation=176023227870#polycard_client=search-desktop&searchVariation=176023227870&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=30&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "gilbert|sidestep x15 lo c|padrão",
+      "brand": "Gilbert",
+      "model": "Sidestep X15 Lo C",
+      "version": "Padrão",
+      "avg_price_usd": 0.09,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.09,
+          "min_price_usd": 0.09
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.09,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1652526692-botines-rugby-gilbert-sidestep-x15-lo-8-ctapones-man-hws-_JM?searchVariation=181639776205#polycard_client=search-desktop&searchVariation=181639776205&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=17&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "gilbert|sidestep x15 lo stud|padrão",
+      "brand": "Gilbert",
+      "model": "Sidestep X15 Lo Stud",
+      "version": "Padrão",
+      "avg_price_usd": 0.09,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.09,
+          "min_price_usd": 0.09
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.09,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1632923320-botines-rugby-gilbert-sidestep-x15-lo-8-stud-c-negro-_JM?searchVariation=181468730989#polycard_client=search-desktop&searchVariation=181468730989&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=35&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
       "key": "gilbert|sidestep x20 pwr 6s|padrão",
       "brand": "Gilbert",
       "model": "Sidestep X20 PWR 6S",
       "version": "Padrão",
       "avg_price_usd": 75.0,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugby Imports"
       ],
@@ -215,12 +391,112 @@
       "is_deal": false
     },
     {
+      "key": "mizuno|waitangi|padrão",
+      "brand": "Mizuno",
+      "model": "Waitangi",
+      "version": "Padrão",
+      "avg_price_usd": 0.17,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.17,
+          "min_price_usd": 0.17
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.17,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botin-mizuno-rugby-negro-waitangi/up/MLAU3651980472#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=9&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA2796342474&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "mizuno|waitangi ps|padrão",
+      "brand": "Mizuno",
+      "model": "Waitangi Ps",
+      "version": "Padrão",
+      "avg_price_usd": 0.17,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.17,
+          "min_price_usd": 0.17
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.17,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botin-mizuno-rugby-waitangi-ps/up/MLAU3651963772#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=12&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA2796323380&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "mizuno|waitangi ps lisa|padrão",
+      "brand": "Mizuno",
+      "model": "Waitangi Ps Lisa",
+      "version": "Padrão",
+      "avg_price_usd": 0.17,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.17,
+          "min_price_usd": 0.17
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.17,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botin-mizuno-rugby-waitangi-ps-lisa/p/MLA67814639#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=15&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1736079455&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "mizuno|waitangi wide galaxy|pro sg",
+      "brand": "Mizuno",
+      "model": "Waitangi Wide Galaxy",
+      "version": "Pro SG",
+      "avg_price_usd": 224.99,
+      "n_observations": 1,
+      "sources": [
+        "World Rugby Shop"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 224.99,
+          "min_price_usd": 224.99
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 224.99,
+      "latest_min_site": "World Rugby Shop",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.worldrugbyshop.com/products/mizuno-waitangi-pro-sg-wide-black-galaxy-silver",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
       "key": "outra marca|ccc phoenix firm ground|padrão",
       "brand": "Outra marca",
       "model": "CCC Phoenix Firm Ground",
       "version": "Padrão",
       "avg_price_usd": 40.0,
-      "n_observations": 3,
+      "n_observations": 5,
       "sources": [
         "Rugby Imports"
       ],
@@ -245,7 +521,7 @@
       "model": "CCC Speed Firm Ground",
       "version": "Padrão",
       "avg_price_usd": 38.0,
-      "n_observations": 6,
+      "n_observations": 10,
       "sources": [
         "Rugby Imports"
       ],
@@ -261,6 +537,381 @@
       "latest_min_site": "Rugby Imports",
       "latest_min_region": "USA",
       "latest_min_url": "https://www.rugbyimports.com/products/ccc-speed-3-0-firm-ground-rugby-boot?_pos=2&_psq=Canterbury+Stampede&_psid=d9be120d7&_ss=e",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|diadora campo futbol clásico|fg",
+      "brand": "Outra marca",
+      "model": "Diadora Campo Futbol Clásico",
+      "version": "Fg",
+      "avg_price_usd": 0.04,
+      "n_observations": 2,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.04,
+          "min_price_usd": 0.04
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.04,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botines-diadora-fg-campo-futbol-11-rugby-clasico-otros/up/MLAU3929047508#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=25&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1764619739&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|diadora campo futbol varios|fg",
+      "brand": "Outra marca",
+      "model": "Diadora Campo Futbol Varios",
+      "version": "Fg",
+      "avg_price_usd": 0.06,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.06,
+          "min_price_usd": 0.06
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.06,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botines-diadora-fg-campo-futbol-11-rugby-varios-modelos/up/MLAU3864395693#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=29&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1725150223&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|diadora clasico futbol campo|padrão",
+      "brand": "Outra marca",
+      "model": "Diadora Clasico Futbol Campo",
+      "version": "Padrão",
+      "avg_price_usd": 0.04,
+      "n_observations": 3,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.04,
+          "min_price_usd": 0.04
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.04,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botin-diadora-clasico-futbol-11-rugby-campo-cesped-varios/up/MLAU4083447675#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=10&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA3458551850&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|futbol campo cesped unisex|padrão",
+      "brand": "Outra marca",
+      "model": "Futbol Campo Cesped Unisex",
+      "version": "Padrão",
+      "avg_price_usd": 0.02,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.02,
+          "min_price_usd": 0.02
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.02,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1373108753-botines-futbol-rugby-campo-cesped-unisex-seta-_JM?searchVariation=178620999139#polycard_client=search-desktop&searchVariation=178620999139&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=38&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|futbol campo unisex seta|fg",
+      "brand": "Outra marca",
+      "model": "Futbol Campo Unisex Seta",
+      "version": "Fg",
+      "avg_price_usd": 0.04,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.04,
+          "min_price_usd": 0.04
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.04,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-2049234712-botines-futbol-rugby-campo-unisex-seta-fg-force-dygsport-_JM?searchVariation=187491783829#polycard_client=search-desktop&searchVariation=187491783829&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=14&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|futsal futbol sala juvenil|padrão",
+      "brand": "Outra marca",
+      "model": "Futsal Futbol Sala Juvenil",
+      "version": "Padrão",
+      "avg_price_usd": 0.03,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.03,
+          "min_price_usd": 0.03
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.03,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1478090615-botines-futsal-futbol-sala-juvenil-marca-arciel-citideportes-_JM?searchVariation=182970501650#polycard_client=search-desktop&searchVariation=182970501650&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=40&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|fútbol avia campo césped|padrão",
+      "brand": "Outra marca",
+      "model": "Fútbol Avia Campo Césped",
+      "version": "Padrão",
+      "avg_price_usd": 0.06,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.06,
+          "min_price_usd": 0.06
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.06,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1512963419-botines-de-futbol-avia-campo-cesped-tapones-rugby-_JM?searchVariation=189362879529#polycard_client=search-desktop&searchVariation=189362879529&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=27&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|le coq sportif futbol|fg",
+      "brand": "Outra marca",
+      "model": "Le Coq Sportif Futbol",
+      "version": "Fg",
+      "avg_price_usd": 0.06,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.06,
+          "min_price_usd": 0.06
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.06,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-2075971554-botines-le-coq-sportif-fg-futbol-11-rugby-campo-86-55-otros-_JM?searchVariation=187863534219#polycard_client=search-desktop&searchVariation=187863534219&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=24&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|reebok match futbol tapones|padrão",
+      "brand": "Outra marca",
+      "model": "Reebok Match Futbol Tapones",
+      "version": "Padrão",
+      "avg_price_usd": 0.06,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.06,
+          "min_price_usd": 0.06
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.06,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botines-reebok-match-1-futbol-11-rugby-tapones-cambiables-al/up/MLAU4081866029#polycard_client=search-desktop&float_highlight=last_unit&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=2&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1835076699&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "puma|avant 108011|padrão",
+      "brand": "Puma",
+      "model": "Avant 108011",
+      "version": "Padrão",
+      "avg_price_usd": 0.13,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.13,
+          "min_price_usd": 0.13
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.13,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botines-rugby-puma-avant-hombre-10801104/up/MLAU3806358601#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=26&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1682543995&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "puma|avant adp 108010|pro",
+      "brand": "Puma",
+      "model": "Avant Adp 108010",
+      "version": "Pro",
+      "avg_price_usd": 0.22,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.22,
+          "min_price_usd": 0.22
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.22,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botines-puma-avant-pro-adp-hombre-rugby-10801004/up/MLAU3399328790#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=33&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1518811973&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "puma|avant adp sport tienda|padrão",
+      "brand": "Puma",
+      "model": "Avant Adp Sport Tienda",
+      "version": "Padrão",
+      "avg_price_usd": 0.11,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.11,
+          "min_price_usd": 0.11
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.11,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-2112446936-botines-avant-adp-puma-sport-78-tienda-oficial-_JM?searchVariation=188367984711#polycard_client=search-desktop&searchVariation=188367984711&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=5&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "puma|avant deporfan|padrão",
+      "brand": "Puma",
+      "model": "Avant Deporfan",
+      "version": "Padrão",
+      "avg_price_usd": 0.11,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.11,
+          "min_price_usd": 0.11
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.11,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-2361139758-botines-puma-avant-rugby-negroblanco-hombre-deporfan-_JM?searchVariation=185468308212#polycard_client=search-desktop&searchVariation=185468308212&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=39&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "puma|ultra|pro fg ag",
+      "brand": "Puma",
+      "model": "Ultra",
+      "version": "Pro Fg ag",
+      "avg_price_usd": 0.15,
+      "n_observations": 1,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.15,
+          "min_price_usd": 0.15
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.15,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://www.mercadolibre.com.ar/botines-hombre-puma-ultra-6-pro-fgag/up/MLAU3352178981#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=20&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1514381249&sid=search",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "puma|ultra match tt ar|padrão",
+      "brand": "Puma",
+      "model": "Ultra Match Tt Ar",
+      "version": "Padrão",
+      "avg_price_usd": 0.11,
+      "n_observations": 10,
+      "sources": [
+        "MercadoLibre Argentina"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 0.11,
+          "min_price_usd": 0.11
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 0.11,
+      "latest_min_site": "MercadoLibre Argentina",
+      "latest_min_region": "Argentina",
+      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-3718594076-botines-hombre-puma-ultra-match-tt-negro-negro-395-ar-_JM#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=1&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA3718594076&sid=search",
       "discount_pct": 0.0,
       "is_deal": false
     }
