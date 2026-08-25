@@ -7,10 +7,9 @@
     "currency": "USD",
     "base_url": "https://www.worldrugbyshop.com",
     "listing_urls": [
-      "https://www.worldrugbyshop.com/collections/rugby-boots"
+      "https://www.worldrugbyshop.com/products.json"
     ],
-    "adapter": "shopify_jsonld",
-    "product_link_pattern": "/products/"
+    "adapter": "shopify_products_json"
   },
   {
     "id": "rugbyimports",
@@ -20,10 +19,9 @@
     "currency": "USD",
     "base_url": "https://www.rugbyimports.com",
     "listing_urls": [
-      "https://www.rugbyimports.com/collections/rugby-boots-cleats"
+      "https://www.rugbyimports.com/products.json"
     ],
-    "adapter": "shopify_jsonld",
-    "product_link_pattern": "/products/"
+    "adapter": "shopify_products_json"
   },
   {
     "id": "lovellrugby",

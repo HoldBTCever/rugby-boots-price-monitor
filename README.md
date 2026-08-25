@@ -24,7 +24,7 @@ workflow rodar de verdade contra as lojas.
 
 | Região | Loja | Adaptador |
 |---|---|---|
-| EUA | World Rugby Shop, Rugby Imports | JSON-LD (schema.org Product) |
+| EUA | World Rugby Shop, Rugby Imports | `/products.json` (catálogo Shopify) |
 | Europa (Reino Unido / França) | Lovell Rugby, Decathlon | JSON-LD |
 | Argentina | MercadoLibre Argentina (busca "botines de rugby") | HTML da busca |
 | Paraguai | MercadoLibre Paraguay (busca "botines de rugby") | HTML da busca |

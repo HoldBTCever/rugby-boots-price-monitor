@@ -164,9 +164,16 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
             continue
         soup = BeautifulSoup(html, "lxml")
 
-        cards = soup.select("li.ui-search-layout__item") or soup.select("div.ui-search-result__wrapper")
+        cards = (
+            soup.select("li.ui-search-layout__item")
+            or soup.select("div.ui-search-result__wrapper")
+            or soup.select("div.poly-card")
+            or soup.select("li.poly-card")
+        )
         for card in cards[: config.MAX_PRODUCTS_PER_SITE]:
-            link_tag = card.select_one("a.ui-search-link, a.ui-search-item__group__element")
+            link_tag = card.select_one(
+                "a.ui-search-link, a.ui-search-item__group__element, a.poly-component__title"
+            )
             title_tag = card.select_one(
                 "h2.ui-search-item__title, .poly-component__title, h3.poly-component__title-wrapper"
             )
@@ -183,8 +190,53 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
     return listings
 
 
+def scrape_shopify_products_json(site: dict) -> list[dict]:
+    """Lojas Shopify expõem o catálogo inteiro em /products.json -- não
+    depende de adivinhar o slug certo de uma coleção nem de visitar
+    página por página atrás de JSON-LD. Pagina até MAX_PRODUCTS_PER_SITE
+    produtos (250 por página, o máximo que a Shopify permite)."""
+    listings: list[dict] = []
+    for products_url in site["listing_urls"]:
+        page = 1
+        while len(listings) < config.MAX_PRODUCTS_PER_SITE and page <= 4:
+            html = fetch(f"{products_url}?limit=250&page={page}")
+            if not html:
+                break
+            try:
+                data = json.loads(html)
+            except json.JSONDecodeError:
+                log.warning("%s não devolveu JSON válido em /products.json", site["name"])
+                break
+
+            products = data.get("products") or []
+            if not products:
+                break
+
+            for product in products:
+                title = (product.get("title") or "").strip()
+                handle = product.get("handle")
+                variants = product.get("variants") or []
+                prices = [
+                    float(v["price"]) for v in variants
+                    if v.get("price") and v.get("available", True)
+                ] or [float(v["price"]) for v in variants if v.get("price")]
+                if not (title and handle and prices):
+                    continue
+                listings.append({
+                    "title": title,
+                    "price": min(prices),
+                    "currency": site["currency"],
+                    "url": f"{site['base_url']}/products/{handle}",
+                })
+
+            page += 1
+            time.sleep(config.REQUEST_DELAY_SECONDS)
+    return listings
+
+
 ADAPTERS = {
     "shopify_jsonld": scrape_jsonld_site,
     "generic_jsonld": scrape_jsonld_site,
     "mercadolibre_search": scrape_mercadolibre,
+    "shopify_products_json": scrape_shopify_products_json,
 }
