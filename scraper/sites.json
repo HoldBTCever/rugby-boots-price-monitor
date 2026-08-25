@@ -36,25 +36,14 @@
     "region": "Europe (UK)",
     "country": "GB",
     "currency": "GBP",
-    "base_url": "https://www.lovellrugby.co.uk",
+    "base_url": "https://www.lovellsports.com",
     "listing_urls": [
-      "https://www.lovellrugby.co.uk/boots/"
+      "https://www.lovellsports.com/collections/rugby-boots/products.json",
+      "https://www.lovellsports.com/collections/adidas-rugby-boots/products.json",
+      "https://www.lovellsports.com/collections/mens-rugby-boots/products.json"
     ],
-    "adapter": "generic_jsonld",
-    "product_link_pattern": "/p/"
-  },
-  {
-    "id": "decathlon_fr",
-    "name": "Decathlon",
-    "region": "Europe (FR)",
-    "country": "FR",
-    "currency": "EUR",
-    "base_url": "https://www.decathlon.fr",
-    "listing_urls": [
-      "https://www.decathlon.fr/browse/c0-sports/c1-rugby/c2-chaussures-de-rugby"
-    ],
-    "adapter": "generic_jsonld",
-    "product_link_pattern": "/p/"
+    "adapter": "shopify_products_json",
+    "supports_search": true
   },
   {
     "id": "mizuno_jp",

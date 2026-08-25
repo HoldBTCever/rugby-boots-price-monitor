@@ -219,6 +219,7 @@ def scrape_mizuno_jp(site: dict) -> list[dict]:
     for listing_url in site["listing_urls"]:
         html = fetch(listing_url, extra_headers=extra_headers)
         if not html:
+            log.info("Mizuno Japan: fetch devolveu vazio/None pra %s", listing_url)
             continue
 
         found = extract_jsonld_products(html, listing_url)
@@ -227,10 +228,22 @@ def scrape_mizuno_jp(site: dict) -> list[dict]:
             continue
 
         soup = BeautifulSoup(html, "lxml")
+        all_anchors = soup.find_all("a", href=True)
         anchors = [
-            a for a in soup.find_all("a", href=True)
+            a for a in all_anchors
             if "goods-detail" in a["href"] or "goods-id" in a["href"]
         ]
+        # diagnóstico temporário: a página confirmadamente tem chuteiras (o
+        # usuário mandou o link direto), mas o adaptador sempre voltou 0 --
+        # loga o tamanho do HTML e uma amostra de hrefs reais pra descobrir
+        # se o fetch está trazendo a página certa e qual é o padrão de link
+        # de verdade, em vez de continuar adivinhando "goods-detail".
+        log.info(
+            "Mizuno Japan: HTML com %d chars, %d links no total, %d batem goods-detail/goods-id. "
+            "Amostra de hrefs: %s",
+            len(html), len(all_anchors), len(anchors),
+            [a["href"] for a in all_anchors[:15]],
+        )
         seen_urls = set()
         for a in anchors:
             href = urljoin(site["base_url"], a["href"].split("?")[0])
