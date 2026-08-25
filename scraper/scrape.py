@@ -54,6 +54,10 @@ def run() -> dict:
             run_log["sites"].append(site_entry)
             continue
 
+        raw_count = len(listings)
+        sample_titles = [item["title"] for item in listings[:5]]
+        log.info("%s: %d itens brutos antes do filtro. Exemplos: %s", site["name"], raw_count, sample_titles)
+
         count = 0
         for item in listings:
             if not normalize.is_rugby_boot(item["title"]):
@@ -78,7 +82,7 @@ def run() -> dict:
             })
             count += 1
 
-        site_entry.update(status="ok" if count else "empty", count=count)
+        site_entry.update(status="ok" if count else "empty", count=count, raw_count=raw_count)
         run_log["sites"].append(site_entry)
         log.info("%s: %d listagens", site["name"], count)
 

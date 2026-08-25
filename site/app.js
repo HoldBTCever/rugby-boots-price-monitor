@@ -33,10 +33,10 @@
     if (summary.totals.models_tracked === 0) {
       slot.innerHTML = `
         <div class="banner">
-          <h2><span class="dot" style="background:var(--status-warning)"></span> Ainda sem dados coletados</h2>
-          <p>A primeira coleta automática ainda não rodou. Ela acontece todo dia via GitHub Actions — ou pode
-          ser disparada manualmente na aba <strong>Actions → Coleta diária de preços → Run workflow</strong>
-          do repositório. Assim que rodar, este painel se preenche sozinho.</p>
+          <h2><span class="dot" style="background:var(--status-warning)"></span> Nenhuma chuteira confirmada ainda</h2>
+          <p>A coleta já roda sozinha todo dia (e a cada ajuste no código) — sem precisar de nenhuma ação
+          manual. Ainda assim nenhuma loja conectada devolveu um produto reconhecido como chuteira de rugby
+          na última execução, então o painel fica vazio de propósito em vez de mostrar algo errado.</p>
         </div>`;
       return;
     }
@@ -205,9 +205,8 @@
         <div class="card empty-state">
           <div class="icon">🏉</div>
           <h2>Nenhum histórico de preços ainda</h2>
-          <p>Depois da primeira execução do workflow, os gráficos e a tabela aparecem aqui automaticamente.
-          Para rodar agora: aba <strong>Actions</strong> do repositório →
-          <code>daily-price-check</code> → <strong>Run workflow</strong>.</p>
+          <p>A coleta roda sozinha todo dia — assim que uma loja conectada devolver uma chuteira de rugby
+          de verdade, os gráficos e a tabela aparecem aqui automaticamente, sem precisar de nenhuma ação.</p>
         </div>`;
       return;
     }
