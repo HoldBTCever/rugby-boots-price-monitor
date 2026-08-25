@@ -317,6 +317,39 @@ def scrape_mizuno_jp(site: dict) -> list[dict]:
     return listings
 
 
+def fetch_shopify_collection_handles(collection_products_url: str) -> set[str]:
+    """Busca todos os handles de produto de uma coleção Shopify (paginado).
+    Usado como lista de exclusão: algumas lojas (ex: Lovell Sports) têm
+    uma coleção "kids" separada onde o título do produto sozinho não diz
+    "kids"/"junior" (ex: "Canterbury Speed Rugby Boot" é infantil lá,
+    mas o nome não denuncia) -- então checar a categoria/palavra-chave
+    no título não pega. Sabendo o handle de cada produto dessa coleção,
+    dá pra excluir esses produtos onde quer que apareçam depois."""
+    handles: set[str] = set()
+    page = 1
+    page_size = 250
+    while page <= 12:
+        html = fetch(f"{collection_products_url}?limit={page_size}&page={page}")
+        if not html:
+            break
+        try:
+            data = json.loads(html)
+        except json.JSONDecodeError:
+            break
+        products = data.get("products") or []
+        if not products:
+            break
+        for product in products:
+            handle = product.get("handle")
+            if handle:
+                handles.add(handle)
+        if len(products) < page_size:
+            break
+        page += 1
+        time.sleep(config.REQUEST_DELAY_SECONDS)
+    return handles
+
+
 def scrape_shopify_products_json(site: dict) -> list[dict]:
     """Lojas Shopify expõem o catálogo inteiro em /products.json -- não
     depende de adivinhar o slug certo de uma coleção nem de visitar

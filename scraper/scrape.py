@@ -48,7 +48,12 @@ def _last_recorded_block() -> int | None:
     return last_block
 
 
-def _append_listings(new_rows, listings, rates, *, block_height, timestamp, today, site) -> int:
+def _handle_from_url(url: str) -> str:
+    return url.rstrip("/").split("/")[-1].split("?")[0]
+
+
+def _append_listings(new_rows, listings, rates, *, block_height, timestamp, today, site,
+                      exclude_handles: frozenset = frozenset()) -> int:
     # "trust_category": true em sites.json marca uma listing_url que é uma
     # categoria dedicada só a chuteira (confirmado manualmente, não
     # adivinhado) -- pula o filtro por palavra-chave, que rejeitaria um
@@ -61,6 +66,12 @@ def _append_listings(new_rows, listings, rates, *, block_height, timestamp, toda
             continue
         combined = f"{item['title']} {item.get('category_hint', '')}"
         if normalize.is_firm_ground(combined) or normalize.is_junior(combined):
+            continue
+        # alguns produtos são infantis sem dizer "kids"/"junior" no título
+        # (ex: "Canterbury Speed Rugby Boot" na Lovell) -- pega pelo handle,
+        # cruzado com a coleção "kids" da própria loja (kids_collection_url
+        # em sites.json), quando disponível.
+        if exclude_handles and _handle_from_url(item["url"]) in exclude_handles:
             continue
         price_usd = fx.to_usd(item["price"], item["currency"], rates)
         if price_usd is None:
@@ -117,6 +128,22 @@ def run() -> dict:
 
     new_rows = []
 
+    # Algumas lojas têm uma coleção "kids" separada onde o produto em si
+    # não diz "kids"/"junior" no título (ex: Lovell Sports) -- busca o
+    # handle de cada produto dessa coleção uma vez por loja, pra excluir
+    # onde quer que ele apareça depois (catálogo geral ou busca ativa).
+    kids_exclude: dict[str, frozenset] = {}
+    for site in sites:
+        kids_url = site.get("kids_collection_url")
+        if not kids_url:
+            continue
+        try:
+            handles = adapters.fetch_shopify_collection_handles(kids_url)
+            kids_exclude[site["id"]] = frozenset(handles)
+            log.info("%s: %d produtos na coleção infantil (excluídos)", site["name"], len(handles))
+        except Exception as exc:
+            log.warning("Falha ao buscar coleção infantil de %s: %s", site["name"], exc)
+
     # Cada loja é um domínio diferente -- raspar várias em paralelo não
     # sobrecarrega nenhuma individualmente (o intervalo educado entre
     # requisições ao MESMO site continua valendo dentro de cada adaptador).
@@ -146,7 +173,8 @@ def run() -> dict:
                   site["name"], raw_count, sample)
 
         count = _append_listings(new_rows, listings, rates, block_height=block_height,
-                                  timestamp=timestamp, today=today, site=site)
+                                  timestamp=timestamp, today=today, site=site,
+                                  exclude_handles=kids_exclude.get(site["id"], frozenset()))
 
         site_entry.update(status="ok" if count else "empty", count=count, raw_count=raw_count)
         run_log["sites"].append(site_entry)
@@ -181,7 +209,8 @@ def run() -> dict:
         for site, found in search_results:
             for label, listings in found:
                 count = _append_listings(new_rows, listings, rates, block_height=block_height,
-                                          timestamp=timestamp, today=today, site=site)
+                                          timestamp=timestamp, today=today, site=site,
+                                          exclude_handles=kids_exclude.get(site["id"], frozenset()))
                 if count:
                     search_found += count
                     log.info("Busca por %r em %s: %d chuteira(s)", label, site["name"], count)
