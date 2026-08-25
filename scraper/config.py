@@ -1,5 +1,9 @@
 """Configurações globais do monitor de preços de chuteiras de rugby."""
 from pathlib import Path
+from zoneinfo import ZoneInfo
+
+# Fuso horário usado nos timestamps do histórico (Assunção, Paraguai).
+TIMEZONE = ZoneInfo("America/Asuncion")
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
@@ -39,3 +43,4 @@ REQUEST_DELAY_SECONDS = 1.5  # intervalo educado entre requisições ao mesmo si
 MAX_PRODUCTS_PER_SITE = 40
 
 FX_API_URL = "https://open.er-api.com/v6/latest/USD"
+BITCOIN_BLOCK_API_URL = "https://mempool.space/api/blocks/tip/height"

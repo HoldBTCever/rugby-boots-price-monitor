@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
-"""Roda a raspagem diária: consulta cada site configurado, normaliza os
-produtos encontrados e adiciona uma linha por listagem em data/price_history.csv.
+"""Roda a coleta: consulta cada site configurado, normaliza os produtos
+encontrados e adiciona uma linha por listagem em data/price_history.csv.
+
+Dispara a cada bloco novo minerado no Bitcoin (consultado via mempool.space)
+-- o workflow do GitHub Actions faz polling frequente, mas este script só
+de fato rasparmos as lojas quando a altura do bloco muda desde a última
+coleta registrada, pra não bater nos sites de varejo à toa entre um bloco
+e outro.
 
 Uso: python -m scraper.scrape
 """
@@ -10,29 +16,65 @@ import csv
 import json
 import logging
 import time
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 
-from . import config, fx, normalize
+from . import bitcoin, config, fx, normalize
 from .adapters import ADAPTERS
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("scraper.scrape")
 
 CSV_FIELDS = [
-    "date", "site_id", "site_name", "region", "brand", "model", "version",
-    "title", "price_local", "currency", "price_usd", "url",
+    "block_height", "timestamp", "date", "site_id", "site_name", "region",
+    "brand", "model", "version", "title", "price_local", "currency",
+    "price_usd", "url",
 ]
 
 
+def _last_recorded_block() -> int | None:
+    if not config.PRICE_HISTORY_CSV.exists():
+        return None
+    last_block = None
+    with config.PRICE_HISTORY_CSV.open(newline="", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            raw = row.get("block_height")
+            if raw:
+                try:
+                    last_block = int(raw)
+                except ValueError:
+                    continue
+    return last_block
+
+
 def run() -> dict:
+    now = datetime.now(config.TIMEZONE)
+    today = now.date().isoformat()
+    timestamp = now.isoformat()
+
+    block_height = bitcoin.get_latest_block_height()
+    last_block = _last_recorded_block()
+
+    run_log = {
+        "date": today, "timestamp": timestamp, "block_height": block_height,
+        "generated_at": datetime.now(timezone.utc).isoformat(), "sites": [],
+    }
+
+    if block_height is not None and block_height == last_block:
+        log.info("Bloco %s sem mudança desde a última coleta -- pulando.", block_height)
+        run_log.update(skipped=True, total_listings=0)
+        config.DATA_DIR.mkdir(parents=True, exist_ok=True)
+        config.SCRAPE_LOG_JSON.write_text(json.dumps(run_log, indent=2, ensure_ascii=False), encoding="utf-8")
+        return run_log
+
+    if block_height is None:
+        log.warning("Não consegui a altura do bloco atual -- coletando mesmo assim.")
+
     sites = json.loads(config.SITES_CONFIG.read_text(encoding="utf-8"))
     rates = fx.get_usd_rates()
-    today = date.today().isoformat()
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     file_exists = config.PRICE_HISTORY_CSV.exists()
 
-    run_log = {"date": today, "generated_at": datetime.now(timezone.utc).isoformat(), "sites": []}
     new_rows = []
 
     for i, site in enumerate(sites):
@@ -67,6 +109,8 @@ def run() -> dict:
                 continue
             info = normalize.normalize_title(item["title"])
             new_rows.append({
+                "block_height": block_height if block_height is not None else "",
+                "timestamp": timestamp,
                 "date": today,
                 "site_id": site["id"],
                 "site_name": site["name"],
@@ -94,7 +138,7 @@ def run() -> dict:
 
     run_log["total_listings"] = len(new_rows)
     config.SCRAPE_LOG_JSON.write_text(json.dumps(run_log, indent=2, ensure_ascii=False), encoding="utf-8")
-    log.info("Total: %d listagens novas em %s", len(new_rows), today)
+    log.info("Total: %d listagens novas no bloco %s (%s)", len(new_rows), block_height, timestamp)
     return run_log
 
 

@@ -1,20 +1,24 @@
 # Monitor de Preços — Chuteiras de Rugby
 
-Coleta diária de preços de chuteiras de rugby em lojas de várias regiões,
-calcula a média histórica por modelo/versão, publica um site com o
-histórico em gráfico e destaca qualquer chuteira **39,5% ou mais abaixo**
-da sua média.
+Coleta preços de chuteiras de rugby em lojas de várias regiões a cada
+**bloco novo minerado no Bitcoin** (~10 em 10 minutos), calcula a média
+histórica por modelo/versão, publica um site com o histórico em gráfico
+e destaca qualquer chuteira **39,5% ou mais abaixo** da sua média.
 
 ## Como funciona
 
 ```
-scraper/scrape.py      -> visita cada loja configurada, extrai produtos e preços,
+scraper/bitcoin.py     -> consulta a altura do bloco atual na mempool.space
+scraper/scrape.py      -> só roda de verdade se o bloco mudou desde a última coleta;
+                           visita cada loja configurada, extrai produtos e preços,
                            converte para USD e adiciona uma linha em data/price_history.csv
+                           (com o bloco e o timestamp em America/Asuncion)
 scraper/aggregate.py   -> calcula a média móvel (90 dias) por modelo/versão,
                            gera data/daily_summary.json, data/alerts.json e
-                           data/watchlist.json (lista fixa de modelos, aba "Histórico")
+                           data/watchlist.json (lista fixa de modelos, aba "Histórico",
+                           agrupado por bloco)
 site/                  -> painel estático (HTML/CSS/JS + Chart.js) que lê esses JSONs
-.github/workflows/     -> roda os dois scripts todo dia e publica o site no GitHub Pages
+.github/workflows/     -> faz polling a cada 5 min e publica o site no GitHub Pages
 ```
 
 Nenhum dado é inventado: o repositório é publicado com o histórico vazio e o
@@ -72,13 +76,15 @@ Um modelo/versão vira "oferta" quando o menor preço encontrado no dia está
 desde que já existam pelo menos 2 observações históricas (evita alertar
 com base em um único preço).
 
-## Aba "Histórico" (lista fixa de modelos)
+## Aba "Histórico" (lista fixa de modelos, por bloco)
 
 Além do painel principal (todos os modelos encontrados), o site tem uma
 aba **Histórico** com uma lista fixa de modelos específicos —
-independente do que a coleta encontrar no resto do catálogo — mostrando
-o preço médio diário (uma linha por versão) e o site com o menor preço
-atual em USD.
+independente do que a coleta encontrar no resto do catálogo. Cada vez
+que um bloco novo é processado, fica registrado ali: **bloco** (da
+mempool.space), **data/hora** (fuso `America/Asuncion`), **preço
+médio**, **maior preço** (+ site) e **menor preço** (+ site) — uma
+linha de histórico por bloco, uma linha no gráfico por versão.
 
 Editável em `scraper/watchlist.json`:
 
@@ -95,32 +101,40 @@ normalizados, que são só uma heurística. Cada versão encontrada
 
 ```bash
 pip install -r requirements.txt
-python -m scraper.scrape       # coleta os preços de hoje
-python -m scraper.aggregate    # recalcula médias e alertas
+python -m scraper.scrape       # coleta se o bloco do Bitcoin mudou desde a última vez
+python -m scraper.aggregate    # recalcula médias, alertas e o histórico por bloco
 python -m http.server 8000 --directory site   # abre em localhost:8000
 ```
 
-## Automação diária (GitHub Actions)
+## Automação por bloco (GitHub Actions)
 
-O workflow `.github/workflows/daily-price-check.yml` roda sozinho, sem
-precisar clicar em nada, em três situações:
+O workflow `.github/workflows/daily-price-check.yml` faz *polling* a
+cada 5 minutos (o mínimo que o GitHub Actions permite) só pra checar a
+altura do bloco atual do Bitcoin. `scrape.py` compara com o último
+bloco registrado em `data/price_history.csv`:
 
-1. todo dia às 09:00 UTC (`schedule`);
-2. a cada push que muda `scraper/`, `site/` (exceto `site/data/`, que é
-   gerado pelo próprio workflow) ou o workflow em si — útil pra validar
-   uma correção do scraper sem precisar disparar manualmente;
-3. manualmente também é possível, em **Actions → daily-price-check →
-   Run workflow**, se quiser forçar uma coleta fora do horário.
+- **bloco igual** → não bate nas lojas, não gera commit, não republica
+  o site (o job termina em poucos segundos);
+- **bloco novo** (o caso comum, já que blocos saem a cada ~10 min) →
+  raspa as lojas de verdade, recalcula tudo, commita e publica.
 
-Em cada execução: roda `scrape.py` + `aggregate.py`, faz commit dos
-JSONs/CSV atualizados de volta no branch padrão e publica `site/`
-(já com os dados novos) no GitHub Pages.
+Também roda a cada push que muda `scraper/`, `site/` (exceto
+`site/data/`, gerado pelo próprio workflow) ou o workflow em si — útil
+pra validar uma correção sem esperar o próximo bloco — e manualmente em
+**Actions → daily-price-check → Run workflow**.
 
 **Uma configuração manual única, feita pelo dono do repositório:** em
 Settings → Pages, defina Source = "GitHub Actions" (uma vez só; depois
 disso o deploy é sempre automático). Como este repositório já nasce com
-o workflow no branch padrão (`main`), o `schedule` diário funciona sem
-nenhum outro passo.
+o workflow no branch padrão (`main`), o polling funciona sem nenhum
+outro passo.
+
+**Isso significa bater nas lojas de varejo a cada ~10 minutos, o dia
+inteiro** (antes era 1x/dia) — bem mais agressivo. O GitHub Actions em
+si não cobra por isso (repositório público tem minutos ilimitados), mas
+é uma frequência real de requisições contra sites de terceiros; se
+algum deles começar a bloquear/limitar o bot por causa disso, o
+sintoma vai aparecer como HTTP 403/429 nos logs do job "scrape".
 
 ## Limitações conhecidas
 
@@ -132,3 +146,10 @@ nenhum outro passo.
   JSON-LD) não são suportados pelos adaptadores atuais.
 - A normalização marca/modelo/versão é best-effort; produtos com títulos
   muito genéricos podem cair em "Modelo não identificado".
+- `data/price_history.csv` cresce um pouco a cada bloco novo (~144
+  blocos/dia em média) e nunca é podado automaticamente. Com o tempo
+  isso pode virar um arquivo grande — não é um problema agora, mas vale
+  considerar uma rotina de arquivamento/compactação se crescer demais.
+- O gatilho `schedule` do GitHub Actions não garante pontualidade exata
+  (pode atrasar minutos em picos de carga da plataforma), então "a cada
+  bloco" na prática é "no polling de 5 em 5 min seguinte ao bloco".

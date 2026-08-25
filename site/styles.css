@@ -115,6 +115,7 @@ h1 { font-size: 1.5rem; margin: 0 0 4px; }
 .tab-btn.active { color: var(--text-primary); border-bottom-color: var(--series-1); }
 .tab-btn:hover:not(.active) { color: var(--text-secondary); }
 
+.watchlist-meta { color: var(--text-muted); font-size: 0.84rem; margin: 0 0 16px; }
 .watchlist-grid { display: grid; gap: 16px; }
 .watchlist-card .chart-container { height: 220px; }
 .watchlist-empty {

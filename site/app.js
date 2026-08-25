@@ -4,6 +4,9 @@
   const fmtUSD = (v) => v == null ? "—" : v.toLocaleString("pt-BR", { style: "currency", currency: "USD" });
   const fmtPct = (v) => v == null ? "—" : (v * 100).toLocaleString("pt-BR", { maximumFractionDigits: 1 }) + "%";
   const fmtDate = (iso) => iso ? new Date(iso + "T00:00:00").toLocaleDateString("pt-BR", { day: "2-digit", month: "short" }) : "—";
+  const fmtAsuncion = (iso, opts) => iso ? new Date(iso).toLocaleString("pt-BR", { timeZone: "America/Asuncion", ...opts }) : "—";
+  const fmtBlockAxis = (iso) => fmtAsuncion(iso, { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  const fmtBlockFull = (iso) => fmtAsuncion(iso, { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }) + " (ASU)";
   const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 
   // ---- tema ----
@@ -250,6 +253,9 @@
     watchlistCharts.forEach((c) => c.destroy());
     watchlistCharts.length = 0;
 
+    const blockLabel = watchlist.latest_block ? `#${watchlist.latest_block.toLocaleString("pt-BR")}` : "—";
+    const header = `<p class="watchlist-meta">Último bloco processado: <strong>${blockLabel}</strong> · a coleta atualiza a cada bloco novo minerado</p>`;
+
     const models = watchlist.models || [];
     const cards = models.map((m, idx) => {
       if (!m.versions.length) {
@@ -260,41 +266,48 @@
           </div>`;
       }
 
-      const rows = m.versions.map((v, i) => `
+      const rows = m.versions.map((v, i) => {
+        const l = v.latest;
+        return `
         <tr>
           <td><span class="version-swatch" style="background:var(--cat-${(i % 8) + 1})"></span>${v.version}</td>
-          <td class="num">${fmtUSD(v.avg_price_usd)}</td>
-          <td class="num">${fmtUSD(v.latest_min_price_usd)}</td>
-          <td>${v.latest_min_site ? `<a href="${v.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${v.latest_min_site}</a>` : "—"}</td>
-        </tr>`).join("");
+          <td>${l && l.block_height ? "#" + l.block_height.toLocaleString("pt-BR") : "—"}</td>
+          <td>${l ? fmtBlockFull(l.timestamp) : "—"}</td>
+          <td class="num">${l ? fmtUSD(l.avg_price_usd) : "—"}</td>
+          <td class="num">${l ? fmtUSD(l.max_price_usd) : "—"}<br>${l && l.max_site ? `<a href="${l.max_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.max_site}</a>` : ""}</td>
+          <td class="num">${l ? fmtUSD(l.min_price_usd) : "—"}<br>${l && l.min_site ? `<a href="${l.min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.min_site}</a>` : ""}</td>
+        </tr>`;
+      }).join("");
 
       return `
         <div class="card watchlist-card">
           <h2>${m.label}</h2>
           <div class="chart-container"><canvas id="wlChart${idx}"></canvas></div>
-          <table class="version-table">
-            <thead><tr><th>Versão</th><th class="num">Média (USD)</th><th class="num">Menor agora</th><th>Site</th></tr></thead>
-            <tbody>${rows}</tbody>
-          </table>
+          <div class="table-scroll">
+            <table class="version-table">
+              <thead><tr><th>Versão</th><th>Bloco</th><th>Data/hora</th><th class="num">Média</th><th class="num">Maior</th><th class="num">Menor</th></tr></thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
         </div>`;
     });
 
-    document.getElementById("watchlistContent").innerHTML = `<div class="watchlist-grid">${cards.join("")}</div>`;
+    document.getElementById("watchlistContent").innerHTML = header + `<div class="watchlist-grid">${cards.join("")}</div>`;
 
     models.forEach((m, idx) => {
       if (!m.versions.length) return;
       const canvas = document.getElementById(`wlChart${idx}`);
       if (!canvas || typeof Chart === "undefined") return;
 
-      const allDates = [...new Set(m.versions.flatMap((v) => v.history.map((h) => h.date)))].sort();
-      const labels = allDates.map(fmtDate);
+      const allTimestamps = [...new Set(m.versions.flatMap((v) => v.history.map((h) => h.timestamp)))].sort();
+      const labels = allTimestamps.map(fmtBlockAxis);
 
       const datasets = m.versions.map((v, i) => {
-        const byDate = Object.fromEntries(v.history.map((h) => [h.date, h.avg_price_usd]));
+        const byTimestamp = Object.fromEntries(v.history.map((h) => [h.timestamp, h.avg_price_usd]));
         const color = cssVar(`--cat-${(i % 8) + 1}`);
         return {
           label: v.version,
-          data: allDates.map((d) => byDate[d] ?? null),
+          data: allTimestamps.map((t) => byTimestamp[t] ?? null),
           borderColor: color,
           backgroundColor: color,
           borderWidth: 2,

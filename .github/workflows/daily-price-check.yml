@@ -1,8 +1,12 @@
 name: daily-price-check
 
 on:
+  # A cada 5 min (o mínimo que o GitHub Actions permite) -- é o "relógio"
+  # de polling; scraper/scrape.py só de fato rasparmos as lojas quando a
+  # altura do bloco do Bitcoin (via mempool.space) muda desde a última
+  # coleta, então na prática atualiza a cada bloco novo minerado (~10 min).
   schedule:
-    - cron: "0 9 * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch: {}
   push:
     branches: [main]
@@ -25,6 +29,8 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,25 +44,35 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run scraper
-        run: python -m scraper.scrape
+        id: scrape
+        run: |
+          python -m scraper.scrape
+          SKIPPED=$(python3 -c "import json; print(str(json.load(open('data/last_run.json')).get('skipped', False)).lower())")
+          echo "skipped=$SKIPPED" >> "$GITHUB_OUTPUT"
 
       - name: Aggregate + build alerts
+        if: steps.scrape.outputs.skipped != 'true'
         run: python -m scraper.aggregate
 
       - name: Commit updated price data
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data site/data
           if git diff --cached --quiet; then
-            echo "Sem mudanças de preço hoje."
+            echo "Sem bloco novo -- nada pra commitar."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git commit -m "chore: atualiza preços de chuteiras de rugby ($(date -u +%F))"
+            BLOCK=$(python3 -c "import json; print(json.load(open('data/last_run.json')).get('block_height') or '?')")
+            git commit -m "chore: atualiza preços de chuteiras de rugby (bloco $BLOCK)"
             git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
   deploy:
     needs: scrape
+    if: needs.scrape.outputs.changed == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

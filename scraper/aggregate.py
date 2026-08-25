@@ -28,54 +28,61 @@ def _read_rows() -> list[dict]:
         return list(csv.DictReader(f))
 
 
-def _build_watchlist(rows: list[dict], cutoff: str, latest_date: str | None) -> list[dict]:
-    """Agrupa por versão (dentro de cada item da watchlist) usando o
-    título bruto pra casar -- veja scraper/watchlist.py para o porquê."""
+def _build_watchlist(rows: list[dict], cutoff: str) -> list[dict]:
+    """Agrupa por versão (dentro de cada item da watchlist) e depois por
+    bloco do Bitcoin -- cada bloco novo minerado é um ponto no histórico.
+    Casa contra o título bruto do produto -- veja scraper/watchlist.py.
+    Linhas antigas (de antes do rastreio por bloco) usam o timestamp como
+    chave de agrupamento no lugar do bloco."""
     result = []
     for entry in wl.load_watchlist():
-        version_groups: dict[str, dict] = {}
-        by_date: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
-        latest_rows: list[tuple[str, dict]] = []
+        version_blocks: dict[str, dict[str, dict]] = defaultdict(dict)
 
         for row in rows:
             if row["date"] < cutoff or not wl.matches(row["title"], entry["match"]):
                 continue
             try:
-                price_usd = float(row["price_usd"])
+                float(row["price_usd"])
             except (KeyError, ValueError):
                 continue
 
             version = row["version"] or "Padrão"
-            g = version_groups.setdefault(version, {"prices": [], "sources": set()})
-            g["prices"].append(price_usd)
-            g["sources"].add(row["site_name"])
-            by_date[version][row["date"]].append(price_usd)
-            if row["date"] == latest_date:
-                latest_rows.append((version, row))
+            block_key = row.get("block_height") or row.get("timestamp") or row["date"]
+            blk = version_blocks[version].setdefault(block_key, {
+                "block_height": row.get("block_height") or None,
+                "timestamp": row.get("timestamp") or row["date"],
+                "rows": [],
+            })
+            blk["rows"].append(row)
 
         versions_out = []
-        for version, g in version_groups.items():
-            n = len(g["prices"])
-            history = [
-                {"date": d, "avg_price_usd": round(sum(vals) / len(vals), 2)}
-                for d, vals in sorted(by_date[version].items())
-            ]
-            v_latest = [row for v, row in latest_rows if v == version]
-            latest_min_price = latest_min_site = latest_min_url = None
-            if v_latest:
-                cheapest = min(v_latest, key=lambda r: float(r["price_usd"]))
-                latest_min_price = round(float(cheapest["price_usd"]), 2)
-                latest_min_site = cheapest["site_name"]
-                latest_min_url = cheapest["url"]
+        for version, blocks in version_blocks.items():
+            history = []
+            for blk in blocks.values():
+                blk_rows = blk["rows"]
+                cheapest = min(blk_rows, key=lambda r: float(r["price_usd"]))
+                priciest = max(blk_rows, key=lambda r: float(r["price_usd"]))
+                prices = [float(r["price_usd"]) for r in blk_rows]
+                history.append({
+                    "block_height": int(blk["block_height"]) if blk["block_height"] else None,
+                    "timestamp": blk["timestamp"],
+                    "avg_price_usd": round(sum(prices) / len(prices), 2),
+                    "max_price_usd": round(float(priciest["price_usd"]), 2),
+                    "max_site": priciest["site_name"],
+                    "max_url": priciest["url"],
+                    "min_price_usd": round(float(cheapest["price_usd"]), 2),
+                    "min_site": cheapest["site_name"],
+                    "min_url": cheapest["url"],
+                })
+            history.sort(key=lambda h: (h["block_height"] is None, h["block_height"], h["timestamp"]))
+
+            all_prices = [float(r["price_usd"]) for blk in blocks.values() for r in blk["rows"]]
             versions_out.append({
                 "version": version,
-                "avg_price_usd": round(sum(g["prices"]) / n, 2),
-                "n_observations": n,
-                "sources": sorted(g["sources"]),
+                "avg_price_usd": round(sum(all_prices) / len(all_prices), 2),
+                "n_observations": len(all_prices),
                 "history": history,
-                "latest_min_price_usd": latest_min_price,
-                "latest_min_site": latest_min_site,
-                "latest_min_url": latest_min_url,
+                "latest": history[-1] if history else None,
             })
 
         versions_out.sort(key=lambda v: v["version"])
@@ -189,11 +196,21 @@ def run() -> None:
         "date": latest_date,
         "deals": deals,
     }
+    latest_block = None
+    for row in rows:
+        raw = row.get("block_height")
+        if raw:
+            try:
+                latest_block = max(latest_block or 0, int(raw))
+            except ValueError:
+                pass
+
     watchlist_out = {
         "generated_at": now.isoformat(),
         "window_days": config.AVERAGE_WINDOW_DAYS,
         "latest_date": latest_date,
-        "models": _build_watchlist(rows, cutoff, latest_date),
+        "latest_block": latest_block,
+        "models": _build_watchlist(rows, cutoff),
     }
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
