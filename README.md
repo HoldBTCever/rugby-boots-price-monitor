@@ -124,6 +124,18 @@ Essas duas checagens são independentes do filtro de tamanho (US 9–12) e
 valem pra toda fonte, inclusive as que não têm dado de tamanho por
 variante.
 
+**Quando o título não denuncia:** alguns produtos são infantis sem
+dizer "kids"/"junior" em lugar nenhum do título (ex: "Canterbury Speed
+Rugby Boot" na Lovell Sports — só o breadcrumb do site, "ALL KIDS
+PRODUCTS", revela isso). Pra esses casos, `"kids_collection_url"` numa
+entrada de `sites.json` (hoje só Lovell Rugby,
+`/collections/kids-rugby-boots`) aponta pra coleção infantil dedicada
+da própria loja — o scraper busca os handles de produto dessa coleção
+uma vez por execução e exclui qualquer produto com esse handle, onde
+quer que apareça (catálogo geral ou busca ativa), independente do que
+o título diz. Se o mesmo problema aparecer em outra loja, é só achar a
+coleção "kids" real dela e adicionar o mesmo campo.
+
 ## Como o preço é normalizado
 
 `scraper/normalize.py` extrai marca, modelo e versão do título de cada

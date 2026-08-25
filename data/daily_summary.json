@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-25T17:15:17.658506+00:00",
+  "generated_at": "2026-08-25T17:28:58.440894+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-25",
   "totals": {
     "models_tracked": 180,
     "sources": 13,
-    "deals_today": 6,
-    "observations": 1045
+    "deals_today": 5,
+    "observations": 1039
   },
   "sources": [
     "Canterbury",
@@ -25,31 +25,6 @@
     "World Rugby Shop"
   ],
   "models": [
-    {
-      "key": "canterbury|speed|padrão",
-      "brand": "Canterbury",
-      "model": "Speed",
-      "version": "Padrão",
-      "avg_price_usd": 218.94,
-      "n_observations": 17,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 218.94,
-          "min_price_usd": 89.98
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 89.98,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-rugby-boot-2",
-      "discount_pct": 0.589,
-      "is_deal": true
-    },
     {
       "key": "adidas|rs adults soft ground|padrão",
       "brand": "adidas",
@@ -351,6 +326,31 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-kakari-z-0-soft-ground-boots?_pos=3&_psq=Kakari+Z.1&_psid=df2082900&_ss=e",
       "discount_pct": 0.2308,
+      "is_deal": false
+    },
+    {
+      "key": "canterbury|speed|padrão",
+      "brand": "Canterbury",
+      "model": "Speed",
+      "version": "Padrão",
+      "avg_price_usd": 209.34,
+      "n_observations": 11,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 209.34,
+          "min_price_usd": 162.24
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 162.24,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-rugby-boot-1",
+      "discount_pct": 0.225,
       "is_deal": false
     },
     {
@@ -685,7 +685,7 @@
       "brand": "adidas",
       "model": "RS15 Adults Soft Ground",
       "version": "Padrão",
-      "avg_price_usd": 81.78,
+      "avg_price_usd": 81.77,
       "n_observations": 8,
       "sources": [
         "Rugby Heaven"
@@ -693,7 +693,7 @@
       "history": [
         {
           "date": "2026-08-25",
-          "avg_price_usd": 81.78,
+          "avg_price_usd": 81.77,
           "min_price_usd": 68.14
         }
       ],
@@ -702,7 +702,7 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-rs15-adults-soft-ground-rugby-boots-2",
-      "discount_pct": 0.1668,
+      "discount_pct": 0.1667,
       "is_deal": false
     },
     {
@@ -912,7 +912,7 @@
       "brand": "adidas",
       "model": "Adizero Rs15 Ultimate Adults",
       "version": "Padrão",
-      "avg_price_usd": 236.54,
+      "avg_price_usd": 236.55,
       "n_observations": 10,
       "sources": [
         "Lovell Rugby"
@@ -920,7 +920,7 @@
       "history": [
         {
           "date": "2026-08-25",
-          "avg_price_usd": 236.54,
+          "avg_price_usd": 236.55,
           "min_price_usd": 207.23
         }
       ],
