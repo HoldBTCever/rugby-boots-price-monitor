@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-25T15:19:31.439530+00:00",
+  "generated_at": "2026-08-25T15:23:38.026344+00:00",
   "window_days": 90,
   "latest_date": "2026-08-25",
-  "latest_block": 964017,
+  "latest_block": 964018,
   "models": [
     {
       "label": "Mizuno Waitangi SG",
@@ -39,7 +39,7 @@
         {
           "version": "Pro SG",
           "avg_price_usd": 224.99,
-          "n_observations": 1,
+          "n_observations": 2,
           "history": [
             {
               "block_height": 964017,
@@ -51,11 +51,22 @@
               "min_price_usd": 224.99,
               "min_site": "World Rugby Shop",
               "min_url": "https://www.worldrugbyshop.com/products/mizuno-waitangi-pro-sg-wide-black-galaxy-silver"
+            },
+            {
+              "block_height": 964018,
+              "timestamp": "2026-08-25T12:22:06.064409-03:00",
+              "avg_price_usd": 224.99,
+              "max_price_usd": 224.99,
+              "max_site": "World Rugby Shop",
+              "max_url": "https://www.worldrugbyshop.com/products/mizuno-waitangi-pro-sg-wide-black-galaxy-silver",
+              "min_price_usd": 224.99,
+              "min_site": "World Rugby Shop",
+              "min_url": "https://www.worldrugbyshop.com/products/mizuno-waitangi-pro-sg-wide-black-galaxy-silver"
             }
           ],
           "latest": {
-            "block_height": 964017,
-            "timestamp": "2026-08-25T12:05:59.044778-03:00",
+            "block_height": 964018,
+            "timestamp": "2026-08-25T12:22:06.064409-03:00",
             "avg_price_usd": 224.99,
             "max_price_usd": 224.99,
             "max_site": "World Rugby Shop",
