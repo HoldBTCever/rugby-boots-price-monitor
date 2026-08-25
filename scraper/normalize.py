@@ -31,6 +31,23 @@ _NON_BOOT_WORDS = [
 ]
 
 
+_FIRM_GROUND_RE = re.compile(r"\bfg\b|firm\s*ground", re.IGNORECASE)
+_JUNIOR_RE = re.compile(r"\bjunior\b|\bjuniors\b|\bkids?\b|\byouth\b", re.IGNORECASE)
+
+
+def is_firm_ground(text: str) -> bool:
+    """True quando o texto (título + pista extra) indica solado Firm
+    Ground -- "FG" isolado (com limite de palavra, pra não confundir com
+    sigla dentro de outra palavra) ou "Firm Ground" por extenso."""
+    return bool(_FIRM_GROUND_RE.search(text))
+
+
+def is_junior(text: str) -> bool:
+    """True quando o texto indica chuteira infantil/juvenil (Junior,
+    Kids, Youth)."""
+    return bool(_JUNIOR_RE.search(text))
+
+
 def is_rugby_boot(title: str, extra: str = "") -> bool:
     """True quando o título (+ pista extra, ex: product_type da Shopify)
     parece ser de uma chuteira de rugby, e não de outro produto (bola,

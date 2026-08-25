@@ -58,6 +58,9 @@ def _append_listings(new_rows, listings, rates, *, block_height, timestamp, toda
     for item in listings:
         if not trust_category and not normalize.is_rugby_boot(item["title"], item.get("category_hint", "")):
             continue
+        combined = f"{item['title']} {item.get('category_hint', '')}"
+        if normalize.is_firm_ground(combined) or normalize.is_junior(combined):
+            continue
         price_usd = fx.to_usd(item["price"], item["currency"], rates)
         if price_usd is None:
             continue

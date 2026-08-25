@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-25T16:27:45.680303+00:00",
+  "generated_at": "2026-08-25T16:40:23.340043+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-25",
   "totals": {
-    "models_tracked": 214,
+    "models_tracked": 168,
     "sources": 12,
-    "deals_today": 5,
-    "observations": 532
+    "deals_today": 2,
+    "observations": 412
   },
   "sources": [
     "Canterbury",
@@ -50,31 +50,6 @@
       "is_deal": true
     },
     {
-      "key": "outra marca|adult unisex phoenix firm|elite",
-      "brand": "Outra marca",
-      "model": "Adult Unisex Phoenix Firm",
-      "version": "Elite",
-      "avg_price_usd": 190.87,
-      "n_observations": 4,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 190.87,
-          "min_price_usd": 109.07
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 109.07,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/firm-ground-boots/products/adult-unisex-phoenix-2-0-elite-firm-ground-boots-red-qb000179aay",
-      "discount_pct": 0.4286,
-      "is_deal": true
-    },
-    {
       "key": "adidas|kakari adults soft ground|elite",
       "brand": "adidas",
       "model": "Kakari Adults Soft Ground",
@@ -98,56 +73,6 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/kakari-elite-soft-ground-rugby-boots-1?_pos=3&_psq=Kakari+Elite&_psid=eb2bfff60&_ss=e",
       "discount_pct": 0.4155,
-      "is_deal": true
-    },
-    {
-      "key": "canterbury|speed soft ground|team",
-      "brand": "Canterbury",
-      "model": "Speed Soft Ground",
-      "version": "Team",
-      "avg_price_usd": 109.41,
-      "n_observations": 4,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 109.41,
-          "min_price_usd": 65.44
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 65.44,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-team-junior-soft-ground-rugby-boots",
-      "discount_pct": 0.4019,
-      "is_deal": true
-    },
-    {
-      "key": "outra marca|adult unisex phoenix firm|pro",
-      "brand": "Outra marca",
-      "model": "Adult Unisex Phoenix Firm",
-      "version": "Pro",
-      "avg_price_usd": 113.62,
-      "n_observations": 6,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 113.62,
-          "min_price_usd": 68.17
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 68.17,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/firm-ground-boots/products/adult-unisex-phoenix-2-0-pro-firm-ground-boots-red-qb000181aay",
-      "discount_pct": 0.4,
       "is_deal": true
     },
     {
@@ -253,31 +178,6 @@
       "is_deal": false
     },
     {
-      "key": "outra marca|adult unisex ccc phoenix|pro",
-      "brand": "Outra marca",
-      "model": "Adult Unisex CCC Phoenix",
-      "version": "Pro",
-      "avg_price_usd": 120.76,
-      "n_observations": 7,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 120.76,
-          "min_price_usd": 81.8
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 81.8,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/firm-ground-boots/products/adult-unisex-ccc-phoenix-2-0-pro-firm-ground-boot-white-qb000181001",
-      "discount_pct": 0.3226,
-      "is_deal": false
-    },
-    {
       "key": "outra marca|sidestep x20 power 6s|padrão",
       "brand": "Outra marca",
       "model": "Sidestep X20 Power 6S",
@@ -308,7 +208,7 @@
       "model": "Adult Unisex CCC Phoenix",
       "version": "Elite",
       "avg_price_usd": 174.51,
-      "n_observations": 8,
+      "n_observations": 4,
       "sources": [
         "Canterbury"
       ],
@@ -323,59 +223,8 @@
       "latest_min_price_usd": 130.88,
       "latest_min_site": "Canterbury",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/boots-for-forwards/products/adult-unisex-ccc-phoenix-2-0-elite-firm-ground-boot-white-qb000179001",
+      "latest_min_url": "https://www.canterbury.com/collections/boots-for-forwards/products/adult-unisex-ccc-phoenix-2-0-elite-soft-ground-boot-white-qb000178001",
       "discount_pct": 0.25,
-      "is_deal": false
-    },
-    {
-      "key": "outra marca|adult unisex ccc phoenix|team",
-      "brand": "Outra marca",
-      "model": "Adult Unisex CCC Phoenix",
-      "version": "Team",
-      "avg_price_usd": 89.44,
-      "n_observations": 4,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 89.44,
-          "min_price_usd": 67.08
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 67.08,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/firm-ground-boots/products/adult-unisex-ccc-phoenix-2-0-team-firm-ground-boot-white-qb000183001",
-      "discount_pct": 0.25,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|soft ground|padrão",
-      "brand": "adidas",
-      "model": "Soft Ground",
-      "version": "Padrão",
-      "avg_price_usd": 43.62,
-      "n_observations": 3,
-      "sources": [
-        "Lovell Rugby",
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 43.62,
-          "min_price_usd": 32.72
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 32.72,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/junior-soft-ground-rugby-boots",
-      "discount_pct": 0.2499,
       "is_deal": false
     },
     {
@@ -580,6 +429,31 @@
       "is_deal": false
     },
     {
+      "key": "mizuno|monarcida neo iii select|padrão",
+      "brand": "Mizuno",
+      "model": "Monarcida NEO III Select",
+      "version": "Padrão",
+      "avg_price_usd": 81.79,
+      "n_observations": 6,
+      "sources": [
+        "Rugby Heaven"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 81.79,
+          "min_price_usd": 68.14
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 68.14,
+      "latest_min_site": "Rugby Heaven",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-monarcida-neo-iii-select-adults-mixed-stud-rugby-boots",
+      "discount_pct": 0.1669,
+      "is_deal": false
+    },
+    {
       "key": "adidas|rs15 adults soft ground|padrão",
       "brand": "adidas",
       "model": "RS15 Adults Soft Ground",
@@ -602,31 +476,6 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-rs15-adults-soft-ground-rugby-boots-2",
       "discount_pct": 0.1668,
-      "is_deal": false
-    },
-    {
-      "key": "mizuno|monarcida neo iii select|padrão",
-      "brand": "Mizuno",
-      "model": "Monarcida NEO III Select",
-      "version": "Padrão",
-      "avg_price_usd": 80.08,
-      "n_observations": 8,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 80.08,
-          "min_price_usd": 68.14
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 68.14,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-monarcida-neo-iii-select-adults-mixed-stud-rugby-boots",
-      "discount_pct": 0.1491,
       "is_deal": false
     },
     {
@@ -932,32 +781,6 @@
       "is_deal": false
     },
     {
-      "key": "mizuno|morelia neo iv adults|pro",
-      "brand": "Mizuno",
-      "model": "Morelia Neo Iv Adults",
-      "version": "Pro",
-      "avg_price_usd": 122.02,
-      "n_observations": 2,
-      "sources": [
-        "Lovell Rugby",
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 122.02,
-          "min_price_usd": 109.06
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 109.06,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-iv-pro-ag-rugby-boots-white-p1ga2435-60",
-      "discount_pct": 0.1062,
-      "is_deal": false
-    },
-    {
       "key": "mizuno|morelia neo iv adults|elite",
       "brand": "Mizuno",
       "model": "Morelia Neo Iv Adults",
@@ -1056,31 +879,6 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adizero-rs15-ultimate-soft-ground-rugby-boots",
       "discount_pct": 0.0977,
-      "is_deal": false
-    },
-    {
-      "key": "kooga|power|sg",
-      "brand": "Kooga",
-      "model": "Power",
-      "version": "Sg",
-      "avg_price_usd": 51.35,
-      "n_observations": 3,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 51.35,
-          "min_price_usd": 46.35
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 46.35,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/mens-power-sg-rugby-boots",
-      "discount_pct": 0.0974,
       "is_deal": false
     },
     {
@@ -1209,31 +1007,6 @@
       "is_deal": false
     },
     {
-      "key": "oxen|rptr stud|pro",
-      "brand": "Oxen",
-      "model": "Rptr Stud",
-      "version": "Pro",
-      "avg_price_usd": 27.72,
-      "n_observations": 3,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 27.72,
-          "min_price_usd": 25.9
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 25.9,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/oxen-rptr-pro-6-stud-1",
-      "discount_pct": 0.0657,
-      "is_deal": false
-    },
-    {
       "key": "mizuno|mr neo e lace|padrão",
       "brand": "Mizuno",
       "model": "Mr Neo E Lace",
@@ -1256,31 +1029,6 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-mr-neo-4-e-si?_pos=8&_psq=Mizuno+Waitangi+SG&_psid=bdb10e208&_ss=e",
       "discount_pct": 0.0635,
-      "is_deal": false
-    },
-    {
-      "key": "mizuno|morelia ii adults firm|pro",
-      "brand": "Mizuno",
-      "model": "Morelia II Adults Firm",
-      "version": "Pro",
-      "avg_price_usd": 115.88,
-      "n_observations": 2,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 115.88,
-          "min_price_usd": 109.06
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 109.06,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-ii-pro-firm-ground-rugby-boots-white-p1ga2513-37",
-      "discount_pct": 0.0589,
       "is_deal": false
     },
     {
@@ -1410,31 +1158,6 @@
       "is_deal": false
     },
     {
-      "key": "asics|ultrezza ai adults firm|padrão",
-      "brand": "ASICS",
-      "model": "Ultrezza AI Adults Firm",
-      "version": "Padrão",
-      "avg_price_usd": 163.59,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 163.59,
-          "min_price_usd": 163.59
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 163.59,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/asics-ultrezza-ai-adults-firm-ground-rugby-boots-yellow-1103a020-750",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "canterbury|adults speed falcon soft|elite",
       "brand": "Canterbury",
       "model": "Adults Speed Falcon Soft",
@@ -1456,31 +1179,6 @@
       "latest_min_site": "Rugbystore.co.uk",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystore.co.uk/rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|juniors soft ground|padrão",
-      "brand": "Canterbury",
-      "model": "Juniors Soft Ground",
-      "version": "Padrão",
-      "avg_price_usd": 62.72,
-      "n_observations": 1,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 62.72,
-          "min_price_usd": 62.72
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 62.72,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/canterbury-juniors-soft-ground-rugby-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -1531,106 +1229,6 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-pheonix-20-elite-sg-au-red-q-b000178aay",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|phoenix firm ground|team",
-      "brand": "Canterbury",
-      "model": "Phoenix Firm Ground",
-      "version": "Team",
-      "avg_price_usd": 83.17,
-      "n_observations": 1,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 83.17,
-          "min_price_usd": 83.17
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 83.17,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/mens-phoenix-2-team-firm-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|phoenix firm ground|pro",
-      "brand": "Canterbury",
-      "model": "Phoenix Firm Ground",
-      "version": "Pro",
-      "avg_price_usd": 145.88,
-      "n_observations": 2,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 145.88,
-          "min_price_usd": 145.88
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 145.88,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-phoenix-2-pro-firm-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|phoenix genesis adults firm|pro",
-      "brand": "Canterbury",
-      "model": "Phoenix Genesis Adults Firm",
-      "version": "Pro",
-      "avg_price_usd": 109.06,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 109.06,
-          "min_price_usd": 109.06
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 109.06,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-phoenix-genesis-pro-adults-fg-rugby-boots-black-qb000176bk8",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|phoenix genesis adults firm|team",
-      "brand": "Canterbury",
-      "model": "Phoenix Genesis Adults Firm",
-      "version": "Team",
-      "avg_price_usd": 81.79,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 81.79,
-          "min_price_usd": 81.79
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 81.79,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-phoenix-genesis-team-adults-fg-rugby-boots-black-qb000137bk8",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -1706,31 +1304,6 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-phoenix-raze-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|phoenix raze soft ground|padrão",
-      "brand": "Canterbury",
-      "model": "Phoenix Raze Soft Ground",
-      "version": "Padrão",
-      "avg_price_usd": 66.81,
-      "n_observations": 1,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 66.81,
-          "min_price_usd": 66.81
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 66.81,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/phoenix-raze-junior-soft-ground-rugby-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -1835,81 +1408,6 @@
       "is_deal": false
     },
     {
-      "key": "canterbury|speed falcon|team fg",
-      "brand": "Canterbury",
-      "model": "Speed Falcon",
-      "version": "Team FG",
-      "avg_price_usd": 82.88,
-      "n_observations": 1,
-      "sources": [
-        "JustRugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 82.88,
-          "min_price_usd": 82.88
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 82.88,
-      "latest_min_site": "JustRugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://justrugby.com/products/canterbury-speed-falcon-2-0-team-fg-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|speed falcon|pro fg",
-      "brand": "Canterbury",
-      "model": "Speed Falcon",
-      "version": "Pro FG",
-      "avg_price_usd": 102.2,
-      "n_observations": 1,
-      "sources": [
-        "JustRugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 102.2,
-          "min_price_usd": 102.2
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 102.2,
-      "latest_min_site": "JustRugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://justrugby.com/products/canterbury-speed-falcon-2-0-pro-fg-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "canterbury|speed falcon|elite fg",
-      "brand": "Canterbury",
-      "model": "Speed Falcon",
-      "version": "Elite FG",
-      "avg_price_usd": 163.55,
-      "n_observations": 1,
-      "sources": [
-        "JustRugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 163.55,
-          "min_price_usd": 163.55
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 163.55,
-      "latest_min_site": "JustRugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://justrugby.com/products/canterbury-speed-falcon-2-0-elite-fg-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "canterbury|speed falcon ellie kundunne|padrão",
       "brand": "Canterbury",
       "model": "Speed Falcon Ellie Kundunne",
@@ -1985,31 +1483,6 @@
       "is_deal": false
     },
     {
-      "key": "canterbury|speed infinite adults firm|team",
-      "brand": "Canterbury",
-      "model": "Speed Infinite Adults Firm",
-      "version": "Team",
-      "avg_price_usd": 95.42,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 95.42,
-          "min_price_usd": 95.42
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 95.42,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-speed-infinite-team-adults-fg-rugby-boots-white-qb000147bs4",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "canterbury|speed infinite adults soft|pro",
       "brand": "Canterbury",
       "model": "Speed Infinite Adults Soft",
@@ -2056,6 +1529,31 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-speed-pro-soft-ground-rugby-boots",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "canterbury|speed soft ground|team",
+      "brand": "Canterbury",
+      "model": "Speed Soft Ground",
+      "version": "Team",
+      "avg_price_usd": 124.07,
+      "n_observations": 3,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 124.07,
+          "min_price_usd": 124.07
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 124.07,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-speed-team-soft-ground-rugby-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -2231,31 +1729,6 @@
       "latest_min_site": "Rugby Imports",
       "latest_min_region": "USA",
       "latest_min_url": "https://www.rugbyimports.com/products/gilbert-cage-torq-6s-rugby-boot-bk",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "gilbert|cage torq msx firm|padrão",
-      "brand": "Gilbert",
-      "model": "Cage Torq MSX Firm",
-      "version": "Padrão",
-      "avg_price_usd": 65.0,
-      "n_observations": 4,
-      "sources": [
-        "Rugby Imports"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 65.0,
-          "min_price_usd": 65.0
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 65.0,
-      "latest_min_site": "Rugby Imports",
-      "latest_min_region": "USA",
-      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-cage-torq-msx-rugby-boot-bk-wh",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -2535,6 +2008,31 @@
       "is_deal": false
     },
     {
+      "key": "kooga|power|sg",
+      "brand": "Kooga",
+      "model": "Power",
+      "version": "Sg",
+      "avg_price_usd": 46.35,
+      "n_observations": 2,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 46.35,
+          "min_price_usd": 46.35
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 46.35,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/mens-power-sg-rugby-boots",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
       "key": "kooga|power childrens|sg",
       "brand": "Kooga",
       "model": "Power Childrens",
@@ -2610,31 +2108,6 @@
       "is_deal": false
     },
     {
-      "key": "mizuno|alpha adults firm ground|elite",
-      "brand": "Mizuno",
-      "model": "Alpha Adults Firm Ground",
-      "version": "Elite",
-      "avg_price_usd": 163.59,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 163.59,
-          "min_price_usd": 163.59
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 163.59,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-alpha-elite-firm-ground-rugby-boots-black-p1ga2362-01",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "mizuno|alpha elte soft|padrão",
       "brand": "Mizuno",
       "model": "Alpha Elte Soft",
@@ -2656,31 +2129,6 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-japan-mix-sn62-1",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "mizuno|alpha ii firm ground|padrão",
-      "brand": "Mizuno",
-      "model": "Alpha Ii Firm Ground",
-      "version": "Padrão",
-      "avg_price_usd": 357.2,
-      "n_observations": 2,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 357.2,
-          "min_price_usd": 357.2
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 357.2,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/mens-alpha-ii-firm-ground-rugby-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -2790,7 +2238,7 @@
       "model": "Monarcida Neo II Select",
       "version": "Padrão",
       "avg_price_usd": 68.14,
-      "n_observations": 2,
+      "n_observations": 1,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2805,14 +2253,14 @@
       "latest_min_price_usd": 68.14,
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-monarcida-neo-ii-select-adults-firm-ground-rugby-boots",
+      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-monarcida-neo-ii-select-mix-adults-firm-ground-rugby-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
     {
-      "key": "mizuno|monarcida neo iii adults|pro",
+      "key": "mizuno|morelia neo iv adults|pro",
       "brand": "Mizuno",
-      "model": "Monarcida Neo III Adults",
+      "model": "Morelia NEO IV Adults",
       "version": "Pro",
       "avg_price_usd": 109.06,
       "n_observations": 1,
@@ -2830,57 +2278,7 @@
       "latest_min_price_usd": 109.06,
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-mizuno-monarcida-neo-iii-pro-firm-ground-rugby-boots-blue-p1ga2422-27",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "mizuno|morelia adults firm ground|club",
-      "brand": "Mizuno",
-      "model": "Morelia Adults Firm Ground",
-      "version": "Club",
-      "avg_price_usd": 74.97,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 74.97,
-          "min_price_usd": 74.97
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 74.97,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-club-adults-firm-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "mizuno|morelia ii adults firm|elite",
-      "brand": "Mizuno",
-      "model": "Morelia II Adults Firm",
-      "version": "Elite",
-      "avg_price_usd": 136.32,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 136.32,
-          "min_price_usd": 136.32
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 136.32,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-ii-elite-firm-ground-rugby-boots-white-p1ga2512-37",
+      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-iv-pro-ag-rugby-boots-white-p1ga2435-60",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -2981,31 +2379,6 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/morelia-neo-iv-soft-ground-rugby-boots-adults",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "mizuno|morelia neo iv beta|padrão",
-      "brand": "Mizuno",
-      "model": "Morelia Neo Iv Beta",
-      "version": "Padrão",
-      "avg_price_usd": 415.83,
-      "n_observations": 2,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 415.83,
-          "min_price_usd": 415.83
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 415.83,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/mizuno-morelia-neo-iv-beta-adults-firm-ground-rugby-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -3185,11 +2558,11 @@
       "is_deal": false
     },
     {
-      "key": "outra marca|adult unisex ccc speed|pro",
+      "key": "outra marca|adult unisex ccc phoenix|pro",
       "brand": "Outra marca",
-      "model": "Adult Unisex CCC Speed",
+      "model": "Adult Unisex CCC Phoenix",
       "version": "Pro",
-      "avg_price_usd": 81.8,
+      "avg_price_usd": 136.34,
       "n_observations": 2,
       "sources": [
         "Canterbury"
@@ -3197,15 +2570,15 @@
       "history": [
         {
           "date": "2026-08-25",
-          "avg_price_usd": 81.8,
-          "min_price_usd": 81.8
+          "avg_price_usd": 136.34,
+          "min_price_usd": 136.34
         }
       ],
       "latest_date": "2026-08-25",
-      "latest_min_price_usd": 81.8,
+      "latest_min_price_usd": 136.34,
       "latest_min_site": "Canterbury",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/firm-ground-boots/products/adult-unisex-ccc-speed-pro-firm-ground-boot-white-qb000190001",
+      "latest_min_url": "https://www.canterbury.com/collections/boots-for-forwards/products/adult-unisex-ccc-phoenix-2-0-pro-soft-ground-boot-black-qb000180989",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -3315,7 +2688,7 @@
       "model": "Adult Unisex Speed Falcon",
       "version": "Pro",
       "avg_price_usd": 136.34,
-      "n_observations": 6,
+      "n_observations": 2,
       "sources": [
         "Canterbury"
       ],
@@ -3330,7 +2703,7 @@
       "latest_min_price_usd": 136.34,
       "latest_min_site": "Canterbury",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/boots-for-backs/products/adult-unisex-speed-falcon-2-0-pro-firm-ground-boots-black-qf000008a89",
+      "latest_min_url": "https://www.canterbury.com/collections/boots-for-backs/products/adult-unisex-speed-falcon-2-0-pro-soft-ground-boots-white-qf000011bh1",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -3385,56 +2758,6 @@
       "is_deal": false
     },
     {
-      "key": "outra marca|ccc phoenix firm ground|padrão",
-      "brand": "Outra marca",
-      "model": "CCC Phoenix Firm Ground",
-      "version": "Padrão",
-      "avg_price_usd": 40.0,
-      "n_observations": 9,
-      "sources": [
-        "Rugby Imports"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 40.0,
-          "min_price_usd": 40.0
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 40.0,
-      "latest_min_site": "Rugby Imports",
-      "latest_min_region": "USA",
-      "latest_min_url": "https://www.rugbyimports.com/products/ccc-phoenix-3-0-fg?_pos=1&_psq=Canterbury+Stampede&_psid=d9be120d7&_ss=e",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "outra marca|ccc speed firm ground|padrão",
-      "brand": "Outra marca",
-      "model": "CCC Speed Firm Ground",
-      "version": "Padrão",
-      "avg_price_usd": 38.0,
-      "n_observations": 18,
-      "sources": [
-        "Rugby Imports"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 38.0,
-          "min_price_usd": 38.0
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 38.0,
-      "latest_min_site": "Rugby Imports",
-      "latest_min_region": "USA",
-      "latest_min_url": "https://www.rugbyimports.com/products/ccc-speed-3-0-firm-ground-rugby-boot?_pos=2&_psq=Canterbury+Stampede&_psid=d9be120d7&_ss=e",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "outra marca|cage pace msx senior|pro",
       "brand": "Outra marca",
       "model": "Cage Pace MSX Senior",
@@ -3485,56 +2808,6 @@
       "is_deal": false
     },
     {
-      "key": "outra marca|diadora campo futbol clásico|fg",
-      "brand": "Outra marca",
-      "model": "Diadora Campo Futbol Clásico",
-      "version": "Fg",
-      "avg_price_usd": 40.0,
-      "n_observations": 2,
-      "sources": [
-        "MercadoLibre Argentina"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 40.0,
-          "min_price_usd": 40.0
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 40.0,
-      "latest_min_site": "MercadoLibre Argentina",
-      "latest_min_region": "Argentina",
-      "latest_min_url": "https://www.mercadolibre.com.ar/botines-diadora-fg-campo-futbol-11-rugby-clasico-otros/up/MLAU3929047508#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=25&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1764619739&sid=search",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "outra marca|diadora campo futbol varios|fg",
-      "brand": "Outra marca",
-      "model": "Diadora Campo Futbol Varios",
-      "version": "Fg",
-      "avg_price_usd": 60.0,
-      "n_observations": 1,
-      "sources": [
-        "MercadoLibre Argentina"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 60.0,
-          "min_price_usd": 60.0
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 60.0,
-      "latest_min_site": "MercadoLibre Argentina",
-      "latest_min_region": "Argentina",
-      "latest_min_url": "https://www.mercadolibre.com.ar/botines-diadora-fg-campo-futbol-11-rugby-varios-modelos/up/MLAU3864395693#polycard_client=search-desktop&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=29&type=product&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&wid=MLA1725150223&sid=search",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "outra marca|diadora clasico futbol campo|padrão",
       "brand": "Outra marca",
       "model": "Diadora Clasico Futbol Campo",
@@ -3581,31 +2854,6 @@
       "latest_min_site": "MercadoLibre Argentina",
       "latest_min_region": "Argentina",
       "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-1373108753-botines-futbol-rugby-campo-cesped-unisex-seta-_JM?searchVariation=178620999139#polycard_client=search-desktop&searchVariation=178620999139&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=38&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "outra marca|futbol campo unisex seta|fg",
-      "brand": "Outra marca",
-      "model": "Futbol Campo Unisex Seta",
-      "version": "Fg",
-      "avg_price_usd": 40.0,
-      "n_observations": 1,
-      "sources": [
-        "MercadoLibre Argentina"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 40.0,
-          "min_price_usd": 40.0
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 40.0,
-      "latest_min_site": "MercadoLibre Argentina",
-      "latest_min_region": "Argentina",
-      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-2049234712-botines-futbol-rugby-campo-unisex-seta-fg-force-dygsport-_JM?searchVariation=187491783829#polycard_client=search-desktop&searchVariation=187491783829&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=14&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -3860,31 +3108,6 @@
       "is_deal": false
     },
     {
-      "key": "outra marca|le coq sportif futbol|fg",
-      "brand": "Outra marca",
-      "model": "Le Coq Sportif Futbol",
-      "version": "Fg",
-      "avg_price_usd": 60.0,
-      "n_observations": 1,
-      "sources": [
-        "MercadoLibre Argentina"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 60.0,
-          "min_price_usd": 60.0
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 60.0,
-      "latest_min_site": "MercadoLibre Argentina",
-      "latest_min_region": "Argentina",
-      "latest_min_url": "https://articulo.mercadolibre.com.ar/MLA-2075971554-botines-le-coq-sportif-fg-futbol-11-rugby-campo-86-55-otros-_JM?searchVariation=187863534219#polycard_client=search-desktop&searchVariation=187863534219&be_origin=backend&overlay_label=not_apply&search_layout=grid&position=24&type=item&tracking_id=bd56c0d2-5ced-4d3f-9a95-bd8a5b2dc97e&sid=search",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "outra marca|reebok match futbol tapones|padrão",
       "brand": "Outra marca",
       "model": "Reebok Match Futbol Tapones",
@@ -4035,81 +3258,6 @@
       "is_deal": false
     },
     {
-      "key": "outra marca|unisex phoenix raze soft|padrão",
-      "brand": "Outra marca",
-      "model": "Unisex Phoenix Raze Soft",
-      "version": "Padrão",
-      "avg_price_usd": 62.72,
-      "n_observations": 1,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 62.72,
-          "min_price_usd": 62.72
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 62.72,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/boots-for-backs/products/junior-unisex-phoenix-raze-soft-ground-boots-black-white-qe22a003090",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "outra marca|unisex speed falcon firm|pro",
-      "brand": "Outra marca",
-      "model": "Unisex Speed Falcon Firm",
-      "version": "Pro",
-      "avg_price_usd": 74.99,
-      "n_observations": 2,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 74.99,
-          "min_price_usd": 74.99
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 74.99,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/boots-for-backs/products/junior-unisex-speed-falcon-2-0-pro-firm-ground-boots-white-qf000013bh1",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "outra marca|unisex speed falcon soft|pro",
-      "brand": "Outra marca",
-      "model": "Unisex Speed Falcon Soft",
-      "version": "Pro",
-      "avg_price_usd": 74.99,
-      "n_observations": 1,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 74.99,
-          "min_price_usd": 74.99
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 74.99,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/boots-for-backs/products/junior-unisex-speed-falcon-2-0-pro-soft-ground-boots-black-qf000015a89",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "oxen|raptor adults artificial ground|elite",
       "brand": "Oxen",
       "model": "Raptor Adults Artificial Ground",
@@ -4131,31 +3279,6 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/oxen-raptor-elite-adults-artificial-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "oxen|raptor adults firm ground|pro",
-      "brand": "Oxen",
-      "model": "Raptor Adults Firm Ground",
-      "version": "Pro",
-      "avg_price_usd": 68.15,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 68.15,
-          "min_price_usd": 68.15
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 68.15,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/oxen-raptor-pro-adults-fg-rugby-boots-black-ox24hgrpbs",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -4360,31 +3483,6 @@
       "is_deal": false
     },
     {
-      "key": "under armour|magnetico adults firm ground|pro",
-      "brand": "Under Armour",
-      "model": "Magnetico Adults Firm Ground",
-      "version": "Pro",
-      "avg_price_usd": 95.41,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 95.41,
-          "min_price_usd": 95.41
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 95.41,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/under-armour-magnetico-pro-firm-ground-boots-1",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "adidas|adizero rs15 adults soft|pro",
       "brand": "adidas",
       "model": "Adizero RS15 Adults Soft",
@@ -4431,31 +3529,6 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-adizero-rs15",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|adizero rs7 'tokyo' adults|padrão",
-      "brand": "adidas",
-      "model": "Adizero RS7 'Tokyo' Adults",
-      "version": "Padrão",
-      "avg_price_usd": 122.69,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 122.69,
-          "min_price_usd": 122.69
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 122.69,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-adults-adizero-rs7-tokyo-firm-ground-rugby-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -4531,56 +3604,6 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adizero-rs15-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|adizero rs15 ultimate unisex|(sg)",
-      "brand": "adidas",
-      "model": "Adizero Rs15 Ultimate Unisex",
-      "version": "(sg)",
-      "avg_price_usd": 89.98,
-      "n_observations": 1,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 89.98,
-          "min_price_usd": 89.98
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 89.98,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-adizero-rs15-ultimate-sg-rugby-boots-unisex-kids",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|adizero rs15 unisex|pro (sg)",
-      "brand": "adidas",
-      "model": "Adizero Rs15 Unisex",
-      "version": "Pro (sg)",
-      "avg_price_usd": 139.06,
-      "n_observations": 1,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 139.06,
-          "min_price_usd": 139.06
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 139.06,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-adizero-rs15-pro-sg-rugby-boots-unisex-kids",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -4885,31 +3908,6 @@
       "is_deal": false
     },
     {
-      "key": "adidas|modelo não identificado|sg",
-      "brand": "adidas",
-      "model": "Modelo não identificado",
-      "version": "Sg",
-      "avg_price_usd": 29.99,
-      "n_observations": 1,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 29.99,
-          "min_price_usd": 29.99
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 29.99,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/rugby-junior-sg-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "adidas|modelo não identificado|padrão",
       "brand": "adidas",
       "model": "Modelo não identificado",
@@ -4931,31 +3929,6 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-rugby-boot",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|predator flare adults firm|padrão",
-      "brand": "adidas",
-      "model": "Predator Flare Adults Firm",
-      "version": "Padrão",
-      "avg_price_usd": 95.41,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 95.41,
-          "min_price_usd": 95.41
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 95.41,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-adults-predator-flare-firm-ground-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -5006,56 +3979,6 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-rugby-predator-malice-sg-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|predator malice control adults|padrão",
-      "brand": "adidas",
-      "model": "Predator Malice Control Adults",
-      "version": "Padrão",
-      "avg_price_usd": 81.78,
-      "n_observations": 3,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 81.78,
-          "min_price_usd": 81.78
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 81.78,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-adults-predator-malice-control-firm-ground-boots-1",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|predator xp adults firm|padrão",
-      "brand": "adidas",
-      "model": "Predator XP Adults Firm",
-      "version": "Padrão",
-      "avg_price_usd": 81.78,
-      "n_observations": 1,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 81.78,
-          "min_price_usd": 81.78
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 81.78,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-adults-predator-xp-firm-ground-boots",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -5185,81 +4108,6 @@
       "is_deal": false
     },
     {
-      "key": "adidas|rs adults firm ground|padrão",
-      "brand": "adidas",
-      "model": "Rs Adults Firm Ground",
-      "version": "Padrão",
-      "avg_price_usd": 83.17,
-      "n_observations": 2,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 83.17,
-          "min_price_usd": 83.17
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 83.17,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-rs-15-adults-firm-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|rs firm ground|pro",
-      "brand": "adidas",
-      "model": "Rs Firm Ground",
-      "version": "Pro",
-      "avg_price_usd": 155.42,
-      "n_observations": 2,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 155.42,
-          "min_price_usd": 155.42
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 155.42,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/rs-15-pro-firm-ground-rugby-boots",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
-      "key": "adidas|rs unisex|(sg)",
-      "brand": "adidas",
-      "model": "Rs Unisex",
-      "version": "(sg)",
-      "avg_price_usd": 222.23,
-      "n_observations": 1,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 222.23,
-          "min_price_usd": 222.23
-        }
-      ],
-      "latest_date": "2026-08-25",
-      "latest_min_price_usd": 222.23,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-rs-sg-rugby-boots-unisex-kids",
-      "discount_pct": 0.0,
-      "is_deal": false
-    },
-    {
       "key": "adidas|rs15 avaglide soft ground|padrão",
       "brand": "adidas",
       "model": "Rs15 Avaglide Soft Ground",
@@ -5310,27 +4158,27 @@
       "is_deal": false
     },
     {
-      "key": "adidas|top sneakers with firm|low",
+      "key": "adidas|soft ground|padrão",
       "brand": "adidas",
-      "model": "Top Sneakers with Firm",
-      "version": "Low",
-      "avg_price_usd": 43.63,
-      "n_observations": 2,
+      "model": "Soft Ground",
+      "version": "Padrão",
+      "avg_price_usd": 36.81,
+      "n_observations": 1,
       "sources": [
         "Lovell Rugby"
       ],
       "history": [
         {
           "date": "2026-08-25",
-          "avg_price_usd": 43.63,
-          "min_price_usd": 43.63
+          "avg_price_usd": 36.81,
+          "min_price_usd": 36.81
         }
       ],
       "latest_date": "2026-08-25",
-      "latest_min_price_usd": 43.63,
+      "latest_min_price_usd": 36.81,
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-rugby-jn-sg-1",
+      "latest_min_url": "https://www.lovellsports.com/products/adidas-rugby-junior-sg-boots-boys",
       "discount_pct": 0.0,
       "is_deal": false
     },
