@@ -50,7 +50,7 @@ def _last_recorded_block() -> int | None:
 def _append_listings(new_rows, listings, rates, *, block_height, timestamp, today, site) -> int:
     count = 0
     for item in listings:
-        if not normalize.is_rugby_boot(item["title"]):
+        if not normalize.is_rugby_boot(item["title"], item.get("category_hint", "")):
             continue
         price_usd = fx.to_usd(item["price"], item["currency"], rates)
         if price_usd is None:

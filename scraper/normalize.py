@@ -31,11 +31,19 @@ _NON_BOOT_WORDS = [
 ]
 
 
-def is_rugby_boot(title: str) -> bool:
-    """True quando o título parece ser de uma chuteira de rugby, e não de
-    outro produto (bola, camisa, acessório) que tenha aparecido junto na
-    coleção/busca de uma loja."""
-    t = title.lower()
+def is_rugby_boot(title: str, extra: str = "") -> bool:
+    """True quando o título (+ pista extra, ex: product_type da Shopify)
+    parece ser de uma chuteira de rugby, e não de outro produto (bola,
+    camisa, acessório) que tenha aparecido junto na coleção/busca de uma
+    loja.
+
+    Muitas lojas Shopify (ex: World Rugby Shop) não repetem "boot" no
+    título -- só marca + modelo + cor (ex: "adidas Kakari SG - Core
+    Black/Zero Metallic/Silver Metallic") -- e contam com a categoria do
+    produto para dizer o que é. `extra` carrega essa categoria
+    (`product_type`) quando disponível, como sinal adicional além do
+    título."""
+    t = f"{title} {extra}".lower()
     if any(word in t for word in _NON_BOOT_WORDS):
         return False
     return any(word in t for word in _BOOT_WORDS)

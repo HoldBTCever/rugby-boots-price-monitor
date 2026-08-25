@@ -281,11 +281,20 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                 ] or [float(v["price"]) for v in variants if v.get("price")]
                 if not (title and handle and prices):
                     continue
+                # product_type é a categoria que a própria loja atribuiu ao
+                # produto -- muitos títulos Shopify não repetem "boot" (só
+                # marca + modelo + cor), então isso vira um sinal extra pro
+                # filtro is_rugby_boot() em normalize.py.
+                category_hint = (product.get("product_type") or "").strip()
+                tags = product.get("tags") or []
+                if isinstance(tags, list):
+                    category_hint = f"{category_hint} {' '.join(tags)}".strip()
                 listings.append({
                     "title": title,
                     "price": min(prices),
                     "currency": site["currency"],
                     "url": f"{site['base_url']}/products/{handle}",
+                    "category_hint": category_hint,
                 })
 
             if len(products) < page_size:
