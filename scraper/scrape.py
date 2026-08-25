@@ -127,8 +127,9 @@ def run() -> dict:
             continue
 
         raw_count = len(listings)
-        sample_titles = [item["title"] for item in listings[:5]]
-        log.info("%s: %d itens brutos antes do filtro. Exemplos: %s", site["name"], raw_count, sample_titles)
+        sample = [(item["title"], item.get("category_hint", "")) for item in listings[:5]]
+        log.info("%s: %d itens brutos antes do filtro. Exemplos (título, category_hint): %s",
+                  site["name"], raw_count, sample)
 
         count = _append_listings(new_rows, listings, rates, block_height=block_height,
                                   timestamp=timestamp, today=today, site=site)
