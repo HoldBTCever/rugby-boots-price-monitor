@@ -38,7 +38,7 @@ def fetch(url: str, extra_headers: dict | None = None) -> str | None:
         return None
 
 
-def parse_price_text(text: str, currency: str) -> float | None:
+def parse_price_text(text: str) -> float | None:
     """Converte um texto de preço em número, lidando com separadores
     de milhar/decimal que variam por local (1,234.56 vs 1.234,56)."""
     match = _PRICE_RE.search(text.replace("\xa0", " "))
@@ -55,8 +55,15 @@ def parse_price_text(text: str, currency: str) -> float | None:
         tail = raw.split(",")[-1]
         raw = raw.replace(",", ".") if len(tail) == 2 else raw.replace(",", "")
     elif "." in raw:
+        # "." isolado só é separador decimal quando sobram exatamente 2
+        # dígitos depois dele (centavos) -- ninguém escreve preço com 1 ou
+        # 3+ casas decimais. Qualquer outra contagem é separador de milhar
+        # (comum em ARS/PYG/JPY: "249.999" = 249999, não 249,999). Vale
+        # pra qualquer moeda, não só as que a gente já sabia que usam "."
+        # como milhar -- é assim que descobrimos o bug real do ARS, que
+        # não estava nessa lista antes e gerava preços 1000x menores.
         tail = raw.split(".")[-1]
-        if len(tail) != 2 and currency in {"JPY", "PYG"}:
+        if len(tail) != 2:
             raw = raw.replace(".", "")
 
     try:
@@ -155,7 +162,16 @@ def scrape_jsonld_site(site: dict) -> list[dict]:
     return listings
 
 
+_ML_RUGBY_BRANDS = ["gilbert", "canterbury", "mizuno", "oxen", "kakari", "ccc"]
+
+
 def scrape_mercadolibre(site: dict) -> list[dict]:
+    """A busca "botines-de-rugby" do MercadoLibre devolve muita chuteira de
+    futebol/futsal junto (Puma Ultra Match, ASICS Lethal Flash etc.) --
+    times argentinos usam o mesmo termo pra tudo. Só aceita o resultado
+    se o título disser "rugby" explicitamente ou for de uma marca
+    conhecida por chuteira de rugby (mesma lista que já usamos pra
+    normalizar marca/modelo)."""
     listings: list[dict] = []
     for listing_url in site["listing_urls"]:
         html = fetch(listing_url)
@@ -180,7 +196,10 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
             if not (link_tag and price_tag):
                 continue
             title = (title_tag or link_tag).get_text(strip=True)
-            price = parse_price_text(price_tag.get_text(strip=True), site["currency"])
+            title_lower = title.lower()
+            if "rugby" not in title_lower and not any(b in title_lower for b in _ML_RUGBY_BRANDS):
+                continue
+            price = parse_price_text(price_tag.get_text(strip=True))
             href = link_tag.get("href")
             if title and price and href:
                 listings.append({
@@ -227,7 +246,7 @@ def scrape_mizuno_jp(site: dict) -> list[dict]:
                 text = scope.get_text(" ", strip=True)
                 yen_match = re.search(r"[¥￥]\s*([\d,]{3,})|([\d,]{3,})\s*円", text)
                 if yen_match:
-                    price = parse_price_text(yen_match.group(1) or yen_match.group(2), "JPY")
+                    price = parse_price_text(yen_match.group(1) or yen_match.group(2))
                 if (not title or len(title) < 4) and len(text) >= 4:
                     title = text[:80]
                 if price:
@@ -331,7 +350,7 @@ def search_shopify(site: dict, query: str) -> list[dict]:
         title = (p.get("title") or "").strip()
         handle = p.get("handle")
         price_text = p.get("price_min") or p.get("price") or ""
-        price = parse_price_text(str(price_text), site["currency"]) if price_text else None
+        price = parse_price_text(str(price_text)) if price_text else None
         if title and handle and price:
             listings.append({
                 "title": title,
