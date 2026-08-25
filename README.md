@@ -84,6 +84,29 @@ caso pula o filtro por palavra-chave, porque um título sem "chuteira"/
 travava os Kakari da World Rugby Shop antes do fix de `product_type`).
 Use só quando tiver certeza de que a página é 100% chuteira.
 
+## Filtro de tamanho (US 8–11)
+
+Só entram no histórico chuteiras disponíveis em algum tamanho entre
+**US 8 e US 11** (masculino) — configurável em `config.MIN_US_SIZE` /
+`config.MAX_US_SIZE`. Isso só é possível com precisão nas lojas Shopify
+(World Rugby Shop, Rugby Imports, Lovell Rugby, Gilbert Rugby, Absolute
+Rugby, JustRugby, Rugby Heaven), porque a Shopify expõe o tamanho de
+cada variante do produto; o preço salvo é o menor entre as variantes
+disponíveis dentro da faixa, e um produto sem nenhum tamanho ali é
+descartado inteiro. Lojas do Reino Unido numeram no padrão britânico —
+convertido para americano somando 1 (aproximação padrão UK→US
+masculino: UK 7 = US 8, UK 10 = US 11).
+
+As demais fontes (MercadoLibre, JSON-LD genérico como Canterbury/
+Pro:Direct/Rugbystore/Kitlocker/Rugby Goods/Durban Rugby/Rugbier Store,
+Mizuno Japan) não expõem tamanho por variante nos dados que os
+adaptadores capturam hoje — continuam contribuindo sem esse filtro,
+porque descartá-las por completo derrubaria fontes que já encontraram
+itens reais da watchlist (ex: MercadoLibre Argentina achou a Mizuno
+Waitangi e a Canterbury Stampede). Se isso não for aceitável, ou se
+quiser que essas fontes também sejam restritas a US 8–11 assim que eu
+conseguir extrair tamanho delas, é só pedir.
+
 ## Como o preço é normalizado
 
 `scraper/normalize.py` extrai marca, modelo e versão do título de cada

@@ -23,6 +23,43 @@ from . import config
 log = logging.getLogger("scraper.adapters")
 
 _PRICE_RE = re.compile(r"[\d][\d.,]*\d|\d")
+_SIZE_RE = re.compile(r"(\d{1,2}(?:\.5)?)")
+
+
+def _parse_us_size(variant: dict, site: dict) -> float | None:
+    """Extrai o tamanho (americano) de uma variante Shopify. O texto do
+    tamanho (option1/title, ex: "8.5", "US 9", "UK 8") varia por loja --
+    pega o primeiro número. Lojas do Reino Unido (GBP) numeram no padrão
+    britânico, então soma 1 (aproximação padrão UK->US masculino: UK 7 =
+    US 8, UK 10 = US 11); lojas em USD já usam numeração americana."""
+    raw = str(variant.get("option1") or variant.get("title") or "")
+    match = _SIZE_RE.search(raw)
+    if not match:
+        return None
+    try:
+        size = float(match.group(1))
+    except ValueError:
+        return None
+    if site.get("currency") == "GBP":
+        size += 1.0
+    return size
+
+
+def _min_price_in_size_range(variants: list[dict], site: dict) -> float | None:
+    """Menor preço entre as variantes disponíveis cujo tamanho (convertido
+    pra americano) cai dentro de [config.MIN_US_SIZE, config.MAX_US_SIZE].
+    Devolve None se nenhuma variante disponível estiver na faixa -- nesse
+    caso o produto inteiro é descartado, não "preço de outro tamanho"."""
+    candidates = []
+    for v in variants:
+        if not v.get("price") or not v.get("available", True):
+            continue
+        size = _parse_us_size(v, site)
+        if size is None:
+            continue
+        if config.MIN_US_SIZE <= size <= config.MAX_US_SIZE:
+            candidates.append(float(v["price"]))
+    return min(candidates) if candidates else None
 
 
 def fetch(url: str, extra_headers: dict | None = None) -> str | None:
@@ -288,7 +325,10 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
     página -- não para em MAX_PRODUCTS_PER_SITE bruto, porque nada
     garante que as primeiras páginas do catálogo tenham chuteiras (podem
     vir cheias de camisas/bolas antes); quem decide o que é chuteira é o
-    filtro is_rugby_boot() em scrape.py, depois de já ter tudo em mãos."""
+    filtro is_rugby_boot() em scrape.py, depois de já ter tudo em mãos.
+    O preço de cada produto é o menor entre as variantes disponíveis
+    dentro da faixa de tamanho US 8-11 (_min_price_in_size_range) --
+    produto sem nenhum tamanho disponível nessa faixa não entra."""
     listings: list[dict] = []
     page_size = 250
     for products_url in site["listing_urls"]:
@@ -313,11 +353,8 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                 title = (product.get("title") or "").strip()
                 handle = product.get("handle")
                 variants = product.get("variants") or []
-                prices = [
-                    float(v["price"]) for v in variants
-                    if v.get("price") and v.get("available", True)
-                ] or [float(v["price"]) for v in variants if v.get("price")]
-                if not (title and handle and prices):
+                price = _min_price_in_size_range(variants, site)
+                if not (title and handle and price):
                     continue
                 # product_type é a categoria que a própria loja atribuiu ao
                 # produto -- muitos títulos Shopify não repetem "boot" (só
@@ -329,7 +366,7 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                     category_hint = f"{category_hint} {' '.join(tags)}".strip()
                 listings.append({
                     "title": title,
-                    "price": min(prices),
+                    "price": price,
                     "currency": site["currency"],
                     "url": f"{site['base_url']}/products/{handle}",
                     "category_hint": category_hint,
@@ -347,12 +384,19 @@ def search_shopify(site: dict, query: str) -> list[dict]:
     preditiva do Shopify (`/search/suggest.json`) -- recurso da
     plataforma disponível em qualquer tema, não depende de layout.
     Usado para procurar de verdade os itens da watchlist em vez de só
-    esperar que apareçam no catálogo geral."""
+    esperar que apareçam no catálogo geral.
+
+    O /search/suggest.json só devolve um price_min estimado, sem detalhe
+    de variante/tamanho -- pra aplicar o mesmo filtro de tamanho do
+    catálogo geral, busca o /products/<handle>.json completo de cada
+    resultado. limit=3 (não 10) pra não multiplicar demais o número de
+    requisições por consulta (Shopify já ordena por relevância, então os
+    3 primeiros já são os mais prováveis de bater com a watchlist)."""
     from urllib.parse import quote
 
     url = (
         f"{site['base_url']}/search/suggest.json"
-        f"?q={quote(query)}&resources[type]=product&resources[limit]=10"
+        f"?q={quote(query)}&resources[type]=product&resources[limit]=3"
     )
     html = fetch(url)
     if not html:
@@ -368,15 +412,27 @@ def search_shopify(site: dict, query: str) -> list[dict]:
     for p in products:
         title = (p.get("title") or "").strip()
         handle = p.get("handle")
-        price_text = p.get("price_min") or p.get("price") or ""
-        price = parse_price_text(str(price_text)) if price_text else None
-        if title and handle and price:
-            listings.append({
-                "title": title,
-                "price": price,
-                "currency": site["currency"],
-                "url": urljoin(site["base_url"], p["url"]) if p.get("url") else f"{site['base_url']}/products/{handle}",
-            })
+        if not (title and handle):
+            continue
+
+        time.sleep(config.REQUEST_DELAY_SECONDS)
+        detail_html = fetch(f"{site['base_url']}/products/{handle}.json")
+        if not detail_html:
+            continue
+        try:
+            variants = (json.loads(detail_html).get("product") or {}).get("variants") or []
+        except json.JSONDecodeError:
+            continue
+        price = _min_price_in_size_range(variants, site)
+        if not price:
+            continue
+
+        listings.append({
+            "title": title,
+            "price": price,
+            "currency": site["currency"],
+            "url": urljoin(site["base_url"], p["url"]) if p.get("url") else f"{site['base_url']}/products/{handle}",
+        })
     return listings
 
 

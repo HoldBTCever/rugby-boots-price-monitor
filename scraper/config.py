@@ -30,6 +30,13 @@ AVERAGE_WINDOW_DAYS = 90
 # o suficiente para gerar alerta (evita "média" baseada em 1 único preço).
 MIN_OBSERVATIONS_FOR_ALERT = 2
 
+# Só entram no histórico chuteiras disponíveis em algum tamanho dentro desta
+# faixa (masculino, tamanho americano). Só é aplicável em lojas Shopify, que
+# expõem tamanho por variante do produto -- outras fontes (MercadoLibre,
+# JSON-LD genérico, Mizuno) não têm essa granularidade nos dados hoje.
+MIN_US_SIZE = 8.0
+MAX_US_SIZE = 11.0
+
 HTTP_HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
