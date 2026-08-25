@@ -193,13 +193,18 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
 def scrape_shopify_products_json(site: dict) -> list[dict]:
     """Lojas Shopify expõem o catálogo inteiro em /products.json -- não
     depende de adivinhar o slug certo de uma coleção nem de visitar
-    página por página atrás de JSON-LD. Pagina até MAX_PRODUCTS_PER_SITE
-    produtos (250 por página, o máximo que a Shopify permite)."""
+    página por página atrás de JSON-LD. Pagina o catálogo inteiro (250
+    produtos por página, o máximo que a Shopify permite) até a última
+    página -- não para em MAX_PRODUCTS_PER_SITE bruto, porque nada
+    garante que as primeiras páginas do catálogo tenham chuteiras (podem
+    vir cheias de camisas/bolas antes); quem decide o que é chuteira é o
+    filtro is_rugby_boot() em scrape.py, depois de já ter tudo em mãos."""
     listings: list[dict] = []
+    page_size = 250
     for products_url in site["listing_urls"]:
         page = 1
-        while len(listings) < config.MAX_PRODUCTS_PER_SITE and page <= 4:
-            html = fetch(f"{products_url}?limit=250&page={page}")
+        while page <= 10:  # até 2500 produtos, cobre o catálogo de qualquer loja especializada
+            html = fetch(f"{products_url}?limit={page_size}&page={page}")
             if not html:
                 break
             try:
@@ -229,6 +234,8 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                     "url": f"{site['base_url']}/products/{handle}",
                 })
 
+            if len(products) < page_size:
+                break  # última página do catálogo
             page += 1
             time.sleep(config.REQUEST_DELAY_SECONDS)
     return listings
