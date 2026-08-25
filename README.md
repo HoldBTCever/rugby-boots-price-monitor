@@ -81,12 +81,19 @@ python -m http.server 8000 --directory site   # abre em localhost:8000
 
 ## Automação diária (GitHub Actions)
 
-O workflow `.github/workflows/daily-price-check.yml`:
+O workflow `.github/workflows/daily-price-check.yml` roda sozinho, sem
+precisar clicar em nada, em três situações:
 
-1. roda `scrape.py` + `aggregate.py` todo dia às 09:00 UTC (ou a qualquer
-   momento via **Actions → daily-price-check → Run workflow**);
-2. faz commit dos JSONs/CSV atualizados de volta no branch padrão;
-3. publica `site/` no GitHub Pages.
+1. todo dia às 09:00 UTC (`schedule`);
+2. a cada push que muda `scraper/`, `site/` (exceto `site/data/`, que é
+   gerado pelo próprio workflow) ou o workflow em si — útil pra validar
+   uma correção do scraper sem precisar disparar manualmente;
+3. manualmente também é possível, em **Actions → daily-price-check →
+   Run workflow**, se quiser forçar uma coleta fora do horário.
+
+Em cada execução: roda `scrape.py` + `aggregate.py`, faz commit dos
+JSONs/CSV atualizados de volta no branch padrão e publica `site/`
+(já com os dados novos) no GitHub Pages.
 
 **Uma configuração manual única, feita pelo dono do repositório:** em
 Settings → Pages, defina Source = "GitHub Actions" (uma vez só; depois

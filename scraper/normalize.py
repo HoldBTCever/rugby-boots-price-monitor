@@ -27,6 +27,7 @@ _NON_BOOT_WORDS = [
     "colete", "whistle", "apito", "polish", "shoelace", "shoelaces",
     "cadarco", "cadarço", "insole", "palmilha", "backpack", "mochila",
     "bag", "bolsa", "towel", "toalha", "cap", "beanie", "gorro",
+    "gift card", "gift voucher", "e-gift", "vale-presente", "tarjeta de regalo",
 ]
 
 

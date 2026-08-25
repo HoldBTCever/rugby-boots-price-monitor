@@ -4,6 +4,14 @@ on:
   schedule:
     - cron: "0 9 * * *"
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "scraper/**"
+      - "site/**"
+      - "!site/data/**"
+      - "requirements.txt"
+      - ".github/workflows/daily-price-check.yml"
 
 permissions:
   contents: write
@@ -56,6 +64,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
