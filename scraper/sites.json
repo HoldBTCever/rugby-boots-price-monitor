@@ -50,6 +50,18 @@
     "product_link_pattern": "/p/"
   },
   {
+    "id": "mizuno_jp",
+    "name": "Mizuno Japan",
+    "region": "Japan",
+    "country": "JP",
+    "currency": "JPY",
+    "base_url": "https://jpn.mizuno.com",
+    "listing_urls": [
+      "https://jpn.mizuno.com/ec/disp/goods-list/?dispNo[]=001001008&mizunoMemRank=01&closedSiteTemplateNumber=1&view=ajax_new&s11o=1&s12o=1&s13o=1&s14o=1&s15o=1&s16o=1&s17o=1"
+    ],
+    "adapter": "mizuno_jp"
+  },
+  {
     "id": "mercadolibre_ar",
     "name": "MercadoLibre Argentina",
     "region": "Argentina",

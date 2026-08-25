@@ -26,12 +26,13 @@ workflow rodar de verdade contra as lojas.
 |---|---|---|
 | EUA | World Rugby Shop, Rugby Imports | `/products.json` (catálogo Shopify) |
 | Europa (Reino Unido / França) | Lovell Rugby, Decathlon | JSON-LD |
+| Japão | Mizuno Japan (categoria de chuteiras de rugby) | HTML da categoria |
 | Argentina | MercadoLibre Argentina (busca "botines de rugby") | HTML da busca |
 | Paraguai | MercadoLibre Paraguay (busca "botines de rugby") | HTML da busca |
 
-Sem fonte para o Japão no momento — a Rakuten Ichiba foi removida por falta
-de confiabilidade dos dados extraídos. Se quiser, dá pra adicionar outro
-site japonês depois (ex.: loja oficial de uma marca) em `scraper/sites.json`.
+A Rakuten Ichiba foi removida por falta de confiabilidade dos dados
+extraídos; a Mizuno Japan (loja oficial) entrou no lugar como fonte
+para o Japão.
 
 Adicione, remova ou ajuste lojas em `scraper/sites.json` — cada entrada
 define região, moeda, URL(s) de listagem e qual adaptador usar

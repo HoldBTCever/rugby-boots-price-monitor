@@ -25,11 +25,10 @@ log = logging.getLogger("scraper.adapters")
 _PRICE_RE = re.compile(r"[\d][\d.,]*\d|\d")
 
 
-def fetch(url: str) -> str | None:
+def fetch(url: str, extra_headers: dict | None = None) -> str | None:
+    headers = {**config.HTTP_HEADERS, **extra_headers} if extra_headers else config.HTTP_HEADERS
     try:
-        resp = requests.get(
-            url, headers=config.HTTP_HEADERS, timeout=config.REQUEST_TIMEOUT_SECONDS
-        )
+        resp = requests.get(url, headers=headers, timeout=config.REQUEST_TIMEOUT_SECONDS)
         if resp.status_code != 200:
             log.warning("GET %s -> HTTP %s", url, resp.status_code)
             return None
@@ -190,6 +189,59 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
     return listings
 
 
+def scrape_mizuno_jp(site: dict) -> list[dict]:
+    """jpn.mizuno.com não expõe JSON-LD nem API pública conhecida. A
+    página de categoria é carregada via ajax (view=ajax_new), então
+    manda X-Requested-With como um navegador mandaria. Varre links de
+    produto (goods-detail/goods-id no href) e usa o preço em ienes mais
+    próximo de cada link como heurística, na falta de algo mais estável."""
+    listings: list[dict] = []
+    extra_headers = {"X-Requested-With": "XMLHttpRequest", "Referer": site["base_url"] + "/"}
+    for listing_url in site["listing_urls"]:
+        html = fetch(listing_url, extra_headers=extra_headers)
+        if not html:
+            continue
+
+        found = extract_jsonld_products(html, listing_url)
+        if found:
+            listings.extend(found)
+            continue
+
+        soup = BeautifulSoup(html, "lxml")
+        anchors = [
+            a for a in soup.find_all("a", href=True)
+            if "goods-detail" in a["href"] or "goods-id" in a["href"]
+        ]
+        seen_urls = set()
+        for a in anchors:
+            href = urljoin(site["base_url"], a["href"].split("?")[0])
+            if href in seen_urls:
+                continue
+
+            title = a.get_text(strip=True)
+            price = None
+            scope = a.find_parent(["li", "div"])
+            for _ in range(4):
+                if not scope:
+                    break
+                text = scope.get_text(" ", strip=True)
+                yen_match = re.search(r"[¥￥]\s*([\d,]{3,})|([\d,]{3,})\s*円", text)
+                if yen_match:
+                    price = parse_price_text(yen_match.group(1) or yen_match.group(2), "JPY")
+                if (not title or len(title) < 4) and len(text) >= 4:
+                    title = text[:80]
+                if price:
+                    break
+                scope = scope.find_parent(["li", "div"])
+
+            if title and price:
+                seen_urls.add(href)
+                listings.append({"title": title, "price": price, "currency": "JPY", "url": href})
+            if len(listings) >= config.MAX_PRODUCTS_PER_SITE:
+                break
+    return listings
+
+
 def scrape_shopify_products_json(site: dict) -> list[dict]:
     """Lojas Shopify expõem o catálogo inteiro em /products.json -- não
     depende de adivinhar o slug certo de uma coleção nem de visitar
@@ -246,4 +298,5 @@ ADAPTERS = {
     "generic_jsonld": scrape_jsonld_site,
     "mercadolibre_search": scrape_mercadolibre,
     "shopify_products_json": scrape_shopify_products_json,
+    "mizuno_jp": scrape_mizuno_jp,
 }
