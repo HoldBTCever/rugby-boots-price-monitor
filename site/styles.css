@@ -222,3 +222,61 @@ footer {
   margin-top: 30px; color: var(--text-muted); font-size: 0.78rem; text-align: center;
 }
 footer a { color: var(--text-secondary); }
+
+/* ---- Celular: cabeçalho empilha, tabelas viram cartões, alvos maiores ---- */
+@media (max-width: 700px) {
+  .wrap { padding: 16px 12px 48px; }
+
+  header.top { flex-direction: column; align-items: stretch; gap: 10px; }
+  header.top .theme-toggle { align-self: flex-start; }
+  h1 { font-size: 1.22rem; }
+  .subtitle { font-size: 0.88rem; }
+
+  .tabs { gap: 0; }
+  .tab-btn {
+    flex: 1; text-align: center; margin-right: 0;
+    padding: 12px 4px; min-height: 44px;
+  }
+
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat-tile { padding: 12px; }
+  .stat-tile .value { font-size: 1.3rem; }
+
+  .card { padding: 14px 14px; }
+  .chart-container { height: 240px; }
+  .watchlist-card .chart-container { height: 200px; }
+
+  select, .theme-toggle { min-height: 40px; }
+  .chart-controls { gap: 8px; }
+  .chart-controls select { flex: 1; }
+
+  .deal-item { flex-wrap: wrap; }
+  .deal-item > span { min-width: 0; }
+  .deal-pct { white-space: normal; }
+
+  /* tabelas de muitas colunas viram uma lista de cartões: cada <tr> é um
+     bloco, cada <td> mostra seu rótulo de coluna (data-label) à esquerda
+     e o valor à direita -- rolagem horizontal apertada não lê bem no
+     celular, isso lê como uma lista normal de app. */
+  .responsive-table thead { display: none; }
+  .responsive-table, .responsive-table tbody, .responsive-table tr, .responsive-table td {
+    display: block; width: 100%;
+  }
+  .responsive-table tr {
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 4px 12px; margin-bottom: 10px;
+  }
+  .responsive-table td {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+    padding: 8px 0; border-bottom: 1px dashed var(--gridline);
+    text-align: right; font-variant-numeric: tabular-nums;
+  }
+  .responsive-table td:last-child { border-bottom: none; }
+  .responsive-table td:empty { display: none; }
+  .responsive-table td::before {
+    content: attr(data-label);
+    color: var(--text-muted); font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.03em;
+    text-align: left; flex-shrink: 0;
+  }
+}

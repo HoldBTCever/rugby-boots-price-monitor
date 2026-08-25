@@ -35,6 +35,17 @@
       btn.classList.add("active");
       document.getElementById("tab-painel").hidden = btn.dataset.tab !== "painel";
       document.getElementById("tab-historico").hidden = btn.dataset.tab !== "historico";
+
+      // Chart.js mede o contêiner na criação; se o gráfico foi criado dentro
+      // de uma aba escondida (hidden), ele fica preso no tamanho padrão
+      // 300x150. Ao exibir a aba, força um resize em cada gráfico visível.
+      const panel = document.getElementById(`tab-${btn.dataset.tab}`);
+      if (panel && typeof Chart !== "undefined") {
+        panel.querySelectorAll("canvas").forEach((c) => {
+          const chart = Chart.getChart(c);
+          if (chart) chart.resize();
+        });
+      }
     });
   });
 
@@ -183,21 +194,21 @@
   function renderTable(models) {
     const rows = models.map((m) => `
       <tr>
-        <td>${m.brand}</td>
-        <td>${m.model}</td>
-        <td>${m.version}</td>
-        <td class="num">${fmtUSD(m.avg_price_usd)}</td>
-        <td class="num">${fmtUSD(m.latest_min_price_usd)}</td>
-        <td class="num">${fmtPct(m.discount_pct)}</td>
-        <td>${m.latest_min_site ? `<a href="${m.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${m.latest_min_site}</a>` : "—"}</td>
-        <td>${m.is_deal ? '<span class="badge deal">Oferta</span>' : ""}</td>
+        <td data-label="Marca">${m.brand}</td>
+        <td data-label="Modelo">${m.model}</td>
+        <td data-label="Versão">${m.version}</td>
+        <td class="num" data-label="Média (USD)">${fmtUSD(m.avg_price_usd)}</td>
+        <td class="num" data-label="Menor hoje">${fmtUSD(m.latest_min_price_usd)}</td>
+        <td class="num" data-label="Variação">${fmtPct(m.discount_pct)}</td>
+        <td data-label="Fonte do menor preço">${m.latest_min_site ? `<a href="${m.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${m.latest_min_site}</a>` : "—"}</td>
+        <td data-label="Status">${m.is_deal ? '<span class="badge deal">Oferta</span>' : ""}</td>
       </tr>`).join("");
 
     return `
       <div class="card">
         <h2>Todos os modelos monitorados</h2>
         <div class="table-scroll">
-          <table>
+          <table class="responsive-table">
             <thead>
               <tr>
                 <th>Marca</th><th>Modelo</th><th>Versão</th>
@@ -270,12 +281,12 @@
         const l = v.latest;
         return `
         <tr>
-          <td><span class="version-swatch" style="background:var(--cat-${(i % 8) + 1})"></span>${v.version}</td>
-          <td>${l && l.block_height ? "#" + l.block_height.toLocaleString("pt-BR") : "—"}</td>
-          <td>${l ? fmtBlockFull(l.timestamp) : "—"}</td>
-          <td class="num">${l ? fmtUSD(l.avg_price_usd) : "—"}</td>
-          <td class="num">${l ? fmtUSD(l.max_price_usd) : "—"}<br>${l && l.max_site ? `<a href="${l.max_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.max_site}</a>` : ""}</td>
-          <td class="num">${l ? fmtUSD(l.min_price_usd) : "—"}<br>${l && l.min_site ? `<a href="${l.min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.min_site}</a>` : ""}</td>
+          <td data-label="Versão"><span class="version-swatch" style="background:var(--cat-${(i % 8) + 1})"></span>${v.version}</td>
+          <td data-label="Bloco">${l && l.block_height ? "#" + l.block_height.toLocaleString("pt-BR") : "—"}</td>
+          <td data-label="Data/hora">${l ? fmtBlockFull(l.timestamp) : "—"}</td>
+          <td class="num" data-label="Média">${l ? fmtUSD(l.avg_price_usd) : "—"}</td>
+          <td class="num" data-label="Maior">${l ? fmtUSD(l.max_price_usd) : "—"}${l && l.max_site ? `<br><a href="${l.max_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.max_site}</a>` : ""}</td>
+          <td class="num" data-label="Menor">${l ? fmtUSD(l.min_price_usd) : "—"}${l && l.min_site ? `<br><a href="${l.min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.min_site}</a>` : ""}</td>
         </tr>`;
       }).join("");
 
@@ -284,7 +295,7 @@
           <h2>${m.label}</h2>
           <div class="chart-container"><canvas id="wlChart${idx}"></canvas></div>
           <div class="table-scroll">
-            <table class="version-table">
+            <table class="version-table responsive-table">
               <thead><tr><th>Versão</th><th>Bloco</th><th>Data/hora</th><th class="num">Média</th><th class="num">Maior</th><th class="num">Menor</th></tr></thead>
               <tbody>${rows}</tbody>
             </table>
