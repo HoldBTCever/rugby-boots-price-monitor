@@ -136,6 +136,20 @@
     "trust_category": true
   },
   {
+    "id": "tradeinn",
+    "name": "TradeInn",
+    "region": "Europe (ES)",
+    "country": "ES",
+    "currency": "EUR",
+    "base_url": "https://www.tradeinn.com",
+    "listing_urls": [
+      "https://www.tradeinn.com/rugby/en/boots-boots/18941/s"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/p",
+    "trust_category": true
+  },
+  {
     "id": "rugbystore_uk",
     "name": "Rugbystore.co.uk",
     "region": "Europe (UK)",

@@ -32,6 +32,7 @@ workflow rodar de verdade contra as lojas.
 | EUA | World Rugby Shop, Rugby Imports | `/products.json` (catálogo Shopify) |
 | Europa (Reino Unido) | Lovell Rugby, Gilbert Rugby, Absolute Rugby, JustRugby, Rugby Heaven | `/products.json` (catálogo Shopify) |
 | Europa (Reino Unido) | Canterbury, Pro:Direct Rugby, Rugbystore.co.uk, Kitlocker | JSON-LD |
+| Europa (Espanha) | TradeInn | JSON-LD |
 | Japão | Mizuno Japan, Rugby Goods (Rugby Online Japan) | HTML da categoria / JSON-LD |
 | Argentina | MercadoLibre Argentina (busca "botines de rugby"), Durban Rugby, Rugbier Store | HTML da busca / JSON-LD |
 | Paraguai | MercadoLibre Paraguay (busca "botines de rugby") | HTML da busca |
