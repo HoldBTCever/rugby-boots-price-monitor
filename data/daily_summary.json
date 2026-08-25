@@ -1,14 +1,92 @@
 {
-  "generated_at": "2026-08-25T13:58:31.306914+00:00",
+  "generated_at": "2026-08-25T14:00:03.593162+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
-  "latest_date": null,
+  "latest_date": "2026-08-25",
   "totals": {
-    "models_tracked": 0,
-    "sources": 0,
+    "models_tracked": 3,
+    "sources": 1,
     "deals_today": 0,
-    "observations": 0
+    "observations": 5
   },
-  "sources": [],
-  "models": []
+  "sources": [
+    "Rugby Imports"
+  ],
+  "models": [
+    {
+      "key": "gilbert|icon players 6s|padrão",
+      "brand": "Gilbert",
+      "model": "Icon Players 6S",
+      "version": "Padrão",
+      "avg_price_usd": 105.0,
+      "n_observations": 2,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 105.0,
+          "min_price_usd": 105.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 105.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-icon-players-6-stud-rugby-boot",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "gilbert|icon x 6s|padrão",
+      "brand": "Gilbert",
+      "model": "Icon X 6S",
+      "version": "Padrão",
+      "avg_price_usd": 85.0,
+      "n_observations": 2,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 85.0,
+          "min_price_usd": 85.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 85.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-icon-x-6s-rugby-boot-white",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "gilbert|sidestep x20 pwr 8s|padrão",
+      "brand": "Gilbert",
+      "model": "Sidestep X20 PWR 8S",
+      "version": "Padrão",
+      "avg_price_usd": 80.0,
+      "n_observations": 1,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 80.0,
+          "min_price_usd": 80.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 80.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-sidestep-x20-power-8-stud-rugby-boot",
+      "discount_pct": 0.0,
+      "is_deal": false
+    }
+  ]
 }
