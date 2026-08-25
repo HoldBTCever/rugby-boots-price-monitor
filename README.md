@@ -30,14 +30,30 @@ workflow rodar de verdade contra as lojas.
 | Região | Loja | Adaptador |
 |---|---|---|
 | EUA | World Rugby Shop, Rugby Imports | `/products.json` (catálogo Shopify) |
-| Europa (Reino Unido / França) | Lovell Rugby, Decathlon | JSON-LD |
-| Japão | Mizuno Japan (categoria de chuteiras de rugby) | HTML da categoria |
-| Argentina | MercadoLibre Argentina (busca "botines de rugby") | HTML da busca |
+| Europa (Reino Unido) | Lovell Rugby, Gilbert Rugby, Absolute Rugby, JustRugby, Rugby Heaven | `/products.json` (catálogo Shopify) |
+| Europa (Reino Unido) | Canterbury, Pro:Direct Rugby, Rugbystore.co.uk, Kitlocker | JSON-LD |
+| Japão | Mizuno Japan, Rugby Goods (Rugby Online Japan) | HTML da categoria / JSON-LD |
+| Argentina | MercadoLibre Argentina (busca "botines de rugby"), Durban Rugby, Rugbier Store | HTML da busca / JSON-LD |
 | Paraguai | MercadoLibre Paraguay (busca "botines de rugby") | HTML da busca |
 
 A Rakuten Ichiba foi removida por falta de confiabilidade dos dados
-extraídos; a Mizuno Japan (loja oficial) entrou no lugar como fonte
-para o Japão.
+extraídos. A Decathlon foi removida por bloqueio anti-bot ativo (HTTP
+403 confirmado nos logs) — não faz sentido continuar tentando nem
+contornar o bloqueio. A Lovell Rugby migrou de domínio (`lovellrugby.co.uk`
+→ `lovellsports.com`), o que explica por que ficou muda por um tempo.
+
+Canterbury USA (`canterburyusa.com`) não entrou como fonte separada:
+é operada pela própria World Rugby Shop (mesmo grupo, catálogo
+essencialmente idêntico) — adicioná-la contaria a mesma loja duas vezes
+na média de preço. Duas lojas de indumentária argentina pesquisadas
+(Webb Ellis Shop, Rugby Shop) não entraram porque não foi possível
+confirmar que vendem chuteira (parecem só roupa/acessório).
+
+Algumas fontes novas (Canterbury, Pro:Direct Rugby, Rugbystore.co.uk,
+Kitlocker, Rugby Goods) usam `generic_jsonld` com o padrão de link de
+produto ainda não 100% confirmado — podem devolver 0 resultados até o
+padrão real ser validado nos logs do Actions; isso é preferível a
+inventar dado.
 
 Adicione, remova ou ajuste lojas em `scraper/sites.json` — cada entrada
 define região, moeda, URL(s) de listagem e qual adaptador usar
@@ -46,7 +62,9 @@ define região, moeda, URL(s) de listagem e qual adaptador usar
 dependem de classes CSS que mudam a cada redesign.
 
 Sites com `"supports_search": true` (hoje: World Rugby Shop, Rugby
-Imports) também recebem uma **busca ativa** por cada item da
+Imports, Lovell Rugby, Gilbert Rugby, Absolute Rugby, JustRugby, Rugby
+Heaven — todas Shopify confirmado) também recebem uma **busca ativa**
+por cada item da
 `scraper/watchlist.json`, via API nativa de busca do Shopify
 (`/search/suggest.json`) — não depende só do item aparecer sozinho na
 varredura geral do catálogo. Se uma loja não vende aquele modelo

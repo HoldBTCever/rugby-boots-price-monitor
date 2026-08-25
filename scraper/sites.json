@@ -46,6 +46,136 @@
     "supports_search": true
   },
   {
+    "id": "gilbertrugby",
+    "name": "Gilbert Rugby",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.gilbertrugby.com",
+    "listing_urls": [
+      "https://www.gilbertrugby.com/collections/boots/products.json",
+      "https://www.gilbertrugby.com/collections/boots-for-backs/products.json",
+      "https://www.gilbertrugby.com/collections/moulded-boots/products.json"
+    ],
+    "adapter": "shopify_products_json",
+    "supports_search": true
+  },
+  {
+    "id": "absoluterugby",
+    "name": "Absolute Rugby",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://absoluterugby.co.uk",
+    "listing_urls": [
+      "https://absoluterugby.co.uk/collections/rugby-boots/products.json",
+      "https://absoluterugby.co.uk/collections/rugby-boots-for-forwards/products.json",
+      "https://absoluterugby.co.uk/collections/rugby-boots-by-ground-type/products.json"
+    ],
+    "adapter": "shopify_products_json",
+    "supports_search": true
+  },
+  {
+    "id": "justrugby",
+    "name": "JustRugby",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://justrugby.com",
+    "listing_urls": [
+      "https://justrugby.com/collections/rugby-boots/products.json",
+      "https://justrugby.com/collections/firm-ground-rugby-boots/products.json",
+      "https://justrugby.com/collections/rugby-boots-for-sale/products.json"
+    ],
+    "adapter": "shopify_products_json",
+    "supports_search": true
+  },
+  {
+    "id": "rugbyheaven",
+    "name": "Rugby Heaven",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.rugby-heaven.co.uk",
+    "listing_urls": [
+      "https://www.rugby-heaven.co.uk/collections/rugby-boots/products.json",
+      "https://www.rugby-heaven.co.uk/collections/adults-rugby-boots/products.json"
+    ],
+    "adapter": "shopify_products_json",
+    "supports_search": true
+  },
+  {
+    "id": "canterbury_global",
+    "name": "Canterbury",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.canterbury.com",
+    "listing_urls": [
+      "https://www.canterbury.com/boots/boots-for-forwards.list",
+      "https://www.canterbury.com/boots/boots-for-backs.list",
+      "https://www.canterbury.com/boots/firm-ground-rugby-boots.list"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "-p"
+  },
+  {
+    "id": "prodirectrugby",
+    "name": "Pro:Direct Rugby",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.prodirectsport.com",
+    "listing_urls": [
+      "https://www.prodirectsport.com/collections/rugby-adults-boots",
+      "https://www.prodirectsport.com/collections/rugby-firm-ground-boots",
+      "https://www.prodirectsport.com/collections/rugby-soft-ground-boots"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/products/"
+  },
+  {
+    "id": "rugbystore_uk",
+    "name": "Rugbystore.co.uk",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.rugbystore.co.uk",
+    "listing_urls": [
+      "https://www.rugbystore.co.uk/all-rugby-boots",
+      "https://www.rugbystore.co.uk/rugby-boots"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/p/"
+  },
+  {
+    "id": "kitlocker",
+    "name": "Kitlocker",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.kitlocker.com",
+    "listing_urls": [
+      "https://www.kitlocker.com/sports/rugby/equipment/boots",
+      "https://kitlocker.com/collection/mens-rugby-boots/"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "-p"
+  },
+  {
+    "id": "rugbygoods_jp",
+    "name": "Rugby Goods (Rugby Online Japan)",
+    "region": "Japan",
+    "country": "JP",
+    "currency": "JPY",
+    "base_url": "https://www.rugbygoods.com",
+    "listing_urls": [
+      "https://www.rugbygoods.com/SHOP/keyword/boots"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/SHOP/IE"
+  },
+  {
     "id": "mizuno_jp",
     "name": "Mizuno Japan",
     "region": "Japan",
@@ -69,6 +199,32 @@
     ],
     "adapter": "mercadolibre_search",
     "product_link_pattern": "articulo.mercadolibre.com.ar"
+  },
+  {
+    "id": "durbanrugby_ar",
+    "name": "Durban Rugby",
+    "region": "Argentina",
+    "country": "AR",
+    "currency": "ARS",
+    "base_url": "https://durbanrugby.com.ar",
+    "listing_urls": [
+      "https://durbanrugby.com.ar/rugby/botines/"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/productos/"
+  },
+  {
+    "id": "rugbierstore_ar",
+    "name": "Rugbier Store",
+    "region": "Argentina",
+    "country": "AR",
+    "currency": "ARS",
+    "base_url": "https://www.rugbierstore.com.ar",
+    "listing_urls": [
+      "https://www.rugbierstore.com.ar/rugby/botines/"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/productos/"
   },
   {
     "id": "mercadolibre_py",
