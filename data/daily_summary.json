@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-25T14:26:30.959732+00:00",
+  "generated_at": "2026-08-25T14:53:12.121594+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-25",
   "totals": {
-    "models_tracked": 3,
+    "models_tracked": 5,
     "sources": 1,
     "deals_today": 0,
-    "observations": 15
+    "observations": 23
   },
   "sources": [
     "Rugby Imports"
@@ -19,7 +19,7 @@
       "model": "Icon Players 6S",
       "version": "Padrão",
       "avg_price_usd": 105.0,
-      "n_observations": 6,
+      "n_observations": 8,
       "sources": [
         "Rugby Imports"
       ],
@@ -44,7 +44,7 @@
       "model": "Icon X 6S",
       "version": "Padrão",
       "avg_price_usd": 85.0,
-      "n_observations": 6,
+      "n_observations": 8,
       "sources": [
         "Rugby Imports"
       ],
@@ -69,7 +69,7 @@
       "model": "Sidestep X20 PWR 8S",
       "version": "Padrão",
       "avg_price_usd": 80.0,
-      "n_observations": 3,
+      "n_observations": 4,
       "sources": [
         "Rugby Imports"
       ],
@@ -85,6 +85,56 @@
       "latest_min_site": "Rugby Imports",
       "latest_min_region": "USA",
       "latest_min_url": "https://www.rugbyimports.com/products/gilbert-sidestep-x20-power-8-stud-rugby-boot",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|ccc phoenix firm ground|padrão",
+      "brand": "Outra marca",
+      "model": "CCC Phoenix Firm Ground",
+      "version": "Padrão",
+      "avg_price_usd": 40.0,
+      "n_observations": 1,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 40.0,
+          "min_price_usd": 40.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 40.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/ccc-phoenix-3-0-fg?_pos=1&_psq=Canterbury+Stampede&_psid=d9be120d7&_ss=e",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "outra marca|ccc speed firm ground|padrão",
+      "brand": "Outra marca",
+      "model": "CCC Speed Firm Ground",
+      "version": "Padrão",
+      "avg_price_usd": 38.0,
+      "n_observations": 2,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 38.0,
+          "min_price_usd": 38.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 38.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/ccc-speed-3-0-firm-ground-rugby-boot?_pos=2&_psq=Canterbury+Stampede&_psid=d9be120d7&_ss=e",
       "discount_pct": 0.0,
       "is_deal": false
     }
