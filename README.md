@@ -143,6 +143,14 @@ produto usando uma lista de marcas conhecidas (`scraper/catalog.json`) e
 remove ruído (tamanho, cor, gênero). É uma heurística — ajuste
 `catalog.json` se notar produtos agrupados incorretamente.
 
+Tipo de solado (SG/FG/AG/HG) é tratado como ruído, não como parte da
+versão — "Canterbury Stampede Team SG" e "Canterbury Stampede Team"
+caem no mesmo grupo/média, em vez de virarem "Team" e "Team SG"
+separados (mesma lógica pra "Elite" vs "Elite SG"). Faz sentido porque
+chuteira Firm Ground já é excluída à parte (seção acima), então o
+solado que sobra não é uma distinção que valha a pena separar no
+agrupamento.
+
 Preços são convertidos para USD com as taxas de
 [open.er-api.com](https://open.er-api.com) (cache de 1 dia em
 `data/fx_cache.json`).
@@ -181,7 +189,9 @@ Editável em `scraper/watchlist.json`:
 `match` são palavras-chave (sem acento/pontuação) que precisam **todas**
 aparecer no título bruto do produto — não no modelo/versão já
 normalizados, que são só uma heurística. Cada versão encontrada
-(Team/Elite/SG/HG/...) vira uma linha separada no gráfico do card.
+(Team/Elite/Pro/...) vira uma linha separada no gráfico do card. O tipo
+de solado (SG/FG/AG/HG) não conta como versão à parte — "Team" e
+"Team SG" caem no mesmo grupo (ver "Como o preço é normalizado" abaixo).
 
 ## Rodar localmente
 
