@@ -9,7 +9,8 @@
     "listing_urls": [
       "https://www.worldrugbyshop.com/products.json"
     ],
-    "adapter": "shopify_products_json"
+    "adapter": "shopify_products_json",
+    "supports_search": true
   },
   {
     "id": "rugbyimports",
@@ -21,7 +22,8 @@
     "listing_urls": [
       "https://www.rugbyimports.com/products.json"
     ],
-    "adapter": "shopify_products_json"
+    "adapter": "shopify_products_json",
+    "supports_search": true
   },
   {
     "id": "lovellrugby",

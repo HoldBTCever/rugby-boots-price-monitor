@@ -255,7 +255,7 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
     page_size = 250
     for products_url in site["listing_urls"]:
         page = 1
-        while page <= 10:  # até 2500 produtos, cobre o catálogo de qualquer loja especializada
+        while page <= 40:  # até 10 mil produtos -- teto de segurança, não limite real esperado
             html = fetch(f"{products_url}?limit={page_size}&page={page}")
             if not html:
                 break
@@ -290,6 +290,44 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                 break  # última página do catálogo
             page += 1
             time.sleep(config.REQUEST_DELAY_SECONDS)
+    return listings
+
+
+def search_shopify(site: dict, query: str) -> list[dict]:
+    """Busca ativa por um termo específico via API nativa de busca
+    preditiva do Shopify (`/search/suggest.json`) -- recurso da
+    plataforma disponível em qualquer tema, não depende de layout.
+    Usado para procurar de verdade os itens da watchlist em vez de só
+    esperar que apareçam no catálogo geral."""
+    from urllib.parse import quote
+
+    url = (
+        f"{site['base_url']}/search/suggest.json"
+        f"?q={quote(query)}&resources[type]=product&resources[limit]=10"
+    )
+    html = fetch(url)
+    if not html:
+        return []
+    try:
+        data = json.loads(html)
+    except json.JSONDecodeError:
+        log.warning("%s não devolveu JSON válido na busca por %r", site["name"], query)
+        return []
+
+    products = data.get("resources", {}).get("results", {}).get("products") or []
+    listings = []
+    for p in products:
+        title = (p.get("title") or "").strip()
+        handle = p.get("handle")
+        price_text = p.get("price_min") or p.get("price") or ""
+        price = parse_price_text(str(price_text), site["currency"]) if price_text else None
+        if title and handle and price:
+            listings.append({
+                "title": title,
+                "price": price,
+                "currency": site["currency"],
+                "url": urljoin(site["base_url"], p["url"]) if p.get("url") else f"{site['base_url']}/products/{handle}",
+            })
     return listings
 
 

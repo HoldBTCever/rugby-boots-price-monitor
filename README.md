@@ -45,6 +45,14 @@ define região, moeda, URL(s) de listagem e qual adaptador usar
 (`shopify_jsonld` / `generic_jsonld`) são os mais estáveis, pois não
 dependem de classes CSS que mudam a cada redesign.
 
+Sites com `"supports_search": true` (hoje: World Rugby Shop, Rugby
+Imports) também recebem uma **busca ativa** por cada item da
+`scraper/watchlist.json`, via API nativa de busca do Shopify
+(`/search/suggest.json`) — não depende só do item aparecer sozinho na
+varredura geral do catálogo. Se uma loja não vende aquele modelo
+específico, a busca não vai achar nada, e é isso mesmo: mais confiável
+do que inventar um resultado.
+
 Toda listagem passa por `normalize.is_rugby_boot()` antes de entrar no
 histórico: produtos cujo título bate com palavras de bola, camisa,
 acessório etc. (mesmo vindos da coleção/busca "certa" de uma loja) são
