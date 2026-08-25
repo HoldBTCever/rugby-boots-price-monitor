@@ -11,7 +11,8 @@ da sua média.
 scraper/scrape.py      -> visita cada loja configurada, extrai produtos e preços,
                            converte para USD e adiciona uma linha em data/price_history.csv
 scraper/aggregate.py   -> calcula a média móvel (90 dias) por modelo/versão,
-                           gera data/daily_summary.json e data/alerts.json
+                           gera data/daily_summary.json, data/alerts.json e
+                           data/watchlist.json (lista fixa de modelos, aba "Histórico")
 site/                  -> painel estático (HTML/CSS/JS + Chart.js) que lê esses JSONs
 .github/workflows/     -> roda os dois scripts todo dia e publica o site no GitHub Pages
 ```
@@ -70,6 +71,25 @@ Um modelo/versão vira "oferta" quando o menor preço encontrado no dia está
 `>= 39,5%` abaixo da média dos últimos 90 dias daquele mesmo modelo/versão,
 desde que já existam pelo menos 2 observações históricas (evita alertar
 com base em um único preço).
+
+## Aba "Histórico" (lista fixa de modelos)
+
+Além do painel principal (todos os modelos encontrados), o site tem uma
+aba **Histórico** com uma lista fixa de modelos específicos —
+independente do que a coleta encontrar no resto do catálogo — mostrando
+o preço médio diário (uma linha por versão) e o site com o menor preço
+atual em USD.
+
+Editável em `scraper/watchlist.json`:
+
+```json
+{ "label": "Canterbury Stampede", "match": ["canterbury", "stampede"] }
+```
+
+`match` são palavras-chave (sem acento/pontuação) que precisam **todas**
+aparecer no título bruto do produto — não no modelo/versão já
+normalizados, que são só uma heurística. Cada versão encontrada
+(Team/Elite/SG/HG/...) vira uma linha separada no gráfico do card.
 
 ## Rodar localmente
 

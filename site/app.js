@@ -22,9 +22,21 @@
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("rbpm-theme", next); } catch (e) {}
     if (window.__rbpmChart) renderChart(window.__rbpmModels, window.__rbpmSelectedKey);
+    if (window.__rbpmWatchlist) renderWatchlist(window.__rbpmWatchlist);
+  });
+
+  // ---- abas ----
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById("tab-painel").hidden = btn.dataset.tab !== "painel";
+      document.getElementById("tab-historico").hidden = btn.dataset.tab !== "historico";
+    });
   });
 
   let chartInstance = null;
+  const watchlistCharts = [];
 
   function renderBanner(summary, alerts) {
     const slot = document.getElementById("bannerSlot");
@@ -233,6 +245,100 @@
     renderChart(models, preselect.key);
   }
 
+  function renderWatchlist(watchlist) {
+    window.__rbpmWatchlist = watchlist;
+    watchlistCharts.forEach((c) => c.destroy());
+    watchlistCharts.length = 0;
+
+    const models = watchlist.models || [];
+    const cards = models.map((m, idx) => {
+      if (!m.versions.length) {
+        return `
+          <div class="card watchlist-card">
+            <h2>${m.label}</h2>
+            <p class="watchlist-empty">Ainda não encontrado em nenhuma loja monitorada.</p>
+          </div>`;
+      }
+
+      const rows = m.versions.map((v, i) => `
+        <tr>
+          <td><span class="version-swatch" style="background:var(--cat-${(i % 8) + 1})"></span>${v.version}</td>
+          <td class="num">${fmtUSD(v.avg_price_usd)}</td>
+          <td class="num">${fmtUSD(v.latest_min_price_usd)}</td>
+          <td>${v.latest_min_site ? `<a href="${v.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${v.latest_min_site}</a>` : "—"}</td>
+        </tr>`).join("");
+
+      return `
+        <div class="card watchlist-card">
+          <h2>${m.label}</h2>
+          <div class="chart-container"><canvas id="wlChart${idx}"></canvas></div>
+          <table class="version-table">
+            <thead><tr><th>Versão</th><th class="num">Média (USD)</th><th class="num">Menor agora</th><th>Site</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
+    });
+
+    document.getElementById("watchlistContent").innerHTML = `<div class="watchlist-grid">${cards.join("")}</div>`;
+
+    models.forEach((m, idx) => {
+      if (!m.versions.length) return;
+      const canvas = document.getElementById(`wlChart${idx}`);
+      if (!canvas || typeof Chart === "undefined") return;
+
+      const allDates = [...new Set(m.versions.flatMap((v) => v.history.map((h) => h.date)))].sort();
+      const labels = allDates.map(fmtDate);
+
+      const datasets = m.versions.map((v, i) => {
+        const byDate = Object.fromEntries(v.history.map((h) => [h.date, h.avg_price_usd]));
+        const color = cssVar(`--cat-${(i % 8) + 1}`);
+        return {
+          label: v.version,
+          data: allDates.map((d) => byDate[d] ?? null),
+          borderColor: color,
+          backgroundColor: color,
+          borderWidth: 2,
+          pointRadius: 2,
+          pointHoverRadius: 4,
+          spanGaps: true,
+          tension: 0.25,
+        };
+      });
+
+      const chart = new Chart(canvas.getContext("2d"), {
+        type: "line",
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: "index", intersect: false },
+          plugins: {
+            legend: {
+              position: "top", align: "start",
+              labels: { color: cssVar("--text-secondary"), usePointStyle: true, boxWidth: 8 },
+            },
+            tooltip: {
+              backgroundColor: cssVar("--surface-1"),
+              titleColor: cssVar("--text-primary"),
+              bodyColor: cssVar("--text-secondary"),
+              borderColor: cssVar("--border"),
+              borderWidth: 1,
+              callbacks: { label: (item) => `${item.dataset.label}: ${fmtUSD(item.parsed.y)}` },
+            },
+          },
+          scales: {
+            x: { grid: { color: cssVar("--gridline") }, ticks: { color: cssVar("--text-muted") } },
+            y: {
+              grid: { color: cssVar("--gridline") },
+              ticks: { color: cssVar("--text-muted"), callback: (v) => fmtUSD(v) },
+            },
+          },
+        },
+      });
+      watchlistCharts.push(chart);
+    });
+  }
+
   async function main() {
     try {
       const [summaryRes, alertsRes] = await Promise.all([
@@ -255,6 +361,19 @@
         <div class="card empty-state">
           <div class="icon">⚠️</div>
           <h2>Não foi possível carregar os dados</h2>
+          <p>${err.message}</p>
+        </div>`;
+    }
+
+    try {
+      const watchlistRes = await fetch("data/watchlist.json", { cache: "no-store" });
+      const watchlist = await watchlistRes.json();
+      renderWatchlist(watchlist);
+    } catch (err) {
+      document.getElementById("watchlistContent").innerHTML = `
+        <div class="card empty-state">
+          <div class="icon">⚠️</div>
+          <h2>Não foi possível carregar o histórico</h2>
           <p>${err.message}</p>
         </div>`;
     }

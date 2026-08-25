@@ -18,11 +18,20 @@
     <button class="theme-toggle" id="themeToggle" type="button">🌓 Tema</button>
   </header>
 
-  <div id="bannerSlot"></div>
+  <nav class="tabs" id="tabs">
+    <button class="tab-btn active" data-tab="painel" type="button">Painel</button>
+    <button class="tab-btn" data-tab="historico" type="button">Histórico</button>
+  </nav>
 
-  <section class="stats" id="statsSlot"></section>
+  <section id="tab-painel" class="tab-panel">
+    <div id="bannerSlot"></div>
+    <section class="stats" id="statsSlot"></section>
+    <div id="mainContent"></div>
+  </section>
 
-  <div id="mainContent"></div>
+  <section id="tab-historico" class="tab-panel" hidden>
+    <div id="watchlistContent"></div>
+  </section>
 
   <footer>
     <p>Preços convertidos para USD no dia da coleta. Uma chuteira é destacada como oferta quando seu menor

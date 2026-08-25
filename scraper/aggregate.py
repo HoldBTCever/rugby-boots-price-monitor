@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Lê data/price_history.csv e gera dois arquivos consumidos pelo site:
+"""Lê data/price_history.csv e gera os arquivos consumidos pelo site:
 
 - data/daily_summary.json: média histórica e série temporal por modelo/versão
 - data/alerts.json: chuteiras cujo menor preço de hoje está a
   DEAL_THRESHOLD_PCT (ou mais) abaixo da média histórica do modelo
+- data/watchlist.json: histórico de preço médio diário para a lista fixa
+  de modelos em scraper/watchlist.json (aba "Histórico" do site)
 
 Uso: python -m scraper.aggregate
 """
@@ -15,7 +17,7 @@ import shutil
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
 
-from . import config
+from . import config, watchlist as wl
 from .normalize import group_key
 
 
@@ -24,6 +26,62 @@ def _read_rows() -> list[dict]:
         return []
     with config.PRICE_HISTORY_CSV.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def _build_watchlist(rows: list[dict], cutoff: str, latest_date: str | None) -> list[dict]:
+    """Agrupa por versão (dentro de cada item da watchlist) usando o
+    título bruto pra casar -- veja scraper/watchlist.py para o porquê."""
+    result = []
+    for entry in wl.load_watchlist():
+        version_groups: dict[str, dict] = {}
+        by_date: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
+        latest_rows: list[tuple[str, dict]] = []
+
+        for row in rows:
+            if row["date"] < cutoff or not wl.matches(row["title"], entry["match"]):
+                continue
+            try:
+                price_usd = float(row["price_usd"])
+            except (KeyError, ValueError):
+                continue
+
+            version = row["version"] or "Padrão"
+            g = version_groups.setdefault(version, {"prices": [], "sources": set()})
+            g["prices"].append(price_usd)
+            g["sources"].add(row["site_name"])
+            by_date[version][row["date"]].append(price_usd)
+            if row["date"] == latest_date:
+                latest_rows.append((version, row))
+
+        versions_out = []
+        for version, g in version_groups.items():
+            n = len(g["prices"])
+            history = [
+                {"date": d, "avg_price_usd": round(sum(vals) / len(vals), 2)}
+                for d, vals in sorted(by_date[version].items())
+            ]
+            v_latest = [row for v, row in latest_rows if v == version]
+            latest_min_price = latest_min_site = latest_min_url = None
+            if v_latest:
+                cheapest = min(v_latest, key=lambda r: float(r["price_usd"]))
+                latest_min_price = round(float(cheapest["price_usd"]), 2)
+                latest_min_site = cheapest["site_name"]
+                latest_min_url = cheapest["url"]
+            versions_out.append({
+                "version": version,
+                "avg_price_usd": round(sum(g["prices"]) / n, 2),
+                "n_observations": n,
+                "sources": sorted(g["sources"]),
+                "history": history,
+                "latest_min_price_usd": latest_min_price,
+                "latest_min_site": latest_min_site,
+                "latest_min_url": latest_min_url,
+            })
+
+        versions_out.sort(key=lambda v: v["version"])
+        result.append({"label": entry["label"], "versions": versions_out})
+
+    return result
 
 
 def run() -> None:
@@ -131,16 +189,26 @@ def run() -> None:
         "date": latest_date,
         "deals": deals,
     }
+    watchlist_out = {
+        "generated_at": now.isoformat(),
+        "window_days": config.AVERAGE_WINDOW_DAYS,
+        "latest_date": latest_date,
+        "models": _build_watchlist(rows, cutoff, latest_date),
+    }
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     config.DAILY_SUMMARY_JSON.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
     config.ALERTS_JSON.write_text(json.dumps(alerts, indent=2, ensure_ascii=False), encoding="utf-8")
+    config.WATCHLIST_JSON.write_text(json.dumps(watchlist_out, indent=2, ensure_ascii=False), encoding="utf-8")
 
     config.SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copy(config.DAILY_SUMMARY_JSON, config.SITE_DATA_DIR / "daily_summary.json")
     shutil.copy(config.ALERTS_JSON, config.SITE_DATA_DIR / "alerts.json")
+    shutil.copy(config.WATCHLIST_JSON, config.SITE_DATA_DIR / "watchlist.json")
 
-    print(f"{len(models)} modelos, {len(deals)} ofertas (>= {config.DEAL_THRESHOLD_PCT:.1%} abaixo da média)")
+    found = sum(1 for m in watchlist_out["models"] if m["versions"])
+    print(f"{len(models)} modelos, {len(deals)} ofertas (>= {config.DEAL_THRESHOLD_PCT:.1%} abaixo da média), "
+          f"{found}/{len(watchlist_out['models'])} itens da watchlist encontrados")
 
 
 if __name__ == "__main__":

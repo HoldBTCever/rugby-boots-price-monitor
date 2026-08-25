@@ -6,10 +6,12 @@ DATA_DIR = ROOT / "data"
 SITE_DATA_DIR = ROOT / "site" / "data"
 SITES_CONFIG = ROOT / "scraper" / "sites.json"
 CATALOG_CONFIG = ROOT / "scraper" / "catalog.json"
+WATCHLIST_CONFIG = ROOT / "scraper" / "watchlist.json"
 
 PRICE_HISTORY_CSV = DATA_DIR / "price_history.csv"
 DAILY_SUMMARY_JSON = DATA_DIR / "daily_summary.json"
 ALERTS_JSON = DATA_DIR / "alerts.json"
+WATCHLIST_JSON = DATA_DIR / "watchlist.json"
 FX_CACHE_JSON = DATA_DIR / "fx_cache.json"
 SCRAPE_LOG_JSON = DATA_DIR / "last_run.json"
 

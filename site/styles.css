@@ -10,6 +10,8 @@
   --border: rgba(11, 11, 11, 0.10);
   --series-1: #2a78d6; /* preço médio */
   --series-2: #eb6834; /* menor preço do dia */
+  --cat-1: #2a78d6; --cat-2: #eb6834; --cat-3: #1baf7a; --cat-4: #eda100;
+  --cat-5: #e87ba4; --cat-6: #008300; --cat-7: #4a3aa7; --cat-8: #e34948;
   --status-good: #0ca30c;
   --status-warning: #fab219;
   --status-serious: #ec835a;
@@ -31,6 +33,8 @@
     --border: rgba(255, 255, 255, 0.10);
     --series-1: #3987e5;
     --series-2: #d95926;
+    --cat-1: #3987e5; --cat-2: #d95926; --cat-3: #199e70; --cat-4: #c98500;
+    --cat-5: #d55181; --cat-6: #008300; --cat-7: #9085e9; --cat-8: #e66767;
     --status-good: #0ca30c;
     --status-warning: #fab219;
     --status-serious: #ec835a;
@@ -97,6 +101,31 @@ h1 { font-size: 1.5rem; margin: 0 0 4px; }
   font-size: 0.82rem;
   cursor: pointer;
 }
+
+.tabs {
+  display: flex; gap: 4px; margin-bottom: 20px;
+  border-bottom: 1px solid var(--gridline);
+}
+.tab-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 10px 4px; margin-right: 20px;
+  font-size: 0.92rem; font-weight: 600; color: var(--text-muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tab-btn.active { color: var(--text-primary); border-bottom-color: var(--series-1); }
+.tab-btn:hover:not(.active) { color: var(--text-secondary); }
+
+.watchlist-grid { display: grid; gap: 16px; }
+.watchlist-card .chart-container { height: 220px; }
+.watchlist-empty {
+  color: var(--text-muted); font-size: 0.86rem; padding: 8px 0;
+}
+.version-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; margin-top: 10px; }
+.version-table th, .version-table td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--gridline); }
+.version-table th { color: var(--text-muted); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; }
+.version-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.version-table tr:last-child td { border-bottom: none; }
+.version-swatch { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 7px; }
 
 .banner {
   border-radius: 12px;
