@@ -16,6 +16,7 @@ import csv
 import json
 import logging
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 from . import adapters, bitcoin, config, fx, normalize
@@ -116,22 +117,26 @@ def run() -> dict:
 
     new_rows = []
 
-    for i, site in enumerate(sites):
+    # Cada loja é um domínio diferente -- raspar várias em paralelo não
+    # sobrecarrega nenhuma individualmente (o intervalo educado entre
+    # requisições ao MESMO site continua valendo dentro de cada adaptador).
+    def _scrape_one(site):
         adapter = ADAPTERS.get(site["adapter"])
-        site_entry = {"id": site["id"], "name": site["name"], "region": site["region"]}
         if not adapter:
-            site_entry.update(status="error", error=f"adaptador desconhecido: {site['adapter']}", count=0)
-            run_log["sites"].append(site_entry)
-            continue
-
-        if i > 0:
-            time.sleep(config.REQUEST_DELAY_SECONDS)
-
+            return site, None, f"adaptador desconhecido: {site['adapter']}"
         try:
-            listings = adapter(site)
+            return site, adapter(site), None
         except Exception as exc:  # nunca deixa um site derrubar os outros
             log.exception("Falha ao raspar %s", site["name"])
-            site_entry.update(status="error", error=str(exc), count=0)
+            return site, None, str(exc)
+
+    with ThreadPoolExecutor(max_workers=config.SCRAPE_WORKERS) as executor:
+        results = list(executor.map(_scrape_one, sites))
+
+    for site, listings, error in results:
+        site_entry = {"id": site["id"], "name": site["name"], "region": site["region"]}
+        if error is not None:
+            site_entry.update(status="error", error=error, count=0)
             run_log["sites"].append(site_entry)
             continue
 
@@ -150,11 +155,14 @@ def run() -> dict:
     # Busca ativa pelos itens da watchlist nos sites que suportam busca --
     # em vez de só depender de aparecer no catálogo geral (scraper/watchlist.py
     # explica por que o casamento usa o título bruto do resultado da busca).
+    # Uma thread por loja; dentro de cada loja as consultas continuam
+    # sequenciais e espaçadas (mesmo domínio).
     search_sites = [s for s in sites if s.get("supports_search")]
     if search_sites:
         entries = wl.load_watchlist()
-        search_found = 0
-        for site in search_sites:
+
+        def _search_one(site):
+            found = []
             for entry in entries:
                 time.sleep(config.REQUEST_DELAY_SECONDS)
                 try:
@@ -162,11 +170,21 @@ def run() -> dict:
                 except Exception as exc:
                     log.warning("Busca por %r em %s falhou: %s", entry["label"], site["name"], exc)
                     continue
+                if listings:
+                    found.append((entry["label"], listings))
+            return site, found
+
+        search_found = 0
+        with ThreadPoolExecutor(max_workers=config.SCRAPE_WORKERS) as executor:
+            search_results = list(executor.map(_search_one, search_sites))
+
+        for site, found in search_results:
+            for label, listings in found:
                 count = _append_listings(new_rows, listings, rates, block_height=block_height,
                                           timestamp=timestamp, today=today, site=site)
                 if count:
                     search_found += count
-                    log.info("Busca por %r em %s: %d chuteira(s)", entry["label"], site["name"], count)
+                    log.info("Busca por %r em %s: %d chuteira(s)", label, site["name"], count)
         run_log["watchlist_search_found"] = search_found
 
     # a busca ativa pode achar de novo um produto que a varredura geral já

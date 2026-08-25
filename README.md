@@ -210,6 +210,16 @@ si não cobra por isso (repositório público tem minutos ilimitados), mas
 algum deles começar a bloquear/limitar o bot por causa disso, o
 sintoma vai aparecer como HTTP 403/429 nos logs do job "scrape".
 
+**Raspagem em paralelo:** `scraper/scrape.py` raspa até
+`config.SCRAPE_WORKERS` (6) lojas ao mesmo tempo, cada uma numa
+thread — como são domínios diferentes, isso não sobrecarrega nenhum
+site individual (o intervalo educado entre requisições ao *mesmo*
+site continua valendo dentro de cada adaptador). Isso existe porque a
+raspagem sequencial (uma loja de cada vez) passou a levar mais tempo
+que o intervalo médio entre blocos do Bitcoin (~10 min) conforme o
+número de lojas cresceu -- sem paralelismo, a atualização do site
+ficaria permanentemente atrasada em relação aos blocos reais.
+
 ## Limitações conhecidas
 
 - Raspagem de HTML quebra quando a loja muda o layout — o workflow

@@ -49,5 +49,13 @@ REQUEST_TIMEOUT_SECONDS = 20
 REQUEST_DELAY_SECONDS = 1.5  # intervalo educado entre requisições ao mesmo site
 MAX_PRODUCTS_PER_SITE = 40
 
+# Lojas são raspadas em paralelo (cada uma é um domínio diferente, então
+# rodar várias ao mesmo tempo não sobrecarrega nenhum site individual --
+# o intervalo educado acima continua valendo dentro de cada loja, entre
+# requisições sucessivas ao mesmo domínio). Com muitas lojas cadastradas,
+# raspar uma de cada vez ficava mais lento que o intervalo entre blocos
+# do Bitcoin (~10 min); isso mantém a coleta bem abaixo disso.
+SCRAPE_WORKERS = 6
+
 FX_API_URL = "https://open.er-api.com/v6/latest/USD"
 BITCOIN_BLOCK_API_URL = "https://mempool.space/api/blocks/tip/height"
