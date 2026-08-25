@@ -202,7 +202,7 @@
               <tr>
                 <th>Marca</th><th>Modelo</th><th>Versão</th>
                 <th class="num">Média (USD)</th><th class="num">Menor hoje</th>
-                <th class="num">Variação</th><th>Fonte</th><th></th>
+                <th class="num">Variação</th><th>Fonte do menor preço</th><th></th>
               </tr>
             </thead>
             <tbody>${rows}</tbody>
