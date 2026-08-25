@@ -48,9 +48,15 @@ def _last_recorded_block() -> int | None:
 
 
 def _append_listings(new_rows, listings, rates, *, block_height, timestamp, today, site) -> int:
+    # "trust_category": true em sites.json marca uma listing_url que é uma
+    # categoria dedicada só a chuteira (confirmado manualmente, não
+    # adivinhado) -- pula o filtro por palavra-chave, que rejeitaria um
+    # título sem "chuteira"/"botin" explícito mesmo sendo chuteira de
+    # verdade (mesmo bug que travava os Kakari da World Rugby Shop).
+    trust_category = site.get("trust_category", False)
     count = 0
     for item in listings:
-        if not normalize.is_rugby_boot(item["title"], item.get("category_hint", "")):
+        if not trust_category and not normalize.is_rugby_boot(item["title"], item.get("category_hint", "")):
             continue
         price_usd = fx.to_usd(item["price"], item["currency"], rates)
         if price_usd is None:

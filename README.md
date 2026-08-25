@@ -76,6 +76,14 @@ histórico: produtos cujo título bate com palavras de bola, camisa,
 acessório etc. (mesmo vindos da coleção/busca "certa" de uma loja) são
 descartados, para o site só mostrar chuteiras de fato.
 
+Exceção: `"trust_category": true` numa entrada de `sites.json` marca uma
+`listing_url` confirmada manualmente como categoria dedicada só a
+chuteira (ex: Durban Rugby e Rugbier Store `/rugby/botines/`) — nesse
+caso pula o filtro por palavra-chave, porque um título sem "chuteira"/
+"botin" explícito ainda pode ser chuteira de verdade (mesmo problema que
+travava os Kakari da World Rugby Shop antes do fix de `product_type`).
+Use só quando tiver certeza de que a página é 100% chuteira.
+
 ## Como o preço é normalizado
 
 `scraper/normalize.py` extrai marca, modelo e versão do título de cada
