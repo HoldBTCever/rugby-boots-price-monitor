@@ -255,7 +255,9 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
     page_size = 250
     for products_url in site["listing_urls"]:
         page = 1
-        while page <= 40:  # até 10 mil produtos -- teto de segurança, não limite real esperado
+        while page <= 12:  # até 3 mil produtos por listing_url -- as coleções
+                            # específicas de sites.json cobrem o essencial rápido;
+                            # isto é só um teto de segurança para o catálogo geral
             html = fetch(f"{products_url}?limit={page_size}&page={page}")
             if not html:
                 break

@@ -7,6 +7,10 @@
     "currency": "USD",
     "base_url": "https://www.worldrugbyshop.com",
     "listing_urls": [
+      "https://www.worldrugbyshop.com/collections/adidas-rugby-boots/products.json",
+      "https://www.worldrugbyshop.com/collections/canterbury-rugby-boots/products.json",
+      "https://www.worldrugbyshop.com/collections/mizuno-rugby-boots/products.json",
+      "https://www.worldrugbyshop.com/collections/gilbert-rugby-boots/products.json",
       "https://www.worldrugbyshop.com/products.json"
     ],
     "adapter": "shopify_products_json",
@@ -20,6 +24,7 @@
     "currency": "USD",
     "base_url": "https://www.rugbyimports.com",
     "listing_urls": [
+      "https://www.rugbyimports.com/collections/rugby-boots/products.json",
       "https://www.rugbyimports.com/products.json"
     ],
     "adapter": "shopify_products_json",
