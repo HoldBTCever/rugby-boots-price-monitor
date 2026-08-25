@@ -1,25 +1,151 @@
 {
-  "generated_at": "2026-08-25T14:53:12.121594+00:00",
+  "generated_at": "2026-08-25T14:56:51.367468+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-25",
   "totals": {
-    "models_tracked": 5,
-    "sources": 1,
+    "models_tracked": 10,
+    "sources": 2,
     "deals_today": 0,
-    "observations": 23
+    "observations": 40
   },
   "sources": [
-    "Rugby Imports"
+    "Rugby Imports",
+    "World Rugby Shop"
   ],
   "models": [
+    {
+      "key": "gilbert|sidestep x20 pwr 8s|padrão",
+      "brand": "Gilbert",
+      "model": "Sidestep X20 PWR 8S",
+      "version": "Padrão",
+      "avg_price_usd": 79.17,
+      "n_observations": 6,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 79.17,
+          "min_price_usd": 75.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 75.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-sidestep-x20-pwr-8s-rugby-boot-bk-fg",
+      "discount_pct": 0.0527,
+      "is_deal": false
+    },
+    {
+      "key": "canterbury|phoenix raze|sg",
+      "brand": "Canterbury",
+      "model": "Phoenix Raze",
+      "version": "SG",
+      "avg_price_usd": 99.99,
+      "n_observations": 1,
+      "sources": [
+        "World Rugby Shop"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 99.99,
+          "min_price_usd": 99.99
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 99.99,
+      "latest_min_site": "World Rugby Shop",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.worldrugbyshop.com/products/canterbury-phoenix-raze-sg-black-white",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "gilbert|cage pace 6s|pro",
+      "brand": "Gilbert",
+      "model": "Cage Pace 6S",
+      "version": "Pro",
+      "avg_price_usd": 75.0,
+      "n_observations": 1,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 75.0,
+          "min_price_usd": 75.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 75.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-cage-pro-pace-6s-rugby-boot",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "gilbert|cage torq 6s|padrão",
+      "brand": "Gilbert",
+      "model": "Cage Torq 6S",
+      "version": "Padrão",
+      "avg_price_usd": 80.0,
+      "n_observations": 1,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 80.0,
+          "min_price_usd": 80.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 80.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-cage-torq-6s-rugby-boot-bk",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
+    {
+      "key": "gilbert|cage torq msx firm|padrão",
+      "brand": "Gilbert",
+      "model": "Cage Torq MSX Firm",
+      "version": "Padrão",
+      "avg_price_usd": 65.0,
+      "n_observations": 1,
+      "sources": [
+        "Rugby Imports"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 65.0,
+          "min_price_usd": 65.0
+        }
+      ],
+      "latest_date": "2026-08-25",
+      "latest_min_price_usd": 65.0,
+      "latest_min_site": "Rugby Imports",
+      "latest_min_region": "USA",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-cage-torq-msx-rugby-boot-bk-wh",
+      "discount_pct": 0.0,
+      "is_deal": false
+    },
     {
       "key": "gilbert|icon players 6s|padrão",
       "brand": "Gilbert",
       "model": "Icon Players 6S",
       "version": "Padrão",
       "avg_price_usd": 105.0,
-      "n_observations": 8,
+      "n_observations": 10,
       "sources": [
         "Rugby Imports"
       ],
@@ -44,7 +170,7 @@
       "model": "Icon X 6S",
       "version": "Padrão",
       "avg_price_usd": 85.0,
-      "n_observations": 8,
+      "n_observations": 10,
       "sources": [
         "Rugby Imports"
       ],
@@ -64,27 +190,27 @@
       "is_deal": false
     },
     {
-      "key": "gilbert|sidestep x20 pwr 8s|padrão",
+      "key": "gilbert|sidestep x20 pwr 6s|padrão",
       "brand": "Gilbert",
-      "model": "Sidestep X20 PWR 8S",
+      "model": "Sidestep X20 PWR 6S",
       "version": "Padrão",
-      "avg_price_usd": 80.0,
-      "n_observations": 4,
+      "avg_price_usd": 75.0,
+      "n_observations": 1,
       "sources": [
         "Rugby Imports"
       ],
       "history": [
         {
           "date": "2026-08-25",
-          "avg_price_usd": 80.0,
-          "min_price_usd": 80.0
+          "avg_price_usd": 75.0,
+          "min_price_usd": 75.0
         }
       ],
       "latest_date": "2026-08-25",
-      "latest_min_price_usd": 80.0,
+      "latest_min_price_usd": 75.0,
       "latest_min_site": "Rugby Imports",
       "latest_min_region": "USA",
-      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-sidestep-x20-power-8-stud-rugby-boot",
+      "latest_min_url": "https://www.rugbyimports.com/products/gilbert-sidestep-x20-pwr-6s-rugby-boot-bk-wh",
       "discount_pct": 0.0,
       "is_deal": false
     },
@@ -94,7 +220,7 @@
       "model": "CCC Phoenix Firm Ground",
       "version": "Padrão",
       "avg_price_usd": 40.0,
-      "n_observations": 1,
+      "n_observations": 3,
       "sources": [
         "Rugby Imports"
       ],
@@ -119,7 +245,7 @@
       "model": "CCC Speed Firm Ground",
       "version": "Padrão",
       "avg_price_usd": 38.0,
-      "n_observations": 2,
+      "n_observations": 6,
       "sources": [
         "Rugby Imports"
       ],
