@@ -74,8 +74,34 @@ jobs:
           else
             BLOCK=$(python3 -c "import json; print(json.load(open('data/last_run.json')).get('block_height') or '?')")
             git commit -m "chore: atualiza preços de chuteiras de rugby (bloco $BLOCK)"
-            git push
-            echo "changed=true" >> "$GITHUB_OUTPUT"
+
+            # Um run de raspagem completa pode levar vários minutos (mais
+            # lojas = mais tempo); se outro commit (ex: um push de código)
+            # chegar em main nesse meio-tempo, o push simples é rejeitado
+            # (non-fast-forward) e os dados coletados neste run se perdem
+            # -- foi exatamente o que aconteceu no run do bloco 964021.
+            # Tenta rebase + push algumas vezes antes de desistir.
+            PUSHED=false
+            for attempt in 1 2 3; do
+              if git push; then
+                PUSHED=true
+                break
+              fi
+              echo "Push rejeitado (tentativa $attempt/3) -- main avançou enquanto este run raspava. Tentando rebase..."
+              git fetch origin main
+              if ! git rebase origin/main; then
+                echo "Rebase deu conflito de verdade (não só non-fast-forward) -- descarta este commit, o próximo bloco tenta de novo."
+                git rebase --abort
+                break
+              fi
+            done
+
+            if [ "$PUSHED" = "true" ]; then
+              echo "changed=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "::warning::Não consegui publicar os dados deste run (push rejeitado repetidamente) -- descartando, o próximo bloco tenta de novo."
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+            fi
           fi
 
   deploy:
