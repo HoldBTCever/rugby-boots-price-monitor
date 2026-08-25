@@ -235,15 +235,21 @@ def scrape_mizuno_jp(site: dict) -> list[dict]:
         ]
         # diagnóstico temporário: a página confirmadamente tem chuteiras (o
         # usuário mandou o link direto), mas o adaptador sempre voltou 0 --
-        # loga o tamanho do HTML e uma amostra de hrefs reais pra descobrir
-        # se o fetch está trazendo a página certa e qual é o padrão de link
-        # de verdade, em vez de continuar adivinhando "goods-detail".
+        # o primeiro round de diagnóstico (commit anterior) mostrou que o
+        # fetch traz HTML de verdade (219KB, 755 links), só que os
+        # primeiros 15 hrefs são todos menu/navegação, não produto. Agora
+        # busca "goods" em QUALQUER lugar do href (não só goods-detail/
+        # goods-id) pra achar o padrão real de link de produto, se existir
+        # nessa resposta.
+        goods_like = [a["href"] for a in all_anchors if "goods" in a["href"].lower()]
         log.info(
-            "Mizuno Japan: HTML com %d chars, %d links no total, %d batem goods-detail/goods-id. "
-            "Amostra de hrefs: %s",
-            len(html), len(all_anchors), len(anchors),
-            [a["href"] for a in all_anchors[:15]],
+            "Mizuno Japan: HTML com %d chars, %d links no total, %d batem goods-detail/goods-id, "
+            "%d contêm 'goods' em qualquer lugar. Amostra 'goods': %s",
+            len(html), len(all_anchors), len(anchors), len(goods_like), goods_like[:20],
         )
+        if not goods_like:
+            log.info("Mizuno Japan: nenhum href com 'goods' -- amostra geral: %s",
+                      [a["href"] for a in all_anchors[15:35]])
         seen_urls = set()
         for a in anchors:
             href = urljoin(site["base_url"], a["href"].split("?")[0])
