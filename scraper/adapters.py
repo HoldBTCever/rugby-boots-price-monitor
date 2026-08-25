@@ -183,51 +183,8 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
     return listings
 
 
-def scrape_rakuten_search(site: dict) -> list[dict]:
-    listings: list[dict] = []
-    for listing_url in site["listing_urls"]:
-        html = fetch(listing_url)
-        if not html:
-            continue
-        soup = BeautifulSoup(html, "lxml")
-
-        anchors = [
-            a for a in soup.find_all("a", href=True)
-            if site["product_link_pattern"] in a["href"]
-        ]
-        seen_urls = set()
-        for a in anchors[: config.MAX_PRODUCTS_PER_SITE * 3]:
-            href = a["href"].split("?")[0]
-            if href in seen_urls:
-                continue
-            title = a.get_text(strip=True)
-            if not title or len(title) < 6:
-                continue
-
-            price = None
-            container = a.find_parent(["div", "li"])
-            search_scope = container if container else a.parent
-            for _ in range(3):
-                if not search_scope:
-                    break
-                text = search_scope.get_text(" ", strip=True)
-                yen_match = re.search(r"([\d,]{3,})\s*円", text)
-                if yen_match:
-                    price = parse_price_text(yen_match.group(1), "JPY")
-                    break
-                search_scope = search_scope.find_parent(["div", "li"])
-
-            if price:
-                seen_urls.add(href)
-                listings.append({"title": title, "price": price, "currency": "JPY", "url": href})
-            if len(listings) >= config.MAX_PRODUCTS_PER_SITE:
-                break
-    return listings
-
-
 ADAPTERS = {
     "shopify_jsonld": scrape_jsonld_site,
     "generic_jsonld": scrape_jsonld_site,
     "mercadolibre_search": scrape_mercadolibre,
-    "rakuten_search": scrape_rakuten_search,
 }

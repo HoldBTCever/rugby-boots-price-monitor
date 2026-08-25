@@ -56,6 +56,8 @@ def run() -> dict:
 
         count = 0
         for item in listings:
+            if not normalize.is_rugby_boot(item["title"]):
+                continue
             price_usd = fx.to_usd(item["price"], item["currency"], rates)
             if price_usd is None:
                 continue

@@ -14,6 +14,31 @@ _VERSION_TOKENS = {w.lower() for w in _catalog["version_tokens"]}
 _YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
 _SIZE_RE = re.compile(r"\b(size|talla|tamanho|tam|号)?\s*\d{1,2}([.,]\d)?\s*(us|uk|eu|jp)?\b", re.IGNORECASE)
 
+# Palavras que indicam que o produto É uma chuteira/bota.
+_BOOT_WORDS = ["boot", "cleat", "chuteira", "botin", "botín", "bota", "spike"]
+# Palavras que indicam acessório/vestuário/equipamento -- não é chuteira,
+# mesmo que apareça na mesma coleção ou busca da loja.
+_NON_BOOT_WORDS = [
+    "jersey", "shirt", "camisa", "camiseta", "ball", "bola", "pelota",
+    "sock", "socks", "meia", "meiao", "meião", "glove", "luva",
+    "mouthguard", "protetor bucal", "protector bucal", "headguard",
+    "capacete", "short", "calcao", "calção", "bermuda", "legging",
+    "cone", "pump", "bomba", "tackle bag", "scrum bag", "training bib",
+    "colete", "whistle", "apito", "polish", "shoelace", "shoelaces",
+    "cadarco", "cadarço", "insole", "palmilha", "backpack", "mochila",
+    "bag", "bolsa", "towel", "toalha", "cap", "beanie", "gorro",
+]
+
+
+def is_rugby_boot(title: str) -> bool:
+    """True quando o título parece ser de uma chuteira de rugby, e não de
+    outro produto (bola, camisa, acessório) que tenha aparecido junto na
+    coleção/busca de uma loja."""
+    t = title.lower()
+    if any(word in t for word in _NON_BOOT_WORDS):
+        return False
+    return any(word in t for word in _BOOT_WORDS)
+
 
 def normalize_title(title: str) -> dict:
     """Retorna {brand, model, version} a partir de um título de produto.

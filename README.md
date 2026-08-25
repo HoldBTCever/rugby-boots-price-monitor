@@ -26,15 +26,23 @@ workflow rodar de verdade contra as lojas.
 |---|---|---|
 | EUA | World Rugby Shop, Rugby Imports | JSON-LD (schema.org Product) |
 | Europa (Reino Unido / França) | Lovell Rugby, Decathlon | JSON-LD |
-| Japão | Rakuten Ichiba (busca "ラグビー スパイク") | HTML da busca |
 | Argentina | MercadoLibre Argentina (busca "botines de rugby") | HTML da busca |
 | Paraguai | MercadoLibre Paraguay (busca "botines de rugby") | HTML da busca |
+
+Sem fonte para o Japão no momento — a Rakuten Ichiba foi removida por falta
+de confiabilidade dos dados extraídos. Se quiser, dá pra adicionar outro
+site japonês depois (ex.: loja oficial de uma marca) em `scraper/sites.json`.
 
 Adicione, remova ou ajuste lojas em `scraper/sites.json` — cada entrada
 define região, moeda, URL(s) de listagem e qual adaptador usar
 (`scraper/adapters.py`). Sites que expõem dados estruturados schema.org
 (`shopify_jsonld` / `generic_jsonld`) são os mais estáveis, pois não
 dependem de classes CSS que mudam a cada redesign.
+
+Toda listagem passa por `normalize.is_rugby_boot()` antes de entrar no
+histórico: produtos cujo título bate com palavras de bola, camisa,
+acessório etc. (mesmo vindos da coleção/busca "certa" de uma loja) são
+descartados, para o site só mostrar chuteiras de fato.
 
 ## Como o preço é normalizado
 
