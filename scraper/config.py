@@ -32,8 +32,8 @@ MIN_OBSERVATIONS_FOR_ALERT = 2
 
 # Só entram no histórico chuteiras disponíveis em algum tamanho dentro desta
 # faixa (masculino, tamanho americano). Só é aplicável em lojas Shopify, que
-# expõem tamanho por variante do produto -- outras fontes (MercadoLibre,
-# JSON-LD genérico, Mizuno) não têm essa granularidade nos dados hoje.
+# expõem tamanho por variante do produto -- outras fontes (JSON-LD genérico,
+# Mizuno) não têm essa granularidade nos dados hoje.
 MIN_US_SIZE = 9.0
 MAX_US_SIZE = 12.0
 

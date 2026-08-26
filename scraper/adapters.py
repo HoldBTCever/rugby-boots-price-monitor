@@ -199,68 +199,6 @@ def scrape_jsonld_site(site: dict) -> list[dict]:
     return listings
 
 
-_ML_RUGBY_BRANDS = ["gilbert", "canterbury", "mizuno", "oxen", "kakari", "ccc"]
-
-
-def scrape_mercadolibre(site: dict) -> list[dict]:
-    """A busca "botines-de-rugby" do MercadoLibre devolve muita chuteira de
-    futebol/futsal junto (Puma Ultra Match, ASICS Lethal Flash etc.) --
-    times argentinos usam o mesmo termo pra tudo. Só aceita o resultado
-    se o título disser "rugby" explicitamente ou for de uma marca
-    conhecida por chuteira de rugby (mesma lista que já usamos pra
-    normalizar marca/modelo)."""
-    listings: list[dict] = []
-    for listing_url in site["listing_urls"]:
-        html = fetch(listing_url)
-        if not html:
-            log.info("MercadoLibre Argentina: fetch devolveu vazio/None pra %s", listing_url)
-            continue
-        soup = BeautifulSoup(html, "lxml")
-
-        cards = (
-            soup.select("li.ui-search-layout__item")
-            or soup.select("div.ui-search-result__wrapper")
-            or soup.select("div.poly-card")
-            or soup.select("li.poly-card")
-        )
-        if not cards:
-            # diagnóstico temporário: adaptador zerou de vez após o reset de
-            # histórico -- pode ser bloqueio anti-bot (página de verificação
-            # em vez do resultado de busca) ou o marcador de card mudou de
-            # classe. Loga tamanho do HTML e se algum indício de bloqueio
-            # aparece, em vez de só reportar 0 sem contexto.
-            blocked_hint = any(
-                needle in html.lower()
-                for needle in ("captcha", "acesso negado", "solicitação incomum", "unusual traffic")
-            )
-            log.info(
-                "MercadoLibre Argentina: 0 cards casaram nos seletores conhecidos pra %s "
-                "(HTML com %d chars, indício de bloqueio: %s)",
-                listing_url, len(html), blocked_hint,
-            )
-        for card in cards[: config.MAX_PRODUCTS_PER_SITE]:
-            link_tag = card.select_one(
-                "a.ui-search-link, a.ui-search-item__group__element, a.poly-component__title"
-            )
-            title_tag = card.select_one(
-                "h2.ui-search-item__title, .poly-component__title, h3.poly-component__title-wrapper"
-            )
-            price_tag = card.select_one("span.andes-money-amount__fraction")
-            if not (link_tag and price_tag):
-                continue
-            title = (title_tag or link_tag).get_text(strip=True)
-            title_lower = title.lower()
-            if "rugby" not in title_lower and not any(b in title_lower for b in _ML_RUGBY_BRANDS):
-                continue
-            price = parse_price_text(price_tag.get_text(strip=True))
-            href = link_tag.get("href")
-            if title and price and href:
-                listings.append({
-                    "title": title, "price": price, "currency": site["currency"], "url": href,
-                })
-    return listings
-
-
 def scrape_mizuno_jp(site: dict) -> list[dict]:
     """jpn.mizuno.com não expõe JSON-LD nem API pública conhecida. A
     página de categoria é carregada via ajax (view=ajax_new), então
@@ -488,7 +426,6 @@ def search_shopify(site: dict, query: str) -> list[dict]:
 ADAPTERS = {
     "shopify_jsonld": scrape_jsonld_site,
     "generic_jsonld": scrape_jsonld_site,
-    "mercadolibre_search": scrape_mercadolibre,
     "shopify_products_json": scrape_shopify_products_json,
     "mizuno_jp": scrape_mizuno_jp,
 }

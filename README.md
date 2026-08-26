@@ -34,14 +34,19 @@ workflow rodar de verdade contra as lojas.
 | Europa (Reino Unido) | Canterbury, Pro:Direct Rugby, Rugbystore.co.uk, Kitlocker | JSON-LD |
 | Europa (Espanha) | TradeInn | JSON-LD |
 | Japão | Mizuno Japan, Rugby Goods (Rugby Online Japan) | HTML da categoria / JSON-LD |
-| Argentina | MercadoLibre Argentina (busca "botines de rugby"), Durban Rugby, Rugbier Store | HTML da busca / JSON-LD |
-| Paraguai | MercadoLibre Paraguay (busca "botines de rugby") | HTML da busca |
+| Argentina | Durban Rugby, Rugbier Store | JSON-LD |
 
 A Rakuten Ichiba foi removida por falta de confiabilidade dos dados
 extraídos. A Decathlon foi removida por bloqueio anti-bot ativo (HTTP
 403 confirmado nos logs) — não faz sentido continuar tentando nem
-contornar o bloqueio. A Lovell Rugby migrou de domínio (`lovellrugby.co.uk`
-→ `lovellsports.com`), o que explica por que ficou muda por um tempo.
+contornar o bloqueio. A MercadoLibre Argentina e a MercadoLibre Paraguay
+também foram removidas pelo mesmo motivo: confirmado via log de
+diagnóstico que a busca "botines-de-rugby" volta uma página de bloqueio
+(mesmo HTML de 52.622 caracteres para os dois países, com indício de
+captcha/verificação, não resultado de busca de verdade) desde o reset de
+histórico — não é seletor desatualizado, é bloqueio ativo. A Lovell Rugby
+migrou de domínio (`lovellrugby.co.uk` → `lovellsports.com`), o que
+explica por que ficou muda por um tempo.
 
 Canterbury USA (`canterburyusa.com`) não entrou como fonte separada:
 é operada pela própria World Rugby Shop (mesmo grupo, catálogo
@@ -98,15 +103,15 @@ descartado inteiro. Lojas do Reino Unido numeram no padrão britânico —
 convertido para americano somando 1 (aproximação padrão UK→US
 masculino: UK 7 = US 8, UK 11 = US 12).
 
-As demais fontes (MercadoLibre, JSON-LD genérico como Canterbury/
-Pro:Direct/Rugbystore/Kitlocker/Rugby Goods/Durban Rugby/Rugbier Store/
-TradeInn, Mizuno Japan) não expõem tamanho por variante nos dados que os
-adaptadores capturam hoje — continuam contribuindo sem esse filtro,
-porque descartá-las por completo derrubaria fontes que já encontraram
-itens reais da watchlist (ex: MercadoLibre Argentina achou a Mizuno
-Waitangi e a Canterbury Stampede). Se isso não for aceitável, ou se
-quiser que essas fontes também sejam restritas a US 9–12 assim que eu
-conseguir extrair tamanho delas, é só pedir.
+As demais fontes (JSON-LD genérico como Canterbury/Pro:Direct/Rugbystore/
+Kitlocker/Rugby Goods/Durban Rugby/Rugbier Store/TradeInn, Mizuno Japan)
+não expõem tamanho por variante nos dados que os adaptadores capturam
+hoje — continuam contribuindo sem esse filtro, porque descartá-las por
+completo derrubaria fontes que já encontraram itens reais da watchlist
+(ex: TradeInn e Rugby Heaven acharam a Mizuno Waitangi e a Canterbury
+Stampede). Se isso não for aceitável, ou se quiser que essas fontes
+também sejam restritas a US 9–12 assim que eu conseguir extrair tamanho
+delas, é só pedir.
 
 ## Filtros de solado e faixa etária
 

@@ -204,19 +204,6 @@
     "adapter": "mizuno_jp"
   },
   {
-    "id": "mercadolibre_ar",
-    "name": "MercadoLibre Argentina",
-    "region": "Argentina",
-    "country": "AR",
-    "currency": "ARS",
-    "base_url": "https://listado.mercadolibre.com.ar",
-    "listing_urls": [
-      "https://listado.mercadolibre.com.ar/botines-de-rugby"
-    ],
-    "adapter": "mercadolibre_search",
-    "product_link_pattern": "articulo.mercadolibre.com.ar"
-  },
-  {
     "id": "durbanrugby_ar",
     "name": "Durban Rugby",
     "region": "Argentina",
@@ -243,18 +230,5 @@
     "adapter": "generic_jsonld",
     "product_link_pattern": "/productos/",
     "trust_category": true
-  },
-  {
-    "id": "mercadolibre_py",
-    "name": "MercadoLibre Paraguay",
-    "region": "Paraguay",
-    "country": "PY",
-    "currency": "PYG",
-    "base_url": "https://listado.mercadolibre.com.py",
-    "listing_urls": [
-      "https://listado.mercadolibre.com.py/botines-de-rugby"
-    ],
-    "adapter": "mercadolibre_search",
-    "product_link_pattern": "articulo.mercadolibre.com.py"
   }
 ]
