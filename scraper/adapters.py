@@ -341,6 +341,17 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                 handle = product.get("handle")
                 variants = product.get("variants") or []
                 price = _min_price_in_size_range(variants, site)
+                if handle == "adidas-kakari-elite-sg-rugby-boots-black" and site["id"] == "rugbystuff":
+                    # diagnóstico temporário: usuário reportou que este produto
+                    # aparece no site com preço, mas não tem tamanho 10 US (nem
+                    # nenhum na faixa 9-12) disponível de verdade na loja --
+                    # loga a variante bruta pra ver se é a conversão UK->US, o
+                    # parsing do tamanho, ou o campo "available" que erra aqui.
+                    log.info(
+                        "Diagnóstico Kakari Elite Black (Rugbystuff): preço calculado=%s. Variantes: %s",
+                        price,
+                        [(v.get("option1"), v.get("title"), v.get("price"), v.get("available")) for v in variants],
+                    )
                 if not (title and handle and price):
                     continue
                 # product_type é a categoria que a própria loja atribuiu ao
