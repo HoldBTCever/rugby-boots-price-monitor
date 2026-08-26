@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T11:56:12.482636+00:00",
+  "generated_at": "2026-08-26T12:04:13.484525+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-26",
@@ -7,7 +7,7 @@
     "models_tracked": 183,
     "sources": 12,
     "deals_today": 7,
-    "observations": 6413
+    "observations": 6736
   },
   "sources": [
     "Canterbury",
@@ -29,8 +29,8 @@
       "brand": "adidas",
       "model": "Kakari",
       "version": "Padrão",
-      "avg_price_usd": 199.61,
-      "n_observations": 63,
+      "avg_price_usd": 194.79,
+      "n_observations": 68,
       "sources": [
         "Lovell Rugby",
         "Rugbystuff"
@@ -43,7 +43,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 192.67,
+          "avg_price_usd": 184.95,
           "min_price_usd": 64.11
         }
       ],
@@ -52,7 +52,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-sg-rugby-boots-white-orange-blue",
-      "discount_pct": 0.6788,
+      "discount_pct": 0.6709,
       "is_deal": true,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -66,7 +66,7 @@
       "model": "Kakari Adults Soft Ground",
       "version": "Padrão",
       "avg_price_usd": 84.47,
-      "n_observations": 210,
+      "n_observations": 217,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven"
@@ -79,7 +79,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 84.42,
+          "avg_price_usd": 84.43,
           "min_price_usd": 32.74
         }
       ],
@@ -102,7 +102,7 @@
       "model": "Kakari Adults Soft Ground",
       "version": "Elite",
       "avg_price_usd": 96.33,
-      "n_observations": 270,
+      "n_observations": 279,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven"
@@ -115,7 +115,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 96.17,
+          "avg_price_usd": 96.18,
           "min_price_usd": 38.2
         }
       ],
@@ -137,8 +137,8 @@
       "brand": "Canterbury",
       "model": "Speed",
       "version": "Padrão",
-      "avg_price_usd": 229.21,
-      "n_observations": 90,
+      "avg_price_usd": 229.28,
+      "n_observations": 93,
       "sources": [
         "Lovell Rugby"
       ],
@@ -150,7 +150,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 227.08,
+          "avg_price_usd": 227.36,
           "min_price_usd": 115.94
         }
       ],
@@ -159,7 +159,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-rugby-boot-1",
-      "discount_pct": 0.4942,
+      "discount_pct": 0.4943,
       "is_deal": true,
       "ground_type": null,
       "upper_material": null,
@@ -168,48 +168,12 @@
       "spec_source": null
     },
     {
-      "key": "adidas|kakari|elite",
-      "brand": "adidas",
-      "model": "Kakari",
-      "version": "Elite",
-      "avg_price_usd": 155.93,
-      "n_observations": 36,
-      "sources": [
-        "Lovell Rugby",
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 171.79,
-          "min_price_usd": 171.78
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 144.6,
-          "min_price_usd": 79.12
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 79.12,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-elite-sg-rugby-boots-black",
-      "discount_pct": 0.4926,
-      "is_deal": true,
-      "ground_type": "Soft Ground",
-      "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
-      "stud_type": "8 travas fixas, com ferramenta de aperto inclusa",
-      "width_fit": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
-      "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com"
-    },
-    {
       "key": "adidas|rs adults soft ground|padrão",
       "brand": "adidas",
       "model": "Rs Adults Soft Ground",
       "version": "Padrão",
       "avg_price_usd": 95.69,
-      "n_observations": 90,
+      "n_observations": 93,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven"
@@ -222,7 +186,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 95.48,
+          "avg_price_usd": 95.51,
           "min_price_usd": 49.11
         }
       ],
@@ -240,12 +204,48 @@
       "spec_source": null
     },
     {
+      "key": "adidas|kakari|elite",
+      "brand": "adidas",
+      "model": "Kakari",
+      "version": "Elite",
+      "avg_price_usd": 146.34,
+      "n_observations": 43,
+      "sources": [
+        "Lovell Rugby",
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 171.79,
+          "min_price_usd": 171.78
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 132.71,
+          "min_price_usd": 79.12
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 79.12,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-elite-sg-rugby-boots-black",
+      "discount_pct": 0.4593,
+      "is_deal": true,
+      "ground_type": "Soft Ground",
+      "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
+      "stud_type": "8 travas fixas, com ferramenta de aperto inclusa",
+      "width_fit": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
+      "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com"
+    },
+    {
       "key": "canterbury|speed falcon adults soft|team",
       "brand": "Canterbury",
       "model": "Speed Falcon Adults Soft",
       "version": "Team",
-      "avg_price_usd": 93.73,
-      "n_observations": 60,
+      "avg_price_usd": 93.74,
+      "n_observations": 62,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven"
@@ -258,7 +258,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 93.39,
+          "avg_price_usd": 93.44,
           "min_price_usd": 54.57
         }
       ],
@@ -267,8 +267,43 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-falcon-team-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.4178,
+      "discount_pct": 0.4179,
       "is_deal": true,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "adidas|adizero rs15 ultimate adults|padrão",
+      "brand": "adidas",
+      "model": "Adizero Rs15 Ultimate Adults",
+      "version": "Padrão",
+      "avg_price_usd": 234.47,
+      "n_observations": 62,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 236.56,
+          "min_price_usd": 207.23
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 232.5,
+          "min_price_usd": 148.69
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 148.69,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/adidas-adizero-rs15-ultimate-adults-soft-ground-rugby-boots",
+      "discount_pct": 0.3658,
+      "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
       "stud_type": null,
@@ -280,8 +315,8 @@
       "brand": "Canterbury",
       "model": "Phoenix",
       "version": "Team",
-      "avg_price_usd": 76.59,
-      "n_observations": 30,
+      "avg_price_usd": 74.96,
+      "n_observations": 33,
       "sources": [
         "Rugbystuff",
         "TradeInn"
@@ -294,7 +329,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 72.7,
+          "avg_price_usd": 70.36,
           "min_price_usd": 47.75
         }
       ],
@@ -303,42 +338,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-phoenix-team-sg-rugby-boots-white-gold",
-      "discount_pct": 0.3766,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|adizero rs15 ultimate adults|padrão",
-      "brand": "adidas",
-      "model": "Adizero Rs15 Ultimate Adults",
-      "version": "Padrão",
-      "avg_price_usd": 234.39,
-      "n_observations": 60,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 236.56,
-          "min_price_usd": 207.23
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 232.22,
-          "min_price_usd": 148.69
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 148.69,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-adizero-rs15-ultimate-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.3656,
+      "discount_pct": 0.363,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -351,8 +351,8 @@
       "brand": "Canterbury",
       "model": "Phoenix",
       "version": "Elite",
-      "avg_price_usd": 150.01,
-      "n_observations": 122,
+      "avg_price_usd": 149.41,
+      "n_observations": 128,
       "sources": [
         "Rugbystuff",
         "TradeInn"
@@ -365,7 +365,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 149.79,
+          "avg_price_usd": 148.68,
           "min_price_usd": 95.49
         }
       ],
@@ -374,7 +374,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-phoenix-elite-sg-rugby-boots-black-gold",
-      "discount_pct": 0.3634,
+      "discount_pct": 0.3609,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -387,8 +387,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak Soft Ground",
       "version": "Team",
-      "avg_price_usd": 89.82,
-      "n_observations": 60,
+      "avg_price_usd": 89.85,
+      "n_observations": 62,
       "sources": [
         "Lovell Rugby"
       ],
@@ -400,7 +400,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 88.97,
+          "avg_price_usd": 89.08,
           "min_price_usd": 57.98
         }
       ],
@@ -409,7 +409,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-stampede-groundbreak-team-soft-ground-rugby-boots?_pos=3&_psq=Canterbury+Stampede&_psid=3da71517c&_ss=e",
-      "discount_pct": 0.3545,
+      "discount_pct": 0.3547,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": "Mesh respirável",
@@ -418,12 +418,48 @@
       "spec_source": "canterburyusa.com, rugbystuff.com"
     },
     {
+      "key": "oxen|raptor stud|pro",
+      "brand": "Oxen",
+      "model": "Raptor Stud",
+      "version": "Pro",
+      "avg_price_usd": 45.03,
+      "n_observations": 68,
+      "sources": [
+        "Lovell Rugby",
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 42.26,
+          "min_price_usd": 42.26
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 47.22,
+          "min_price_usd": 29.47
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 29.47,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/oxen-rptr-pro-6-stud-2",
+      "discount_pct": 0.3455,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
+    },
+    {
       "key": "mizuno|morelia neo v beta|padrão",
       "brand": "Mizuno",
       "model": "Morelia Neo V Beta",
       "version": "Padrão",
       "avg_price_usd": 190.07,
-      "n_observations": 3,
+      "n_observations": 6,
       "sources": [
         "Rugbystuff"
       ],
@@ -448,48 +484,12 @@
       "spec_source": null
     },
     {
-      "key": "oxen|raptor stud|pro",
-      "brand": "Oxen",
-      "model": "Raptor Stud",
-      "version": "Pro",
-      "avg_price_usd": 43.56,
-      "n_observations": 63,
-      "sources": [
-        "Lovell Rugby",
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 42.26,
-          "min_price_usd": 42.26
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 44.74,
-          "min_price_usd": 29.47
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 29.47,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/oxen-rptr-pro-6-stud-2",
-      "discount_pct": 0.3235,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
-      "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
-    },
-    {
       "key": "kooga|power|padrão",
       "brand": "Kooga",
       "model": "Power",
       "version": "Padrão",
-      "avg_price_usd": 45.91,
-      "n_observations": 30,
+      "avg_price_usd": 45.93,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -501,7 +501,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 45.47,
+          "avg_price_usd": 45.53,
           "min_price_usd": 32.74
         }
       ],
@@ -510,7 +510,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-power-sg-rugby-boots",
-      "discount_pct": 0.2869,
+      "discount_pct": 0.2872,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -523,8 +523,8 @@
       "brand": "Canterbury",
       "model": "Phoenix Genesis Soft Ground",
       "version": "Pro",
-      "avg_price_usd": 71.58,
-      "n_observations": 30,
+      "avg_price_usd": 71.6,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -536,7 +536,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 70.89,
+          "avg_price_usd": 70.98,
           "min_price_usd": 51.16
         }
       ],
@@ -545,7 +545,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/phoenix-genesis-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.2853,
+      "discount_pct": 0.2855,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -558,8 +558,8 @@
       "brand": "Oxen",
       "model": "Oxford Raptor Stud",
       "version": "Elite",
-      "avg_price_usd": 63.49,
-      "n_observations": 62,
+      "avg_price_usd": 63.53,
+      "n_observations": 66,
       "sources": [
         "Lovell Rugby"
       ],
@@ -571,7 +571,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 62.94,
+          "avg_price_usd": 63.07,
           "min_price_usd": 45.43
         }
       ],
@@ -580,7 +580,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/oxen-rptr-elt-8-stud",
-      "discount_pct": 0.2845,
+      "discount_pct": 0.2849,
       "is_deal": false,
       "ground_type": null,
       "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
@@ -593,8 +593,8 @@
       "brand": "Canterbury",
       "model": "Phoenix Soft Ground",
       "version": "Team",
-      "avg_price_usd": 74.29,
-      "n_observations": 30,
+      "avg_price_usd": 74.31,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -606,7 +606,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 73.57,
+          "avg_price_usd": 73.67,
           "min_price_usd": 53.2
         }
       ],
@@ -615,7 +615,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-phoenix-2-team-soft-ground-rugby-boots",
-      "discount_pct": 0.2839,
+      "discount_pct": 0.2841,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -628,8 +628,8 @@
       "brand": "Kooga",
       "model": "Rapid",
       "version": "Padrão",
-      "avg_price_usd": 51.33,
-      "n_observations": 30,
+      "avg_price_usd": 51.34,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -641,7 +641,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 50.84,
+          "avg_price_usd": 50.9,
           "min_price_usd": 36.83
         }
       ],
@@ -650,7 +650,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-rapid-rugby-boots",
-      "discount_pct": 0.2825,
+      "discount_pct": 0.2826,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -663,8 +663,8 @@
       "brand": "Oxen",
       "model": "Mtsck Stud Lace Up",
       "version": "Padrão",
-      "avg_price_usd": 51.33,
-      "n_observations": 30,
+      "avg_price_usd": 51.34,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -676,7 +676,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 50.84,
+          "avg_price_usd": 50.9,
           "min_price_usd": 36.83
         }
       ],
@@ -685,7 +685,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/oxen-mtsck-6-stud-2?_pos=3&_psq=Oxen+Stallion+SG&_psid=83d396abf&_ss=e",
-      "discount_pct": 0.2825,
+      "discount_pct": 0.2826,
       "is_deal": false,
       "ground_type": null,
       "upper_material": "Sintético com \"metassock\" integrado em Lycra (efeito meia)",
@@ -698,8 +698,8 @@
       "brand": "adidas",
       "model": "Adizero Rs15 Rise Soft",
       "version": "Padrão",
-      "avg_price_usd": 102.65,
-      "n_observations": 30,
+      "avg_price_usd": 102.68,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -711,7 +711,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 101.67,
+          "avg_price_usd": 101.79,
           "min_price_usd": 73.66
         }
       ],
@@ -720,7 +720,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-womens-adizero-rs15-rise-soft-ground-rugby-boots",
-      "discount_pct": 0.2824,
+      "discount_pct": 0.2826,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -733,8 +733,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak Soft Ground",
       "version": "Pro",
-      "avg_price_usd": 89.14,
-      "n_observations": 60,
+      "avg_price_usd": 89.17,
+      "n_observations": 62,
       "sources": [
         "Lovell Rugby"
       ],
@@ -746,7 +746,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 88.3,
+          "avg_price_usd": 88.41,
           "min_price_usd": 64.11
         }
       ],
@@ -755,7 +755,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-stampede-groundbreak-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.2808,
+      "discount_pct": 0.281,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": "Sintético com colarinho em tricô",
@@ -768,8 +768,8 @@
       "brand": "adidas",
       "model": "Rs15 Soft Ground",
       "version": "Padrão",
-      "avg_price_usd": 51.18,
-      "n_observations": 23,
+      "avg_price_usd": 51.21,
+      "n_observations": 24,
       "sources": [
         "Lovell Rugby"
       ],
@@ -781,7 +781,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 50.84,
+          "avg_price_usd": 50.9,
           "min_price_usd": 36.83
         }
       ],
@@ -790,43 +790,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/rs15-soft-ground-rugby-boots",
-      "discount_pct": 0.2804,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "canterbury|speed falcon|team",
-      "brand": "Canterbury",
-      "model": "Speed Falcon",
-      "version": "Team",
-      "avg_price_usd": 66.31,
-      "n_observations": 28,
-      "sources": [
-        "Rugbystuff",
-        "TradeInn"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 66.99,
-          "min_price_usd": 66.99
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 65.52,
-          "min_price_usd": 47.75
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 47.75,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/canterbury-speed-falcon-team-sg-rugby-boots-black-gold",
-      "discount_pct": 0.2799,
+      "discount_pct": 0.2808,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -839,8 +803,8 @@
       "brand": "Mizuno",
       "model": "Monarcida Neo Adults",
       "version": "Club",
-      "avg_price_usd": 133.45,
-      "n_observations": 30,
+      "avg_price_usd": 133.46,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -852,7 +816,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 131.91,
+          "avg_price_usd": 132.03,
           "min_price_usd": 96.17
         }
       ],
@@ -874,8 +838,8 @@
       "brand": "adidas",
       "model": "Rs15 Avaglide Soft Ground",
       "version": "Padrão",
-      "avg_price_usd": 156.69,
-      "n_observations": 30,
+      "avg_price_usd": 156.74,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -887,7 +851,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 155.22,
+          "avg_price_usd": 155.41,
           "min_price_usd": 112.95
         }
       ],
@@ -896,42 +860,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-womens-rs15-soft-ground-rugby-boots",
-      "discount_pct": 0.2791,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "canterbury|phoenix soft ground|elite",
-      "brand": "Canterbury",
-      "model": "Phoenix Soft Ground",
-      "version": "Elite",
-      "avg_price_usd": 151.29,
-      "n_observations": 30,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 152.71,
-          "min_price_usd": 152.7
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 149.87,
-          "min_price_usd": 109.13
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 109.13,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-phoenix-2-elite-soft-ground-rugby-boots",
-      "discount_pct": 0.2787,
+      "discount_pct": 0.2794,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -944,8 +873,8 @@
       "brand": "Canterbury",
       "model": "Speed Fleece2 T",
       "version": "Padrão",
-      "avg_price_usd": 132.38,
-      "n_observations": 30,
+      "avg_price_usd": 132.42,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -957,7 +886,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 131.14,
+          "avg_price_usd": 131.3,
           "min_price_usd": 95.48
         }
       ],
@@ -966,79 +895,9 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-fleece2-t-sg",
-      "discount_pct": 0.2787,
+      "discount_pct": 0.279,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|kakari rs lace up|padrão",
-      "brand": "adidas",
-      "model": "Kakari RS Lace Up",
-      "version": "Padrão",
-      "avg_price_usd": 170.2,
-      "n_observations": 30,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 171.79,
-          "min_price_usd": 171.78
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 168.61,
-          "min_price_usd": 122.77
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 122.77,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-kakari-rs-sg",
-      "discount_pct": 0.2787,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|rs15|padrão",
-      "brand": "adidas",
-      "model": "Rs15",
-      "version": "Padrão",
-      "avg_price_usd": 113.47,
-      "n_observations": 30,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 114.53,
-          "min_price_usd": 114.52
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 112.41,
-          "min_price_usd": 81.85
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 81.85,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-rs15-rugby-boot",
-      "discount_pct": 0.2787,
-      "is_deal": false,
-      "ground_type": null,
       "upper_material": null,
       "stud_type": null,
       "width_fit": null,
@@ -1049,8 +908,8 @@
       "brand": "Canterbury",
       "model": "Phoenix Genesis Soft Ground",
       "version": "Elite",
-      "avg_price_usd": 85.1,
-      "n_observations": 30,
+      "avg_price_usd": 85.13,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1062,7 +921,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 84.3,
+          "avg_price_usd": 84.41,
           "min_price_usd": 61.39
         }
       ],
@@ -1071,7 +930,42 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/phoenix-genesis-elite-soft-ground-rugby-boots",
-      "discount_pct": 0.2786,
+      "discount_pct": 0.2789,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "canterbury|phoenix soft ground|elite",
+      "brand": "Canterbury",
+      "model": "Phoenix Soft Ground",
+      "version": "Elite",
+      "avg_price_usd": 151.34,
+      "n_observations": 31,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 152.71,
+          "min_price_usd": 152.7
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 150.05,
+          "min_price_usd": 109.13
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 109.13,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-phoenix-2-elite-soft-ground-rugby-boots",
+      "discount_pct": 0.2789,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1084,8 +978,8 @@
       "brand": "adidas",
       "model": "Kakari Lace Up Heel",
       "version": "Elite Low",
-      "avg_price_usd": 104.01,
-      "n_observations": 30,
+      "avg_price_usd": 104.05,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1097,7 +991,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 103.04,
+          "avg_price_usd": 103.16,
           "min_price_usd": 75.03
         }
       ],
@@ -1106,7 +1000,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-kakari-elt-s-1?_pos=1&_psq=Kakari+Elite&_psid=f0137a89d&_ss=e",
-      "discount_pct": 0.2786,
+      "discount_pct": 0.2789,
       "is_deal": false,
       "ground_type": null,
       "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
@@ -1115,12 +1009,82 @@
       "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com"
     },
     {
+      "key": "adidas|kakari rs lace up|padrão",
+      "brand": "adidas",
+      "model": "Kakari RS Lace Up",
+      "version": "Padrão",
+      "avg_price_usd": 170.25,
+      "n_observations": 31,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 171.79,
+          "min_price_usd": 171.78
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 168.81,
+          "min_price_usd": 122.77
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 122.77,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/adidas-kakari-rs-sg",
+      "discount_pct": 0.2789,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "adidas|rs15|padrão",
+      "brand": "adidas",
+      "model": "Rs15",
+      "version": "Padrão",
+      "avg_price_usd": 113.5,
+      "n_observations": 31,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 114.53,
+          "min_price_usd": 114.52
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 112.54,
+          "min_price_usd": 81.85
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 81.85,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/adidas-rs15-rugby-boot",
+      "discount_pct": 0.2789,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "adidas|kakari rs adults soft|padrão",
       "brand": "adidas",
       "model": "Kakari Rs Adults Soft",
       "version": "Padrão",
-      "avg_price_usd": 182.37,
-      "n_observations": 30,
+      "avg_price_usd": 182.42,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1132,7 +1096,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 180.66,
+          "avg_price_usd": 180.88,
           "min_price_usd": 131.64
         }
       ],
@@ -1141,7 +1105,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/kakari-rs-rugby-boots-soft-ground",
-      "discount_pct": 0.2782,
+      "discount_pct": 0.2784,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1154,8 +1118,8 @@
       "brand": "Canterbury",
       "model": "Speed Falcon Ellie Kundunne",
       "version": "Padrão",
-      "avg_price_usd": 158.98,
-      "n_observations": 30,
+      "avg_price_usd": 159.0,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1167,7 +1131,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 157.07,
+          "avg_price_usd": 157.23,
           "min_price_usd": 114.79
         }
       ],
@@ -1176,42 +1140,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-faclon-ellie-kundunne-x-ccc-soft-ground-rugby-boots",
-      "discount_pct": 0.278,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|rs soft ground|elite",
-      "brand": "adidas",
-      "model": "RS Soft Ground",
-      "version": "Elite",
-      "avg_price_usd": 147.25,
-      "n_observations": 30,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 148.62,
-          "min_price_usd": 148.61
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 145.87,
-          "min_price_usd": 106.39
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 106.39,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/adidas-rs-15-elt-fg",
-      "discount_pct": 0.2775,
+      "discount_pct": 0.2781,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1223,6 +1152,76 @@
       "key": "oxen|raptor artificial ground|pro",
       "brand": "Oxen",
       "model": "Raptor Artificial Ground",
+      "version": "Pro",
+      "avg_price_usd": 118.98,
+      "n_observations": 33,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 119.99,
+          "min_price_usd": 119.98
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 118.15,
+          "min_price_usd": 85.94
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 85.94,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/oxen-raptor-pro-artificial-ground-rugby-boots",
+      "discount_pct": 0.2777,
+      "is_deal": false,
+      "ground_type": "Artificial Ground",
+      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
+    },
+    {
+      "key": "adidas|rs soft ground|elite",
+      "brand": "adidas",
+      "model": "RS Soft Ground",
+      "version": "Elite",
+      "avg_price_usd": 147.29,
+      "n_observations": 31,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 148.62,
+          "min_price_usd": 148.61
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 146.05,
+          "min_price_usd": 106.39
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 106.39,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/adidas-rs-15-elt-fg",
+      "discount_pct": 0.2777,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "canterbury|phoenix soft ground|pro",
+      "brand": "Canterbury",
+      "model": "Phoenix Soft Ground",
       "version": "Pro",
       "avg_price_usd": 118.91,
       "n_observations": 31,
@@ -1245,43 +1244,8 @@
       "latest_min_price_usd": 85.94,
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/oxen-raptor-pro-artificial-ground-rugby-boots",
-      "discount_pct": 0.2773,
-      "is_deal": false,
-      "ground_type": "Artificial Ground",
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
-      "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
-    },
-    {
-      "key": "canterbury|phoenix soft ground|pro",
-      "brand": "Canterbury",
-      "model": "Phoenix Soft Ground",
-      "version": "Pro",
-      "avg_price_usd": 118.88,
-      "n_observations": 30,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 119.99,
-          "min_price_usd": 119.98
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 117.77,
-          "min_price_usd": 85.94
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 85.94,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-phoenix-2-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.2771,
+      "discount_pct": 0.2773,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1294,8 +1258,8 @@
       "brand": "Canterbury",
       "model": "Speed Soft Ground",
       "version": "Pro",
-      "avg_price_usd": 118.88,
-      "n_observations": 30,
+      "avg_price_usd": 118.91,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1307,7 +1271,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 117.77,
+          "avg_price_usd": 117.91,
           "min_price_usd": 85.94
         }
       ],
@@ -1316,7 +1280,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-speed-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.2771,
+      "discount_pct": 0.2773,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1329,8 +1293,8 @@
       "brand": "Gilbert",
       "model": "Icon Power Adults Soft",
       "version": "Padrão",
-      "avg_price_usd": 118.88,
-      "n_observations": 30,
+      "avg_price_usd": 118.91,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1342,7 +1306,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 117.77,
+          "avg_price_usd": 117.91,
           "min_price_usd": 85.94
         }
       ],
@@ -1351,7 +1315,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/gilbert-icon-power-8-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.2771,
+      "discount_pct": 0.2773,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1364,8 +1328,8 @@
       "brand": "Mizuno",
       "model": "Morelia Neo Adults Soft",
       "version": "Padrão",
-      "avg_price_usd": 178.32,
-      "n_observations": 30,
+      "avg_price_usd": 178.37,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1377,7 +1341,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 176.66,
+          "avg_price_usd": 176.87,
           "min_price_usd": 128.91
         }
       ],
@@ -1386,7 +1350,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-morelia-neo-4-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.2771,
+      "discount_pct": 0.2773,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1399,8 +1363,8 @@
       "brand": "adidas",
       "model": "W Soft Ground",
       "version": "Padrão",
-      "avg_price_usd": 173.52,
-      "n_observations": 30,
+      "avg_price_usd": 173.55,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1412,7 +1376,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 171.34,
+          "avg_price_usd": 171.54,
           "min_price_usd": 125.5
         }
       ],
@@ -1421,7 +1385,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-womens-w-soft-ground-rugby-boots",
-      "discount_pct": 0.2767,
+      "discount_pct": 0.2769,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1434,8 +1398,8 @@
       "brand": "Gilbert",
       "model": "Icon Players Soft Ground",
       "version": "Padrão",
-      "avg_price_usd": 161.22,
-      "n_observations": 30,
+      "avg_price_usd": 161.26,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1447,7 +1411,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 159.28,
+          "avg_price_usd": 159.47,
           "min_price_usd": 116.63
         }
       ],
@@ -1456,91 +1420,21 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/gilbert-icon-players-8-soft-ground-rugby-boots-adults",
-      "discount_pct": 0.2766,
+      "discount_pct": 0.2768,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
       "stud_type": null,
       "width_fit": null,
       "spec_source": null
-    },
-    {
-      "key": "canterbury|speed soft ground|elite",
-      "brand": "Canterbury",
-      "model": "Speed Soft Ground",
-      "version": "Elite",
-      "avg_price_usd": 212.09,
-      "n_observations": 30,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 214.07,
-          "min_price_usd": 214.05
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 210.12,
-          "min_price_usd": 153.47
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 153.47,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/mens-speed-elite-soft-ground-rugby-boots",
-      "discount_pct": 0.2764,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "mizuno|waitangi|padrão",
-      "brand": "Mizuno",
-      "model": "Waitangi",
-      "version": "Padrão",
-      "avg_price_usd": 216.77,
-      "n_observations": 60,
-      "sources": [
-        "Lovell Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 219.38,
-          "min_price_usd": 218.14
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 214.17,
-          "min_price_usd": 156.86
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 156.86,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/mizuno-waitangi-rugby-boot",
-      "discount_pct": 0.2764,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
-      "spec_source": "mizuno.com.au, worldrugbyshop.com"
     },
     {
       "key": "oxen|raptor adults artificial ground|elite",
       "brand": "Oxen",
       "model": "Raptor Adults Artificial Ground",
       "version": "Elite",
-      "avg_price_usd": 152.7,
-      "n_observations": 31,
+      "avg_price_usd": 152.79,
+      "n_observations": 33,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1552,7 +1446,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 151.42,
+          "avg_price_usd": 151.73,
           "min_price_usd": 110.5
         }
       ],
@@ -1561,7 +1455,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/oxen-raptor-elite-adults-artificial-ground-rugby-boots",
-      "discount_pct": 0.2764,
+      "discount_pct": 0.2768,
       "is_deal": false,
       "ground_type": "Artificial Ground",
       "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
@@ -1570,12 +1464,47 @@
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
     },
     {
+      "key": "canterbury|speed soft ground|elite",
+      "brand": "Canterbury",
+      "model": "Speed Soft Ground",
+      "version": "Elite",
+      "avg_price_usd": 212.16,
+      "n_observations": 31,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 214.07,
+          "min_price_usd": 214.05
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 210.38,
+          "min_price_usd": 153.47
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 153.47,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/mens-speed-elite-soft-ground-rugby-boots",
+      "discount_pct": 0.2766,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "mizuno|m alpha e sn63|padrão",
       "brand": "Mizuno",
       "model": "M Alpha E Sn63",
       "version": "Padrão",
-      "avg_price_usd": 243.17,
-      "n_observations": 30,
+      "avg_price_usd": 243.25,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1587,7 +1516,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 240.91,
+          "avg_price_usd": 241.2,
           "min_price_usd": 175.97
         }
       ],
@@ -1596,7 +1525,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-m-alpha-e-ag-sn63",
-      "discount_pct": 0.2763,
+      "discount_pct": 0.2766,
       "is_deal": false,
       "ground_type": "Artificial Ground",
       "upper_material": null,
@@ -1605,12 +1534,47 @@
       "spec_source": null
     },
     {
+      "key": "mizuno|waitangi|padrão",
+      "brand": "Mizuno",
+      "model": "Waitangi",
+      "version": "Padrão",
+      "avg_price_usd": 216.82,
+      "n_observations": 62,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 219.38,
+          "min_price_usd": 218.14
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 214.42,
+          "min_price_usd": 156.86
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 156.86,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/mizuno-waitangi-rugby-boot",
+      "discount_pct": 0.2765,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": "Sintético \"Primeskin\"",
+      "stud_type": "6 travas de rosca em alumínio, arredondadas",
+      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "spec_source": "mizuno.com.au, worldrugbyshop.com"
+    },
+    {
       "key": "mizuno|mr neo e lace|padrão",
       "brand": "Mizuno",
       "model": "Mr Neo E Lace",
       "version": "Padrão",
-      "avg_price_usd": 226.16,
-      "n_observations": 30,
+      "avg_price_usd": 226.22,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1622,7 +1586,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 223.54,
+          "avg_price_usd": 223.8,
           "min_price_usd": 163.7
         }
       ],
@@ -1631,7 +1595,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-mr-neo-4-e-si",
-      "discount_pct": 0.2762,
+      "discount_pct": 0.2764,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1644,8 +1608,8 @@
       "brand": "Mizuno",
       "model": "Morellia Neo V Softground",
       "version": "Elite",
-      "avg_price_usd": 310.72,
-      "n_observations": 30,
+      "avg_price_usd": 310.82,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1657,7 +1621,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 307.84,
+          "avg_price_usd": 308.21,
           "min_price_usd": 225.07
         }
       ],
@@ -1666,7 +1630,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-m-neo-elte-si-sn63",
-      "discount_pct": 0.2757,
+      "discount_pct": 0.2759,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1679,8 +1643,8 @@
       "brand": "Mizuno",
       "model": "Neo MX Lace Up",
       "version": "Elite",
-      "avg_price_usd": 310.72,
-      "n_observations": 30,
+      "avg_price_usd": 310.82,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1692,7 +1656,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 307.84,
+          "avg_price_usd": 308.21,
           "min_price_usd": 225.07
         }
       ],
@@ -1701,7 +1665,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-m-neo-elte-mx-sn63",
-      "discount_pct": 0.2757,
+      "discount_pct": 0.2759,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1714,8 +1678,8 @@
       "brand": "Mizuno",
       "model": "Morelia Neo V Elte",
       "version": "Padrão",
-      "avg_price_usd": 291.81,
-      "n_observations": 30,
+      "avg_price_usd": 291.9,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1727,7 +1691,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 289.1,
+          "avg_price_usd": 289.45,
           "min_price_usd": 211.43
         }
       ],
@@ -1736,7 +1700,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-m-neo-elte-ag-sn63",
-      "discount_pct": 0.2755,
+      "discount_pct": 0.2757,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1749,8 +1713,8 @@
       "brand": "Mizuno",
       "model": "Mr Neo E Mx",
       "version": "Padrão",
-      "avg_price_usd": 301.26,
-      "n_observations": 30,
+      "avg_price_usd": 301.36,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1762,7 +1726,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 298.47,
+          "avg_price_usd": 298.83,
           "min_price_usd": 218.26
         }
       ],
@@ -1771,7 +1735,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-mr-neo-4-e-mx",
-      "discount_pct": 0.2755,
+      "discount_pct": 0.2757,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1784,8 +1748,8 @@
       "brand": "Mizuno",
       "model": "A Japan Mix Sn62",
       "version": "Padrão",
-      "avg_price_usd": 451.78,
-      "n_observations": 30,
+      "avg_price_usd": 451.91,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1797,7 +1761,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 447.07,
+          "avg_price_usd": 447.61,
           "min_price_usd": 327.39
         }
       ],
@@ -1806,7 +1770,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-japan-mix-sn62",
-      "discount_pct": 0.2753,
+      "discount_pct": 0.2755,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1819,8 +1783,8 @@
       "brand": "Mizuno",
       "model": "Alpha Elte Soft",
       "version": "Padrão",
-      "avg_price_usd": 451.78,
-      "n_observations": 30,
+      "avg_price_usd": 451.91,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1832,7 +1796,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 447.07,
+          "avg_price_usd": 447.61,
           "min_price_usd": 327.39
         }
       ],
@@ -1841,7 +1805,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-japan-mix-sn62-1",
-      "discount_pct": 0.2753,
+      "discount_pct": 0.2755,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1854,8 +1818,8 @@
       "brand": "Mizuno",
       "model": "Alpha",
       "version": "Elite",
-      "avg_price_usd": 244.67,
-      "n_observations": 30,
+      "avg_price_usd": 244.74,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1867,7 +1831,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 242.27,
+          "avg_price_usd": 242.56,
           "min_price_usd": 177.34
         }
       ],
@@ -1876,7 +1840,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-elite-mix-sn62",
-      "discount_pct": 0.2752,
+      "discount_pct": 0.2754,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1889,8 +1853,8 @@
       "brand": "Mizuno",
       "model": "Alpha Softgtound",
       "version": "Elite",
-      "avg_price_usd": 272.9,
-      "n_observations": 30,
+      "avg_price_usd": 272.98,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1902,7 +1866,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 270.38,
+          "avg_price_usd": 270.7,
           "min_price_usd": 197.8
         }
       ],
@@ -1911,7 +1875,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-elite-fg-sn62",
-      "discount_pct": 0.2752,
+      "discount_pct": 0.2754,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1924,8 +1888,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak Soft Ground",
       "version": "Elite",
-      "avg_price_usd": 158.06,
-      "n_observations": 60,
+      "avg_price_usd": 158.11,
+      "n_observations": 62,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1937,7 +1901,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 156.6,
+          "avg_price_usd": 156.79,
           "min_price_usd": 114.59
         }
       ],
@@ -1946,7 +1910,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-stampede-groundbreak-elite-soft-ground-rugby-boots",
-      "discount_pct": 0.275,
+      "discount_pct": 0.2753,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": "Sintético \"TPU Skin\"",
@@ -1959,8 +1923,8 @@
       "brand": "Mizuno",
       "model": "Alpha V Soft Ground",
       "version": "Elite",
-      "avg_price_usd": 253.99,
-      "n_observations": 30,
+      "avg_price_usd": 254.06,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1972,7 +1936,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 251.64,
+          "avg_price_usd": 251.94,
           "min_price_usd": 184.16
         }
       ],
@@ -1981,7 +1945,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-m-alpha-e-mx-sn63",
-      "discount_pct": 0.2749,
+      "discount_pct": 0.2751,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -1994,8 +1958,8 @@
       "brand": "adidas",
       "model": "Adults Soft Ground",
       "version": "Pro",
-      "avg_price_usd": 253.99,
-      "n_observations": 30,
+      "avg_price_usd": 254.06,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -2007,7 +1971,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 251.64,
+          "avg_price_usd": 251.94,
           "min_price_usd": 184.16
         }
       ],
@@ -2016,7 +1980,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-15-pro-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.2749,
+      "discount_pct": 0.2751,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2029,8 +1993,8 @@
       "brand": "adidas",
       "model": "Kakari Rs Soft Ground",
       "version": "Padrão",
-      "avg_price_usd": 126.99,
-      "n_observations": 30,
+      "avg_price_usd": 127.03,
+      "n_observations": 31,
       "sources": [
         "Lovell Rugby"
       ],
@@ -2042,7 +2006,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 125.82,
+          "avg_price_usd": 125.97,
           "min_price_usd": 92.08
         }
       ],
@@ -2051,7 +2015,43 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/kakari-rs-soft-ground-rugby-boots?_pos=3&_psq=Kakari+Z.2&_psid=f2dabb61d&_ss=e",
-      "discount_pct": 0.2749,
+      "discount_pct": 0.2751,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "canterbury|speed falcon|team",
+      "brand": "Canterbury",
+      "model": "Speed Falcon",
+      "version": "Team",
+      "avg_price_usd": 65.57,
+      "n_observations": 31,
+      "sources": [
+        "Rugbystuff",
+        "TradeInn"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 66.99,
+          "min_price_usd": 66.99
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 64.23,
+          "min_price_usd": 47.75
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 47.75,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/canterbury-speed-falcon-team-sg-rugby-boots-black-gold",
+      "discount_pct": 0.2718,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2065,7 +2065,7 @@
       "model": "Sidestep X20 Power 6S",
       "version": "Padrão",
       "avg_price_usd": 78.18,
-      "n_observations": 90,
+      "n_observations": 93,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -2100,7 +2100,7 @@
       "model": "Adult Unisex CCC Phoenix",
       "version": "Elite",
       "avg_price_usd": 174.57,
-      "n_observations": 120,
+      "n_observations": 124,
       "sources": [
         "Canterbury"
       ],
@@ -2134,8 +2134,8 @@
       "brand": "Canterbury",
       "model": "Phoenix Raze",
       "version": "Padrão",
-      "avg_price_usd": 106.73,
-      "n_observations": 60,
+      "avg_price_usd": 106.75,
+      "n_observations": 62,
       "sources": [
         "Lovell Rugby",
         "World Rugby Shop"
@@ -2148,7 +2148,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 106.2,
+          "avg_price_usd": 106.27,
           "min_price_usd": 81.83
         }
       ],
@@ -2157,7 +2157,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/phoenix-raze-sg-rugby-boots",
-      "discount_pct": 0.2333,
+      "discount_pct": 0.2334,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2171,7 +2171,7 @@
       "model": "Kakari Z. Adults Soft",
       "version": "Padrão",
       "avg_price_usd": 159.55,
-      "n_observations": 150,
+      "n_observations": 155,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2201,48 +2201,12 @@
       "spec_source": null
     },
     {
-      "key": "canterbury|speed falcon|elite",
-      "brand": "Canterbury",
-      "model": "Speed Falcon",
-      "version": "Elite",
-      "avg_price_usd": 161.31,
-      "n_observations": 32,
-      "sources": [
-        "JustRugby",
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 163.56,
-          "min_price_usd": 163.55
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 159.31,
-          "min_price_usd": 126.87
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 126.87,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/canterbury-speed-falcon-elite-sg-rugby-boots-white-orange",
-      "discount_pct": 0.2135,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "canterbury|phoenix adults soft ground|team",
       "brand": "Canterbury",
       "model": "Phoenix Adults Soft Ground",
       "version": "Team",
-      "avg_price_usd": 90.21,
-      "n_observations": 60,
+      "avg_price_usd": 90.23,
+      "n_observations": 62,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven"
@@ -2255,7 +2219,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 89.76,
+          "avg_price_usd": 89.82,
           "min_price_usd": 71.21
         }
       ],
@@ -2264,7 +2228,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/phoenix-team-soft-ground-rugby-boots",
-      "discount_pct": 0.2106,
+      "discount_pct": 0.2108,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2278,7 +2242,7 @@
       "model": "Cage Torq 6S Senior",
       "version": "Padrão",
       "avg_price_usd": 84.54,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -2308,33 +2272,34 @@
       "spec_source": null
     },
     {
-      "key": "adidas|adizero rs15 adults soft|elite",
-      "brand": "adidas",
-      "model": "Adizero Rs15 Adults Soft",
+      "key": "canterbury|speed falcon|elite",
+      "brand": "Canterbury",
+      "model": "Speed Falcon",
       "version": "Elite",
-      "avg_price_usd": 91.93,
-      "n_observations": 30,
+      "avg_price_usd": 159.4,
+      "n_observations": 35,
       "sources": [
-        "Lovell Rugby"
+        "JustRugby",
+        "Rugbystuff"
       ],
       "history": [
         {
           "date": "2026-08-25",
-          "avg_price_usd": 80.81,
-          "min_price_usd": 79.08
+          "avg_price_usd": 163.56,
+          "min_price_usd": 163.55
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 103.04,
-          "min_price_usd": 75.03
+          "avg_price_usd": 156.29,
+          "min_price_usd": 126.87
         }
       ],
       "latest_date": "2026-08-26",
-      "latest_min_price_usd": 75.03,
-      "latest_min_site": "Lovell Rugby",
+      "latest_min_price_usd": 126.87,
+      "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/rs15-elite-soft-ground-rugby-boots",
-      "discount_pct": 0.1838,
+      "latest_min_url": "https://www.rugbystuff.com/products/canterbury-speed-falcon-elite-sg-rugby-boots-white-orange",
+      "discount_pct": 0.2041,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2347,8 +2312,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak",
       "version": "Elite",
-      "avg_price_usd": 159.73,
-      "n_observations": 52,
+      "avg_price_usd": 162.8,
+      "n_observations": 56,
       "sources": [
         "Rugbystuff",
         "TradeInn"
@@ -2361,7 +2326,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 161.29,
+          "avg_price_usd": 166.32,
           "min_price_usd": 131.99
         }
       ],
@@ -2370,7 +2335,7 @@
       "latest_min_site": "TradeInn",
       "latest_min_region": "Europe (ES)",
       "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-stampede-groundbreak-elite-sg-rugby-boots/141789167/p",
-      "discount_pct": 0.1737,
+      "discount_pct": 0.1893,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": "Sintético \"TPU Skin\"",
@@ -2379,12 +2344,47 @@
       "spec_source": "canterburyusa.com, rugbystuff.com"
     },
     {
+      "key": "adidas|adizero rs15 adults soft|elite",
+      "brand": "adidas",
+      "model": "Adizero Rs15 Adults Soft",
+      "version": "Elite",
+      "avg_price_usd": 92.35,
+      "n_observations": 31,
+      "sources": [
+        "Lovell Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 80.81,
+          "min_price_usd": 79.08
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 103.16,
+          "min_price_usd": 75.03
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 75.03,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/rs15-elite-soft-ground-rugby-boots",
+      "discount_pct": 0.1875,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "mizuno|monarcida neo iii select|padrão",
       "brand": "Mizuno",
       "model": "Monarcida NEO III Select",
       "version": "Padrão",
       "avg_price_usd": 81.81,
-      "n_observations": 180,
+      "n_observations": 186,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2419,7 +2419,7 @@
       "model": "RS15 Adults Soft Ground",
       "version": "Padrão",
       "avg_price_usd": 81.8,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2453,8 +2453,8 @@
       "brand": "Mizuno",
       "model": "Morelia Neo IV Beta",
       "version": "Elite",
-      "avg_price_usd": 198.89,
-      "n_observations": 61,
+      "avg_price_usd": 199.95,
+      "n_observations": 64,
       "sources": [
         "Rugby Heaven",
         "Rugbystuff"
@@ -2467,7 +2467,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 200.06,
+          "avg_price_usd": 201.95,
           "min_price_usd": 170.49
         }
       ],
@@ -2476,7 +2476,7 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-iv-beta-elite-adults-soft-ground-rugby-boots-1",
-      "discount_pct": 0.1428,
+      "discount_pct": 0.1473,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2489,8 +2489,8 @@
       "brand": "Canterbury",
       "model": "Phoenix",
       "version": "Pro",
-      "avg_price_usd": 101.72,
-      "n_observations": 94,
+      "avg_price_usd": 101.65,
+      "n_observations": 98,
       "sources": [
         "TradeInn"
       ],
@@ -2502,7 +2502,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 101.31,
+          "avg_price_usd": 101.23,
           "min_price_usd": 88.49
         }
       ],
@@ -2511,7 +2511,7 @@
       "latest_min_site": "TradeInn",
       "latest_min_region": "Europe (ES)",
       "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-phoenix-2.0-pro-sg-rugby-boots/142194392/p",
-      "discount_pct": 0.1301,
+      "discount_pct": 0.1295,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2525,7 +2525,7 @@
       "model": "Morelia Neo III Beta",
       "version": "Padrão",
       "avg_price_usd": 149.99,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2559,8 +2559,8 @@
       "brand": "Oxen",
       "model": "Meta X Stud Adults",
       "version": "Padrão",
-      "avg_price_usd": 150.0,
-      "n_observations": 62,
+      "avg_price_usd": 150.01,
+      "n_observations": 66,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2595,7 +2595,7 @@
       "model": "Meta X Stud Onyx",
       "version": "Padrão",
       "avg_price_usd": 173.93,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -2625,7 +2625,7 @@
       "model": "Stampede Groundbreak Adults Soft",
       "version": "Team",
       "avg_price_usd": 104.55,
-      "n_observations": 90,
+      "n_observations": 93,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2655,48 +2655,12 @@
       "spec_source": "canterburyusa.com, rugbystuff.com"
     },
     {
-      "key": "canterbury|speed falcon|pro",
-      "brand": "Canterbury",
-      "model": "Speed Falcon",
-      "version": "Pro",
-      "avg_price_usd": 95.49,
-      "n_observations": 60,
-      "sources": [
-        "JustRugby",
-        "TradeInn"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 95.35,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 95.62,
-          "min_price_usd": 88.49
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 88.49,
-      "latest_min_site": "TradeInn",
-      "latest_min_region": "Europe (ES)",
-      "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-speed-falcon-pro-sg-rugby-boots/142194409/p",
-      "discount_pct": 0.0733,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "mizuno|monarcida neo iii si|padrão",
       "brand": "Mizuno",
       "model": "Monarcida Neo III SI",
       "version": "Padrão",
-      "avg_price_usd": 57.47,
-      "n_observations": 31,
+      "avg_price_usd": 59.5,
+      "n_observations": 33,
       "sources": [
         "Rugbystuff",
         "TradeInn"
@@ -2709,7 +2673,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 59.79,
+          "avg_price_usd": 63.25,
           "min_price_usd": 54.99
         }
       ],
@@ -2718,9 +2682,45 @@
       "latest_min_site": "TradeInn",
       "latest_min_region": "Europe (ES)",
       "latest_min_url": "https://www.tradeinn.com/rugby/en/mizuno-monarcida-neo-iii-rugby-si-rugby-boots/142125247/p",
-      "discount_pct": 0.0432,
+      "discount_pct": 0.0758,
       "is_deal": false,
       "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "canterbury|speed falcon|pro",
+      "brand": "Canterbury",
+      "model": "Speed Falcon",
+      "version": "Pro",
+      "avg_price_usd": 95.48,
+      "n_observations": 62,
+      "sources": [
+        "JustRugby",
+        "TradeInn"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 95.35,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 95.61,
+          "min_price_usd": 88.49
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 88.49,
+      "latest_min_site": "TradeInn",
+      "latest_min_region": "Europe (ES)",
+      "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-speed-falcon-pro-sg-rugby-boots/142194409/p",
+      "discount_pct": 0.0732,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
       "upper_material": null,
       "stud_type": null,
       "width_fit": null,
@@ -2731,8 +2731,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak",
       "version": "Team",
-      "avg_price_usd": 81.9,
-      "n_observations": 46,
+      "avg_price_usd": 83.5,
+      "n_observations": 50,
       "sources": [
         "Rugbystuff",
         "TradeInn"
@@ -2745,7 +2745,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 85.43,
+          "avg_price_usd": 87.78,
           "min_price_usd": 78.99
         }
       ],
@@ -2754,7 +2754,7 @@
       "latest_min_site": "TradeInn",
       "latest_min_region": "Europe (ES)",
       "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-stampede-groundbreak-team-sg-rugby-boots/142877056/p",
-      "discount_pct": 0.0355,
+      "discount_pct": 0.054,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": "Mesh respirável",
@@ -2763,12 +2763,47 @@
       "spec_source": "canterburyusa.com, rugbystuff.com"
     },
     {
+      "key": "canterbury|stamped groundbreak|pro",
+      "brand": "Canterbury",
+      "model": "Stamped Groundbreak",
+      "version": "Pro",
+      "avg_price_usd": 91.31,
+      "n_observations": 25,
+      "sources": [
+        "TradeInn"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 88.49,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 95.54,
+          "min_price_usd": 88.49
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 88.49,
+      "latest_min_site": "TradeInn",
+      "latest_min_region": "Europe (ES)",
+      "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-stamped-groundbreak-pro-sg-rugby-boots/142319453/p",
+      "discount_pct": 0.0309,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "mizuno|waitangi ps adults soft|padrão",
       "brand": "Mizuno",
       "model": "Waitangi PS Adults Soft",
       "version": "Padrão",
       "avg_price_usd": 119.31,
-      "n_observations": 120,
+      "n_observations": 124,
       "sources": [
         "Rugby Heaven"
       ],
@@ -2798,47 +2833,12 @@
       "spec_source": "mizuno.com.au, worldrugbyshop.com"
     },
     {
-      "key": "canterbury|stamped groundbreak|pro",
-      "brand": "Canterbury",
-      "model": "Stamped Groundbreak",
-      "version": "Pro",
-      "avg_price_usd": 91.05,
-      "n_observations": 24,
-      "sources": [
-        "TradeInn"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 88.49,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 95.32,
-          "min_price_usd": 88.49
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 88.49,
-      "latest_min_site": "TradeInn",
-      "latest_min_region": "Europe (ES)",
-      "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-stamped-groundbreak-pro-sg-rugby-boots/142319453/p",
-      "discount_pct": 0.0281,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "mizuno|α alpha iii mix|elite",
       "brand": "Mizuno",
       "model": "α Alpha III Mix",
       "version": "Elite",
       "avg_price_usd": 292.61,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -2867,8 +2867,8 @@
       "brand": "Mizuno",
       "model": "Morelia Neo V Beta",
       "version": "Elite",
-      "avg_price_usd": 268.57,
-      "n_observations": 64,
+      "avg_price_usd": 270.77,
+      "n_observations": 70,
       "sources": [
         "Rugby Heaven",
         "Rugbystuff"
@@ -2881,7 +2881,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 270.97,
+          "avg_price_usd": 274.45,
           "min_price_usd": 265.99
         }
       ],
@@ -2890,7 +2890,7 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-v-beta-elite-si-adults-sg-rugby-boots-black-p1gc269300",
-      "discount_pct": 0.0096,
+      "discount_pct": 0.0177,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2899,47 +2899,12 @@
       "spec_source": null
     },
     {
-      "key": "mizuno|waitangi|club",
-      "brand": "Mizuno",
-      "model": "Waitangi",
-      "version": "Club",
-      "avg_price_usd": 79.79,
-      "n_observations": 24,
-      "sources": [
-        "TradeInn"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 79.49,
-          "min_price_usd": 79.49
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 80.28,
-          "min_price_usd": 79.49
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 79.49,
-      "latest_min_site": "TradeInn",
-      "latest_min_region": "Europe (ES)",
-      "latest_min_url": "https://www.tradeinn.com/rugby/en/mizuno-waitangi-club-rugby-boots/142670387/p",
-      "discount_pct": 0.0038,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
-      "spec_source": "mizuno.com.au, worldrugbyshop.com"
-    },
-    {
       "key": "canterbury|speed raze soft ground|padrão",
       "brand": "Canterbury",
       "model": "Speed Raze Soft Ground",
       "version": "Padrão",
       "avg_price_usd": 62.21,
-      "n_observations": 23,
+      "n_observations": 24,
       "sources": [
         "TradeInn"
       ],
@@ -2951,7 +2916,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 62.33,
+          "avg_price_usd": 62.31,
           "min_price_usd": 61.99
         }
       ],
@@ -2969,12 +2934,47 @@
       "spec_source": null
     },
     {
+      "key": "mizuno|waitangi|club",
+      "brand": "Mizuno",
+      "model": "Waitangi",
+      "version": "Club",
+      "avg_price_usd": 79.77,
+      "n_observations": 25,
+      "sources": [
+        "TradeInn"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 79.49,
+          "min_price_usd": 79.49
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 80.2,
+          "min_price_usd": 79.49
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 79.49,
+      "latest_min_site": "TradeInn",
+      "latest_min_region": "Europe (ES)",
+      "latest_min_url": "https://www.tradeinn.com/rugby/en/mizuno-waitangi-club-rugby-boots/142670387/p",
+      "discount_pct": 0.0035,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": "Sintético \"Primeskin\"",
+      "stud_type": "6 travas de rosca em alumínio, arredondadas",
+      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "spec_source": "mizuno.com.au, worldrugbyshop.com"
+    },
+    {
       "key": "canterbury|phoenix genesis|team",
       "brand": "Canterbury",
       "model": "Phoenix Genesis",
       "version": "Team",
       "avg_price_usd": 68.18,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "TradeInn"
       ],
@@ -2986,7 +2986,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 68.38,
+          "avg_price_usd": 68.35,
           "min_price_usd": 67.99
         }
       ],
@@ -3009,7 +3009,7 @@
       "model": "Argie Brochero",
       "version": "Padrão",
       "avg_price_usd": 57.97,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Durban Rugby"
       ],
@@ -3044,7 +3044,7 @@
       "model": "Stampede",
       "version": "Team",
       "avg_price_usd": 119.24,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugbier Store"
       ],
@@ -3079,7 +3079,7 @@
       "model": "Adults Speed Falcon Soft",
       "version": "Elite",
       "avg_price_usd": 218.2,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugbystore.co.uk"
       ],
@@ -3114,7 +3114,7 @@
       "model": "Phoenix Adults Soft Ground",
       "version": "Elite",
       "avg_price_usd": 136.36,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3149,7 +3149,7 @@
       "model": "Phoenix Raze Adults Soft",
       "version": "Padrão",
       "avg_price_usd": 81.8,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3184,7 +3184,7 @@
       "model": "Stampede Groundbreak Adults Soft",
       "version": "Pro",
       "avg_price_usd": 136.37,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3219,7 +3219,7 @@
       "model": "Morelia II Adults Astroturf",
       "version": "Club",
       "avg_price_usd": 40.9,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3254,7 +3254,7 @@
       "model": "Morelia Neo IV Adults",
       "version": "Elite",
       "avg_price_usd": 170.45,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3289,7 +3289,7 @@
       "model": "Morelia Neo IV Mix",
       "version": "Pro",
       "avg_price_usd": 136.36,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3324,7 +3324,7 @@
       "model": "Adult Unisex CCC Phoenix",
       "version": "Pro",
       "avg_price_usd": 136.38,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Canterbury"
       ],
@@ -3359,7 +3359,7 @@
       "model": "Adult Unisex Phoenix Soft",
       "version": "Elite",
       "avg_price_usd": 218.21,
-      "n_observations": 90,
+      "n_observations": 93,
       "sources": [
         "Canterbury"
       ],
@@ -3394,7 +3394,7 @@
       "model": "Adult Unisex Phoenix Soft",
       "version": "Pro",
       "avg_price_usd": 136.38,
-      "n_observations": 89,
+      "n_observations": 92,
       "sources": [
         "Canterbury"
       ],
@@ -3424,12 +3424,47 @@
       "spec_source": null
     },
     {
+      "key": "outra marca|adult unisex phoenix soft|team",
+      "brand": "Outra marca",
+      "model": "Adult Unisex Phoenix Soft",
+      "version": "Team",
+      "avg_price_usd": 111.84,
+      "n_observations": 92,
+      "sources": [
+        "Canterbury"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 111.81,
+          "min_price_usd": 111.8
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 111.86,
+          "min_price_usd": 111.86
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 111.86,
+      "latest_min_site": "Canterbury",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.canterbury.com/collections/boots-for-forwards/products/adult-unisex-phoenix-2-0-team-soft-ground-boots-white-qb000182bh1",
+      "discount_pct": -0.0002,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "outra marca|adult unisex speed falcon|pro",
       "brand": "Outra marca",
       "model": "Adult Unisex Speed Falcon",
       "version": "Pro",
       "avg_price_usd": 136.38,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Canterbury"
       ],
@@ -3464,7 +3499,7 @@
       "model": "Adult Unisex Stampede Groundbreak",
       "version": "Pro",
       "avg_price_usd": 136.38,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Canterbury"
       ],
@@ -3499,7 +3534,7 @@
       "model": "Cage Pace MSX Senior",
       "version": "Pro",
       "avg_price_usd": 90.68,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3534,7 +3569,7 @@
       "model": "Cage Torq MSX Senior",
       "version": "Padrão",
       "avg_price_usd": 88.64,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3569,7 +3604,7 @@
       "model": "Icon Players 8S Senior",
       "version": "Padrão",
       "avg_price_usd": 163.64,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3604,7 +3639,7 @@
       "model": "Icon Players Stud Senior",
       "version": "Padrão",
       "avg_price_usd": 163.64,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3639,7 +3674,7 @@
       "model": "Sidestep Icon MSX Mini",
       "version": "Padrão",
       "avg_price_usd": 54.54,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3674,7 +3709,7 @@
       "model": "Sidestep X20 Lo MSX",
       "version": "Padrão",
       "avg_price_usd": 54.54,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3709,7 +3744,7 @@
       "model": "Sidestep X20 Power 8S",
       "version": "Padrão",
       "avg_price_usd": 88.64,
-      "n_observations": 90,
+      "n_observations": 93,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3744,7 +3779,7 @@
       "model": "Speedster 6S Senior",
       "version": "Padrão",
       "avg_price_usd": 122.73,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3779,7 +3814,7 @@
       "model": "Raptor K Leather Adults",
       "version": "Elite",
       "avg_price_usd": 136.36,
-      "n_observations": 31,
+      "n_observations": 33,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3814,7 +3849,7 @@
       "model": "Adizero RS15 Adults Soft",
       "version": "Pro",
       "avg_price_usd": 204.56,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3844,12 +3879,47 @@
       "spec_source": null
     },
     {
+      "key": "adidas|antoine dupont adults adizero|pro",
+      "brand": "adidas",
+      "model": "Antoine Dupont Adults Adizero",
+      "version": "Pro",
+      "avg_price_usd": 300.03,
+      "n_observations": 30,
+      "sources": [
+        "Rugbystore.co.uk"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 299.95,
+          "min_price_usd": 299.93
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 300.1,
+          "min_price_usd": 300.1
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 300.1,
+      "latest_min_site": "Rugbystore.co.uk",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystore.co.uk/all-rugby-boots",
+      "discount_pct": -0.0002,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "adidas|malice adults soft ground|elite",
       "brand": "adidas",
       "model": "Malice Adults Soft Ground",
       "version": "Elite",
       "avg_price_usd": 95.4,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3884,7 +3954,7 @@
       "model": "Predator XP Adults Soft",
       "version": "Padrão",
       "avg_price_usd": 136.36,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3919,7 +3989,7 @@
       "model": "RS Adults Soft Ground",
       "version": "Elite",
       "avg_price_usd": 150.01,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3954,7 +4024,7 @@
       "model": "RS15 Adults Soft Ground",
       "version": "Elite",
       "avg_price_usd": 129.54,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3989,7 +4059,7 @@
       "model": "Phoenix Adults Soft Ground",
       "version": "Pro",
       "avg_price_usd": 109.09,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4024,7 +4094,7 @@
       "model": "Speed Infinite Adults Soft",
       "version": "Pro",
       "avg_price_usd": 109.09,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4059,7 +4129,7 @@
       "model": "Quantum Pace Adults Soft",
       "version": "Padrão",
       "avg_price_usd": 68.16,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4094,7 +4164,7 @@
       "model": "Sidestep X15 Stud Adults",
       "version": "Padrão",
       "avg_price_usd": 68.16,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4129,7 +4199,7 @@
       "model": "Monarcida Neo II Select",
       "version": "Padrão",
       "avg_price_usd": 68.16,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4164,7 +4234,7 @@
       "model": "Morelia NEO IV Adults",
       "version": "Pro",
       "avg_price_usd": 109.09,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4199,7 +4269,7 @@
       "model": "Adult Unisex Phoenix Raze",
       "version": "Padrão",
       "avg_price_usd": 102.28,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Canterbury"
       ],
@@ -4229,47 +4299,12 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|adult unisex phoenix soft|team",
-      "brand": "Outra marca",
-      "model": "Adult Unisex Phoenix Soft",
-      "version": "Team",
-      "avg_price_usd": 111.83,
-      "n_observations": 89,
-      "sources": [
-        "Canterbury"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 111.81,
-          "min_price_usd": 111.8
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 111.86,
-          "min_price_usd": 111.86
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 111.86,
-      "latest_min_site": "Canterbury",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.canterbury.com/collections/boots-for-forwards/products/adult-unisex-phoenix-2-0-team-soft-ground-boots-white-qb000182bh1",
-      "discount_pct": -0.0003,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "outra marca|icon 6s|padrão",
       "brand": "Outra marca",
       "model": "Icon 6S",
       "version": "Padrão",
       "avg_price_usd": 95.45,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -4304,7 +4339,7 @@
       "model": "Icon 8S",
       "version": "Padrão",
       "avg_price_usd": 95.45,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -4339,7 +4374,7 @@
       "model": "Icon Power X Stud",
       "version": "Padrão",
       "avg_price_usd": 115.91,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -4374,7 +4409,7 @@
       "model": "Icon Vapour 6S Senior",
       "version": "Padrão",
       "avg_price_usd": 115.91,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -4409,7 +4444,7 @@
       "model": "Icon Vapour 8S Senior",
       "version": "Padrão",
       "avg_price_usd": 115.91,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -4444,7 +4479,7 @@
       "model": "Icon X Stud Senior",
       "version": "Padrão",
       "avg_price_usd": 109.09,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -4479,7 +4514,7 @@
       "model": "Viper Adults Soft Ground",
       "version": "Elite",
       "avg_price_usd": 68.16,
-      "n_observations": 31,
+      "n_observations": 33,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4514,7 +4549,7 @@
       "model": "Avant Adults Soft Ground",
       "version": "Padrão",
       "avg_price_usd": 61.3,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4544,47 +4579,12 @@
       "spec_source": null
     },
     {
-      "key": "adidas|antoine dupont adults adizero|pro",
-      "brand": "adidas",
-      "model": "Antoine Dupont Adults Adizero",
-      "version": "Pro",
-      "avg_price_usd": 300.02,
-      "n_observations": 29,
-      "sources": [
-        "Rugbystore.co.uk"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 299.95,
-          "min_price_usd": 299.93
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 300.1,
-          "min_price_usd": 300.1
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 300.1,
-      "latest_min_site": "Rugbystore.co.uk",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystore.co.uk/all-rugby-boots",
-      "discount_pct": -0.0003,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "adidas|predator xp artificial grass|padrão",
       "brand": "adidas",
       "model": "Predator XP Artificial Grass",
       "version": "Padrão",
       "avg_price_usd": 109.07,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4619,7 +4619,7 @@
       "model": "Y Predator Adults Soft",
       "version": "Padrão",
       "avg_price_usd": 109.07,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4654,7 +4654,7 @@
       "model": "Slider Senior",
       "version": "Padrão",
       "avg_price_usd": 27.26,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -4689,7 +4689,7 @@
       "model": "Speed Falcon Blanc Blanc",
       "version": "Team",
       "avg_price_usd": 129.59,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4719,7 +4719,7 @@
       "model": "Speed Falcon Blanc Blanc",
       "version": "Elite",
       "avg_price_usd": 253.73,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4749,7 +4749,7 @@
       "model": "Speed Falcon Jet",
       "version": "Team",
       "avg_price_usd": 129.59,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4779,7 +4779,7 @@
       "model": "Speed Falcon Jet",
       "version": "Pro",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4809,7 +4809,7 @@
       "model": "Speed Falcon Jet",
       "version": "Elite",
       "avg_price_usd": 253.73,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4839,7 +4839,7 @@
       "model": "Speed Raze",
       "version": "Padrão",
       "avg_price_usd": 53.2,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -4869,7 +4869,7 @@
       "model": "Stampede Groundbreak",
       "version": "Pro",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4899,7 +4899,7 @@
       "model": "Stampede Groundbreak Blanc Blanc",
       "version": "Team",
       "avg_price_usd": 129.59,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -4929,7 +4929,7 @@
       "model": "Stampede Groundbreak Blanc Blanc",
       "version": "Pro",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4959,7 +4959,7 @@
       "model": "Stampede Groundbreak Blanc Blanc",
       "version": "Elite",
       "avg_price_usd": 253.73,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -4989,7 +4989,7 @@
       "model": "Icon Players Stud",
       "version": "Padrão",
       "avg_price_usd": 64.11,
-      "n_observations": 3,
+      "n_observations": 6,
       "sources": [
         "Rugbystuff"
       ],
@@ -5019,7 +5019,7 @@
       "model": "Icon Vapour Stud",
       "version": "Padrão",
       "avg_price_usd": 135.05,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5049,7 +5049,7 @@
       "model": "Sidestep Icon Stud",
       "version": "Padrão",
       "avg_price_usd": 103.67,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5079,7 +5079,7 @@
       "model": "Speedster Stud Aqua",
       "version": "Padrão",
       "avg_price_usd": 137.78,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5109,7 +5109,7 @@
       "model": "Morelia Neo IV MD",
       "version": "Pro",
       "avg_price_usd": 143.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5139,7 +5139,7 @@
       "model": "Morelia Neo V Beta",
       "version": "Pro",
       "avg_price_usd": 205.99,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5169,7 +5169,7 @@
       "model": "Waitangi",
       "version": "Pro",
       "avg_price_usd": 222.36,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5199,7 +5199,7 @@
       "model": "Waitangi II CL Adults",
       "version": "Padrão",
       "avg_price_usd": 81.78,
-      "n_observations": 60,
+      "n_observations": 62,
       "sources": [
         "Rugby Heaven"
       ],
@@ -5234,7 +5234,7 @@
       "model": "Waitangi Iron Gate",
       "version": "Club",
       "avg_price_usd": 143.24,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5264,7 +5264,7 @@
       "model": "Waitangi Lava",
       "version": "Pro",
       "avg_price_usd": 222.36,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5294,7 +5294,7 @@
       "model": "Waitangi Metallic",
       "version": "Pro",
       "avg_price_usd": 143.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5324,7 +5324,7 @@
       "model": "Waitangi Wide Galaxy",
       "version": "Pro",
       "avg_price_usd": 224.99,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "World Rugby Shop"
       ],
@@ -5359,7 +5359,7 @@
       "model": "Gift Card £",
       "version": "Padrão",
       "avg_price_usd": 13.64,
-      "n_observations": 30,
+      "n_observations": 31,
       "sources": [
         "Pro:Direct Rugby"
       ],
@@ -5394,7 +5394,7 @@
       "model": "Meta X Flare",
       "version": "Padrão",
       "avg_price_usd": 158.24,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5424,7 +5424,7 @@
       "model": "Meta X Onyx",
       "version": "Padrão",
       "avg_price_usd": 158.24,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5454,7 +5454,7 @@
       "model": "Meta X Stud Blaze",
       "version": "Padrão",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5484,7 +5484,7 @@
       "model": "Meta X Stud Cool",
       "version": "Padrão",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5514,7 +5514,7 @@
       "model": "Meta X Stud Flare",
       "version": "Padrão",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5544,7 +5544,7 @@
       "model": "Meta X Stud Haze",
       "version": "Padrão",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5574,7 +5574,7 @@
       "model": "Raptor Stud",
       "version": "Elite",
       "avg_price_usd": 158.24,
-      "n_observations": 4,
+      "n_observations": 8,
       "sources": [
         "Rugbystuff"
       ],
@@ -5604,7 +5604,7 @@
       "model": "Adizero RS15",
       "version": "Pro",
       "avg_price_usd": 174.61,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5634,7 +5634,7 @@
       "model": "Adizero RS15 Royal",
       "version": "Pro Team",
       "avg_price_usd": 347.86,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5664,7 +5664,7 @@
       "model": "Adizero RS15 Solar Turbo",
       "version": "Pro",
       "avg_price_usd": 347.86,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5694,7 +5694,7 @@
       "model": "Adizero RS15 Ultimate",
       "version": "Padrão",
       "avg_price_usd": 158.24,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5724,7 +5724,7 @@
       "model": "Adizero RS15 Ultimate Royal",
       "version": "Team",
       "avg_price_usd": 268.74,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5754,7 +5754,7 @@
       "model": "Adizero RS15 Ultimate Solar",
       "version": "Padrão",
       "avg_price_usd": 268.74,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5784,7 +5784,7 @@
       "model": "Antoine Dupont Adizero RS15",
       "version": "Pro",
       "avg_price_usd": 347.86,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5814,7 +5814,7 @@
       "model": "Kakari RS",
       "version": "Padrão",
       "avg_price_usd": 95.49,
-      "n_observations": 4,
+      "n_observations": 8,
       "sources": [
         "Rugbystuff"
       ],
@@ -5844,7 +5844,7 @@
       "model": "Kakari RS Royal",
       "version": "Team",
       "avg_price_usd": 285.11,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5874,7 +5874,7 @@
       "model": "Kakari RS Solar Turbo",
       "version": "Padrão",
       "avg_price_usd": 285.11,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5904,7 +5904,7 @@
       "model": "Kakari Royal",
       "version": "Elite Team",
       "avg_price_usd": 174.61,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5934,7 +5934,7 @@
       "model": "Kakari Royal",
       "version": "Team",
       "avg_price_usd": 126.87,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -5964,7 +5964,7 @@
       "model": "Predator League Lucid",
       "version": "Padrão",
       "avg_price_usd": 111.86,
-      "n_observations": 2,
+      "n_observations": 4,
       "sources": [
         "Rugbystuff"
       ],
@@ -5994,7 +5994,7 @@
       "model": "RS",
       "version": "Padrão",
       "avg_price_usd": 79.12,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -6024,7 +6024,7 @@
       "model": "RS Royal",
       "version": "Elite Team",
       "avg_price_usd": 174.61,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -6054,7 +6054,7 @@
       "model": "RS Royal",
       "version": "Team",
       "avg_price_usd": 126.87,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -6084,7 +6084,7 @@
       "model": "RS Solar Turbo",
       "version": "Elite",
       "avg_price_usd": 174.61,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -6114,7 +6114,7 @@
       "model": "RS Solar Turbo",
       "version": "Padrão",
       "avg_price_usd": 126.87,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -6144,7 +6144,7 @@
       "model": "RS15 Avaglide Ice",
       "version": "Padrão",
       "avg_price_usd": 222.36,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
@@ -6174,7 +6174,7 @@
       "model": "RS15 Avaglide Rise Ice",
       "version": "Padrão",
       "avg_price_usd": 111.86,
-      "n_observations": 1,
+      "n_observations": 2,
       "sources": [
         "Rugbystuff"
       ],
