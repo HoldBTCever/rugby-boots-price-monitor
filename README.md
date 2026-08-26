@@ -232,8 +232,20 @@ agregados por modelo/versão (valor mais frequente) em
 `daily_summary.json`. A aba **Comparar** deixa escolher duas chuteiras
 quaisquer (dos 133+ modelos já confirmados, não só a watchlist) e mostra
 lado a lado: marca/modelo/versão, preço médio, menor preço de hoje (+
-fonte), solado, cabedal e travas — com a diferença de preço em US$ e %
-calculada automaticamente.
+fonte), solado, cabedal, travas e encaixe (largura) — com a diferença de
+preço em US$ e % calculada automaticamente.
+
+**Dados curados (`scraper/model_specs.json`):** pra um punhado de
+modelos conhecidos (hoje: os 12 da watchlist), cabedal/travas/encaixe
+vêm de pesquisa manual — ficha técnica oficial da marca ou descrição
+detalhada de loja, não do título raspado — porque a maioria dos títulos
+não menciona isso. Cada entrada casa por palavra-chave contra
+marca+modelo+versão (mesmo esquema de `scraper/watchlist.py`) e tem
+prioridade sobre o que foi extraído automaticamente do título; a fonte
+de cada dado aparece embaixo da tabela na aba Comparar. Quando a
+pesquisa não confirma um campo específico pra um modelo (ex: largura do
+Oxen Meta X, que só achei pra coleção Oxen em geral, não pro modelo
+exato), o campo fica `null` em vez de herdar um valor genérico da marca.
 
 ## Rodar localmente
 

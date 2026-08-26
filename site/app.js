@@ -276,6 +276,7 @@
     { label: "Solado", get: (m) => m.ground_type || "Não informado" },
     { label: "Cabedal", get: (m) => m.upper_material || "Não informado" },
     { label: "Travas", get: (m) => m.stud_type || "Não informado" },
+    { label: "Encaixe (largura)", get: (m) => m.width_fit || "Não informado" },
   ];
 
   function renderCompareTable(models, keyA, keyB) {
@@ -312,13 +313,22 @@
         </tr>`;
     }).join("");
 
+    const sources = [
+      a.spec_source ? `Chuteira A (cabedal/travas/encaixe): ${a.spec_source}` : null,
+      b.spec_source ? `Chuteira B (cabedal/travas/encaixe): ${b.spec_source}` : null,
+    ].filter(Boolean);
+    const sourceNote = sources.length
+      ? `<p class="watchlist-meta" style="margin-top:10px">Fonte dos dados de cabedal/travas/encaixe pesquisados manualmente — ${sources.join(" · ")}.</p>`
+      : "";
+
     slot.innerHTML = `
       <div class="table-scroll">
         <table class="responsive-table">
           <thead><tr><th>Atributo</th><th>Chuteira A</th><th>Chuteira B</th><th>Diferença</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
-      </div>`;
+      </div>
+      ${sourceNote}`;
   }
 
   function renderCompare(models) {
@@ -342,8 +352,10 @@
     slot.innerHTML = `
       <div class="card">
         <h2>Comparar chuteiras</h2>
-        <p class="watchlist-meta">Preço, solado, cabedal e travas lado a lado. Cabedal e travas só aparecem
-          quando a própria loja menciona isso no título do produto — cobertura parcial, sem inventar dado.</p>
+        <p class="watchlist-meta">Preço, solado, cabedal, travas e encaixe (largura) lado a lado. Pra um grupo
+          curado de modelos, cabedal/travas/encaixe vêm de pesquisa manual (ficha técnica da marca ou loja,
+          fonte sempre citada abaixo da tabela); nos demais, só o que a própria loja menciona no título do
+          produto — sem inventar dado quando a fonte não informa.</p>
         <div class="chart-controls">
           <label for="compareSelectA">Chuteira A:</label>
           <select id="compareSelectA">${options}</select>

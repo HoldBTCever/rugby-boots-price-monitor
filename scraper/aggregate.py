@@ -28,6 +28,26 @@ def _read_rows() -> list[dict]:
         return list(csv.DictReader(f))
 
 
+def _load_model_specs() -> list[dict]:
+    if not config.MODEL_SPECS_CONFIG.exists():
+        return []
+    return json.loads(config.MODEL_SPECS_CONFIG.read_text(encoding="utf-8"))
+
+
+def _find_curated_spec(specs: list[dict], brand: str, model: str, version: str) -> dict | None:
+    """Cabedal/travas/largura pesquisados manualmente (fonte real, não
+    extraído do título) pra um punhado de modelos conhecidos -- veja
+    scraper/model_specs.json. Usa o mesmo esquema de match por palavra-
+    chave da watchlist (scraper/watchlist.py), contra marca+modelo+versão
+    já normalizados. A primeira entrada que bater vence, por isso as mais
+    específicas (ex: "Stampede Elite") vêm antes das genéricas."""
+    text = f"{brand} {model} {version}"
+    for spec in specs:
+        if wl.matches(text, spec["match"]):
+            return spec
+    return None
+
+
 def _build_watchlist(rows: list[dict], cutoff: str) -> list[dict]:
     """Agrupa por versão (dentro de cada item da watchlist) e depois por
     bloco do Bitcoin -- cada bloco novo minerado é um ponto no histórico.
@@ -93,6 +113,7 @@ def _build_watchlist(rows: list[dict], cutoff: str) -> list[dict]:
 
 def run() -> None:
     rows = _read_rows()
+    model_specs = _load_model_specs()
     now = datetime.now(timezone.utc)
     cutoff = (now - timedelta(days=config.AVERAGE_WINDOW_DAYS)).date().isoformat()
 
@@ -157,7 +178,22 @@ def run() -> None:
             "ground_type": g["ground_types"].most_common(1)[0][0] if g["ground_types"] else None,
             "upper_material": g["upper_materials"].most_common(1)[0][0] if g["upper_materials"] else None,
             "stud_type": g["stud_types"].most_common(1)[0][0] if g["stud_types"] else None,
+            "width_fit": None,
+            "spec_source": None,
         }
+
+        # Cabedal/travas/largura pesquisados manualmente (fonte real) têm
+        # prioridade sobre o que foi extraído automaticamente do título --
+        # cobrem só um punhado de modelos conhecidos (scraper/model_specs.json).
+        curated = _find_curated_spec(model_specs, g["brand"], g["model"], g["version"])
+        if curated:
+            if curated.get("upper_material"):
+                entry["upper_material"] = curated["upper_material"]
+            if curated.get("stud_type"):
+                entry["stud_type"] = curated["stud_type"]
+            if curated.get("width_fit"):
+                entry["width_fit"] = curated["width_fit"]
+            entry["spec_source"] = curated.get("source")
 
         if g["latest"]:
             cheapest = min(g["latest"], key=lambda r: float(r["price_usd"]))

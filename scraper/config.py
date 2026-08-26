@@ -11,6 +11,7 @@ SITE_DATA_DIR = ROOT / "site" / "data"
 SITES_CONFIG = ROOT / "scraper" / "sites.json"
 CATALOG_CONFIG = ROOT / "scraper" / "catalog.json"
 WATCHLIST_CONFIG = ROOT / "scraper" / "watchlist.json"
+MODEL_SPECS_CONFIG = ROOT / "scraper" / "model_specs.json"
 
 PRICE_HISTORY_CSV = DATA_DIR / "price_history.csv"
 DAILY_SUMMARY_JSON = DATA_DIR / "daily_summary.json"
