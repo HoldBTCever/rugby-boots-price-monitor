@@ -14,6 +14,36 @@ _VERSION_TOKENS = {w.lower() for w in _catalog["version_tokens"]}
 _YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
 _SIZE_RE = re.compile(r"\b(size|talla|tamanho|tam|号)?\s*\d{1,2}([.,]\d)?\s*(us|uk|eu|jp)?\b", re.IGNORECASE)
 
+# Muitas lojas (ex: World Rugby Shop, Rugbystuff) põem a cor no final do
+# título depois de um hífen: "adidas Kakari Elite SG Rugby Boots - Team
+# Royal Blue". Sem isso, "Team" (nome de cor da adidas, tipo "Team Royal
+# Blue"/"Team Solar Orange") é lido como o token de versão "Team" -- uma
+# chuteira "Elite" vira "Elite Team" por engano -- e palavras da cor
+# ("Royal", "Solar", "Galaxy"...) viram parte do "modelo" por não
+# estarem na lista de ruído. Só a última parte depois do hífen é
+# descartada (exige que comece com letra, não dígito, pra não cortar
+# sufixo numérico tipo "-15"/"X-15").
+_COLORWAY_SUFFIX_RE = re.compile(r"\s*-\s*[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ/ ]*$")
+
+# Mesmo problema, mas sem hífen algum: o feed products.json da Shopify
+# costuma trazer o título sem separador nenhum antes da cor (o hífen que
+# aparece na página é só formatação do tema) -- ex: "Adidas Kakari Elite
+# SG Rugby Boots Team Royal Blue". "Team" da adidas sempre vem seguido
+# de uma cor (talvez com um adjetivo no meio: "Team Solar Orange"); a
+# versão "Team" de verdade (Canterbury Stampede Team, Speed Falcon Team)
+# nunca é seguida de cor. Remove só quando bate esse padrão específico.
+_COLOR_WORDS = [
+    "black", "white", "red", "blue", "gold", "silver", "navy", "green",
+    "yellow", "orange", "purple", "grey", "gray", "pink", "multi",
+    "preto", "branco", "vermelho", "azul", "dourado", "prata", "verde",
+    "amarelo", "laranja", "roxo", "cinza", "rosa",
+    "negro", "blanco", "rojo", "amarillo", "gris", "morado",
+]
+_ADIDAS_TEAM_COLOR_RE = re.compile(
+    r"\bteam\s+(?:[A-Za-zÀ-ÿ]+\s+)?(?:" + "|".join(_COLOR_WORDS) + r")\b",
+    re.IGNORECASE,
+)
+
 # Palavras que indicam que o produto É uma chuteira/bota.
 _BOOT_WORDS = ["boot", "cleat", "chuteira", "botin", "botín", "bota", "spike"]
 # Palavras que indicam acessório/vestuário/equipamento -- não é chuteira,
@@ -143,6 +173,8 @@ def normalize_title(title: str) -> dict:
     if brand:
         working = re.sub(re.escape(brand), "", working, flags=re.IGNORECASE)
 
+    working = _COLORWAY_SUFFIX_RE.sub("", working)
+    working = _ADIDAS_TEAM_COLOR_RE.sub("", working)
     working = _SIZE_RE.sub(" ", working)
 
     words = [w for w in re.split(r"[\s\-/]+", working) if w]

@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-26T12:04:13.484525+00:00",
+  "generated_at": "2026-08-26T12:27:35.717983+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-26",
   "totals": {
-    "models_tracked": 183,
+    "models_tracked": 177,
     "sources": 12,
-    "deals_today": 7,
+    "deals_today": 8,
     "observations": 6736
   },
   "sources": [
@@ -29,8 +29,8 @@
       "brand": "adidas",
       "model": "Kakari",
       "version": "Padrão",
-      "avg_price_usd": 194.79,
-      "n_observations": 68,
+      "avg_price_usd": 192.85,
+      "n_observations": 70,
       "sources": [
         "Lovell Rugby",
         "Rugbystuff"
@@ -43,7 +43,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 184.95,
+          "avg_price_usd": 182.04,
           "min_price_usd": 64.11
         }
       ],
@@ -52,7 +52,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-sg-rugby-boots-white-orange-blue",
-      "discount_pct": 0.6709,
+      "discount_pct": 0.6676,
       "is_deal": true,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -208,8 +208,8 @@
       "brand": "adidas",
       "model": "Kakari",
       "version": "Elite",
-      "avg_price_usd": 146.34,
-      "n_observations": 43,
+      "avg_price_usd": 148.75,
+      "n_observations": 47,
       "sources": [
         "Lovell Rugby",
         "Rugbystuff"
@@ -222,7 +222,7 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 132.71,
+          "avg_price_usd": 137.95,
           "min_price_usd": 79.12
         }
       ],
@@ -231,7 +231,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-elite-sg-rugby-boots-black",
-      "discount_pct": 0.4593,
+      "discount_pct": 0.4681,
       "is_deal": true,
       "ground_type": "Soft Ground",
       "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
@@ -244,7 +244,7 @@
       "brand": "Canterbury",
       "model": "Speed Falcon Adults Soft",
       "version": "Team",
-      "avg_price_usd": 93.74,
+      "avg_price_usd": 93.75,
       "n_observations": 62,
       "sources": [
         "Lovell Rugby",
@@ -268,6 +268,36 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-speed-falcon-team-adults-soft-ground-rugby-boots",
       "discount_pct": 0.4179,
+      "is_deal": true,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "adidas|kakari rs|padrão",
+      "brand": "adidas",
+      "model": "Kakari RS",
+      "version": "Padrão",
+      "avg_price_usd": 158.7,
+      "n_observations": 12,
+      "sources": [
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 158.7,
+          "min_price_usd": 95.49
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 95.49,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-rs-sg-rugby-boots-black-grey",
+      "discount_pct": 0.3983,
       "is_deal": true,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -478,6 +508,36 @@
       "discount_pct": 0.3325,
       "is_deal": false,
       "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "adidas|adizero rs15|pro",
+      "brand": "adidas",
+      "model": "Adizero RS15",
+      "version": "Pro",
+      "avg_price_usd": 261.24,
+      "n_observations": 4,
+      "sources": [
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 261.24,
+          "min_price_usd": 174.61
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 174.61,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-pro-sg-rugby-boots-black-grey",
+      "discount_pct": 0.3316,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
       "upper_material": null,
       "stud_type": null,
       "width_fit": null,
@@ -1639,9 +1699,9 @@
       "spec_source": null
     },
     {
-      "key": "mizuno|neo mx lace up|elite",
+      "key": "mizuno|neo mx lace|elite",
       "brand": "Mizuno",
-      "model": "Neo MX Lace Up",
+      "model": "Neo MX Lace",
       "version": "Elite",
       "avg_price_usd": 310.82,
       "n_observations": 31,
@@ -2095,6 +2155,36 @@
       "spec_source": null
     },
     {
+      "key": "adidas|adizero rs15 ultimate|padrão",
+      "brand": "adidas",
+      "model": "Adizero RS15 Ultimate",
+      "version": "Padrão",
+      "avg_price_usd": 213.49,
+      "n_observations": 4,
+      "sources": [
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 213.49,
+          "min_price_usd": 158.24
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 158.24,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-ultimate-sg-rugby-boots-black-grey",
+      "discount_pct": 0.2588,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "outra marca|adult unisex ccc phoenix|elite",
       "brand": "Outra marca",
       "model": "Adult Unisex CCC Phoenix",
@@ -2158,6 +2248,36 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/phoenix-raze-sg-rugby-boots",
       "discount_pct": 0.2334,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "adidas|rs|padrão",
+      "brand": "adidas",
+      "model": "RS",
+      "version": "Padrão",
+      "avg_price_usd": 103.0,
+      "n_observations": 4,
+      "sources": [
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 103.0,
+          "min_price_usd": 79.12
+        }
+      ],
+      "latest_date": "2026-08-26",
+      "latest_min_price_usd": 79.12,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/adidas-rs-15-sg-rugby-boots-black-white",
+      "discount_pct": 0.2318,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2237,9 +2357,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|cage torq 6s senior|padrão",
+      "key": "outra marca|cage torq 6s|padrão",
       "brand": "Outra marca",
-      "model": "Cage Torq 6S Senior",
+      "model": "Cage Torq 6S",
       "version": "Padrão",
       "avg_price_usd": 84.54,
       "n_observations": 62,
@@ -3529,9 +3649,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|cage pace msx senior|pro",
+      "key": "outra marca|cage pace msx|pro",
       "brand": "Outra marca",
-      "model": "Cage Pace MSX Senior",
+      "model": "Cage Pace MSX",
       "version": "Pro",
       "avg_price_usd": 90.68,
       "n_observations": 31,
@@ -3564,9 +3684,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|cage torq msx senior|padrão",
+      "key": "outra marca|cage torq msx|padrão",
       "brand": "Outra marca",
-      "model": "Cage Torq MSX Senior",
+      "model": "Cage Torq MSX",
       "version": "Padrão",
       "avg_price_usd": 88.64,
       "n_observations": 31,
@@ -3599,9 +3719,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|icon players 8s senior|padrão",
+      "key": "outra marca|icon players 8s|padrão",
       "brand": "Outra marca",
-      "model": "Icon Players 8S Senior",
+      "model": "Icon Players 8S",
       "version": "Padrão",
       "avg_price_usd": 163.64,
       "n_observations": 31,
@@ -3634,9 +3754,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|icon players stud senior|padrão",
+      "key": "outra marca|icon players stud|padrão",
       "brand": "Outra marca",
-      "model": "Icon Players Stud Senior",
+      "model": "Icon Players Stud",
       "version": "Padrão",
       "avg_price_usd": 163.64,
       "n_observations": 31,
@@ -3669,9 +3789,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|sidestep icon msx mini|padrão",
+      "key": "outra marca|sidestep icon msx|padrão",
       "brand": "Outra marca",
-      "model": "Sidestep Icon MSX Mini",
+      "model": "Sidestep Icon MSX",
       "version": "Padrão",
       "avg_price_usd": 54.54,
       "n_observations": 31,
@@ -3774,9 +3894,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|speedster 6s senior|padrão",
+      "key": "outra marca|speedster 6s|padrão",
       "brand": "Outra marca",
-      "model": "Speedster 6S Senior",
+      "model": "Speedster 6S",
       "version": "Padrão",
       "avg_price_usd": 122.73,
       "n_observations": 31,
@@ -3809,9 +3929,9 @@
       "spec_source": null
     },
     {
-      "key": "oxen|raptor k leather adults|elite",
+      "key": "oxen|raptor k|elite",
       "brand": "Oxen",
-      "model": "Raptor K Leather Adults",
+      "model": "Raptor K",
       "version": "Elite",
       "avg_price_usd": 136.36,
       "n_observations": 33,
@@ -4404,9 +4524,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|icon vapour 6s senior|padrão",
+      "key": "outra marca|icon vapour 6s|padrão",
       "brand": "Outra marca",
-      "model": "Icon Vapour 6S Senior",
+      "model": "Icon Vapour 6S",
       "version": "Padrão",
       "avg_price_usd": 115.91,
       "n_observations": 31,
@@ -4439,9 +4559,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|icon vapour 8s senior|padrão",
+      "key": "outra marca|icon vapour 8s|padrão",
       "brand": "Outra marca",
-      "model": "Icon Vapour 8S Senior",
+      "model": "Icon Vapour 8S",
       "version": "Padrão",
       "avg_price_usd": 115.91,
       "n_observations": 31,
@@ -4474,9 +4594,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|icon x stud senior|padrão",
+      "key": "outra marca|icon x stud|padrão",
       "brand": "Outra marca",
-      "model": "Icon X Stud Senior",
+      "model": "Icon X Stud",
       "version": "Padrão",
       "avg_price_usd": 109.09,
       "n_observations": 62,
@@ -4649,9 +4769,9 @@
       "spec_source": null
     },
     {
-      "key": "outra marca|slider senior|padrão",
+      "key": "outra marca|slider|padrão",
       "brand": "Outra marca",
-      "model": "Slider Senior",
+      "model": "Slider",
       "version": "Padrão",
       "avg_price_usd": 27.26,
       "n_observations": 31,
@@ -5319,9 +5439,9 @@
       "spec_source": "mizuno.com.au, worldrugbyshop.com"
     },
     {
-      "key": "mizuno|waitangi wide galaxy|pro",
+      "key": "mizuno|waitangi wide|pro",
       "brand": "Mizuno",
-      "model": "Waitangi Wide Galaxy",
+      "model": "Waitangi Wide",
       "version": "Pro",
       "avg_price_usd": 224.99,
       "n_observations": 31,
@@ -5599,66 +5719,6 @@
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
     },
     {
-      "key": "adidas|adizero rs15|pro",
-      "brand": "adidas",
-      "model": "Adizero RS15",
-      "version": "Pro",
-      "avg_price_usd": 174.61,
-      "n_observations": 2,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 174.61,
-          "min_price_usd": 174.61
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 174.61,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-pro-sg-rugby-boots-black-grey",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|adizero rs15 royal|pro team",
-      "brand": "adidas",
-      "model": "Adizero RS15 Royal",
-      "version": "Pro Team",
-      "avg_price_usd": 347.86,
-      "n_observations": 2,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 347.86,
-          "min_price_usd": 347.86
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 347.86,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-pro-sg-rugby-boots-team-royal-blue",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "adidas|adizero rs15 solar turbo|pro",
       "brand": "adidas",
       "model": "Adizero RS15 Solar Turbo",
@@ -5680,66 +5740,6 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-pro-sg-rugby-boots-solar-turbo",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|adizero rs15 ultimate|padrão",
-      "brand": "adidas",
-      "model": "Adizero RS15 Ultimate",
-      "version": "Padrão",
-      "avg_price_usd": 158.24,
-      "n_observations": 2,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 158.24,
-          "min_price_usd": 158.24
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 158.24,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-ultimate-sg-rugby-boots-black-grey",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|adizero rs15 ultimate royal|team",
-      "brand": "adidas",
-      "model": "Adizero RS15 Ultimate Royal",
-      "version": "Team",
-      "avg_price_usd": 268.74,
-      "n_observations": 2,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 268.74,
-          "min_price_usd": 268.74
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 268.74,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-ultimate-sg-rugby-boots-team-royal-blue",
       "discount_pct": 0.0,
       "is_deal": false,
       "ground_type": "Soft Ground",
@@ -5809,66 +5809,6 @@
       "spec_source": null
     },
     {
-      "key": "adidas|kakari rs|padrão",
-      "brand": "adidas",
-      "model": "Kakari RS",
-      "version": "Padrão",
-      "avg_price_usd": 95.49,
-      "n_observations": 8,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 95.49,
-          "min_price_usd": 95.49
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 95.49,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-rs-sg-rugby-boots-black-grey",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|kakari rs royal|team",
-      "brand": "adidas",
-      "model": "Kakari RS Royal",
-      "version": "Team",
-      "avg_price_usd": 285.11,
-      "n_observations": 4,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 285.11,
-          "min_price_usd": 285.11
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 285.11,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-rs-sg-rugby-boots-team-royal-blue",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "adidas|kakari rs solar turbo|padrão",
       "brand": "adidas",
       "model": "Kakari RS Solar Turbo",
@@ -5890,66 +5830,6 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-rs-sg-rugby-boots-solar-turbo-pink",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|kakari royal|elite team",
-      "brand": "adidas",
-      "model": "Kakari Royal",
-      "version": "Elite Team",
-      "avg_price_usd": 174.61,
-      "n_observations": 4,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 174.61,
-          "min_price_usd": 174.61
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 174.61,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-elite-sg-rugby-boots-team-royal-blue",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
-      "stud_type": "8 travas fixas, com ferramenta de aperto inclusa",
-      "width_fit": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
-      "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com"
-    },
-    {
-      "key": "adidas|kakari royal|team",
-      "brand": "adidas",
-      "model": "Kakari Royal",
-      "version": "Team",
-      "avg_price_usd": 126.87,
-      "n_observations": 2,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 126.87,
-          "min_price_usd": 126.87
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 126.87,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-kakari-sg-rugby-boots-team-royal-blue",
       "discount_pct": 0.0,
       "is_deal": false,
       "ground_type": "Soft Ground",
@@ -5989,40 +5869,10 @@
       "spec_source": null
     },
     {
-      "key": "adidas|rs|padrão",
+      "key": "adidas|rs|elite",
       "brand": "adidas",
       "model": "RS",
-      "version": "Padrão",
-      "avg_price_usd": 79.12,
-      "n_observations": 2,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 79.12,
-          "min_price_usd": 79.12
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 79.12,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-rs-15-sg-rugby-boots-black-white",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|rs royal|elite team",
-      "brand": "adidas",
-      "model": "RS Royal",
-      "version": "Elite Team",
+      "version": "Elite",
       "avg_price_usd": 174.61,
       "n_observations": 2,
       "sources": [
@@ -6040,36 +5890,6 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-rs-15-elite-sg-rugby-boots-team-royal-blue",
-      "discount_pct": 0.0,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|rs royal|team",
-      "brand": "adidas",
-      "model": "RS Royal",
-      "version": "Team",
-      "avg_price_usd": 126.87,
-      "n_observations": 2,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 126.87,
-          "min_price_usd": 126.87
-        }
-      ],
-      "latest_date": "2026-08-26",
-      "latest_min_price_usd": 126.87,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-rs-15-sg-rugby-boots-team-royal-blue",
       "discount_pct": 0.0,
       "is_deal": false,
       "ground_type": "Soft Ground",
