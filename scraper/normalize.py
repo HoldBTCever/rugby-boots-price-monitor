@@ -45,9 +45,12 @@ _ADIDAS_TEAM_COLOR_RE = re.compile(
 )
 
 # Palavras que indicam que o produto É uma chuteira/bota.
-_BOOT_WORDS = ["boot", "cleat", "chuteira", "botin", "botín", "bota", "spike"]
+_BOOT_WORDS = ["boot", "cleat", "chuteira", "botin", "botín", "bota", "spike", "ブーツ", "スパイク"]
 # Palavras que indicam acessório/vestuário/equipamento -- não é chuteira,
-# mesmo que apareça na mesma coleção ou busca da loja.
+# mesmo que apareça na mesma coleção ou busca da loja. Necessário mesmo
+# quando o site já filtra por categoria (trust_category em sites.json,
+# ex: Rugby Goods/Japão): a própria busca "boots" da loja japonesa incluiu
+# um chaveiro ("...ブーツキーリング") junto com chuteiras de verdade.
 _NON_BOOT_WORDS = [
     "jersey", "shirt", "camisa", "camiseta", "ball", "bola", "pelota",
     "sock", "socks", "meia", "meiao", "meião", "glove", "luva",
@@ -58,6 +61,7 @@ _NON_BOOT_WORDS = [
     "cadarco", "cadarço", "insole", "palmilha", "backpack", "mochila",
     "bag", "bolsa", "towel", "toalha", "cap", "beanie", "gorro",
     "gift card", "gift voucher", "e-gift", "vale-presente", "tarjeta de regalo",
+    "キーリング", "キーホルダー", "ジャージ", "ボール", "ソックス", "靴下", "グローブ",
 ]
 
 
@@ -91,7 +95,7 @@ _GROUND_TYPE_PATTERNS = [
 # quando não bate em nada, fica None (o site mostra "não informado" em vez
 # de inventar um material/trava que a fonte não confirmou).
 _UPPER_MATERIAL_PATTERNS = [
-    ("Couro canguru", re.compile(r"kangaroo|canguru", re.IGNORECASE)),
+    ("Couro canguru", re.compile(r"kangaroo|canguru|カンガルー", re.IGNORECASE)),
     ("Couro", re.compile(r"\bleather\b|\bcouro\b|\bcuero\b", re.IGNORECASE)),
     ("Sintético", re.compile(r"\bsynthetic\b|sint[ée]tico", re.IGNORECASE)),
     ("Mesh/Knit", re.compile(r"\bmesh\b|\bknit\b", re.IGNORECASE)),
@@ -151,9 +155,33 @@ def is_rugby_boot(title: str, extra: str = "") -> bool:
     (`product_type`) quando disponível, como sinal adicional além do
     título."""
     t = f"{title} {extra}".lower()
-    if any(word in t for word in _NON_BOOT_WORDS):
+    if is_explicitly_non_boot(t):
         return False
     return any(word in t for word in _BOOT_WORDS)
+
+
+def is_explicitly_non_boot(text: str) -> bool:
+    """True quando o texto menciona explicitamente um item que não é
+    chuteira (bola, camisa, acessório...). Usado tanto por is_rugby_boot()
+    quanto isoladamente em scrape.py para sites com trust_category=true:
+    confiar que a coleção/busca da loja é só de chuteiras não deveria
+    deixar passar um item claramente não-chuteira que tenha vazado pra lá
+    por engano (ex: um chaveiro na busca "boots" da Rugby Goods/Japão)."""
+    return any(word in text.lower() for word in _NON_BOOT_WORDS)
+
+
+_MADE_IN_JAPAN_RE = re.compile(r"made\s*in\s*japan|\bmij\b|日本製", re.IGNORECASE)
+
+
+def is_mij_kangaroo(text: str) -> bool:
+    """True só quando o texto confirma EXPLICITAMENTE as duas coisas:
+    couro de canguru E fabricação no Japão -- nunca assume isso a partir
+    só do nome do modelo (ex: "Morelia"), porque a mesma linha tem
+    versões sintéticas feitas fora do Japão vendidas com nome parecido.
+    Cobertura baixíssima por natureza (poucas lojas ocidentais estocam a
+    versão MiJ de verdade) -- fica False quando a fonte não confirma."""
+    upper = extract_upper_material(text)
+    return upper == "Couro canguru" and bool(_MADE_IN_JAPAN_RE.search(text))
 
 
 def normalize_title(title: str) -> dict:

@@ -98,6 +98,23 @@ caso pula o filtro por palavra-chave, porque um título sem "chuteira"/
 travava os Kakari da World Rugby Shop antes do fix de `product_type`).
 Use só quando tiver certeza de que a página é 100% chuteira.
 
+A exclusão por palavra de não-chuteira (bola, camisa, chaveiro, gift
+card...) continua valendo mesmo com `trust_category: true` — confirmar
+que a URL é uma categoria de chuteiras não garante que TODO item ali
+seja chuteira de verdade. Dois casos reais encontrados: a busca "boots"
+da Rugby Goods (Japão) devolveu um chaveiro de chuteira
+("...ブーツキーリング") junto com chuteiras de verdade, e a coleção de
+chuteiras da Pro:Direct Rugby vinha devolvendo só "Gift Card" desde
+sempre — nenhuma linha real de chuteira nunca veio de lá (todas as
+linhas gravadas até agora eram gift card; removidas de
+`price_history.csv`, e a fonte só volta a aparecer se um dia devolver
+uma chuteira de verdade). A Rugby Goods também ganhou
+`trust_category: true`: a maioria dos títulos lá segue o padrão "marca +
+modelo + cor + SKU" sem nenhuma palavra de chuteira (nem "boot" nem os
+equivalentes em katakana ブーツ/スパイク aparecem em toda listagem) —
+mesmo problema do Kakari da World Rugby Shop, mas sem um `product_type`
+pra usar como pista extra (o JSON-LD dessa loja não expõe categoria).
+
 ## Filtro de tamanho (US 9–12)
 
 Só entram no histórico chuteiras disponíveis em algum tamanho entre
@@ -261,6 +278,30 @@ de cada dado aparece embaixo da tabela na aba Comparar. Quando a
 pesquisa não confirma um campo específico pra um modelo (ex: largura do
 Oxen Meta X, que só achei pra coleção Oxen em geral, não pro modelo
 exato), o campo fica `null` em vez de herdar um valor genérico da marca.
+
+## Chuteiras Made in Japan de couro de canguru (aba "MiJ")
+
+`normalize.is_mij_kangaroo()` marca uma listagem como MiJ (`mij_kangaroo`
+em `price_history.csv` e `daily_summary.json`) só quando o título/pista
+extra confirma **as duas coisas ao mesmo tempo**: cabedal de couro de
+canguru (mesmo padrão já usado em `upper_material`, incluindo o
+equivalente em katakana カンガルー) e fabricação no Japão ("Made in
+Japan", "MIJ" ou "日本製"). Nunca por suposição a partir do nome da
+linha: a Mizuno vende a linha "Morelia" com e sem essas duas
+características ao mesmo tempo — a "Morelia Neo" vendida fora do Japão
+(a maioria do que as lojas ocidentais monitoradas estocam hoje) usa
+cabedal sintético e não é feita no Japão, só a "Morelia II Made in
+Japan" (e algumas edições "Neo ... Japan") são de fato couro de canguru
+fabricado lá. Pesquisa confirmou que essa é uma distinção real da
+própria Mizuno, não uma nuance inventada.
+
+Cobertura esperada é baixíssima (talvez zero por longos períodos): é
+um SKU de nicho, raramente estocado pelas lojas do Reino Unido/EUA que
+formam a maior parte do catálogo — a fonte mais provável de confirmar
+isso de verdade é uma loja japonesa nativa (Rugby Goods, Mizuno Japan).
+A aba **MiJ** mostra uma tabela filtrada só com os modelos confirmados
+e, quando nenhum ainda foi, um estado vazio explicando o critério em
+vez de mostrar dado incerto.
 
 ## Rodar localmente
 

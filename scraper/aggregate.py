@@ -134,6 +134,7 @@ def run() -> None:
             "key": key, "brand": row["brand"], "model": row["model"], "version": row["version"],
             "prices": [], "sources": set(), "latest": [],
             "ground_types": Counter(), "upper_materials": Counter(), "stud_types": Counter(),
+            "mij_kangaroo": False,
         })
         g["prices"].append(price_usd)
         g["sources"].add(row["site_name"])
@@ -144,6 +145,8 @@ def run() -> None:
             g["upper_materials"][row["upper_material"]] += 1
         if row.get("stud_type"):
             g["stud_types"][row["stud_type"]] += 1
+        if row.get("mij_kangaroo"):
+            g["mij_kangaroo"] = True
 
         if latest_date is None or row["date"] > latest_date:
             latest_date = row["date"]
@@ -180,6 +183,7 @@ def run() -> None:
             "stud_type": g["stud_types"].most_common(1)[0][0] if g["stud_types"] else None,
             "width_fit": None,
             "spec_source": None,
+            "mij_kangaroo": g["mij_kangaroo"],
         }
 
         # Cabedal/travas/largura pesquisados manualmente (fonte real) têm
@@ -232,6 +236,7 @@ def run() -> None:
             "sources": len(all_sources),
             "deals_today": len(deals),
             "observations": len(rows),
+            "mij_kangaroo_models": sum(1 for m in models if m["mij_kangaroo"]),
         },
         "sources": all_sources,
         "models": models,

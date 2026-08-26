@@ -30,6 +30,7 @@ CSV_FIELDS = [
     "block_height", "timestamp", "date", "site_id", "site_name", "region",
     "brand", "model", "version", "title", "price_local", "currency",
     "price_usd", "url", "ground_type", "upper_material", "stud_type",
+    "mij_kangaroo",
 ]
 
 
@@ -58,13 +59,18 @@ def _append_listings(new_rows, listings, rates, *, block_height, timestamp, toda
     # categoria dedicada só a chuteira (confirmado manualmente, não
     # adivinhado) -- pula o filtro por palavra-chave, que rejeitaria um
     # título sem "chuteira"/"botin" explícito mesmo sendo chuteira de
-    # verdade (mesmo bug que travava os Kakari da World Rugby Shop).
+    # verdade (mesmo bug que travava os Kakari da World Rugby Shop). Mas a
+    # exclusão de não-chuteira (bola, chaveiro, camisa...) vale sempre,
+    # mesmo com trust_category: a busca "boots" da Rugby Goods/Japão
+    # incluiu um chaveiro de chuteira junto com chuteiras de verdade.
     trust_category = site.get("trust_category", False)
     count = 0
     for item in listings:
+        combined = f"{item['title']} {item.get('category_hint', '')}"
+        if normalize.is_explicitly_non_boot(combined):
+            continue
         if not trust_category and not normalize.is_rugby_boot(item["title"], item.get("category_hint", "")):
             continue
-        combined = f"{item['title']} {item.get('category_hint', '')}"
         if normalize.is_firm_ground(combined) or normalize.is_junior(combined):
             continue
         # alguns produtos são infantis sem dizer "kids"/"junior" no título
@@ -95,6 +101,7 @@ def _append_listings(new_rows, listings, rates, *, block_height, timestamp, toda
             "ground_type": normalize.extract_ground_type(combined) or "",
             "upper_material": normalize.extract_upper_material(combined) or "",
             "stud_type": normalize.extract_stud_type(combined) or "",
+            "mij_kangaroo": "true" if normalize.is_mij_kangaroo(combined) else "",
         })
         count += 1
     return count

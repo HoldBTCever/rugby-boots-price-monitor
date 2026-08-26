@@ -29,7 +29,7 @@
   });
 
   // ---- abas ----
-  const TAB_NAMES = ["painel", "historico", "comparar"];
+  const TAB_NAMES = ["painel", "historico", "comparar", "mij"];
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
@@ -375,6 +375,56 @@
     rerender();
   }
 
+  function renderMiJ(models) {
+    const slot = document.getElementById("mijContent");
+    if (!slot) return;
+
+    const mij = (models || []).filter((m) => m.mij_kangaroo);
+
+    if (mij.length === 0) {
+      slot.innerHTML = `
+        <div class="card empty-state">
+          <div class="icon">🦘</div>
+          <h2>Nenhuma chuteira MiJ de couro de canguru confirmada ainda</h2>
+          <p>Esta aba só mostra um modelo quando a própria loja confirma, no título ou na descrição, as duas
+          coisas ao mesmo tempo: <strong>fabricação no Japão</strong> ("Made in Japan"/"MIJ"/日本製) e
+          <strong>couro de canguru</strong>. Muitas chuteiras Mizuno Morelia vendidas fora do Japão (a linha
+          "Neo", por exemplo) usam cabedal sintético e não são feitas no Japão, mesmo com nome parecido —
+          por isso não aparecem aqui sem essa confirmação explícita. Nenhuma loja monitorada confirmou isso
+          ainda; assim que alguma confirmar, o modelo aparece automaticamente, sem precisar de nenhuma ação.</p>
+        </div>`;
+      return;
+    }
+
+    const rows = mij.map((m) => `
+      <tr>
+        <td data-label="Marca">${m.brand}</td>
+        <td data-label="Modelo">${m.model}</td>
+        <td data-label="Versão">${m.version}</td>
+        <td class="num" data-label="Média (USD)">${fmtUSD(m.avg_price_usd)}</td>
+        <td class="num" data-label="Menor hoje">${fmtUSD(m.latest_min_price_usd)}</td>
+        <td data-label="Fonte do menor preço">${m.latest_min_site ? `<a href="${m.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${m.latest_min_site}</a>` : "—"}</td>
+      </tr>`).join("");
+
+    slot.innerHTML = `
+      <div class="card">
+        <h2>Chuteiras Made in Japan (couro de canguru)</h2>
+        <p class="watchlist-meta">Só entram aqui modelos cuja loja confirma explicitamente fabricação no
+          Japão E couro de canguru juntos — nunca por suposição a partir do nome da linha.</p>
+        <div class="table-scroll">
+          <table class="responsive-table">
+            <thead>
+              <tr>
+                <th>Marca</th><th>Modelo</th><th>Versão</th>
+                <th class="num">Média (USD)</th><th class="num">Menor hoje</th><th>Fonte do menor preço</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
+      </div>`;
+  }
+
   function renderWatchlist(watchlist) {
     window.__rbpmWatchlist = watchlist;
     watchlistCharts.forEach((c) => c.destroy());
@@ -497,6 +547,7 @@
       renderStats(summary);
       renderMain(summary);
       renderCompare(summary.models);
+      renderMiJ(summary.models);
     } catch (err) {
       document.getElementById("mainContent").innerHTML = `
         <div class="card empty-state">
