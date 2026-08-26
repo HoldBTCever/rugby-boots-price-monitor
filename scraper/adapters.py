@@ -213,6 +213,7 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
     for listing_url in site["listing_urls"]:
         html = fetch(listing_url)
         if not html:
+            log.info("MercadoLibre Argentina: fetch devolveu vazio/None pra %s", listing_url)
             continue
         soup = BeautifulSoup(html, "lxml")
 
@@ -222,6 +223,21 @@ def scrape_mercadolibre(site: dict) -> list[dict]:
             or soup.select("div.poly-card")
             or soup.select("li.poly-card")
         )
+        if not cards:
+            # diagnóstico temporário: adaptador zerou de vez após o reset de
+            # histórico -- pode ser bloqueio anti-bot (página de verificação
+            # em vez do resultado de busca) ou o marcador de card mudou de
+            # classe. Loga tamanho do HTML e se algum indício de bloqueio
+            # aparece, em vez de só reportar 0 sem contexto.
+            blocked_hint = any(
+                needle in html.lower()
+                for needle in ("captcha", "acesso negado", "solicitação incomum", "unusual traffic")
+            )
+            log.info(
+                "MercadoLibre Argentina: 0 cards casaram nos seletores conhecidos pra %s "
+                "(HTML com %d chars, indício de bloqueio: %s)",
+                listing_url, len(html), blocked_hint,
+            )
         for card in cards[: config.MAX_PRODUCTS_PER_SITE]:
             link_tag = card.select_one(
                 "a.ui-search-link, a.ui-search-item__group__element, a.poly-component__title"
