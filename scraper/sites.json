@@ -106,6 +106,20 @@
     "supports_search": true
   },
   {
+    "id": "rugbystuff",
+    "name": "Rugbystuff",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.rugbystuff.com",
+    "listing_urls": [
+      "https://www.rugbystuff.com/collections/all-rugby-boots/products.json"
+    ],
+    "adapter": "shopify_products_json",
+    "supports_search": true,
+    "kids_collection_url": "https://www.rugbystuff.com/collections/kids-rugby-boots/products.json"
+  },
+  {
     "id": "canterbury_global",
     "name": "Canterbury",
     "region": "Europe (UK)",
@@ -230,5 +244,18 @@
     "adapter": "generic_jsonld",
     "product_link_pattern": "/productos/",
     "trust_category": true
+  },
+  {
+    "id": "mandmdirect",
+    "name": "M&M Direct",
+    "region": "Europe (UK)",
+    "country": "GB",
+    "currency": "GBP",
+    "base_url": "https://www.mandmdirect.com",
+    "listing_urls": [
+      "https://www.mandmdirect.com/01/rugby-boots"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/details/"
   }
 ]
