@@ -109,7 +109,22 @@ cada variante do produto; o preço salvo é o menor entre as variantes
 disponíveis dentro da faixa, e um produto sem nenhum tamanho ali é
 descartado inteiro. Lojas do Reino Unido numeram no padrão britânico —
 convertido para americano somando 1 (aproximação padrão UK→US
-masculino: UK 7 = US 8, UK 11 = US 12).
+masculino: UK 7 = US 8, UK 11 = US 12), **exceto produtos adidas**, que
+somam apenas 0,5 (UK 8 = US 8.5, não US 9 — conversão oficial da própria
+adidas, diferente do padrão genérico usado pelo resto do catálogo).
+
+Bug real encontrado por isso: a Kakari Elite Black da Rugbystuff
+aparecia no site com preço mesmo sem nenhum tamanho disponível de
+verdade entre US 9–12 na loja (usuário reportou com link real). O
+diagnóstico mostrou que a única variante disponível na faixa era UK 8 —
+que a conversão genérica (+1) lia como "US 9" (dentro do filtro), mas
+o tamanho americano real da adidas pra UK 8 é 8.5 (fora do filtro).
+Corrigido em `_parse_us_size()`/`_min_price_in_size_range()`
+(`scraper/adapters.py`), que agora recebem o título do produto pra
+aplicar a conversão certa por marca. Como o histórico não guarda a
+lista de variantes de cada dia (só o preço final já calculado), não dá
+pra recalcular retroativamente quais linhas antigas de produtos adidas
+em lojas GBP foram afetadas — o fix vale a partir da próxima raspagem.
 
 As demais fontes (JSON-LD genérico como Canterbury/Pro:Direct/Rugbystore/
 Kitlocker/Rugby Goods/Durban Rugby/Rugbier Store/TradeInn, Mizuno Japan)

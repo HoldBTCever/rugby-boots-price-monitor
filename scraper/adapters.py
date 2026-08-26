@@ -26,12 +26,20 @@ _PRICE_RE = re.compile(r"[\d][\d.,]*\d|\d")
 _SIZE_RE = re.compile(r"(\d{1,2}(?:\.5)?)")
 
 
-def _parse_us_size(variant: dict, site: dict) -> float | None:
+def _parse_us_size(variant: dict, site: dict, title: str = "") -> float | None:
     """Extrai o tamanho (americano) de uma variante Shopify. O texto do
     tamanho (option1/title, ex: "8.5", "US 9", "UK 8") varia por loja --
     pega o primeiro número. Lojas do Reino Unido (GBP) numeram no padrão
-    britânico, então soma 1 (aproximação padrão UK->US masculino: UK 7 =
-    US 8, UK 10 = US 11); lojas em USD já usam numeração americana."""
+    britânico: a maioria das marcas (Canterbury, Gilbert, Mizuno, Oxen...)
+    segue a conversão padrão de calçado esportivo UK->US masculino (soma
+    1: UK 7 = US 8, UK 10 = US 11), mas a adidas é uma exceção conhecida
+    -- a própria tabela oficial da adidas usa meio tamanho de diferença
+    (UK 8 = US 8.5, não US 9). Sem esse ajuste, uma chuteira adidas de UK
+    8 (a única disponível de verdade) era lida como "US 9" e entrava no
+    filtro de tamanho, quando o equivalente americano real (8.5) fica
+    fora da faixa -- foi o que o usuário reportou na Kakari Elite Black
+    da Rugbystuff (confirmado: variante disponível era só UK 8/UK 13,
+    nenhuma de fato dentro de US 9-12)."""
     raw = str(variant.get("option1") or variant.get("title") or "")
     match = _SIZE_RE.search(raw)
     if not match:
@@ -41,11 +49,11 @@ def _parse_us_size(variant: dict, site: dict) -> float | None:
     except ValueError:
         return None
     if site.get("currency") == "GBP":
-        size += 1.0
+        size += 0.5 if "adidas" in title.lower() else 1.0
     return size
 
 
-def _min_price_in_size_range(variants: list[dict], site: dict) -> float | None:
+def _min_price_in_size_range(variants: list[dict], site: dict, title: str = "") -> float | None:
     """Menor preço entre as variantes disponíveis cujo tamanho (convertido
     pra americano) cai dentro de [config.MIN_US_SIZE, config.MAX_US_SIZE].
     Devolve None se nenhuma variante disponível estiver na faixa -- nesse
@@ -54,7 +62,7 @@ def _min_price_in_size_range(variants: list[dict], site: dict) -> float | None:
     for v in variants:
         if not v.get("price") or not v.get("available", True):
             continue
-        size = _parse_us_size(v, site)
+        size = _parse_us_size(v, site, title)
         if size is None:
             continue
         if config.MIN_US_SIZE <= size <= config.MAX_US_SIZE:
@@ -340,18 +348,7 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                 title = (product.get("title") or "").strip()
                 handle = product.get("handle")
                 variants = product.get("variants") or []
-                price = _min_price_in_size_range(variants, site)
-                if handle == "adidas-kakari-elite-sg-rugby-boots-black" and site["id"] == "rugbystuff":
-                    # diagnóstico temporário: usuário reportou que este produto
-                    # aparece no site com preço, mas não tem tamanho 10 US (nem
-                    # nenhum na faixa 9-12) disponível de verdade na loja --
-                    # loga a variante bruta pra ver se é a conversão UK->US, o
-                    # parsing do tamanho, ou o campo "available" que erra aqui.
-                    log.info(
-                        "Diagnóstico Kakari Elite Black (Rugbystuff): preço calculado=%s. Variantes: %s",
-                        price,
-                        [(v.get("option1"), v.get("title"), v.get("price"), v.get("available")) for v in variants],
-                    )
+                price = _min_price_in_size_range(variants, site, title)
                 if not (title and handle and price):
                     continue
                 # product_type é a categoria que a própria loja atribuiu ao
@@ -421,7 +418,7 @@ def search_shopify(site: dict, query: str) -> list[dict]:
             variants = (json.loads(detail_html).get("product") or {}).get("variants") or []
         except json.JSONDecodeError:
             continue
-        price = _min_price_in_size_range(variants, site)
+        price = _min_price_in_size_range(variants, site, title)
         if not price:
             continue
 
