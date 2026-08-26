@@ -29,12 +29,14 @@
   });
 
   // ---- abas ----
+  const TAB_NAMES = ["painel", "historico", "comparar"];
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      document.getElementById("tab-painel").hidden = btn.dataset.tab !== "painel";
-      document.getElementById("tab-historico").hidden = btn.dataset.tab !== "historico";
+      TAB_NAMES.forEach((name) => {
+        document.getElementById(`tab-${name}`).hidden = btn.dataset.tab !== name;
+      });
 
       // Chart.js mede o contêiner na criação; se o gráfico foi criado dentro
       // de uma aba escondida (hidden), ele fica preso no tamanho padrão
@@ -259,6 +261,108 @@
     renderChart(models, preselect.key);
   }
 
+  const COMPARE_ROWS = [
+    { label: "Marca", get: (m) => m.brand },
+    { label: "Modelo", get: (m) => m.model },
+    { label: "Versão", get: (m) => m.version },
+    { label: "Preço médio (USD)", get: (m) => fmtUSD(m.avg_price_usd), numeric: (m) => m.avg_price_usd },
+    { label: "Menor preço hoje", get: (m) => fmtUSD(m.latest_min_price_usd), numeric: (m) => m.latest_min_price_usd },
+    {
+      label: "Fonte do menor preço",
+      get: (m) => m.latest_min_site
+        ? `<a href="${m.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${m.latest_min_site}</a>`
+        : "—",
+    },
+    { label: "Solado", get: (m) => m.ground_type || "Não informado" },
+    { label: "Cabedal", get: (m) => m.upper_material || "Não informado" },
+    { label: "Travas", get: (m) => m.stud_type || "Não informado" },
+  ];
+
+  function renderCompareTable(models, keyA, keyB) {
+    const a = models.find((m) => m.key === keyA);
+    const b = models.find((m) => m.key === keyB);
+    const slot = document.getElementById("compareTableSlot");
+    if (!slot) return;
+    if (!a || !b) { slot.innerHTML = ""; return; }
+
+    const rows = COMPARE_ROWS.map((row) => {
+      let diffCell = "";
+      if (row.numeric) {
+        const va = row.numeric(a);
+        const vb = row.numeric(b);
+        if (va != null && vb != null) {
+          const diff = vb - va;
+          const pct = va !== 0 ? Math.abs(diff / va) : null;
+          const arrow = diff === 0 ? "" : (diff < 0 ? "B mais barata" : "A mais barata");
+          diffCell = diff === 0
+            ? "sem diferença"
+            : `${fmtUSD(Math.abs(diff))}${pct != null ? " (" + fmtPct(pct) + ")" : ""} — ${arrow}`;
+        }
+      } else if (a.key !== b.key) {
+        const va = row.get(a).replace(/<[^>]+>/g, "");
+        const vb = row.get(b).replace(/<[^>]+>/g, "");
+        diffCell = va === vb ? "igual" : "diferente";
+      }
+      return `
+        <tr>
+          <td data-label="Atributo">${row.label}</td>
+          <td data-label="Chuteira A">${row.get(a)}</td>
+          <td data-label="Chuteira B">${row.get(b)}</td>
+          <td data-label="Diferença">${diffCell}</td>
+        </tr>`;
+    }).join("");
+
+    slot.innerHTML = `
+      <div class="table-scroll">
+        <table class="responsive-table">
+          <thead><tr><th>Atributo</th><th>Chuteira A</th><th>Chuteira B</th><th>Diferença</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>`;
+  }
+
+  function renderCompare(models) {
+    const slot = document.getElementById("compareContent");
+    if (!slot) return;
+
+    if (!models || models.length < 2) {
+      slot.innerHTML = `
+        <div class="card empty-state">
+          <div class="icon">🏉</div>
+          <h2>Ainda não há chuteiras suficientes pra comparar</h2>
+          <p>Assim que pelo menos 2 modelos forem confirmados, o comparador aparece aqui.</p>
+        </div>`;
+      return;
+    }
+
+    const options = models.map((m) =>
+      `<option value="${m.key}">${m.brand} ${m.model} — ${m.version}</option>`
+    ).join("");
+
+    slot.innerHTML = `
+      <div class="card">
+        <h2>Comparar chuteiras</h2>
+        <p class="watchlist-meta">Preço, solado, cabedal e travas lado a lado. Cabedal e travas só aparecem
+          quando a própria loja menciona isso no título do produto — cobertura parcial, sem inventar dado.</p>
+        <div class="chart-controls">
+          <label for="compareSelectA">Chuteira A:</label>
+          <select id="compareSelectA">${options}</select>
+          <label for="compareSelectB">Chuteira B:</label>
+          <select id="compareSelectB">${options}</select>
+        </div>
+        <div id="compareTableSlot"></div>
+      </div>`;
+
+    const selA = document.getElementById("compareSelectA");
+    const selB = document.getElementById("compareSelectB");
+    selA.value = models[0].key;
+    selB.value = (models.find((m) => m.key !== models[0].key) || models[0]).key;
+    const rerender = () => renderCompareTable(models, selA.value, selB.value);
+    selA.addEventListener("change", rerender);
+    selB.addEventListener("change", rerender);
+    rerender();
+  }
+
   function renderWatchlist(watchlist) {
     window.__rbpmWatchlist = watchlist;
     watchlistCharts.forEach((c) => c.destroy());
@@ -380,6 +484,7 @@
       renderBanner(summary, alerts);
       renderStats(summary);
       renderMain(summary);
+      renderCompare(summary.models);
     } catch (err) {
       document.getElementById("mainContent").innerHTML = `
         <div class="card empty-state">

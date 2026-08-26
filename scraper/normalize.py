@@ -48,6 +48,66 @@ def is_junior(text: str) -> bool:
     return bool(_JUNIOR_RE.search(text))
 
 
+_GROUND_TYPE_PATTERNS = [
+    ("Soft Ground", re.compile(r"\bsg\b|soft\s*ground", re.IGNORECASE)),
+    ("Artificial Ground", re.compile(r"\bag\b|artificial\s*ground", re.IGNORECASE)),
+    ("Hard Ground", re.compile(r"\bhg\b|hard\s*ground", re.IGNORECASE)),
+    ("Firm Ground", re.compile(r"\bfg\b|firm\s*ground", re.IGNORECASE)),
+]
+
+# Cabedal (material do upper) e travas (tipo/composição das travas) quase
+# nunca aparecem no título -- a maioria das lojas só põe marca/modelo/cor.
+# Só preenche quando o texto menciona explicitamente uma dessas palavras;
+# quando não bate em nada, fica None (o site mostra "não informado" em vez
+# de inventar um material/trava que a fonte não confirmou).
+_UPPER_MATERIAL_PATTERNS = [
+    ("Couro canguru", re.compile(r"kangaroo|canguru", re.IGNORECASE)),
+    ("Couro", re.compile(r"\bleather\b|\bcouro\b|\bcuero\b", re.IGNORECASE)),
+    ("Sintético", re.compile(r"\bsynthetic\b|sint[ée]tico", re.IGNORECASE)),
+    ("Mesh/Knit", re.compile(r"\bmesh\b|\bknit\b", re.IGNORECASE)),
+]
+_STUD_MATERIAL_PATTERNS = [
+    ("Alumínio", re.compile(r"aluminium|aluminum|alum[ií]nio", re.IGNORECASE)),
+    ("Rosqueável", re.compile(r"screw-?in", re.IGNORECASE)),
+    ("Moldadas", re.compile(r"moulded|moldadas?|moldeado", re.IGNORECASE)),
+]
+_STUD_COUNT_RE = re.compile(r"\b(\d{1,2})\s*(stud|studs|tapon|tapones|trava|travas)\b", re.IGNORECASE)
+
+
+def extract_ground_type(text: str) -> str | None:
+    """Tipo de solado (Soft/Artificial/Hard/Firm Ground) a partir do
+    título -- é o que a maioria das lojas realmente informa (SG/FG/AG/HG
+    ou o nome por extenso)."""
+    for label, pattern in _GROUND_TYPE_PATTERNS:
+        if pattern.search(text):
+            return label
+    return None
+
+
+def extract_upper_material(text: str) -> str | None:
+    """Material do cabedal, só quando o título menciona explicitamente
+    (cobertura baixa -- a maioria das lojas não informa isso no título)."""
+    for label, pattern in _UPPER_MATERIAL_PATTERNS:
+        if pattern.search(text):
+            return label
+    return None
+
+
+def extract_stud_type(text: str) -> str | None:
+    """Tipo/material das travas e, se mencionado, a quantidade -- só
+    quando o título traz essa informação explicitamente (cobertura baixa)."""
+    material = next((label for label, pattern in _STUD_MATERIAL_PATTERNS if pattern.search(text)), None)
+    count_match = _STUD_COUNT_RE.search(text)
+    count = count_match.group(1) if count_match else None
+    if material and count:
+        return f"{count} travas ({material})"
+    if material:
+        return material
+    if count:
+        return f"{count} travas"
+    return None
+
+
 def is_rugby_boot(title: str, extra: str = "") -> bool:
     """True quando o título (+ pista extra, ex: product_type da Shopify)
     parece ser de uma chuteira de rugby, e não de outro produto (bola,

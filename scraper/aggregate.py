@@ -14,7 +14,7 @@ from __future__ import annotations
 import csv
 import json
 import shutil
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 
 from . import config, watchlist as wl
@@ -112,10 +112,17 @@ def run() -> None:
         g = groups.setdefault(key, {
             "key": key, "brand": row["brand"], "model": row["model"], "version": row["version"],
             "prices": [], "sources": set(), "latest": [],
+            "ground_types": Counter(), "upper_materials": Counter(), "stud_types": Counter(),
         })
         g["prices"].append(price_usd)
         g["sources"].add(row["site_name"])
         by_date[key][row["date"]].append(price_usd)
+        if row.get("ground_type"):
+            g["ground_types"][row["ground_type"]] += 1
+        if row.get("upper_material"):
+            g["upper_materials"][row["upper_material"]] += 1
+        if row.get("stud_type"):
+            g["stud_types"][row["stud_type"]] += 1
 
         if latest_date is None or row["date"] > latest_date:
             latest_date = row["date"]
@@ -147,6 +154,9 @@ def run() -> None:
             "latest_date": latest_date, "latest_min_price_usd": None,
             "latest_min_site": None, "latest_min_region": None, "latest_min_url": None,
             "discount_pct": None, "is_deal": False,
+            "ground_type": g["ground_types"].most_common(1)[0][0] if g["ground_types"] else None,
+            "upper_material": g["upper_materials"].most_common(1)[0][0] if g["upper_materials"] else None,
+            "stud_type": g["stud_types"].most_common(1)[0][0] if g["stud_types"] else None,
         }
 
         if g["latest"]:

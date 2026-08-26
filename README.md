@@ -198,6 +198,35 @@ normalizados, que são só uma heurística. Cada versão encontrada
 de solado (SG/FG/AG/HG) não conta como versão à parte — "Team" e
 "Team SG" caem no mesmo grupo (ver "Como o preço é normalizado" abaixo).
 
+Os modelos da Oxen e da Gilbert usam os nomes reais confirmados por
+pesquisa (Oxen: Mtsck, Raptor, Viper, Meta X; Gilbert: Kaizen 1.0, 2.0 e
+X 3.1 Pace) — as entradas antigas "Oxen Stallion SG" e "Gilbert Kaizen
+1.1" nunca encontravam nada porque esses modelos não existem de
+verdade em nenhuma loja.
+
+## Solado, cabedal e travas (aba "Comparar")
+
+Além de marca/modelo/versão, `scraper/normalize.py` tenta extrair três
+atributos a mais do título de cada produto:
+
+- **Solado** (`ground_type`): Soft/Artificial/Hard/Firm Ground — a
+  maioria das lojas informa isso no título (SG/FG/AG/HG ou por
+  extenso), então a cobertura é boa.
+- **Cabedal** (`upper_material`) e **travas** (`stud_type`): só
+  preenchido quando o título menciona explicitamente (ex: "Kangaroo
+  Leather", "6 Stud", "Aluminium Studs") — a maioria das lojas não
+  informa isso, então a cobertura é baixa por natureza dos dados, não
+  por limitação do código. Quando a fonte não diz, o campo fica vazio
+  e o site mostra "Não informado" em vez de inventar um valor.
+
+Esses três campos ficam gravados por linha em `price_history.csv` e
+agregados por modelo/versão (valor mais frequente) em
+`daily_summary.json`. A aba **Comparar** deixa escolher duas chuteiras
+quaisquer (dos 133+ modelos já confirmados, não só a watchlist) e mostra
+lado a lado: marca/modelo/versão, preço médio, menor preço de hoje (+
+fonte), solado, cabedal e travas — com a diferença de preço em US$ e %
+calculada automaticamente.
+
 ## Rodar localmente
 
 ```bash

@@ -29,7 +29,7 @@ log = logging.getLogger("scraper.scrape")
 CSV_FIELDS = [
     "block_height", "timestamp", "date", "site_id", "site_name", "region",
     "brand", "model", "version", "title", "price_local", "currency",
-    "price_usd", "url",
+    "price_usd", "url", "ground_type", "upper_material", "stud_type",
 ]
 
 
@@ -92,6 +92,9 @@ def _append_listings(new_rows, listings, rates, *, block_height, timestamp, toda
             "currency": item["currency"],
             "price_usd": price_usd,
             "url": item["url"],
+            "ground_type": normalize.extract_ground_type(combined) or "",
+            "upper_material": normalize.extract_upper_material(combined) or "",
+            "stud_type": normalize.extract_stud_type(combined) or "",
         })
         count += 1
     return count
