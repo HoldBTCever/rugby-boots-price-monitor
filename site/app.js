@@ -8,6 +8,11 @@
   const fmtBlockAxis = (iso) => fmtAsuncion(iso, { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
   const fmtBlockFull = (iso) => fmtAsuncion(iso, { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" }) + " (ASU)";
   const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const compareStrings = (a, b) => (a || "").localeCompare(b || "", "pt-BR", { sensitivity: "base", numeric: true });
+  // Ordena marca -> modelo -> versão, sempre alfabético (nunca a ordem de
+  // primeira aparição no CSV, que é o que aggregate.py produz por padrão).
+  const sortModels = (models) => [...models].sort((a, b) =>
+    compareStrings(a.brand, b.brand) || compareStrings(a.model, b.model) || compareStrings(a.version, b.version));
 
   // ---- tema ----
   const themeToggle = document.getElementById("themeToggle");
@@ -389,7 +394,7 @@
     const blockLabel = watchlist.latest_block ? `#${watchlist.latest_block.toLocaleString("pt-BR")}` : "—";
     const header = `<p class="watchlist-meta">Último bloco processado: <strong>${blockLabel}</strong> · a coleta atualiza a cada bloco novo minerado</p>`;
 
-    const models = watchlist.models || [];
+    const models = [...(watchlist.models || [])].sort((a, b) => compareStrings(a.label, b.label));
     const cards = models.map((m, idx) => {
       if (!m.versions.length) {
         return `
@@ -493,6 +498,7 @@
       ]);
       const summary = await summaryRes.json();
       const alerts = await alertsRes.json();
+      summary.models = sortModels(summary.models);
 
       document.getElementById("thresholdLabel").textContent = fmtPct(summary.threshold_pct);
       document.getElementById("lastUpdated").textContent = summary.generated_at
