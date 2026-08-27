@@ -200,6 +200,32 @@ Preços são convertidos para USD com as taxas de
 [open.er-api.com](https://open.er-api.com) (cache de 1 dia em
 `data/fx_cache.json`).
 
+**Duas correções de agrupamento (usuário reportou com prints reais o
+mesmo modelo aparecendo duas vezes):**
+
+1. Quando uma loja escreve o tipo de solado por extenso ("Soft Ground",
+   "Artificial Ground") em vez da sigla ("SG", "AG"), as palavras
+   sobravam no campo "modelo" — "adidas Kakari RS SG..." e "adidas
+   Kakari RS Adults Soft Ground..." viravam "Kakari RS" e "Kakari RS
+   Adults Soft", dois grupos em vez de um. `catalog.json` ganhou
+   "adults"/"soft"/"hard"/"firm"/"artificial"/"ground" na lista de
+   ruído.
+2. `_SIZE_RE` (o regex que apaga menção a tamanho do título) exigia os
+   dois lados opcionais ao mesmo tempo (prefixo tipo "size"/"tamanho" E
+   sufixo tipo "us"/"uk") — na prática isso apagava **qualquer** número
+   solto de 1-2 dígitos, sem contexto nenhum. "Antoine Dupont Adizero
+   RS15" e "Antoine Dupont Adults Adizero RS15" perdiam o "RS15" de
+   jeitos diferentes (um pelo corte de 4 palavras já cheio de "Adults",
+   o bug #1; o outro nem chegava a ter esse problema). Mas o mesmo
+   regex também comia números de versão de verdade em outros produtos —
+   "Phoenix 2.0" virava "Phoenix", "RS-15" virava "RS", "Neo 4" virava
+   "Neo". Agora só apaga o número quando vem com uma palavra de tamanho
+   do lado (ver comentário em `normalize.py`).
+
+Depois da correção, `price_history.csv` inteiro foi reprocessado
+(recalculando marca/modelo/versão a partir do `title` já gravado, sem
+raspar de novo) — 8403 de 15435 linhas mudaram.
+
 ## O alerta de oferta
 
 Em `scraper/config.py`:
@@ -262,10 +288,18 @@ atributos a mais do título de cada produto:
 Esses três campos ficam gravados por linha em `price_history.csv` e
 agregados por modelo/versão (valor mais frequente) em
 `daily_summary.json`. A aba **Comparar** deixa escolher duas chuteiras
-quaisquer (dos 133+ modelos já confirmados, não só a watchlist) e mostra
-lado a lado: marca/modelo/versão, preço médio, menor preço de hoje (+
-fonte), solado, cabedal, travas e encaixe (largura) — com a diferença de
-preço em US$ e % calculada automaticamente.
+lado a lado, mostrando marca/modelo/versão, preço médio, menor preço de
+hoje (+ fonte), solado, cabedal, travas e encaixe (largura) — com a
+diferença de preço em US$ e % calculada automaticamente.
+
+A pedido do usuário, a lista de opções do Comparar não é mais o
+catálogo inteiro (100+ modelos, difícil de navegar) — só os favoritos
+(`scraper/favorites.json`) mais as famílias **RS15** e **Morelia IV**
+completas (todas as versões/grafias — "RS15", "RS-15", "RS 15", "Neo
+IV", "Neo 4"), mesmo quando uma variante específica não está entre os
+12 favoritos. Calculado uma vez em `aggregate._is_rs15_or_morelia_iv()`
++ o mesmo casamento por palavra-chave dos favoritos, gravado como
+`in_comparar` em cada modelo de `daily_summary.json`.
 
 **Dados curados (`scraper/model_specs.json`):** pra um punhado de
 modelos conhecidos (hoje: os 12 da watchlist), cabedal/travas/encaixe
@@ -291,11 +325,13 @@ lista da aba "Histórico". Gera `data/favorites.json` (mesmo esquema de
 site reusa o mesmo componente visual (gráfico + tabela por versão) da
 aba Histórico, só apontando pro arquivo diferente.
 
-Uma correção feita ao montar a lista: o usuário pediu "Oxen Metasock",
-mas esse modelo não existe de verdade em loja nenhuma (mesmo problema
-já corrigido antes na watchlist) — o nome real é "Oxen Mtsck" (confirmado
-no título raspado: "OXEN Mtsck 6 Stud Lace Up Rugby Boots"), então a
-entrada usa esse nome.
+Uma correção feita ao montar a lista: o usuário pediu "Oxen Metasock"
+(depois esclarecido como "Oxen Metashock") — nenhuma loja escreve o
+nome por extenso assim; a única grafia real encontrada no catálogo
+raspado é "OXEN Mtsck" (ex: "OXEN Mtsck 6 Stud Lace Up Rugby Boots"),
+confirmado pelo usuário como o mesmo produto. A entrada mostra o
+rótulo "Oxen Metashock", mas casa pela palavra-chave "mtsck" (a grafia
+real usada nas lojas).
 
 Cobertura real hoje: 9 dos 12 modelos já aparecem no catálogo raspado.
 Os 3 que não aparecem ainda (Asics Lethal Tigreor, Asics Lethal

@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import shutil
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
@@ -48,6 +49,19 @@ def _find_curated_spec(specs: list[dict], brand: str, model: str, version: str) 
         if wl.matches(text, spec["match"]):
             return spec
     return None
+
+
+def _is_rs15_or_morelia_iv(brand: str, model: str, version: str) -> bool:
+    """Grupos extras sempre incluídos na aba Comparar além dos favoritos --
+    pedido do usuário: "adidas rs15" (todas as grafias/variantes -- RS15,
+    RS-15, RS 15, Antoine Dupont Adizero RS15...) e "morelia iv" (a geração
+    4 da Mizuno Morelia Neo -- lojas gravam ora "IV" por extenso, ora só o
+    dígito "4")."""
+    text = f"{brand} {model} {version}"
+    folded = re.sub(r"[^a-z0-9]+", "", text.lower())
+    if "rs15" in folded:
+        return True
+    return "morelia" in text.lower() and bool(re.search(r"\b(iv|4)\b", text, re.IGNORECASE))
 
 
 def _build_watchlist(rows: list[dict], cutoff: str, entries: list[dict]) -> list[dict]:
@@ -119,6 +133,7 @@ def _build_watchlist(rows: list[dict], cutoff: str, entries: list[dict]) -> list
 def run() -> None:
     rows = _read_rows()
     model_specs = _load_model_specs()
+    favorites_entries = json.loads(config.FAVORITES_CONFIG.read_text(encoding="utf-8")) if config.FAVORITES_CONFIG.exists() else []
     now = datetime.now(timezone.utc)
     cutoff = (now - timedelta(days=config.AVERAGE_WINDOW_DAYS)).date().isoformat()
 
@@ -185,6 +200,15 @@ def run() -> None:
             "stud_type": g["stud_types"].most_common(1)[0][0] if g["stud_types"] else None,
             "width_fit": None,
             "spec_source": None,
+            # A aba Comparar só oferece favoritos + as famílias "RS15" e
+            # "Morelia IV" (pedido do usuário) -- não os 166+ modelos
+            # crus da varredura geral, difícil de navegar numa lista tão
+            # grande. Calculado uma vez aqui em vez de replicar a lógica
+            # de match no front-end.
+            "in_comparar": (
+                any(wl.matches(f"{g['brand']} {g['model']} {g['version']}", fav["match"]) for fav in favorites_entries)
+                or _is_rs15_or_morelia_iv(g["brand"], g["model"], g["version"])
+            ),
         }
 
         # Cabedal/travas/largura pesquisados manualmente (fonte real) têm
@@ -263,7 +287,6 @@ def run() -> None:
         "latest_block": latest_block,
         "models": _build_watchlist(rows, cutoff, wl.load_watchlist()),
     }
-    favorites_entries = json.loads(config.FAVORITES_CONFIG.read_text(encoding="utf-8")) if config.FAVORITES_CONFIG.exists() else []
     favorites_out = {
         "generated_at": now.isoformat(),
         "window_days": config.AVERAGE_WINDOW_DAYS,

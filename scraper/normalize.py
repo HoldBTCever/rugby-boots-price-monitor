@@ -12,7 +12,16 @@ _NOISE = {w.lower() for w in _catalog["noise_words"]}
 _VERSION_TOKENS = {w.lower() for w in _catalog["version_tokens"]}
 
 _YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
-_SIZE_RE = re.compile(r"\b(size|talla|tamanho|tam|号)?\s*\d{1,2}([.,]\d)?\s*(us|uk|eu|jp)?\b", re.IGNORECASE)
+# Só remove um número quando vem com uma palavra de tamanho do lado (prefixo
+# "size"/"tamanho"/... ou sufixo "us"/"uk"/"eu"/"jp") -- exigir os dois
+# opcionais ao mesmo tempo (como era antes) apagava qualquer número solto de
+# 1-2 dígitos sem contexto nenhum, o que comia números de versão de verdade
+# ("Phoenix 2.0" virava "Phoenix", "RS-15" virava "RS", "Neo 4" virava "Neo").
+_SIZE_RE = re.compile(
+    r"\b(?:size|talla|tamanho|tam|号)\s*\d{1,2}(?:[.,]\d)?\b"
+    r"|\b\d{1,2}(?:[.,]\d)?\s*(?:us|uk|eu|jp)\b",
+    re.IGNORECASE,
+)
 
 # Muitas lojas (ex: World Rugby Shop, Rugbystuff) põem a cor no final do
 # título depois de um hífen: "adidas Kakari Elite SG Rugby Boots - Team

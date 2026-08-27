@@ -508,7 +508,10 @@
       renderBanner(summary, alerts);
       renderStats(summary);
       renderMain(summary);
-      renderCompare(summary.models);
+      // Comparar só oferece favoritos + as famílias RS15/Morelia IV
+      // (in_comparar calculado em aggregate.py) -- não os 166+ modelos
+      // crus da varredura geral, difícil de navegar numa lista tão grande.
+      renderCompare(summary.models.filter((m) => m.in_comparar));
     } catch (err) {
       document.getElementById("mainContent").innerHTML = `
         <div class="card empty-state">
