@@ -1,0 +1,7 @@
+# Este arquivo não é lido por nenhum código -- serve só como "empurrão"
+# pro backup externo do agendador (veja README, seção "Backup do
+# agendador"). Quando o cron nativo do GitHub Actions fica horas sem
+# disparar, uma sessão dedicada atualiza a data abaixo e faz push --
+# como este caminho (scraper/**) já está nos "paths" do trigger "push"
+# do workflow, isso força um run novo sem depender do agendador travado.
+last_nudge: (nunca ainda)

@@ -352,6 +352,30 @@ que o intervalo médio entre blocos do Bitcoin (~10 min) conforme o
 número de lojas cresceu -- sem paralelismo, a atualização do site
 ficaria permanentemente atrasada em relação aos blocos reais.
 
+### Atraso do agendador do GitHub Actions (limitação conhecida da plataforma)
+
+O `schedule` do GitHub Actions é "melhor esforço", sem SLA -- a própria
+documentação do GitHub admite atraso ou descarte de execuções agendadas
+em horários de pico, e pico significa justamente os minutos redondos
+(:00, :05, :10...), porque é onde a maioria dos cron jobs de todo o
+GitHub cai ao mesmo tempo. Já aconteceu nesta sessão de ficar horas sem
+nenhum run, sem nenhum erro visível -- o agendador simplesmente não
+disparou, e depois voltou sozinho.
+
+Duas mitigações:
+
+1. **Cron deslocado** (`1-56/5 * * * *` em vez de `*/5 * * * *`):
+   mesma frequência, só fora do minuto redondo mais concorrido. Reduz a
+   chance de atraso longo, mas não é garantia.
+2. **Backup do agendador** (`scraper/.heartbeat`): uma sessão externa
+   dedicada (fora do GitHub Actions) confere periodicamente há quanto
+   tempo não roda nenhum job. Se passar de ~30 min sem nenhum run --
+   sinal de que o agendador nativo travou --, ela atualiza a data nesse
+   arquivo e dá push. Como `scraper/**` já está nos `paths` do trigger
+   `push` do workflow (seção acima), isso força um run novo sem
+   depender do cron travado. `scraper/.heartbeat` não é lido por nenhum
+   código do scraper -- existe só pra isso.
+
 ## Limitações conhecidas
 
 - Raspagem de HTML quebra quando a loja muda o layout — o workflow
