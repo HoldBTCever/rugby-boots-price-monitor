@@ -30,7 +30,6 @@ CSV_FIELDS = [
     "block_height", "timestamp", "date", "site_id", "site_name", "region",
     "brand", "model", "version", "title", "price_local", "currency",
     "price_usd", "url", "ground_type", "upper_material", "stud_type",
-    "mij_kangaroo",
 ]
 
 
@@ -101,7 +100,6 @@ def _append_listings(new_rows, listings, rates, *, block_height, timestamp, toda
             "ground_type": normalize.extract_ground_type(combined) or "",
             "upper_material": normalize.extract_upper_material(combined) or "",
             "stud_type": normalize.extract_stud_type(combined) or "",
-            "mij_kangaroo": "true" if normalize.is_mij_kangaroo(combined) else "",
         })
         count += 1
     return count

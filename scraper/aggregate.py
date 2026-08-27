@@ -6,6 +6,8 @@
   DEAL_THRESHOLD_PCT (ou mais) abaixo da média histórica do modelo
 - data/watchlist.json: histórico de preço médio diário para a lista fixa
   de modelos em scraper/watchlist.json (aba "Histórico" do site)
+- data/favorites.json: mesma ideia, mas pra lista curada pelo usuário em
+  scraper/favorites.json (aba "Favoritos" do site)
 
 Uso: python -m scraper.aggregate
 """
@@ -48,14 +50,17 @@ def _find_curated_spec(specs: list[dict], brand: str, model: str, version: str) 
     return None
 
 
-def _build_watchlist(rows: list[dict], cutoff: str) -> list[dict]:
-    """Agrupa por versão (dentro de cada item da watchlist) e depois por
+def _build_watchlist(rows: list[dict], cutoff: str, entries: list[dict]) -> list[dict]:
+    """Agrupa por versão (dentro de cada item da lista) e depois por
     bloco do Bitcoin -- cada bloco novo minerado é um ponto no histórico.
     Casa contra o título bruto do produto -- veja scraper/watchlist.py.
     Linhas antigas (de antes do rastreio por bloco) usam o timestamp como
-    chave de agrupamento no lugar do bloco."""
+    chave de agrupamento no lugar do bloco. `entries` é a lista curada
+    (scraper/watchlist.json pra aba "Histórico", scraper/favorites.json
+    pra aba "Favoritos") -- mesmo formato [{label, match}], mesma função
+    serve as duas."""
     result = []
-    for entry in wl.load_watchlist():
+    for entry in entries:
         version_blocks: dict[str, dict[str, dict]] = defaultdict(dict)
 
         for row in rows:
@@ -134,7 +139,6 @@ def run() -> None:
             "key": key, "brand": row["brand"], "model": row["model"], "version": row["version"],
             "prices": [], "sources": set(), "latest": [],
             "ground_types": Counter(), "upper_materials": Counter(), "stud_types": Counter(),
-            "mij_kangaroo": False,
         })
         g["prices"].append(price_usd)
         g["sources"].add(row["site_name"])
@@ -145,8 +149,6 @@ def run() -> None:
             g["upper_materials"][row["upper_material"]] += 1
         if row.get("stud_type"):
             g["stud_types"][row["stud_type"]] += 1
-        if row.get("mij_kangaroo"):
-            g["mij_kangaroo"] = True
 
         if latest_date is None or row["date"] > latest_date:
             latest_date = row["date"]
@@ -183,7 +185,6 @@ def run() -> None:
             "stud_type": g["stud_types"].most_common(1)[0][0] if g["stud_types"] else None,
             "width_fit": None,
             "spec_source": None,
-            "mij_kangaroo": g["mij_kangaroo"],
         }
 
         # Cabedal/travas/largura pesquisados manualmente (fonte real) têm
@@ -236,7 +237,6 @@ def run() -> None:
             "sources": len(all_sources),
             "deals_today": len(deals),
             "observations": len(rows),
-            "mij_kangaroo_models": sum(1 for m in models if m["mij_kangaroo"]),
         },
         "sources": all_sources,
         "models": models,
@@ -261,22 +261,34 @@ def run() -> None:
         "window_days": config.AVERAGE_WINDOW_DAYS,
         "latest_date": latest_date,
         "latest_block": latest_block,
-        "models": _build_watchlist(rows, cutoff),
+        "models": _build_watchlist(rows, cutoff, wl.load_watchlist()),
+    }
+    favorites_entries = json.loads(config.FAVORITES_CONFIG.read_text(encoding="utf-8")) if config.FAVORITES_CONFIG.exists() else []
+    favorites_out = {
+        "generated_at": now.isoformat(),
+        "window_days": config.AVERAGE_WINDOW_DAYS,
+        "latest_date": latest_date,
+        "latest_block": latest_block,
+        "models": _build_watchlist(rows, cutoff, favorites_entries),
     }
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     config.DAILY_SUMMARY_JSON.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
     config.ALERTS_JSON.write_text(json.dumps(alerts, indent=2, ensure_ascii=False), encoding="utf-8")
     config.WATCHLIST_JSON.write_text(json.dumps(watchlist_out, indent=2, ensure_ascii=False), encoding="utf-8")
+    config.FAVORITES_JSON.write_text(json.dumps(favorites_out, indent=2, ensure_ascii=False), encoding="utf-8")
 
     config.SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copy(config.DAILY_SUMMARY_JSON, config.SITE_DATA_DIR / "daily_summary.json")
     shutil.copy(config.ALERTS_JSON, config.SITE_DATA_DIR / "alerts.json")
     shutil.copy(config.WATCHLIST_JSON, config.SITE_DATA_DIR / "watchlist.json")
+    shutil.copy(config.FAVORITES_JSON, config.SITE_DATA_DIR / "favorites.json")
 
     found = sum(1 for m in watchlist_out["models"] if m["versions"])
+    found_fav = sum(1 for m in favorites_out["models"] if m["versions"])
     print(f"{len(models)} modelos, {len(deals)} ofertas (>= {config.DEAL_THRESHOLD_PCT:.1%} abaixo da média), "
-          f"{found}/{len(watchlist_out['models'])} itens da watchlist encontrados")
+          f"{found}/{len(watchlist_out['models'])} itens da watchlist encontrados, "
+          f"{found_fav}/{len(favorites_out['models'])} favoritos encontrados")
 
 
 if __name__ == "__main__":

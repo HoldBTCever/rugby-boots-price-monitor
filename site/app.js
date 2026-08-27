@@ -25,11 +25,12 @@
     document.documentElement.setAttribute("data-theme", next);
     try { localStorage.setItem("rbpm-theme", next); } catch (e) {}
     if (window.__rbpmChart) renderChart(window.__rbpmModels, window.__rbpmSelectedKey);
-    if (window.__rbpmWatchlist) renderWatchlist(window.__rbpmWatchlist);
+    if (window.__rbpmWatchlist) renderWatchlist(window.__rbpmWatchlist, "watchlistContent", "wlChart");
+    if (window.__rbpmFavorites) renderWatchlist(window.__rbpmFavorites, "favoritesContent", "favChart");
   });
 
   // ---- abas ----
-  const TAB_NAMES = ["painel", "historico", "comparar", "mij"];
+  const TAB_NAMES = ["painel", "historico", "comparar", "favoritos"];
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
@@ -52,7 +53,7 @@
   });
 
   let chartInstance = null;
-  const watchlistCharts = [];
+  const activeCharts = {}; // containerId -> Chart[] (Histórico e Favoritos usam a mesma renderWatchlist)
 
   function renderBanner(summary, alerts) {
     const slot = document.getElementById("bannerSlot");
@@ -375,60 +376,15 @@
     rerender();
   }
 
-  function renderMiJ(models) {
-    const slot = document.getElementById("mijContent");
-    if (!slot) return;
+  // Serve tanto a aba "Histórico" (scraper/watchlist.json) quanto "Favoritos"
+  // (scraper/favorites.json) -- mesmo formato de dados, só muda o contêiner
+  // e o prefixo do id de cada canvas (pra não colidir entre as duas abas).
+  function renderWatchlist(watchlist, containerId, chartPrefix) {
+    if (containerId === "watchlistContent") window.__rbpmWatchlist = watchlist;
+    else window.__rbpmFavorites = watchlist;
 
-    const mij = (models || []).filter((m) => m.mij_kangaroo);
-
-    if (mij.length === 0) {
-      slot.innerHTML = `
-        <div class="card empty-state">
-          <div class="icon">🦘</div>
-          <h2>Nenhuma chuteira MiJ de couro de canguru confirmada ainda</h2>
-          <p>Esta aba só mostra um modelo quando a própria loja confirma, no título ou na descrição, as duas
-          coisas ao mesmo tempo: <strong>fabricação no Japão</strong> ("Made in Japan"/"MIJ"/日本製) e
-          <strong>couro de canguru</strong>. Muitas chuteiras Mizuno Morelia vendidas fora do Japão (a linha
-          "Neo", por exemplo) usam cabedal sintético e não são feitas no Japão, mesmo com nome parecido —
-          por isso não aparecem aqui sem essa confirmação explícita. Nenhuma loja monitorada confirmou isso
-          ainda; assim que alguma confirmar, o modelo aparece automaticamente, sem precisar de nenhuma ação.</p>
-        </div>`;
-      return;
-    }
-
-    const rows = mij.map((m) => `
-      <tr>
-        <td data-label="Marca">${m.brand}</td>
-        <td data-label="Modelo">${m.model}</td>
-        <td data-label="Versão">${m.version}</td>
-        <td class="num" data-label="Média (USD)">${fmtUSD(m.avg_price_usd)}</td>
-        <td class="num" data-label="Menor hoje">${fmtUSD(m.latest_min_price_usd)}</td>
-        <td data-label="Fonte do menor preço">${m.latest_min_site ? `<a href="${m.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${m.latest_min_site}</a>` : "—"}</td>
-      </tr>`).join("");
-
-    slot.innerHTML = `
-      <div class="card">
-        <h2>Chuteiras Made in Japan (couro de canguru)</h2>
-        <p class="watchlist-meta">Só entram aqui modelos cuja loja confirma explicitamente fabricação no
-          Japão E couro de canguru juntos — nunca por suposição a partir do nome da linha.</p>
-        <div class="table-scroll">
-          <table class="responsive-table">
-            <thead>
-              <tr>
-                <th>Marca</th><th>Modelo</th><th>Versão</th>
-                <th class="num">Média (USD)</th><th class="num">Menor hoje</th><th>Fonte do menor preço</th>
-              </tr>
-            </thead>
-            <tbody>${rows}</tbody>
-          </table>
-        </div>
-      </div>`;
-  }
-
-  function renderWatchlist(watchlist) {
-    window.__rbpmWatchlist = watchlist;
-    watchlistCharts.forEach((c) => c.destroy());
-    watchlistCharts.length = 0;
+    (activeCharts[containerId] || []).forEach((c) => c.destroy());
+    activeCharts[containerId] = [];
 
     const blockLabel = watchlist.latest_block ? `#${watchlist.latest_block.toLocaleString("pt-BR")}` : "—";
     const header = `<p class="watchlist-meta">Último bloco processado: <strong>${blockLabel}</strong> · a coleta atualiza a cada bloco novo minerado</p>`;
@@ -459,7 +415,7 @@
       return `
         <div class="card watchlist-card">
           <h2>${m.label}</h2>
-          <div class="chart-container"><canvas id="wlChart${idx}"></canvas></div>
+          <div class="chart-container"><canvas id="${chartPrefix}${idx}"></canvas></div>
           <div class="table-scroll">
             <table class="version-table responsive-table">
               <thead><tr><th>Versão</th><th>Bloco</th><th>Data/hora</th><th class="num">Média</th><th class="num">Maior</th><th class="num">Menor</th></tr></thead>
@@ -469,11 +425,11 @@
         </div>`;
     });
 
-    document.getElementById("watchlistContent").innerHTML = header + `<div class="watchlist-grid">${cards.join("")}</div>`;
+    document.getElementById(containerId).innerHTML = header + `<div class="watchlist-grid">${cards.join("")}</div>`;
 
     models.forEach((m, idx) => {
       if (!m.versions.length) return;
-      const canvas = document.getElementById(`wlChart${idx}`);
+      const canvas = document.getElementById(`${chartPrefix}${idx}`);
       if (!canvas || typeof Chart === "undefined") return;
 
       const allTimestamps = [...new Set(m.versions.flatMap((v) => v.history.map((h) => h.timestamp)))].sort();
@@ -525,7 +481,7 @@
           },
         },
       });
-      watchlistCharts.push(chart);
+      activeCharts[containerId].push(chart);
     });
   }
 
@@ -547,7 +503,6 @@
       renderStats(summary);
       renderMain(summary);
       renderCompare(summary.models);
-      renderMiJ(summary.models);
     } catch (err) {
       document.getElementById("mainContent").innerHTML = `
         <div class="card empty-state">
@@ -560,12 +515,25 @@
     try {
       const watchlistRes = await fetch("data/watchlist.json", { cache: "no-store" });
       const watchlist = await watchlistRes.json();
-      renderWatchlist(watchlist);
+      renderWatchlist(watchlist, "watchlistContent", "wlChart");
     } catch (err) {
       document.getElementById("watchlistContent").innerHTML = `
         <div class="card empty-state">
           <div class="icon">⚠️</div>
           <h2>Não foi possível carregar o histórico</h2>
+          <p>${err.message}</p>
+        </div>`;
+    }
+
+    try {
+      const favoritesRes = await fetch("data/favorites.json", { cache: "no-store" });
+      const favorites = await favoritesRes.json();
+      renderWatchlist(favorites, "favoritesContent", "favChart");
+    } catch (err) {
+      document.getElementById("favoritesContent").innerHTML = `
+        <div class="card empty-state">
+          <div class="icon">⚠️</div>
+          <h2>Não foi possível carregar os favoritos</h2>
           <p>${err.message}</p>
         </div>`;
     }

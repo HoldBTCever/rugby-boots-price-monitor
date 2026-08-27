@@ -170,20 +170,6 @@ def is_explicitly_non_boot(text: str) -> bool:
     return any(word in text.lower() for word in _NON_BOOT_WORDS)
 
 
-_MADE_IN_JAPAN_RE = re.compile(r"made\s*in\s*japan|\bmij\b|日本製", re.IGNORECASE)
-
-
-def is_mij_kangaroo(text: str) -> bool:
-    """True só quando o texto confirma EXPLICITAMENTE as duas coisas:
-    couro de canguru E fabricação no Japão -- nunca assume isso a partir
-    só do nome do modelo (ex: "Morelia"), porque a mesma linha tem
-    versões sintéticas feitas fora do Japão vendidas com nome parecido.
-    Cobertura baixíssima por natureza (poucas lojas ocidentais estocam a
-    versão MiJ de verdade) -- fica False quando a fonte não confirma."""
-    upper = extract_upper_material(text)
-    return upper == "Couro canguru" and bool(_MADE_IN_JAPAN_RE.search(text))
-
-
 def normalize_title(title: str) -> dict:
     """Retorna {brand, model, version} a partir de um título de produto.
 

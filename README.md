@@ -279,29 +279,34 @@ pesquisa não confirma um campo específico pra um modelo (ex: largura do
 Oxen Meta X, que só achei pra coleção Oxen em geral, não pro modelo
 exato), o campo fica `null` em vez de herdar um valor genérico da marca.
 
-## Chuteiras Made in Japan de couro de canguru (aba "MiJ")
+## Lista curada pessoal (aba "Favoritos")
 
-`normalize.is_mij_kangaroo()` marca uma listagem como MiJ (`mij_kangaroo`
-em `price_history.csv` e `daily_summary.json`) só quando o título/pista
-extra confirma **as duas coisas ao mesmo tempo**: cabedal de couro de
-canguru (mesmo padrão já usado em `upper_material`, incluindo o
-equivalente em katakana カンガルー) e fabricação no Japão ("Made in
-Japan", "MIJ" ou "日本製"). Nunca por suposição a partir do nome da
-linha: a Mizuno vende a linha "Morelia" com e sem essas duas
-características ao mesmo tempo — a "Morelia Neo" vendida fora do Japão
-(a maioria do que as lojas ocidentais monitoradas estocam hoje) usa
-cabedal sintético e não é feita no Japão, só a "Morelia II Made in
-Japan" (e algumas edições "Neo ... Japan") são de fato couro de canguru
-fabricado lá. Pesquisa confirmou que essa é uma distinção real da
-própria Mizuno, não uma nuance inventada.
+`scraper/favorites.json` é uma segunda lista fixa, no mesmo formato de
+`scraper/watchlist.json` (`{label, match}`, casado por palavra-chave
+contra o título bruto via `scraper/watchlist.py`) e agregada pela mesma
+função (`aggregate._build_watchlist()`, parametrizada pela lista) —
+só que com os 12 modelos que o usuário pediu especificamente, em vez da
+lista da aba "Histórico". Gera `data/favorites.json` (mesmo esquema de
+`data/watchlist.json`: por versão, por bloco) e a aba **Favoritos** no
+site reusa o mesmo componente visual (gráfico + tabela por versão) da
+aba Histórico, só apontando pro arquivo diferente.
 
-Cobertura esperada é baixíssima (talvez zero por longos períodos): é
-um SKU de nicho, raramente estocado pelas lojas do Reino Unido/EUA que
-formam a maior parte do catálogo — a fonte mais provável de confirmar
-isso de verdade é uma loja japonesa nativa (Rugby Goods, Mizuno Japan).
-A aba **MiJ** mostra uma tabela filtrada só com os modelos confirmados
-e, quando nenhum ainda foi, um estado vazio explicando o critério em
-vez de mostrar dado incerto.
+Uma correção feita ao montar a lista: o usuário pediu "Oxen Metasock",
+mas esse modelo não existe de verdade em loja nenhuma (mesmo problema
+já corrigido antes na watchlist) — o nome real é "Oxen Mtsck" (confirmado
+no título raspado: "OXEN Mtsck 6 Stud Lace Up Rugby Boots"), então a
+entrada usa esse nome.
+
+Cobertura real hoje: 9 dos 12 modelos já aparecem no catálogo raspado.
+Os 3 que não aparecem ainda (Asics Lethal Tigreor, Asics Lethal
+Testimonial, Mizuno Morelia Neo IV Beta Japan) são modelos reais, mas
+nenhuma loja monitorada até agora devolveu uma chuteira com esse nome
+-- a entrada fica pronta pra aparecer sozinha assim que alguma loja
+estocar, mostrando "ainda não encontrado" em vez de inventar um preço.
+
+(Esta aba substituiu a antiga aba "MiJ", removida a pedido do usuário
+-- junto foi removido o campo `mij_kangaroo` de `price_history.csv` e
+`daily_summary.json` e a função `normalize.is_mij_kangaroo()`.)
 
 ## Rodar localmente
 
