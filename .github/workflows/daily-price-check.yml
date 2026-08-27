@@ -5,8 +5,14 @@ on:
   # de polling; scraper/scrape.py só de fato rasparmos as lojas quando a
   # altura do bloco do Bitcoin (via mempool.space) muda desde a última
   # coleta, então na prática atualiza a cada bloco novo minerado (~10 min).
+  # Minuto deslocado (1,6,11...56 em vez de 0,5,10...55): o GitHub avisa
+  # que o agendador atrasa/derruba execuções em horários de pico, e picos
+  # de pico são justamente os minutos "redondos" (todo cron do GitHub cai
+  # ali por padrão) -- rodar 1 minuto fora disso evita boa parte dessa
+  # fila. Não é garantia (o agendador do GitHub continua sendo "melhor
+  # esforço", sem SLA), só reduz a chance de ficar horas sem rodar.
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "1-56/5 * * * *"
   workflow_dispatch: {}
   push:
     branches: [main]
