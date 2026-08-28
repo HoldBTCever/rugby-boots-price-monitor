@@ -199,7 +199,7 @@
     window.__rbpmChart = chartInstance;
   }
 
-  function renderTable(models) {
+  function renderTableRows(models) {
     const rows = models.map((m) => `
       <tr>
         <td data-label="Marca">${m.brand}</td>
@@ -213,21 +213,41 @@
       </tr>`).join("");
 
     return `
-      <div class="card">
-        <h2>Todos os modelos monitorados</h2>
-        <div class="table-scroll">
-          <table class="responsive-table">
-            <thead>
-              <tr>
-                <th>Marca</th><th>Modelo</th><th>Versão</th>
-                <th class="num">Média (USD)</th><th class="num">Menor hoje</th>
-                <th class="num">Variação</th><th>Fonte do menor preço</th><th></th>
-              </tr>
-            </thead>
-            <tbody>${rows}</tbody>
-          </table>
-        </div>
+      <div class="table-scroll">
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Marca</th><th>Modelo</th><th>Versão</th>
+              <th class="num">Média (USD)</th><th class="num">Menor hoje</th>
+              <th class="num">Variação</th><th>Fonte do menor preço</th><th></th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
       </div>`;
+  }
+
+  // Marca/versão selecionadas ("" = todas) + critério de ordenação --
+  // pedido do usuário: poder ver só "as elites" ou só "adidas", e ordenar
+  // por variação/preço médio, não só por nome.
+  function applyPainelFilters(models, filters) {
+    let out = models;
+    if (filters.brand) out = out.filter((m) => m.brand === filters.brand);
+    if (filters.version) out = out.filter((m) => m.version === filters.version);
+
+    const byName = (a, b) =>
+      compareStrings(a.brand, b.brand) || compareStrings(a.model, b.model) || compareStrings(a.version, b.version);
+    const sorted = [...out];
+    if (filters.sort === "discount") {
+      sorted.sort((a, b) => (b.discount_pct ?? -Infinity) - (a.discount_pct ?? -Infinity) || byName(a, b));
+    } else if (filters.sort === "avg_desc") {
+      sorted.sort((a, b) => (b.avg_price_usd ?? -Infinity) - (a.avg_price_usd ?? -Infinity) || byName(a, b));
+    } else if (filters.sort === "avg_asc") {
+      sorted.sort((a, b) => (a.avg_price_usd ?? Infinity) - (b.avg_price_usd ?? Infinity) || byName(a, b));
+    } else {
+      sorted.sort(byName);
+    }
+    return sorted;
   }
 
   function renderMain(summary) {
@@ -245,26 +265,78 @@
       return;
     }
 
-    const options = models.map((m) =>
-      `<option value="${m.key}">${m.brand} ${m.model} — ${m.version}${m.is_deal ? " 🔻" : ""}</option>`
-    ).join("");
-
-    const preselect = models.find((m) => m.is_deal) || models[0];
+    const brands = [...new Set(models.map((m) => m.brand))].sort(compareStrings);
+    const versions = [...new Set(models.map((m) => m.version))].sort(compareStrings);
+    const brandOptions = brands.map((b) => `<option value="${b}">${b}</option>`).join("");
+    const versionOptions = versions.map((v) => `<option value="${v}">${v}</option>`).join("");
 
     document.getElementById("mainContent").innerHTML = `
       <div class="card">
         <h2>Histórico de preço médio</h2>
         <div class="chart-controls">
           <label for="modelSelect">Modelo:</label>
-          <select id="modelSelect">${options}</select>
+          <select id="modelSelect"></select>
         </div>
         <div class="chart-container"><canvas id="priceChart"></canvas></div>
       </div>
-      ${renderTable(models)}`;
+      <div class="card">
+        <h2>Todos os modelos monitorados</h2>
+        <div class="chart-controls">
+          <label for="filterBrand">Marca:</label>
+          <select id="filterBrand"><option value="">Todas as marcas</option>${brandOptions}</select>
+          <label for="filterVersion">Versão:</label>
+          <select id="filterVersion"><option value="">Todas as versões</option>${versionOptions}</select>
+          <label for="sortBy">Ordenar por:</label>
+          <select id="sortBy">
+            <option value="name">Nome (A-Z)</option>
+            <option value="discount">Maior variação primeiro</option>
+            <option value="avg_desc">Maior preço médio</option>
+            <option value="avg_asc">Menor preço médio</option>
+          </select>
+        </div>
+        <p class="watchlist-meta" id="tableCount"></p>
+        <div id="modelsTableSlot"></div>
+      </div>`;
 
-    document.getElementById("modelSelect").value = preselect.key;
-    document.getElementById("modelSelect").addEventListener("change", (e) => renderChart(models, e.target.value));
-    renderChart(models, preselect.key);
+    const modelSelectEl = document.getElementById("modelSelect");
+    const filterBrandEl = document.getElementById("filterBrand");
+    const filterVersionEl = document.getElementById("filterVersion");
+    const sortByEl = document.getElementById("sortBy");
+    const tableSlot = document.getElementById("modelsTableSlot");
+    const tableCount = document.getElementById("tableCount");
+
+    function refresh() {
+      const visible = applyPainelFilters(models, {
+        brand: filterBrandEl.value, version: filterVersionEl.value, sort: sortByEl.value,
+      });
+
+      tableCount.textContent = `${visible.length} de ${models.length} modelo(s)`;
+      tableSlot.innerHTML = visible.length
+        ? renderTableRows(visible)
+        : `<p class="watchlist-empty">Nenhum modelo bate com esse filtro.</p>`;
+
+      if (visible.length === 0) {
+        modelSelectEl.innerHTML = `<option value="">Nenhum modelo bate com esse filtro</option>`;
+        modelSelectEl.disabled = true;
+        return; // deixa o último gráfico renderizado como estava, sem forçar troca
+      }
+      modelSelectEl.disabled = false;
+
+      const prevSelected = modelSelectEl.value;
+      modelSelectEl.innerHTML = visible.map((m) =>
+        `<option value="${m.key}">${m.brand} ${m.model} — ${m.version}${m.is_deal ? " 🔻" : ""}</option>`
+      ).join("");
+      const nextSelected = visible.find((m) => m.key === prevSelected) || visible.find((m) => m.is_deal) || visible[0];
+      modelSelectEl.value = nextSelected.key;
+      renderChart(models, nextSelected.key);
+    }
+
+    modelSelectEl.addEventListener("change", (e) => renderChart(models, e.target.value));
+    filterBrandEl.addEventListener("change", refresh);
+    filterVersionEl.addEventListener("change", refresh);
+    sortByEl.addEventListener("change", refresh);
+
+    refresh();
   }
 
   const COMPARE_ROWS = [

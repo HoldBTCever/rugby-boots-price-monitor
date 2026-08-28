@@ -53,6 +53,25 @@ _ADIDAS_TEAM_COLOR_RE = re.compile(
     re.IGNORECASE,
 )
 
+# O nome oficial da adidas pra essa linha é "adizero RS15" (confirmado via
+# news.adidas.com) -- mas cada loja escreve diferente: "RS15", "RS 15",
+# "RS-15", com ou sem "Adizero" na frente. Sem isso, o mesmo produto virava
+# vários grupos diferentes ("Adizero RS15" x "RS 15" x "Rs15"...). Canoniza
+# pra "Adizero RS15" sempre, ANTES de separar em palavras.
+_RS15_CANON_RE = re.compile(r"\b(?:adizero\s+)?rs[\s-]?15\b", re.IGNORECASE)
+
+# "Solar Turbo" é nome de cor da adidas (sempre aparece grudado numa cor de
+# verdade, ex: "Solar Turbo Pink") -- não é um tier real como "Elite"/"Pro",
+# mas como não começa com "Team" o _ADIDAS_TEAM_COLOR_RE acima não pega.
+_ADIDAS_SOLAR_TURBO_RE = re.compile(r"\bsolar\s+turbo\b", re.IGNORECASE)
+
+# Alguns feeds (Rugby Goods/Japão) trazem o código interno da loja colado
+# no fim do título (ex: ".../JP8792", ".../IH2756") -- não é parte do nome
+# do produto, é SKU. Só descarta palavras que são só isso: 1-3 letras
+# seguidas de 4-6 dígitos (não bate em "RS15"/"8S"/"V1"/"X9", que são
+# tokens de modelo/versão de verdade).
+_SKU_CODE_RE = re.compile(r"^[A-Za-z]{1,3}\d{4,6}$")
+
 # Palavras que indicam que o produto É uma chuteira/bota.
 _BOOT_WORDS = ["boot", "cleat", "chuteira", "botin", "botín", "bota", "spike", "ブーツ", "スパイク"]
 # Palavras que indicam acessório/vestuário/equipamento -- não é chuteira,
@@ -198,6 +217,8 @@ def normalize_title(title: str) -> dict:
 
     working = _COLORWAY_SUFFIX_RE.sub("", working)
     working = _ADIDAS_TEAM_COLOR_RE.sub("", working)
+    working = _ADIDAS_SOLAR_TURBO_RE.sub("", working)
+    working = _RS15_CANON_RE.sub("Adizero RS15", working)
     working = _SIZE_RE.sub(" ", working)
 
     words = [w for w in re.split(r"[\s\-/]+", working) if w]
@@ -205,7 +226,7 @@ def normalize_title(title: str) -> dict:
     model_parts = []
     for w in words:
         wl = w.lower().strip(",.()[]")
-        if not wl or wl in _NOISE:
+        if not wl or wl in _NOISE or _SKU_CODE_RE.match(w.strip(",.()[]")):
             continue
         if wl in _VERSION_TOKENS or _YEAR_RE.fullmatch(wl):
             version_parts.append(w)

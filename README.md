@@ -221,10 +221,45 @@ mesmo modelo aparecendo duas vezes):**
    "Phoenix 2.0" virava "Phoenix", "RS-15" virava "RS", "Neo 4" virava
    "Neo". Agora só apaga o número quando vem com uma palavra de tamanho
    do lado (ver comentário em `normalize.py`).
+3. Usuário notou "adidas RS15" ainda duplicado depois das duas correções
+   acima — algumas lojas chamam de "Adizero RS15", outras só "RS15"/
+   "RS 15"/"RS-15", sem prefixo. Pesquisei o nome oficial da adidas
+   ([news.adidas.com](https://news.adidas.com/rugby/adidas-revamps-its-rugby-boot-portfolio-with-the-launch-of-the-adizero-rs15---built-for-multi-direct/s/5c574b4a-38f8-4dd5-8dfd-32ecee7e1d2a)):
+   é "adizero RS15", com tiers reais **Pro** (elite/seleções), **Elite**,
+   **Ultimate** e a versão padrão, mais a linha feminina **Avaglide**.
+   `_RS15_CANON_RE` em `normalize.py` canoniza qualquer grafia
+   ("RS15"/"RS 15"/"RS-15", com ou sem "Adizero") pra "Adizero RS15"
+   antes de separar em palavras; "ultimate" entrou em `version_tokens`
+   (era lido como parte do modelo, não da versão); "Solar Turbo" (nome
+   de cor da adidas, tipo "Team Royal Blue") passou a ser removido como
+   as demais cores. 17 grupos diferentes de "RS15" viraram 9 (os 4
+   tiers principais, antes espalhados em até 5 grafias cada, agora uma
+   linha só; a linha "Antoine Dupont" — edição de jogador, produto
+   realmente diferente — continua separada de propósito).
 
-Depois da correção, `price_history.csv` inteiro foi reprocessado
+De quebra, um pequeno código de SKU interno de loja que vazava no fim de
+alguns títulos japoneses (ex: ".../JP8792", ".../IH2756") também passou
+a ser descartado (`_SKU_CODE_RE`) — não é nome de produto.
+
+Depois de cada correção, `price_history.csv` inteiro é reprocessado
 (recalculando marca/modelo/versão a partir do `title` já gravado, sem
-raspar de novo) — 8403 de 15435 linhas mudaram.
+raspar de novo) com o script de migração usado pontualmente pra isso —
+não faz parte do pipeline normal, que só processa linhas novas.
+
+## Ordenar e filtrar (aba Painel)
+
+A tabela "Todos os modelos monitorados" (e o dropdown "Modelo" do
+gráfico acima dela, que segue o mesmo filtro) tem três controles:
+
+- **Marca** e **Versão**: restringe a lista só à marca/versão escolhida
+  (ex: só "adidas", só "Elite") — as opções são geradas a partir dos
+  modelos realmente presentes, nunca uma lista fixa.
+- **Ordenar por**: Nome (A-Z, padrão), Maior variação primeiro (mesma
+  coluna "Variação" da tabela — quem está mais abaixo da própria média
+  histórica aparece primeiro), Maior/Menor preço médio.
+
+Tudo client-side (`app.js`), sem round-trip nenhum — os três filtros
+combinam entre si (ex: só "Mizuno" + "Elite", ordenado por preço).
 
 ## O alerta de oferta
 
