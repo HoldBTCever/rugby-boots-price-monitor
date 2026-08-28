@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-28T13:49:15.463874+00:00",
+  "generated_at": "2026-08-28T13:50:19.119726+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-28",
   "totals": {
-    "models_tracked": 131,
+    "models_tracked": 127,
     "sources": 12,
-    "deals_today": 5,
+    "deals_today": 6,
     "observations": 22246
   },
   "sources": [
@@ -25,14 +25,123 @@
   ],
   "models": [
     {
+      "key": "adidas|kakari z.1|padrão",
+      "brand": "adidas",
+      "model": "Kakari Z.1",
+      "version": "Padrão",
+      "avg_price_usd": 159.51,
+      "n_observations": 285,
+      "sources": [
+        "Rugby Goods (Rugby Online Japan)",
+        "Rugby Heaven"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 184.05,
+          "min_price_usd": 184.04
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 173.74,
+          "min_price_usd": 18.71
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 142.38,
+          "min_price_usd": 18.7
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 142.27,
+          "min_price_usd": 18.7
+        }
+      ],
+      "latest_date": "2026-08-28",
+      "latest_min_price_usd": 18.7,
+      "latest_min_site": "Rugby Goods (Rugby Online Japan)",
+      "latest_min_region": "Japan",
+      "latest_min_url": "https://www.rugbygoods.com/SHOP/keyword/boots#HP6836",
+      "discount_pct": 0.8828,
+      "is_deal": true,
+      "ground_type": "Soft Ground",
+      "upper_material": {
+        "pt-BR": "Sintético ripstop (parte reciclado)",
+        "es-PY": "Sintético ripstop (parcialmente reciclado)",
+        "en-US": "Ripstop synthetic (partly recycled)"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas moldadas, solado dividido flexível",
+        "es-PY": "8 tapones moldeados, suela dividida flexible",
+        "en-US": "8 moulded studs, flexible split sole"
+      },
+      "width_fit": {
+        "pt-BR": "Larga (avaliação geral da linha Kakari em comparativos de terceiros — a página oficial não afirma isso especificamente para o Z.1)",
+        "es-PY": "Ancho (evaluación general de la línea Kakari en comparativas de terceros — la página oficial no lo afirma específicamente para el Z.1)",
+        "en-US": "Wide (general assessment of the Kakari line in third-party comparisons — the official page doesn't state this specifically for the Z.1)"
+      },
+      "spec_source": "worldrugbyshop.com; comparativos em rugbydome.com/rugbyboots.net",
+      "in_comparar": true
+    },
+    {
+      "key": "adidas|kakari|padrão",
+      "brand": "adidas",
+      "model": "Kakari",
+      "version": "Padrão",
+      "avg_price_usd": 81.39,
+      "n_observations": 724,
+      "sources": [
+        "Lovell Rugby",
+        "Rugby Goods (Rugby Online Japan)",
+        "Rugby Heaven",
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 84.52,
+          "min_price_usd": 46.35
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 84.66,
+          "min_price_usd": 18.71
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 78.15,
+          "min_price_usd": 18.7
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 78.09,
+          "min_price_usd": 18.7
+        }
+      ],
+      "latest_date": "2026-08-28",
+      "latest_min_price_usd": 18.7,
+      "latest_min_site": "Rugby Goods (Rugby Online Japan)",
+      "latest_min_region": "Japan",
+      "latest_min_url": "https://www.rugbygoods.com/SHOP/keyword/boots#IE3204",
+      "discount_pct": 0.7702,
+      "is_deal": true,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null,
+      "in_comparar": false
+    },
+    {
       "key": "adidas|kakari|elite",
       "brand": "adidas",
       "model": "Kakari",
       "version": "Elite",
-      "avg_price_usd": 106.08,
-      "n_observations": 1136,
+      "avg_price_usd": 103.63,
+      "n_observations": 1178,
       "sources": [
         "Lovell Rugby",
+        "Rugby Goods (Rugby Online Japan)",
         "Rugby Heaven",
         "Rugbystuff"
       ],
@@ -44,26 +153,26 @@
         },
         {
           "date": "2026-08-26",
-          "avg_price_usd": 105.37,
-          "min_price_usd": 38.2
+          "avg_price_usd": 104.39,
+          "min_price_usd": 37.55
         },
         {
           "date": "2026-08-27",
-          "avg_price_usd": 107.13,
-          "min_price_usd": 53.0
+          "avg_price_usd": 103.04,
+          "min_price_usd": 37.53
         },
         {
           "date": "2026-08-28",
-          "avg_price_usd": 107.07,
-          "min_price_usd": 53.0
+          "avg_price_usd": 102.98,
+          "min_price_usd": 37.53
         }
       ],
       "latest_date": "2026-08-28",
-      "latest_min_price_usd": 53.0,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/kakari-elite-soft-ground-rugby-boots-1?_pos=3&_psq=Kakari+Elite&_psid=00b5dcb24&_ss=e",
-      "discount_pct": 0.5004,
+      "latest_min_price_usd": 37.53,
+      "latest_min_site": "Rugby Goods (Rugby Online Japan)",
+      "latest_min_region": "Japan",
+      "latest_min_url": "https://www.rugbygoods.com/SHOP/keyword/boots#IH2756",
+      "discount_pct": 0.6378,
       "is_deal": true,
       "ground_type": "Soft Ground",
       "upper_material": {
@@ -179,55 +288,6 @@
       "in_comparar": true
     },
     {
-      "key": "adidas|kakari|padrão",
-      "brand": "adidas",
-      "model": "Kakari",
-      "version": "Padrão",
-      "avg_price_usd": 85.25,
-      "n_observations": 682,
-      "sources": [
-        "Lovell Rugby",
-        "Rugby Goods (Rugby Online Japan)",
-        "Rugby Heaven",
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 84.52,
-          "min_price_usd": 46.35
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 86.22,
-          "min_price_usd": 32.74
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 84.75,
-          "min_price_usd": 46.21
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 84.68,
-          "min_price_usd": 46.21
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 46.21,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/kakari-soft-ground-rugby-boots",
-      "discount_pct": 0.4579,
-      "is_deal": true,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null,
-      "in_comparar": false
-    },
-    {
       "key": "adidas|adizero rs15|elite",
       "brand": "adidas",
       "model": "Adizero RS15",
@@ -303,7 +363,7 @@
         },
         {
           "date": "2026-08-28",
-          "avg_price_usd": 205.9,
+          "avg_price_usd": 205.89,
           "min_price_usd": 129.11
         }
       ],
@@ -820,7 +880,7 @@
         },
         {
           "date": "2026-08-28",
-          "avg_price_usd": 95.06,
+          "avg_price_usd": 95.05,
           "min_price_usd": 67.49
         }
       ],
@@ -1261,7 +1321,7 @@
         },
         {
           "date": "2026-08-28",
-          "avg_price_usd": 220.82,
+          "avg_price_usd": 220.83,
           "min_price_usd": 163.03
         }
       ],
@@ -1355,7 +1415,7 @@
         },
         {
           "date": "2026-08-28",
-          "avg_price_usd": 84.24,
+          "avg_price_usd": 84.25,
           "min_price_usd": 66.58
         }
       ],
@@ -1509,6 +1569,53 @@
       "discount_pct": 0.1687,
       "is_deal": false,
       "ground_type": "Artificial Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null,
+      "in_comparar": false
+    },
+    {
+      "key": "puma|avant|padrão",
+      "brand": "Puma",
+      "model": "Avant",
+      "version": "Padrão",
+      "avg_price_usd": 68.62,
+      "n_observations": 123,
+      "sources": [
+        "Rugby Goods (Rugby Online Japan)",
+        "Rugby Heaven"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 61.29,
+          "min_price_usd": 61.28
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 64.9,
+          "min_price_usd": 61.15
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 72.02,
+          "min_price_usd": 61.09
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 71.97,
+          "min_price_usd": 61.09
+        }
+      ],
+      "latest_date": "2026-08-28",
+      "latest_min_price_usd": 61.09,
+      "latest_min_site": "Rugby Heaven",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugby-heaven.co.uk/products/puma-avant-adults-soft-ground-rugby-boots",
+      "discount_pct": 0.1097,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
       "upper_material": null,
       "stud_type": null,
       "width_fit": null,
@@ -1940,7 +2047,7 @@
         },
         {
           "date": "2026-08-28",
-          "avg_price_usd": 290.83,
+          "avg_price_usd": 290.84,
           "min_price_usd": 282.68
         }
       ],
@@ -3024,52 +3131,6 @@
       "in_comparar": false
     },
     {
-      "key": "puma|avant|padrão",
-      "brand": "Puma",
-      "model": "Avant",
-      "version": "Padrão",
-      "avg_price_usd": 61.22,
-      "n_observations": 81,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 61.29,
-          "min_price_usd": 61.28
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 61.3,
-          "min_price_usd": 61.15
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 61.14,
-          "min_price_usd": 61.09
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 61.09,
-          "min_price_usd": 61.09
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 61.09,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/puma-avant-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.0021,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null,
-      "in_comparar": false
-    },
-    {
       "key": "adidas|adizero rs15 avaglide rise|padrão",
       "brand": "adidas",
       "model": "Adizero RS15 Avaglide Rise",
@@ -3155,64 +3216,6 @@
       "width_fit": null,
       "spec_source": null,
       "in_comparar": false
-    },
-    {
-      "key": "adidas|kakari z.1|padrão",
-      "brand": "adidas",
-      "model": "Kakari Z.1",
-      "version": "Padrão",
-      "avg_price_usd": 183.85,
-      "n_observations": 243,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 184.05,
-          "min_price_usd": 184.04
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 184.08,
-          "min_price_usd": 183.63
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 183.6,
-          "min_price_usd": 183.46
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 183.46,
-          "min_price_usd": 183.46
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 183.46,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/adidas-kakari-z-1-soft-ground-rugby-boots",
-      "discount_pct": 0.0021,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": {
-        "pt-BR": "Sintético ripstop (parte reciclado)",
-        "es-PY": "Sintético ripstop (parcialmente reciclado)",
-        "en-US": "Ripstop synthetic (partly recycled)"
-      },
-      "stud_type": {
-        "pt-BR": "8 travas moldadas, solado dividido flexível",
-        "es-PY": "8 tapones moldeados, suela dividida flexible",
-        "en-US": "8 moulded studs, flexible split sole"
-      },
-      "width_fit": {
-        "pt-BR": "Larga (avaliação geral da linha Kakari em comparativos de terceiros — a página oficial não afirma isso especificamente para o Z.1)",
-        "es-PY": "Ancho (evaluación general de la línea Kakari en comparativas de terceros — la página oficial no lo afirma específicamente para el Z.1)",
-        "en-US": "Wide (general assessment of the Kakari line in third-party comparisons — the official page doesn't state this specifically for the Z.1)"
-      },
-      "spec_source": "worldrugbyshop.com; comparativos em rugbydome.com/rugbyboots.net",
-      "in_comparar": true
     },
     {
       "key": "adidas|predator league lucid|padrão",
@@ -3781,6 +3784,47 @@
       "in_comparar": false
     },
     {
+      "key": "gilbert|speedster 6 stud aqua|padrão",
+      "brand": "Gilbert",
+      "model": "Speedster 6 Stud Aqua",
+      "version": "Padrão",
+      "avg_price_usd": 137.45,
+      "n_observations": 52,
+      "sources": [
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 137.68,
+          "min_price_usd": 137.39
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 137.37,
+          "min_price_usd": 137.26
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 137.26,
+          "min_price_usd": 137.26
+        }
+      ],
+      "latest_date": "2026-08-28",
+      "latest_min_price_usd": 137.26,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/gilbert-speedster-6-stud-rugby-boots-aqua",
+      "discount_pct": 0.0014,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": null,
+      "stud_type": "6 travas",
+      "width_fit": null,
+      "spec_source": null,
+      "in_comparar": false
+    },
+    {
       "key": "canterbury|speed falcon|elite",
       "brand": "Canterbury",
       "model": "Speed Falcon",
@@ -3834,7 +3878,7 @@
       "history": [
         {
           "date": "2026-08-26",
-          "avg_price_usd": 134.96,
+          "avg_price_usd": 134.95,
           "min_price_usd": 134.67
         },
         {
@@ -3861,47 +3905,6 @@
       "width_fit": null,
       "spec_source": null,
       "in_comparar": true
-    },
-    {
-      "key": "gilbert|speedster 6 stud aqua|padrão",
-      "brand": "Gilbert",
-      "model": "Speedster 6 Stud Aqua",
-      "version": "Padrão",
-      "avg_price_usd": 137.44,
-      "n_observations": 52,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 137.68,
-          "min_price_usd": 137.39
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 137.37,
-          "min_price_usd": 137.26
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 137.26,
-          "min_price_usd": 137.26
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 137.26,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/gilbert-speedster-6-stud-rugby-boots-aqua",
-      "discount_pct": 0.0013,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": null,
-      "stud_type": "6 travas",
-      "width_fit": null,
-      "spec_source": null,
-      "in_comparar": false
     },
     {
       "key": "oxen|meta x|padrão",
@@ -4509,88 +4512,6 @@
       "in_comparar": false
     },
     {
-      "key": "adidas|カカリ kakari|padrão",
-      "brand": "adidas",
-      "model": "カカリ Kakari",
-      "version": "Padrão",
-      "avg_price_usd": 18.71,
-      "n_observations": 42,
-      "sources": [
-        "Rugby Goods (Rugby Online Japan)"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 18.71,
-          "min_price_usd": 18.71
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 18.71,
-          "min_price_usd": 18.7
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 18.7,
-          "min_price_usd": 18.7
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 18.7,
-      "latest_min_site": "Rugby Goods (Rugby Online Japan)",
-      "latest_min_region": "Japan",
-      "latest_min_url": "https://www.rugbygoods.com/SHOP/keyword/boots#IE3204",
-      "discount_pct": 0.0005,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null,
-      "in_comparar": false
-    },
-    {
-      "key": "adidas|カカリ z.1 コアブラック|padrão",
-      "brand": "adidas",
-      "model": "カカリ Z.1 コアブラック",
-      "version": "Padrão",
-      "avg_price_usd": 18.71,
-      "n_observations": 42,
-      "sources": [
-        "Rugby Goods (Rugby Online Japan)"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 18.71,
-          "min_price_usd": 18.71
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 18.71,
-          "min_price_usd": 18.7
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 18.7,
-          "min_price_usd": 18.7
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 18.7,
-      "latest_min_site": "Rugby Goods (Rugby Online Japan)",
-      "latest_min_region": "Japan",
-      "latest_min_url": "https://www.rugbygoods.com/SHOP/keyword/boots#HP6836",
-      "discount_pct": 0.0005,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null,
-      "in_comparar": false
-    },
-    {
       "key": "gilbert|sidestep x20 power 8|padrão",
       "brand": "Gilbert",
       "model": "Sidestep X20 Power 8",
@@ -4809,100 +4730,6 @@
       "width_fit": null,
       "spec_source": null,
       "in_comparar": false
-    },
-    {
-      "key": "puma|アヴァント ラグビースパイク レッド 106715|padrão",
-      "brand": "Puma",
-      "model": "アヴァント ラグビースパイク レッド 106715",
-      "version": "Padrão",
-      "avg_price_usd": 82.88,
-      "n_observations": 42,
-      "sources": [
-        "Rugby Goods (Rugby Online Japan)"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 82.9,
-          "min_price_usd": 82.89
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 82.89,
-          "min_price_usd": 82.85
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 82.85,
-          "min_price_usd": 82.85
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 82.85,
-      "latest_min_site": "Rugby Goods (Rugby Online Japan)",
-      "latest_min_region": "Japan",
-      "latest_min_url": "https://www.rugbygoods.com/SHOP/keyword/boots#106715",
-      "discount_pct": 0.0004,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null,
-      "in_comparar": false
-    },
-    {
-      "key": "adidas|カカリエリート kakari|elite",
-      "brand": "adidas",
-      "model": "カカリエリート Kakari",
-      "version": "Elite",
-      "avg_price_usd": 37.54,
-      "n_observations": 42,
-      "sources": [
-        "Rugby Goods (Rugby Online Japan)"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 37.55,
-          "min_price_usd": 37.55
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 37.55,
-          "min_price_usd": 37.53
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 37.53,
-          "min_price_usd": 37.53
-        }
-      ],
-      "latest_date": "2026-08-28",
-      "latest_min_price_usd": 37.53,
-      "latest_min_site": "Rugby Goods (Rugby Online Japan)",
-      "latest_min_region": "Japan",
-      "latest_min_url": "https://www.rugbygoods.com/SHOP/keyword/boots#IH2756",
-      "discount_pct": 0.0003,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": {
-        "pt-BR": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
-        "es-PY": "Cuero genuino en la mayor parte (algunas versiones/años usan sintético + refuerzo de cuero)",
-        "en-US": "Mostly genuine leather (some versions/years use synthetic + leather reinforcement)"
-      },
-      "stud_type": {
-        "pt-BR": "8 travas fixas, com ferramenta de aperto inclusa",
-        "es-PY": "8 tapones fijos, con herramienta de ajuste incluida",
-        "en-US": "8 fixed studs, with a tightening tool included"
-      },
-      "width_fit": {
-        "pt-BR": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
-        "es-PY": "Regular a ajustado — las reseñas indican calce \"true to size\"; quienes tienen pie ancho tienden a subir medio número",
-        "en-US": "Regular to snug — reviews report a \"true to size\" fit; people with wide feet tend to go up half a size"
-      },
-      "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com",
-      "in_comparar": true
     },
     {
       "key": "gilbert|icon players 8|padrão",

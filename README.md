@@ -314,6 +314,31 @@ a ser descartado (`_SKU_CODE_RE`) — não é nome de produto.
    significa); "Speed Falcon" vs "Speed Falcon 2.0" (números de versão
    diferentes = gerações diferentes, mesmo padrão de "Phoenix" vs
    "Phoenix 2.0"/"Phoenix 2").
+7. Usuário confirmou que os modelos "Icon"/"Sidestep" (sem marca no
+   título -- ex: "Icon Vapour 8S Boots - Senior", da própria
+   gilbertrugby.com) são da Gilbert. Isso já estava coberto pelo
+   `default_brand` do item 2; nenhuma mudança nova precisou.
+   Pediu também pra traduzir os modelos com nome só em japonês. A
+   Rugby Goods (Japão) tinha 5 títulos assim -- confirmados um a um
+   antes de canonizar (nunca só transliterando por suposição):
+   - "カカリ" é a grafia em katakana de "Kakari" (confirmado: o mesmo
+     título às vezes traz as duas formas lado a lado, "カカリ SG
+     ラグビー / Kakari Soft Ground..."). "エリート" é "Elite" em
+     katakana. `_KATAKANA_MODEL_RE` (novo em `normalize.py`) canoniza
+     as duas pra romanizado antes de tokenizar, com uma deduplicação
+     de palavra repetida logo depois (pro caso do título trazer as
+     duas formas juntas).
+   - "アヴァント" (PUMA): confirmado como "Avant" via o próprio site
+     oficial da Puma -- a URL `uk.puma.com/.../avant-mens-rugby-boots/
+     106715` bate exatamente com o código "106715" que aparecia colado
+     no fim do título japonês. `_PURE_DIGIT_SKU_RE` (novo) descarta
+     esse tipo de código só-números (5+ dígitos, sem letra na frente,
+     que o `_SKU_CODE_RE` existente não cobria).
+   - Ruído em katakana que vazava pro modelo (verificado que só aparece
+     em contexto de cor/genérico no catálogo inteiro, mesmo critério
+     dos outros itens): "ラグビースパイク" (rugby + spike colados, sem
+     espaço -- por isso não batia com os dois já cobertos
+     separadamente), "コアブラック" (Core Black), "レッド" (Red).
 
 Depois de cada correção, `price_history.csv` inteiro é reprocessado
 (recalculando marca/modelo/versão a partir do `title` já gravado, sem
@@ -338,9 +363,11 @@ combinam entre si (ex: só "Mizuno" + "Elite", ordenado por preço).
 ## Idioma (Português, Español, English)
 
 O seletor de idioma fica no cabeçalho, ao lado do botão de tema —
-português brasileiro (padrão), espanhol paraguaio e inglês dos EUA. A
-escolha fica salva no navegador (`localStorage`, mesmo mecanismo do
-tema) e sobrevive a um F5.
+português brasileiro, espanhol paraguaio (**padrão** pra quem visita
+pela primeira vez) e inglês dos EUA. A escolha fica salva no navegador
+(`localStorage`, mesmo mecanismo do tema) e sobrevive a um F5; sem
+nada salvo ainda (`DEFAULT_LANG` em `app.js`), o site abre em
+espanhol.
 
 Como funciona (`site/app.js`):
 - `I18N` é um dicionário `{idioma: {chave: texto}}` com todo o texto

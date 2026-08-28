@@ -94,6 +94,27 @@ _ADIDAS_SOLAR_TURBO_RE = re.compile(r"\bsolar\s+turbo\b", re.IGNORECASE)
 # seguidas de 4-6 dígitos (não bate em "RS15"/"8S"/"V1"/"X9", que são
 # tokens de modelo/versão de verdade).
 _SKU_CODE_RE = re.compile(r"^[A-Za-z]{1,3}\d{4,6}$")
+# Mesma ideia, mas pro código vir sem nenhuma letra na frente (ex:
+# ".../106715" -- confirmado real: bate com o código de produto da própria
+# puma.com/uk pro Avant, "puma.com/.../avant-mens-rugby-boots/106715").
+# Só 5+ dígitos puros -- nenhum número de modelo real no catálogo chega
+# nesse tamanho (RS15, Kaizen 2.0/3.1 etc são bem menores).
+_PURE_DIGIT_SKU_RE = re.compile(r"^\d{5,}$")
+
+# Rugby Goods (Japão) às vezes só tem a marca/modelo em katakana, sem a
+# versão romanizada do lado (ex: "adidas Rugby カカリ Z.1 SG コアブラック
+# HP6836" não tem "Kakari" em lugar nenhum) -- canoniza pro nome romanizado
+# real da marca antes de separar em palavras, em vez de deixar o texto em
+# japonês vazar pro campo "modelo".
+_KATAKANA_MODEL_RE = {
+    re.compile("カカリ"): "Kakari",
+    re.compile("アヴァント"): "Avant",
+    # espaço na frente de propósito: "カカリエリート" (Kakari Elite colado,
+    # sem espaço no original) já virou "Kakariエリート" pela troca acima --
+    # o espaço aqui separa de volta em duas palavras (" Elite" reconhecido
+    # como version_token depois).
+    re.compile("エリート"): " Elite",
+}
 
 # Palavras que indicam que o produto É uma chuteira/bota.
 _BOOT_WORDS = ["boot", "cleat", "chuteira", "botin", "botín", "bota", "spike", "ブーツ", "スパイク"]
@@ -247,6 +268,8 @@ def normalize_title(title: str, default_brand: str | None = None) -> dict:
     if brand:
         working = re.sub(re.escape(brand), "", working, flags=re.IGNORECASE)
 
+    for katakana_re, romanized in _KATAKANA_MODEL_RE.items():
+        working = katakana_re.sub(romanized, working)
     working = _STAMPED_TYPO_RE.sub("Stampede Groundbreak", working)
     working = _COLORWAY_SUFFIX_RE.sub("", working)
     working = _ADIDAS_TEAM_COLOR_RE.sub("", working)
@@ -258,11 +281,26 @@ def normalize_title(title: str, default_brand: str | None = None) -> dict:
     working = _SIZE_RE.sub(" ", working)
 
     words = [w for w in re.split(r"[\s\-/]+", working) if w]
+
+    # A canonização de katakana acima pode deixar a mesma palavra
+    # romanizada duas vezes (ex: título que já tinha "Kakari" original E
+    # "カカリ" virou "Kakari" também) -- mantém só a primeira ocorrência.
+    seen_words = set()
+    deduped = []
+    for w in words:
+        wl_seen = w.lower()
+        if wl_seen in seen_words:
+            continue
+        seen_words.add(wl_seen)
+        deduped.append(w)
+    words = deduped
+
     version_parts = []
     model_parts = []
     for w in words:
         wl = w.lower().strip(",.()[]")
-        if not wl or wl in _NOISE or _SKU_CODE_RE.match(w.strip(",.()[]")):
+        stripped = w.strip(",.()[]")
+        if not wl or wl in _NOISE or _SKU_CODE_RE.match(stripped) or _PURE_DIGIT_SKU_RE.match(stripped):
             continue
         if wl in _VERSION_TOKENS or _YEAR_RE.fullmatch(wl):
             # Capitaliza sempre (independente de como a loja escreveu --

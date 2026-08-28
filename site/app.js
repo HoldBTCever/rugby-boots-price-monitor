@@ -5,12 +5,13 @@
   const LANGS = ["pt-BR", "es-PY", "en-US"];
   const LANG_KEY = "rbpm-lang";
 
+  const DEFAULT_LANG = "es-PY";
   function loadStoredLang() {
     try {
       const saved = localStorage.getItem(LANG_KEY);
       if (saved && LANGS.includes(saved)) return saved;
     } catch (e) { /* localStorage indisponível: segue no idioma padrão */ }
-    return "pt-BR";
+    return DEFAULT_LANG;
   }
   let currentLang = loadStoredLang();
 
