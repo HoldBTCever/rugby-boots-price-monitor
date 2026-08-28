@@ -12,6 +12,26 @@ import type { Summary, Alerts, Model, Watchlist } from "./types.js";
 let chartInstance: any = null;
 const activeCharts: Record<string, any[]> = {}; // containerId -> Chart[] (Histórico e Favoritos usam a mesma renderWatchlist)
 
+// Marcador pessoal (★) na tabela do Painel -- deliberadamente NÃO chamado
+// de "favorito" pra não confundir com a aba Favoritos (lista curada vinda
+// do backend, scraper/favorites.json). Isto aqui é só um bloco de notas
+// local no navegador de quem está olhando, pra achar de novo um modelo de
+// interesse sem repetir a busca.
+const STARRED_KEY = "rbpm-starred";
+
+function loadStarred(): Set<string> {
+  try {
+    const raw = localStorage.getItem(STARRED_KEY);
+    return raw ? new Set(JSON.parse(raw)) : new Set();
+  } catch (e) {
+    return new Set();
+  }
+}
+
+function saveStarred(starred: Set<string>): void {
+  try { localStorage.setItem(STARRED_KEY, JSON.stringify([...starred])); } catch (e) {}
+}
+
 export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: string): void {
   const slot = document.getElementById("bannerSlot") as HTMLElement;
   const deals = alerts.deals || [];
@@ -148,9 +168,12 @@ export function renderChart(models: Model[], selectedKey: string | undefined): v
   window.__rbpmChart = chartInstance;
 }
 
-export function renderTableRows(models: Model[]): string {
-  const rows = models.map((m) => `
+export function renderTableRows(models: Model[], starred: Set<string>): string {
+  const rows = models.map((m) => {
+    const isStarred = starred.has(m.key);
+    return `
     <tr>
+      <td data-label="${t("label_star_col")}"><button type="button" class="star-btn${isStarred ? " starred" : ""}" data-star-key="${m.key}" aria-label="${t("label_star_col")}">${isStarred ? "★" : "☆"}</button></td>
       <td data-label="${t("th_brand")}">${m.brand}</td>
       <td data-label="${t("th_model")}">${m.model}</td>
       <td data-label="${t("th_version")}">${trVersion(m.version)}</td>
@@ -159,13 +182,15 @@ export function renderTableRows(models: Model[]): string {
       <td class="num" data-label="${t("th_variation")}">${fmtPct(m.discount_pct)}</td>
       <td data-label="${t("th_min_source")}">${m.latest_min_site ? `<a href="${m.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${m.latest_min_site}</a>` : "—"}</td>
       <td data-label="${t("th_status")}">${m.is_deal ? `<span class="badge deal">${t("badge_deal")}</span>` : ""}</td>
-    </tr>`).join("");
+    </tr>`;
+  }).join("");
 
   return `
     <div class="table-scroll">
       <table class="responsive-table">
         <thead>
           <tr>
+            <th></th>
             <th>${t("th_brand")}</th><th>${t("th_model")}</th><th>${t("th_version")}</th>
             <th class="num">${t("th_avg_usd")}</th><th class="num">${t("th_min_today")}</th>
             <th class="num">${t("th_variation")}</th><th>${t("th_min_source")}</th><th></th>
@@ -181,13 +206,14 @@ export interface PainelFilters {
   version: string;
   sort: string;
   search?: string;
+  starredOnly?: boolean;
 }
 
 // Marca/versão selecionadas ("" = todas) + busca por texto (marca/modelo/
 // versão) + critério de ordenação -- pedido do usuário: poder ver só "as
 // elites" ou só "adidas", buscar direto em vez de rolar os 127 modelos, e
 // ordenar por variação/preço médio, não só por nome.
-export function applyPainelFilters(models: Model[], filters: PainelFilters): Model[] {
+export function applyPainelFilters(models: Model[], filters: PainelFilters, starred: Set<string>): Model[] {
   let out = models;
   if (filters.brand) out = out.filter((m) => m.brand === filters.brand);
   if (filters.version) out = out.filter((m) => m.version === filters.version);
@@ -195,6 +221,7 @@ export function applyPainelFilters(models: Model[], filters: PainelFilters): Mod
     const q = filters.search.trim().toLowerCase();
     if (q) out = out.filter((m) => `${m.brand} ${m.model} ${trVersion(m.version)}`.toLowerCase().includes(q));
   }
+  if (filters.starredOnly) out = out.filter((m) => starred.has(m.key));
 
   const byName = (a: Model, b: Model) =>
     compareStrings(a.brand, b.brand) || compareStrings(a.model, b.model) || compareStrings(a.version, b.version);
@@ -276,6 +303,7 @@ export function renderMain(summary: Summary): void {
           <option value="avg_desc">${t("sort_avg_desc")}</option>
           <option value="avg_asc">${t("sort_avg_asc")}</option>
         </select>
+        <label class="checkbox-label"><input type="checkbox" id="filterStarredOnly" /> ${t("label_starred_only")}</label>
       </div>
       <p class="watchlist-meta" id="tableCount"></p>
       <div id="modelsTableSlot"></div>
@@ -287,17 +315,19 @@ export function renderMain(summary: Summary): void {
   const filterBrandEl = document.getElementById("filterBrand") as HTMLSelectElement;
   const filterVersionEl = document.getElementById("filterVersion") as HTMLSelectElement;
   const sortByEl = document.getElementById("sortBy") as HTMLSelectElement;
+  const filterStarredOnlyEl = document.getElementById("filterStarredOnly") as HTMLInputElement;
   const tableSlot = document.getElementById("modelsTableSlot") as HTMLElement;
   const tableCount = document.getElementById("tableCount") as HTMLElement;
   const paginationSlot = document.getElementById("tablePagination") as HTMLElement;
 
   let currentPage = 1;
+  const starred = loadStarred();
 
   function refresh(): void {
     const visible = applyPainelFilters(models, {
       brand: filterBrandEl.value, version: filterVersionEl.value, sort: sortByEl.value,
-      search: filterSearchEl.value,
-    });
+      search: filterSearchEl.value, starredOnly: filterStarredOnlyEl.checked,
+    }, starred);
 
     tableCount.textContent = t(visible.length === 1 ? "models_count_singular" : "models_count_plural", {
       visible: visible.length, total: models.length,
@@ -308,11 +338,19 @@ export function renderMain(summary: Summary): void {
     const pageItems = paginate(visible, currentPage);
 
     tableSlot.innerHTML = pageItems.length
-      ? renderTableRows(pageItems)
+      ? renderTableRows(pageItems, starred)
       : `<p class="watchlist-empty">${t("no_match_filter")}</p>`;
     paginationSlot.innerHTML = renderPagination(visible.length, currentPage);
     document.getElementById("pagePrev")?.addEventListener("click", () => { currentPage--; refresh(); });
     document.getElementById("pageNext")?.addEventListener("click", () => { currentPage++; refresh(); });
+    tableSlot.querySelectorAll<HTMLButtonElement>(".star-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const key = btn.dataset.starKey as string;
+        if (starred.has(key)) starred.delete(key); else starred.add(key);
+        saveStarred(starred);
+        refresh();
+      });
+    });
 
     if (visible.length === 0) {
       modelSelectEl.innerHTML = `<option value="">${t("no_match_filter_option")}</option>`;
@@ -343,6 +381,7 @@ export function renderMain(summary: Summary): void {
   filterBrandEl.addEventListener("change", refreshFromFilterChange);
   filterVersionEl.addEventListener("change", refreshFromFilterChange);
   sortByEl.addEventListener("change", refreshFromFilterChange);
+  filterStarredOnlyEl.addEventListener("change", refreshFromFilterChange);
 
   refresh();
 }
