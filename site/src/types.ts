@@ -108,3 +108,18 @@ export interface Watchlist {
   latest_block: number | null;
   models: WatchlistModel[];
 }
+
+export interface Source {
+  id: string;
+  name: string;
+  region: string;
+  country: string | null;
+  currency: string;
+  base_url: string;
+  active: boolean;
+}
+
+export interface SourcesData {
+  generated_at: string | null;
+  sites: Source[];
+}

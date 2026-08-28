@@ -36,6 +36,30 @@ def _load_model_specs() -> list[dict]:
     return json.loads(config.MODEL_SPECS_CONFIG.read_text(encoding="utf-8"))
 
 
+def _build_sources(active_names: set[str]) -> list[dict]:
+    """Lista pública das lojas monitoradas (aba "Fontes" do site) -- os
+    mesmos campos não-sensíveis de scraper/sites.json (nome, região, país,
+    moeda, link da loja), mais "active": se essa loja contribuiu algum
+    preço dentro da janela de 90 dias (mesmo critério de "Fuentes activas"
+    no card de estatísticas, pra não ter dois números diferentes pra a
+    mesma ideia)."""
+    if not config.SITES_CONFIG.exists():
+        return []
+    sites = json.loads(config.SITES_CONFIG.read_text(encoding="utf-8"))
+    return [
+        {
+            "id": s["id"],
+            "name": s["name"],
+            "region": s["region"],
+            "country": s.get("country"),
+            "currency": s["currency"],
+            "base_url": s["base_url"],
+            "active": s["name"] in active_names,
+        }
+        for s in sites
+    ]
+
+
 def _find_curated_spec(specs: list[dict], brand: str, model: str, version: str) -> dict | None:
     """Cabedal/travas/largura pesquisados manualmente (fonte real, não
     extraído do título) pra um punhado de modelos conhecidos -- veja
@@ -271,18 +295,24 @@ def run() -> None:
         "latest_block": latest_block,
         "models": _build_watchlist(rows, cutoff, favorites_entries),
     }
+    sources_out = {
+        "generated_at": now.isoformat(),
+        "sites": _build_sources(set(all_sources)),
+    }
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     config.DAILY_SUMMARY_JSON.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
     config.ALERTS_JSON.write_text(json.dumps(alerts, indent=2, ensure_ascii=False), encoding="utf-8")
     config.WATCHLIST_JSON.write_text(json.dumps(watchlist_out, indent=2, ensure_ascii=False), encoding="utf-8")
     config.FAVORITES_JSON.write_text(json.dumps(favorites_out, indent=2, ensure_ascii=False), encoding="utf-8")
+    config.SOURCES_JSON.write_text(json.dumps(sources_out, indent=2, ensure_ascii=False), encoding="utf-8")
 
     config.SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copy(config.DAILY_SUMMARY_JSON, config.SITE_DATA_DIR / "daily_summary.json")
     shutil.copy(config.ALERTS_JSON, config.SITE_DATA_DIR / "alerts.json")
     shutil.copy(config.WATCHLIST_JSON, config.SITE_DATA_DIR / "watchlist.json")
     shutil.copy(config.FAVORITES_JSON, config.SITE_DATA_DIR / "favorites.json")
+    shutil.copy(config.SOURCES_JSON, config.SITE_DATA_DIR / "sources.json")
 
     found = sum(1 for m in watchlist_out["models"] if m["versions"])
     found_fav = sum(1 for m in favorites_out["models"] if m["versions"])

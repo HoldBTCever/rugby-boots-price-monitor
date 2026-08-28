@@ -3,8 +3,8 @@
 "use strict";
 
 import { getCurrentLang, setCurrentLang, loadI18n, applyStaticTranslations, t, fmtPct, sortModels } from "./i18n.js";
-import { renderBanner, renderStats, renderChart, renderMain, renderCompare, renderWatchlist, renderSkeleton } from "./render.js";
-import type { Lang, Summary, Alerts, Watchlist } from "./types.js";
+import { renderBanner, renderStats, renderChart, renderMain, renderCompare, renderWatchlist, renderSkeleton, renderSources } from "./render.js";
+import type { Lang, Summary, Alerts, Watchlist, SourcesData } from "./types.js";
 
 // ---- tema ----
 const themeToggle = document.getElementById("themeToggle") as HTMLButtonElement;
@@ -35,7 +35,7 @@ langSelect.addEventListener("change", () => {
 });
 
 // ---- abas ----
-const TAB_NAMES = ["painel", "historico", "comparar", "favoritos"];
+const TAB_NAMES = ["painel", "historico", "comparar", "favoritos", "fontes"];
 document.querySelectorAll(".tab-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
@@ -64,13 +64,16 @@ interface AppState {
   alerts: Alerts | null;
   watchlist: Watchlist | null;
   favorites: Watchlist | null;
+  sources: SourcesData | null;
   errors: Record<string, Error>;
 }
 
-// Busca os 4 arquivos de dados só uma vez (state.loaded); troca de idioma
+// Busca os 5 arquivos de dados só uma vez (state.loaded); troca de idioma
 // chama main() de novo, mas só re-renderiza em cima do que já foi
 // buscado, sem round-trip novo à rede.
-const state: AppState = { loaded: false, summary: null, alerts: null, watchlist: null, favorites: null, errors: {} };
+const state: AppState = {
+  loaded: false, summary: null, alerts: null, watchlist: null, favorites: null, sources: null, errors: {},
+};
 
 async function main(): Promise<void> {
   await loadI18n();
@@ -103,6 +106,13 @@ async function main(): Promise<void> {
       state.favorites = await favoritesRes.json();
     } catch (err) {
       state.errors.favorites = err as Error;
+    }
+
+    try {
+      const sourcesRes = await fetch("data/sources.json", { cache: "no-store" });
+      state.sources = await sourcesRes.json();
+    } catch (err) {
+      state.errors.sources = err as Error;
     }
 
     state.loaded = true;
@@ -149,6 +159,17 @@ async function main(): Promise<void> {
       </div>`;
   } else {
     renderWatchlist(state.favorites, "favoritesContent", "favChart");
+  }
+
+  if (state.errors.sources || !state.sources) {
+    (document.getElementById("sourcesContent") as HTMLElement).innerHTML = `
+      <div class="card empty-state">
+        <div class="icon">⚠️</div>
+        <h2>${t("error_load_sources")}</h2>
+        <p>${state.errors.sources ? state.errors.sources.message : ""}</p>
+      </div>`;
+  } else {
+    renderSources(state.sources);
   }
 }
 

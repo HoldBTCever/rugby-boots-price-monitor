@@ -260,6 +260,8 @@ tr:last-child td { border-bottom: none; }
   display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600;
 }
 .badge.deal { background: var(--status-critical-bg); color: var(--status-critical); }
+.badge.active { background: var(--status-good-bg); color: var(--status-good); }
+.badge.inactive { background: var(--gridline); color: var(--text-muted); }
 .table-scroll { overflow-x: auto; }
 
 /* Marcador pessoal (★) por linha na tabela do Painel -- salvo só no

@@ -7,7 +7,7 @@ import {
   fmtUSD, fmtPct, fmtDate, fmtBlockAxis, fmtBlockFull, cssVar, compareStrings,
   getCurrentLang,
 } from "./i18n.js";
-import type { Summary, Alerts, Model, Watchlist, Deal } from "./types.js";
+import type { Summary, Alerts, Model, Watchlist, Deal, SourcesData } from "./types.js";
 
 let chartInstance: any = null;
 const activeCharts: Record<string, any[]> = {}; // containerId -> Chart[] (Histórico e Favoritos usam a mesma renderWatchlist)
@@ -691,4 +691,50 @@ export function renderWatchlist(watchlist: Watchlist, containerId: string, chart
     });
     activeCharts[containerId].push(chart);
   });
+}
+
+// Aba "Fontes": lista as lojas configuradas em scraper/sites.json (nome,
+// região, moeda, link direto pra loja) -- pedido do usuário pra saber de
+// onde os preços vêm. "active" (calculado em aggregate.py, mesmo
+// critério do stat "Fuentes activas") mostra se essa loja de fato
+// contribuiu algum preço nos últimos 90 dias -- algumas ficam cadastradas
+// mas sem retornar nada (bloqueio anti-bot, catálogo mudou, etc.), então
+// declarar isso evita "por que essa loja não aparece nos preços?".
+export function renderSources(data: SourcesData): void {
+  const slot = document.getElementById("sourcesContent");
+  if (!slot) return;
+
+  const sites = [...data.sites].sort((a, b) =>
+    Number(b.active) - Number(a.active) || compareStrings(a.name, b.name));
+
+  const rows = sites.map((s) => `
+    <tr>
+      <td data-label="${t("th_source_name")}">
+        <a href="${s.base_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-weight:600">${s.name}</a>
+      </td>
+      <td data-label="${t("th_source_region")}">${s.region}</td>
+      <td data-label="${t("th_source_currency")}">${s.currency}</td>
+      <td data-label="${t("th_source_status")}">
+        ${s.active
+          ? `<span class="badge active">${t("source_active")}</span>`
+          : `<span class="badge inactive">${t("source_inactive")}</span>`}
+      </td>
+    </tr>`).join("");
+
+  slot.innerHTML = `
+    <div class="card">
+      <h2>${t("sources_title")}</h2>
+      <p class="watchlist-meta">${t("sources_intro")}</p>
+      <div class="table-scroll">
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>${t("th_source_name")}</th><th>${t("th_source_region")}</th>
+              <th>${t("th_source_currency")}</th><th>${t("th_source_status")}</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
 }

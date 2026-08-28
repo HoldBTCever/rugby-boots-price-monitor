@@ -19,6 +19,7 @@ DAILY_SUMMARY_JSON = DATA_DIR / "daily_summary.json"
 ALERTS_JSON = DATA_DIR / "alerts.json"
 WATCHLIST_JSON = DATA_DIR / "watchlist.json"
 FAVORITES_JSON = DATA_DIR / "favorites.json"
+SOURCES_JSON = DATA_DIR / "sources.json"
 FX_CACHE_JSON = DATA_DIR / "fx_cache.json"
 SCRAPE_LOG_JSON = DATA_DIR / "last_run.json"
 
