@@ -262,7 +262,7 @@ export function renderMain(summary: Summary): void {
     </div>
     <div class="card">
       <h2>${t("main_table_title")}</h2>
-      <div class="chart-controls">
+      <div class="chart-controls table-controls">
         <label for="filterSearch">${t("label_search")}</label>
         <input type="search" id="filterSearch" placeholder="${t("search_placeholder")}" />
         <label for="filterBrand">${t("label_brand")}</label>

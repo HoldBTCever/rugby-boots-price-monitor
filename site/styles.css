@@ -207,6 +207,19 @@ select, input[type="search"] {
 input[type="search"] { min-width: 160px; flex: 1 1 160px; }
 .chart-container { position: relative; height: 320px; }
 
+/* Fixa a barra de busca/filtros/ordenação da tabela principal no topo da
+   tela ao rolar -- com 127 modelos e paginação, sem isso a pessoa
+   precisava rolar de volta até o topo pra trocar de filtro. */
+.table-controls {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface-1);
+  padding: 10px 0;
+  margin: -10px 0 14px;
+  border-bottom: 1px solid var(--border);
+}
+
 .pagination {
   display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 14px;
 }
