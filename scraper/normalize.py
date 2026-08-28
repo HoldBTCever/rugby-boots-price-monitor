@@ -229,7 +229,10 @@ def normalize_title(title: str) -> dict:
         if not wl or wl in _NOISE or _SKU_CODE_RE.match(w.strip(",.()[]")):
             continue
         if wl in _VERSION_TOKENS or _YEAR_RE.fullmatch(wl):
-            version_parts.append(w)
+            # Capitaliza sempre (independente de como a loja escreveu --
+            # "ELITE"/"elite"/"Elite" são o mesmo tier) pra não fragmentar
+            # o agrupamento por causa só de maiúscula/minúscula.
+            version_parts.append(w.capitalize())
         else:
             model_parts.append(w)
 

@@ -241,6 +241,13 @@ De quebra, um pequeno código de SKU interno de loja que vazava no fim de
 alguns títulos japoneses (ex: ".../JP8792", ".../IH2756") também passou
 a ser descartado (`_SKU_CODE_RE`) — não é nome de produto.
 
+4. Usuário notou "Elite" e "ELITE" como duas opções diferentes no filtro
+   de versão do Painel — vinha de um título com a versão em caixa alta
+   (ex: um título japonês com "... Kakari ELITE ..."). O código guardava
+   a versão exatamente como a loja escreveu; agora sempre capitaliza
+   ("ELITE"/"elite"/"Elite" → "Elite") antes de gravar, então o mesmo
+   tier não aparece mais em grafias diferentes na lista de versões.
+
 Depois de cada correção, `price_history.csv` inteiro é reprocessado
 (recalculando marca/modelo/versão a partir do `title` já gravado, sem
 raspar de novo) com o script de migração usado pontualmente pra isso —
