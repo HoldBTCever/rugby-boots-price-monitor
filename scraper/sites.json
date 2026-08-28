@@ -195,20 +195,6 @@
     "product_link_pattern": "-p"
   },
   {
-    "id": "rugbygoods_jp",
-    "name": "Rugby Goods (Rugby Online Japan)",
-    "region": "Japan",
-    "country": "JP",
-    "currency": "JPY",
-    "base_url": "https://www.rugbygoods.com",
-    "listing_urls": [
-      "https://www.rugbygoods.com/SHOP/keyword/boots"
-    ],
-    "adapter": "generic_jsonld",
-    "product_link_pattern": "/SHOP/IE",
-    "trust_category": true
-  },
-  {
     "id": "mizuno_jp",
     "name": "Mizuno Japan",
     "default_brand": "Mizuno",

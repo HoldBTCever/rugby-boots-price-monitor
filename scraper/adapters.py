@@ -312,6 +312,24 @@ def fetch_shopify_collection_handles(collection_products_url: str) -> set[str]:
     return handles
 
 
+# Cache por execução (handle -> preço já filtrado por tamanho, ou None se
+# nenhuma variante caiu na faixa) preenchido pela varredura geral do
+# catálogo (scrape_shopify_products_json) e reaproveitado pela busca ativa
+# da watchlist (search_shopify). Existe porque o endpoint de detalhe do
+# produto (/products/<handle>.json) pode devolver disponibilidade de
+# variante desatualizada/diferente do catálogo geral (/products.json) no
+# mesmo instante -- confirmado com dado real: no bloco 964445 a varredura
+# geral da Rugbystuff calculou preço=None pro Kakari RS SG Black/Grey (só
+# UK13 disponível, fora de US 9-12), mas a busca pela watchlist "Kakari
+# Z.1"/"Kakari Z.2" (que bate no MESMO produto) fez sua própria consulta a
+# /products/<handle>.json minutos depois e recebeu variantes que pareciam
+# disponíveis, reintroduzindo o produto filtrado. Reaproveitar o veredito
+# já calculado pra esse handle nesta mesma execução evita a consulta
+# redundante (e potencialmente inconsistente) e garante que os dois
+# caminhos concordem.
+_shopify_price_cache: dict[str, dict[str, float | None]] = {}
+
+
 def scrape_shopify_products_json(site: dict) -> list[dict]:
     """Lojas Shopify expõem o catálogo inteiro em /products.json -- não
     depende de adivinhar o slug certo de uma coleção nem de visitar
@@ -325,6 +343,7 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
     dentro da faixa de tamanho US 8-11 (_min_price_in_size_range) --
     produto sem nenhum tamanho disponível nessa faixa não entra."""
     listings: list[dict] = []
+    price_cache = _shopify_price_cache.setdefault(site["id"], {})
     page_size = 250
     for products_url in site["listing_urls"]:
         page = 1
@@ -349,19 +368,8 @@ def scrape_shopify_products_json(site: dict) -> list[dict]:
                 handle = product.get("handle")
                 variants = product.get("variants") or []
                 price = _min_price_in_size_range(variants, site, title)
-                if handle == "adidas-kakari-rs-sg-rugby-boots-black-grey" and site["id"] == "rugbystuff":
-                    # diagnóstico temporário: usuário reportou que a loja de
-                    # verdade só tem UK13 em estoque desse produto (fora da
-                    # faixa US 9-12 mesmo com o ajuste +0.5 da adidas), mas
-                    # ele continua aparecendo com preço no site -- loga a
-                    # variante bruta pra achar a causa real (available
-                    # errado, parsing de tamanho, ou option1/title em
-                    # formato inesperado) em vez de adivinhar.
-                    log.info(
-                        "Diagnóstico Kakari RS SG Black/Grey (Rugbystuff): preço calculado=%s. Variantes: %s",
-                        price,
-                        [(v.get("option1"), v.get("title"), v.get("price"), v.get("available")) for v in variants],
-                    )
+                if handle:
+                    price_cache[handle] = price
                 if not (title and handle and price):
                     continue
                 # product_type é a categoria que a própria loja atribuiu ao
@@ -399,7 +407,15 @@ def search_shopify(site: dict, query: str) -> list[dict]:
     catálogo geral, busca o /products/<handle>.json completo de cada
     resultado. limit=3 (não 10) pra não multiplicar demais o número de
     requisições por consulta (Shopify já ordena por relevância, então os
-    3 primeiros já são os mais prováveis de bater com a watchlist)."""
+    3 primeiros já são os mais prováveis de bater com a watchlist).
+
+    Se a varredura geral do catálogo (scrape_shopify_products_json) já
+    avaliou esse handle nesta mesma execução, reaproveita o preço/veredito
+    dela em vez de consultar /products/<handle>.json de novo -- os dois
+    endpoints podem divergir na disponibilidade de variante no mesmo
+    instante (confirmado com dado real, ver comentário de
+    _shopify_price_cache), e o catálogo geral é a fonte mais confiável por
+    varrer o produto uma vez só, direto do /products.json paginado."""
     from urllib.parse import quote
 
     url = (
@@ -416,6 +432,7 @@ def search_shopify(site: dict, query: str) -> list[dict]:
         return []
 
     products = data.get("resources", {}).get("results", {}).get("products") or []
+    price_cache = _shopify_price_cache.get(site["id"], {})
     listings = []
     for p in products:
         title = (p.get("title") or "").strip()
@@ -423,23 +440,32 @@ def search_shopify(site: dict, query: str) -> list[dict]:
         if not (title and handle):
             continue
 
-        time.sleep(config.REQUEST_DELAY_SECONDS)
-        detail_html = fetch(f"{site['base_url']}/products/{handle}.json")
-        if not detail_html:
-            continue
-        try:
-            variants = (json.loads(detail_html).get("product") or {}).get("variants") or []
-        except json.JSONDecodeError:
-            continue
-        price = _min_price_in_size_range(variants, site, title)
+        if handle in price_cache:
+            price = price_cache[handle]
+        else:
+            time.sleep(config.REQUEST_DELAY_SECONDS)
+            detail_html = fetch(f"{site['base_url']}/products/{handle}.json")
+            if not detail_html:
+                continue
+            try:
+                variants = (json.loads(detail_html).get("product") or {}).get("variants") or []
+            except json.JSONDecodeError:
+                continue
+            price = _min_price_in_size_range(variants, site, title)
         if not price:
             continue
 
+        # URL limpa (sem os parâmetros de rastreio _pos/_psq/_psid da busca
+        # Shopify) -- além de ser o link mais apresentável, garante que duas
+        # consultas da watchlist que batem no mesmo produto (ex: "Kakari
+        # Z.1" e "Kakari Z.2" ambas achando o Kakari RS SG) produzam a
+        # MESMA url, pra a deduplicação por (site, url) em scrape.py de
+        # fato funcionar.
         listings.append({
             "title": title,
             "price": price,
             "currency": site["currency"],
-            "url": urljoin(site["base_url"], p["url"]) if p.get("url") else f"{site['base_url']}/products/{handle}",
+            "url": f"{site['base_url']}/products/{handle}",
         })
     return listings
 
