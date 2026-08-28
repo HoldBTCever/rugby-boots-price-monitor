@@ -180,15 +180,21 @@ export interface PainelFilters {
   brand: string;
   version: string;
   sort: string;
+  search?: string;
 }
 
-// Marca/versão selecionadas ("" = todas) + critério de ordenação --
-// pedido do usuário: poder ver só "as elites" ou só "adidas", e ordenar
-// por variação/preço médio, não só por nome.
+// Marca/versão selecionadas ("" = todas) + busca por texto (marca/modelo/
+// versão) + critério de ordenação -- pedido do usuário: poder ver só "as
+// elites" ou só "adidas", buscar direto em vez de rolar os 127 modelos, e
+// ordenar por variação/preço médio, não só por nome.
 export function applyPainelFilters(models: Model[], filters: PainelFilters): Model[] {
   let out = models;
   if (filters.brand) out = out.filter((m) => m.brand === filters.brand);
   if (filters.version) out = out.filter((m) => m.version === filters.version);
+  if (filters.search) {
+    const q = filters.search.trim().toLowerCase();
+    if (q) out = out.filter((m) => `${m.brand} ${m.model} ${trVersion(m.version)}`.toLowerCase().includes(q));
+  }
 
   const byName = (a: Model, b: Model) =>
     compareStrings(a.brand, b.brand) || compareStrings(a.model, b.model) || compareStrings(a.version, b.version);
@@ -203,6 +209,27 @@ export function applyPainelFilters(models: Model[], filters: PainelFilters): Mod
     sorted.sort(byName);
   }
   return sorted;
+}
+
+// 127 modelos numa tabela só viravam ~37.000px de rolagem no mobile (cada
+// linha vira um cartão empilhado abaixo de 720px, ver styles.css) -- 25
+// por página deixa isso administrável sem esconder nada, só espalhado.
+const PAGE_SIZE = 25;
+
+function paginate<T>(items: T[], page: number): T[] {
+  const start = (page - 1) * PAGE_SIZE;
+  return items.slice(start, start + PAGE_SIZE);
+}
+
+function renderPagination(totalItems: number, page: number): string {
+  const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+  if (totalPages <= 1) return "";
+  return `
+    <div class="pagination">
+      <button type="button" id="pagePrev" ${page <= 1 ? "disabled" : ""}>← ${t("pagination_prev")}</button>
+      <span class="watchlist-meta">${t("pagination_page", { page, total: totalPages })}</span>
+      <button type="button" id="pageNext" ${page >= totalPages ? "disabled" : ""}>${t("pagination_next")} →</button>
+    </div>`;
 }
 
 export function renderMain(summary: Summary): void {
@@ -236,6 +263,8 @@ export function renderMain(summary: Summary): void {
     <div class="card">
       <h2>${t("main_table_title")}</h2>
       <div class="chart-controls">
+        <label for="filterSearch">${t("label_search")}</label>
+        <input type="search" id="filterSearch" placeholder="${t("search_placeholder")}" />
         <label for="filterBrand">${t("label_brand")}</label>
         <select id="filterBrand"><option value="">${t("option_all_brands")}</option>${brandOptions}</select>
         <label for="filterVersion">${t("label_version")}</label>
@@ -250,26 +279,40 @@ export function renderMain(summary: Summary): void {
       </div>
       <p class="watchlist-meta" id="tableCount"></p>
       <div id="modelsTableSlot"></div>
+      <div id="tablePagination"></div>
     </div>`;
 
   const modelSelectEl = document.getElementById("modelSelect") as HTMLSelectElement;
+  const filterSearchEl = document.getElementById("filterSearch") as HTMLInputElement;
   const filterBrandEl = document.getElementById("filterBrand") as HTMLSelectElement;
   const filterVersionEl = document.getElementById("filterVersion") as HTMLSelectElement;
   const sortByEl = document.getElementById("sortBy") as HTMLSelectElement;
   const tableSlot = document.getElementById("modelsTableSlot") as HTMLElement;
   const tableCount = document.getElementById("tableCount") as HTMLElement;
+  const paginationSlot = document.getElementById("tablePagination") as HTMLElement;
+
+  let currentPage = 1;
 
   function refresh(): void {
     const visible = applyPainelFilters(models, {
       brand: filterBrandEl.value, version: filterVersionEl.value, sort: sortByEl.value,
+      search: filterSearchEl.value,
     });
 
     tableCount.textContent = t(visible.length === 1 ? "models_count_singular" : "models_count_plural", {
       visible: visible.length, total: models.length,
     });
-    tableSlot.innerHTML = visible.length
-      ? renderTableRows(visible)
+
+    const totalPages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    const pageItems = paginate(visible, currentPage);
+
+    tableSlot.innerHTML = pageItems.length
+      ? renderTableRows(pageItems)
       : `<p class="watchlist-empty">${t("no_match_filter")}</p>`;
+    paginationSlot.innerHTML = renderPagination(visible.length, currentPage);
+    document.getElementById("pagePrev")?.addEventListener("click", () => { currentPage--; refresh(); });
+    document.getElementById("pageNext")?.addEventListener("click", () => { currentPage++; refresh(); });
 
     if (visible.length === 0) {
       modelSelectEl.innerHTML = `<option value="">${t("no_match_filter_option")}</option>`;
@@ -278,6 +321,9 @@ export function renderMain(summary: Summary): void {
     }
     modelSelectEl.disabled = false;
 
+    // O seletor do gráfico oferece TODOS os modelos que batem no filtro,
+    // não só os da página atual -- paginação é só pra tabela, o gráfico
+    // continua livre pra qualquer modelo filtrado.
     const prevSelected = modelSelectEl.value;
     modelSelectEl.innerHTML = visible.map((m) =>
       `<option value="${m.key}">${m.brand} ${m.model} — ${trVersion(m.version)}${m.is_deal ? " 🔻" : ""}</option>`
@@ -287,10 +333,16 @@ export function renderMain(summary: Summary): void {
     renderChart(models, nextSelected.key);
   }
 
+  function refreshFromFilterChange(): void {
+    currentPage = 1; // qualquer mudança de busca/filtro/ordenação volta pra página 1
+    refresh();
+  }
+
   modelSelectEl.addEventListener("change", (e) => renderChart(models, (e.target as HTMLSelectElement).value));
-  filterBrandEl.addEventListener("change", refresh);
-  filterVersionEl.addEventListener("change", refresh);
-  sortByEl.addEventListener("change", refresh);
+  filterSearchEl.addEventListener("input", refreshFromFilterChange);
+  filterBrandEl.addEventListener("change", refreshFromFilterChange);
+  filterVersionEl.addEventListener("change", refreshFromFilterChange);
+  sortByEl.addEventListener("change", refreshFromFilterChange);
 
   refresh();
 }
