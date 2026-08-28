@@ -7,7 +7,7 @@ import {
   fmtUSD, fmtPct, fmtDate, fmtBlockAxis, fmtBlockFull, cssVar, compareStrings,
   getCurrentLang,
 } from "./i18n.js";
-import type { Summary, Alerts, Model, Watchlist } from "./types.js";
+import type { Summary, Alerts, Model, Watchlist, Deal } from "./types.js";
 
 let chartInstance: any = null;
 const activeCharts: Record<string, any[]> = {}; // containerId -> Chart[] (Histórico e Favoritos usam a mesma renderWatchlist)
@@ -32,6 +32,35 @@ function saveStarred(starred: Set<string>): void {
   try { localStorage.setItem(STARRED_KEY, JSON.stringify([...starred])); } catch (e) {}
 }
 
+// Mini-gráfico de tendência (SVG puro, sem Chart.js) pros cards de
+// "oferta encontrada hoje" -- usa o histórico diário já presente no
+// modelo, sem pedir nada novo ao backend. Evita instanciar um Chart.js
+// por card (seriam até 5+ instâncias só pra um traço decorativo) e
+// funciona mesmo se a CDN do Chart.js falhar (não depende dela).
+function sparklineSvg(values: number[]): string {
+  if (values.length < 2) return "";
+  const width = 64;
+  const height = 22;
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const points = values.map((v, i) => {
+    const x = (i / (values.length - 1)) * width;
+    const y = height - ((v - min) / range) * height;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(" ");
+  return `<svg class="sparkline" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" aria-hidden="true">
+    <polyline points="${points}" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round" />
+  </svg>`;
+}
+
+// Deal (alerts.json) e Model (daily_summary.json) vêm dos mesmos grupos
+// de scraper/aggregate.py (mesma string bruta de brand/model/version) --
+// comparação exata já é suficiente pra achar o histórico do modelo.
+function findModelForDeal(models: Model[], d: Deal): Model | undefined {
+  return models.find((m) => m.brand === d.brand && m.model === d.model && m.version === d.version);
+}
+
 export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: string): void {
   const slot = document.getElementById("bannerSlot") as HTMLElement;
   const deals = alerts.deals || [];
@@ -54,13 +83,18 @@ export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: st
     return;
   }
 
-  const items = deals.map((d) => `
+  const items = deals.map((d) => {
+    const model = findModelForDeal(summary.models, d);
+    const spark = model ? sparklineSvg(model.history.map((h) => h.avg_price_usd)) : "";
+    return `
     <li class="deal-item">
       <span>${d.brand} ${d.model} <em style="color:var(--text-muted); font-style:normal">${trVersion(d.version)}</em>
         — <a href="${d.url}" target="_blank" rel="noopener">${d.site_name}</a>
         <span style="color:var(--text-muted)">(${d.region})</span></span>
+      ${spark ? `<span class="deal-sparkline" style="color:var(--status-critical)">${spark}</span>` : ""}
       <span class="deal-pct">${fmtPct(d.discount_pct)} ${t("deal_below")} · ${fmtUSD(d.deal_price_usd)} <span style="color:var(--text-muted); font-weight:400">${t("deal_vs_avg")} ${fmtUSD(d.avg_price_usd)}</span></span>
-    </li>`).join("");
+    </li>`;
+  }).join("");
 
   slot.innerHTML = `
     <div class="banner critical">
