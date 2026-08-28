@@ -3,7 +3,7 @@
 "use strict";
 
 import { getCurrentLang, setCurrentLang, loadI18n, applyStaticTranslations, t, fmtPct, sortModels } from "./i18n.js";
-import { renderBanner, renderStats, renderChart, renderMain, renderCompare, renderWatchlist } from "./render.js";
+import { renderBanner, renderStats, renderChart, renderMain, renderCompare, renderWatchlist, renderSkeleton } from "./render.js";
 import type { Lang, Summary, Alerts, Watchlist } from "./types.js";
 
 // ---- tema ----
@@ -78,6 +78,7 @@ async function main(): Promise<void> {
   (document.getElementById("lastUpdated") as HTMLElement).textContent = t("loading_data");
 
   if (!state.loaded) {
+    renderSkeleton();
     try {
       const [summaryRes, alertsRes] = await Promise.all([
         fetch("data/daily_summary.json", { cache: "no-store" }),

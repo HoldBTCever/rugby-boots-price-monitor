@@ -196,6 +196,18 @@ h1 { font-size: 1.5rem; margin: 0 0 4px; }
 }
 .card h2 { font-size: 1rem; margin: 0 0 12px; }
 
+/* Skeleton animado enquanto os dados ainda não chegaram -- substitui o
+   "Carregando dados..." de texto puro que deixava banner/stats/tabela
+   em branco até o fetch terminar. */
+@keyframes skeleton-pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+.skeleton-block {
+  background: var(--gridline);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  animation: skeleton-pulse 1.4s ease-in-out infinite;
+}
+.skeleton-block:last-child { margin-bottom: 0; }
+
 .chart-controls {
   display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap;
 }

@@ -61,6 +61,26 @@ function findModelForDeal(models: Model[], d: Deal): Model | undefined {
   return models.find((m) => m.brand === d.brand && m.model === d.model && m.version === d.version);
 }
 
+// Placeholder animado enquanto os 4 arquivos de dados ainda estão sendo
+// buscados -- antes disso, #bannerSlot/#statsSlot/#mainContent ficavam
+// literalmente em branco, só com o texto "Carregando dados..." na linha
+// de meta acima. Só é chamado quando ainda não há dado nenhum (main.ts
+// não chama de novo na troca de idioma, pra não piscar).
+export function renderSkeleton(): void {
+  const block = (width: string, height: string) =>
+    `<div class="skeleton-block" style="width:${width}; height:${height}"></div>`;
+
+  (document.getElementById("bannerSlot") as HTMLElement).innerHTML = `
+    <div class="card">${block("60%", "20px")}${block("90%", "14px")}</div>`;
+
+  (document.getElementById("statsSlot") as HTMLElement).innerHTML = Array.from({ length: 4 }).map(() => `
+    <div class="stat-tile">${block("70%", "12px")}${block("50%", "24px")}</div>`).join("");
+
+  (document.getElementById("mainContent") as HTMLElement).innerHTML = `
+    <div class="card">${block("40%", "18px")}${block("100%", "260px")}</div>
+    <div class="card">${block("40%", "18px")}${block("100%", "40px")}${block("100%", "300px")}</div>`;
+}
+
 export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: string): void {
   const slot = document.getElementById("bannerSlot") as HTMLElement;
   const deals = alerts.deals || [];
