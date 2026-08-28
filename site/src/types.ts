@@ -39,7 +39,6 @@ export interface Model {
   stud_type: LocalizedText | null;
   width_fit: LocalizedText | null;
   spec_source: string | null;
-  in_comparar: boolean;
 }
 
 export interface Summary {

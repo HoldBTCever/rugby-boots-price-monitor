@@ -444,30 +444,49 @@ export function renderCompare(models: Model[]): void {
     return;
   }
 
-  const options = models.map((m) =>
-    `<option value="${m.key}">${m.brand} ${m.model} — ${trVersion(m.version)}</option>`
-  ).join("");
+  // Um <select> nativo com 127+ modelos é ruim de navegar -- input com
+  // <datalist> dá busca por texto nativa do navegador (digita "kakari" e
+  // filtra) sem precisar de nenhuma biblioteca. brand+model+version já é
+  // única por construção (aggregate.py agrupa por essa chave), então o
+  // rótulo exibido também é único -- o mapa abaixo nunca colide.
+  const byLabel = new Map<string, Model>();
+  const labelOf = (m: Model) => `${m.brand} ${m.model} — ${trVersion(m.version)}`;
+  const optionsHtml = models.map((m) => {
+    byLabel.set(labelOf(m), m);
+    return `<option value="${labelOf(m)}"></option>`;
+  }).join("");
 
   slot.innerHTML = `
     <div class="card">
       <h2>${t("compare_title")}</h2>
       <p class="watchlist-meta">${t("compare_intro")}</p>
+      <datalist id="compareOptions">${optionsHtml}</datalist>
       <div class="chart-controls">
-        <label for="compareSelectA">${t("label_boot_a")}</label>
-        <select id="compareSelectA">${options}</select>
-        <label for="compareSelectB">${t("label_boot_b")}</label>
-        <select id="compareSelectB">${options}</select>
+        <label for="compareInputA">${t("label_boot_a")}</label>
+        <input type="search" id="compareInputA" list="compareOptions" autocomplete="off" />
+        <label for="compareInputB">${t("label_boot_b")}</label>
+        <input type="search" id="compareInputB" list="compareOptions" autocomplete="off" />
       </div>
       <div id="compareTableSlot"></div>
     </div>`;
 
-  const selA = document.getElementById("compareSelectA") as HTMLSelectElement;
-  const selB = document.getElementById("compareSelectB") as HTMLSelectElement;
-  selA.value = models[0].key;
-  selB.value = (models.find((m) => m.key !== models[0].key) || models[0]).key;
-  const rerender = () => renderCompareTable(models, selA.value, selB.value);
-  selA.addEventListener("change", rerender);
-  selB.addEventListener("change", rerender);
+  const inputA = document.getElementById("compareInputA") as HTMLInputElement;
+  const inputB = document.getElementById("compareInputB") as HTMLInputElement;
+  const defaultA = models[0];
+  const defaultB = models.find((m) => m.key !== defaultA.key) || defaultA;
+  inputA.value = labelOf(defaultA);
+  inputB.value = labelOf(defaultB);
+
+  const rerender = () => {
+    const a = byLabel.get(inputA.value);
+    const b = byLabel.get(inputB.value);
+    // Só re-renderiza quando os dois campos batem num modelo de verdade
+    // -- enquanto a pessoa ainda tá digitando/filtrando, deixa a última
+    // comparação válida na tela em vez de piscar vazio.
+    if (a && b) renderCompareTable(models, a.key, b.key);
+  };
+  inputA.addEventListener("input", rerender);
+  inputB.addEventListener("input", rerender);
   rerender();
 }
 

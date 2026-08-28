@@ -125,10 +125,7 @@ async function main(): Promise<void> {
     renderBanner(state.summary, state.alerts as Alerts, thresholdText);
     renderStats(state.summary);
     renderMain(state.summary);
-    // Comparar só oferece favoritos + as famílias RS15/Morelia IV
-    // (in_comparar calculado em aggregate.py) -- não os 166+ modelos
-    // crus da varredura geral, difícil de navegar numa lista tão grande.
-    renderCompare(state.summary.models.filter((m) => m.in_comparar));
+    renderCompare(state.summary.models);
   }
 
   if (state.errors.watchlist || !state.watchlist) {
