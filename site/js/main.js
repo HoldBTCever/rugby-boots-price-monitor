@@ -2,7 +2,7 @@
 // orquestração das funções de renderização (render.js).
 "use strict";
 
-import { getCurrentLang, setCurrentLang, applyStaticTranslations, t, fmtPct, sortModels } from "./i18n.js";
+import { getCurrentLang, setCurrentLang, loadI18n, applyStaticTranslations, t, fmtPct, sortModels } from "./i18n.js";
 import { renderBanner, renderStats, renderChart, renderMain, renderCompare, renderWatchlist } from "./render.js";
 
 // ---- tema ----
@@ -62,6 +62,7 @@ document.querySelectorAll(".tab-btn").forEach((btn) => {
 const state = { loaded: false, summary: null, alerts: null, watchlist: null, favorites: null, errors: {} };
 
 async function main() {
+  await loadI18n();
   applyStaticTranslations();
   document.getElementById("lastUpdated").textContent = t("loading_data");
 
