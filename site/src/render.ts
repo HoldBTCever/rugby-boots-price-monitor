@@ -382,6 +382,9 @@ export function renderCompareTable(models: Model[], keyA: string, keyB: string):
 
   const rows = getCompareRows().map((row) => {
     let diffCell = "";
+    // Qual lado é mais barato nesta linha (pra pintar a célula de verde
+    // -- leitura instantânea sem precisar ler a coluna "Diferença").
+    let cheaperSide: "a" | "b" | null = null;
     if (row.numeric) {
       const va = row.numeric(a);
       const vb = row.numeric(b);
@@ -392,6 +395,8 @@ export function renderCompareTable(models: Model[], keyA: string, keyB: string):
         diffCell = diff === 0
           ? t("no_difference")
           : `${fmtUSD(Math.abs(diff))}${pct != null ? " (" + fmtPct(pct) + ")" : ""} — ${arrow}`;
+        if (diff < 0) cheaperSide = "b";
+        else if (diff > 0) cheaperSide = "a";
       }
     } else if (a.key !== b.key) {
       const va = row.get(a).replace(/<[^>]+>/g, "");
@@ -401,8 +406,8 @@ export function renderCompareTable(models: Model[], keyA: string, keyB: string):
     return `
       <tr>
         <td data-label="${t("th_attribute")}">${row.label}</td>
-        <td data-label="${t("th_boot_a")}">${row.get(a)}</td>
-        <td data-label="${t("th_boot_b")}">${row.get(b)}</td>
+        <td data-label="${t("th_boot_a")}" class="${cheaperSide === "a" ? "cheaper" : ""}">${row.get(a)}</td>
+        <td data-label="${t("th_boot_b")}" class="${cheaperSide === "b" ? "cheaper" : ""}">${row.get(b)}</td>
         <td data-label="${t("th_difference")}">${diffCell}</td>
       </tr>`;
   }).join("");

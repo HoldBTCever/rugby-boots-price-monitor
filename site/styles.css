@@ -238,6 +238,10 @@ table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
 th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--gridline); }
 th { color: var(--text-muted); font-weight: 600; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.03em; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+/* Tabela "Comparar": destaca a célula do lado mais barato em cada linha
+   numérica (preço médio/menor hoje), pra leitura instantânea sem
+   precisar ler a coluna "Diferença" em texto. */
+td.cheaper { color: var(--status-good); font-weight: 600; }
 tr:last-child td { border-bottom: none; }
 .badge {
   display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 600;
