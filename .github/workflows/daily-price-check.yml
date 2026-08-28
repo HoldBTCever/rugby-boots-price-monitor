@@ -20,7 +20,9 @@ on:
       - "scraper/**"
       - "site/**"
       - "!site/data/**"
+      - "tests/**"
       - "requirements.txt"
+      - "requirements-dev.txt"
       - ".github/workflows/daily-price-check.yml"
 
 permissions:
@@ -47,7 +49,16 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r requirements-dev.txt
+
+      # Gate antes de raspar/publicar: se a lógica de normalize.py/
+      # adapters.py quebrar (ex: uma mudança reintroduzir um bug já
+      # corrigido, tipo os merges de RS15/katakana ou o filtro de tamanho
+      # da Shopify), o job falha aqui -- não chega a raspar com código
+      # ruim nem a publicar no Pages (o job "deploy" depende de "scrape"
+      # ter terminado com sucesso).
+      - name: Run tests
+        run: python -m pytest tests/ -v
 
       - name: Run scraper
         id: scrape

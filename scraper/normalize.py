@@ -1,6 +1,7 @@
 """Extrai marca, modelo e versão de um título de produto em texto livre."""
 from __future__ import annotations
 
+import html
 import json
 import re
 
@@ -31,8 +32,10 @@ _SIZE_RE = re.compile(
 # ("Royal", "Solar", "Galaxy"...) viram parte do "modelo" por não
 # estarem na lista de ruído. Só a última parte depois do hífen é
 # descartada (exige que comece com letra, não dígito, pra não cortar
-# sufixo numérico tipo "-15"/"X-15").
-_COLORWAY_SUFFIX_RE = re.compile(r"\s*-\s*[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ/ ]*$")
+# sufixo numérico tipo "-15"/"X-15"). Aceita tanto o hífen normal (-)
+# quanto o traço-meio (–, U+2013 -- confirmado real: Rugbystore.co.uk manda
+# "&#8211;" no título, que vira esse caractere depois do html.unescape()).
+_COLORWAY_SUFFIX_RE = re.compile(r"\s*[-–]\s*[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ/ ]*$")
 
 # A canterbury.com (site canterbury_global) grava o título do JSON-LD com
 # "- 6" no final em todo produto (mesmo dígito sempre, provavelmente o
@@ -259,7 +262,12 @@ def normalize_title(title: str, default_brand: str | None = None) -> dict:
     leva de produtos com título só "Adult Unisex <Produto> ...", sem
     "Canterbury" em lugar nenhum).
     """
-    clean = title.strip()
+    # Algumas lojas (ex: Rugbystore.co.uk) mandam o título com entidade HTML
+    # sem decodificar (ex: "... Boots &#8211; White/Red") -- sem isso, a
+    # entidade some no meio-fio ou, quando calha de sobrar um dos 4 slots de
+    # "palavra significativa" do modelo, vaza literalmente pro nome (ex:
+    # "Adizero RS15 Avaglide &#8211;" em vez de só "Adizero RS15 Avaglide").
+    clean = html.unescape(title.strip())
     lower = clean.lower()
 
     brand = next((b for b in _BRANDS if b.lower() in lower), None) or default_brand
