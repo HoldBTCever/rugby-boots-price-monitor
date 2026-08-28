@@ -60,6 +60,18 @@ _ADIDAS_TEAM_COLOR_RE = re.compile(
 # pra "Adizero RS15" sempre, ANTES de separar em palavras.
 _RS15_CANON_RE = re.compile(r"\b(?:adizero\s+)?rs[\s-]?15\b", re.IGNORECASE)
 
+# A Lovell Rugby chega a abreviar até o "RS" e escrever só "adidas 15 Pro
+# ...": bate errado com o filtro de tamanho antes da correção do
+# _SIZE_RE, e sem isso vira um grupo "15" separado do resto da família
+# RS15. Só canoniza esse "15" solto quando vem colado num contexto de
+# chuteira (tier ou tipo de solado) -- não troca qualquer "15" perdido em
+# título de adidas (só é aplicado com brand == "adidas", ver
+# normalize_title()).
+_RS15_BARE_RE = re.compile(
+    r"\b15\b(?=\s+(?:pro|elite|ultimate|adults?|womens?|women's|soft|hard|firm|artificial|ground)\b)",
+    re.IGNORECASE,
+)
+
 # "Solar Turbo" é nome de cor da adidas (sempre aparece grudado numa cor de
 # verdade, ex: "Solar Turbo Pink") -- não é um tier real como "Elite"/"Pro",
 # mas como não começa com "Team" o _ADIDAS_TEAM_COLOR_RE acima não pega.
@@ -219,6 +231,8 @@ def normalize_title(title: str) -> dict:
     working = _ADIDAS_TEAM_COLOR_RE.sub("", working)
     working = _ADIDAS_SOLAR_TURBO_RE.sub("", working)
     working = _RS15_CANON_RE.sub("Adizero RS15", working)
+    if brand == "adidas":
+        working = _RS15_BARE_RE.sub("Adizero RS15", working)
     working = _SIZE_RE.sub(" ", working)
 
     words = [w for w in re.split(r"[\s\-/]+", working) if w]

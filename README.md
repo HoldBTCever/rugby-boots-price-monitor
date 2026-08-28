@@ -247,6 +247,25 @@ a ser descartado (`_SKU_CODE_RE`) — não é nome de produto.
    a versão exatamente como a loja escreveu; agora sempre capitaliza
    ("ELITE"/"elite"/"Elite" → "Elite") antes de gravar, então o mesmo
    tier não aparece mais em grafias diferentes na lista de versões.
+5. Usuário marcou num print quais itens do dropdown "RS15" são a mesma
+   chuteira. Confirmado contra o título bruto por trás de cada um antes
+   de mesclar (nunca só pela cor do print):
+   - "adidas 15 Pro" (Lovell Rugby abrevia até o "RS", só "adidas 15 Pro
+     Adults Soft Ground...") é a mesma "Adizero RS15 Pro" -- `_RS15_BARE_RE`
+     (só ativo com `brand == "adidas"`, e só quando "15" vem colado a
+     palavra de tier/solado, pra não confundir com qualquer "15" solto
+     num título de outra coisa) resolve.
+   - "RS15 Avaglide" e "RS15 Avaglide Ice" eram o mesmo produto: o título
+     da Rugbystuff pra esse SKU (sem a palavra "Rise") é "...Avaglide SG
+     Women's Rugby Boots **Ice Blue**" -- "Ice" é só resto da cor ("Ice
+     Blue"), mesmo padrão de "Solar Turbo Pink"/"Team Royal Blue". "ice"
+     entrou pra `noise_words` (conferido: só aparece nesses 2 títulos,
+     sempre colado em "Blue").
+   - "RS15 Rise" (Lovell, sem a palavra "Avaglide" no título) **não**
+     foi mesclado com "RS15 Avaglide Rise" (Rugbystuff) apesar do preço
+     parecido -- é bem provável que seja o mesmo produto (Lovell só
+     omitiu "Avaglide" nesse título específico), mas sem uma fonte
+     direta confirmando fica separado por enquanto, em vez de assumir.
 
 Depois de cada correção, `price_history.csv` inteiro é reprocessado
 (recalculando marca/modelo/versão a partir do `title` já gravado, sem
