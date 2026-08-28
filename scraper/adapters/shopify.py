@@ -1,28 +1,21 @@
-"""Adaptadores de raspagem por site/plataforma.
-
-Cada adaptador recebe a config de um site (de sites.json) e devolve uma
-lista de listagens brutas: [{title, price, currency, url}, ...].
-
-Erros em um produto ou em um site nunca devem derrubar a execução inteira
--- cada função captura suas próprias exceções e loga um aviso, retornando
-o que conseguiu extrair até ali.
-"""
+"""Adaptador pra lojas Shopify via /products.json (catálogo inteiro
+paginado) + busca ativa da watchlist via /search/suggest.json -- inclui o
+filtro de tamanho US 9-12 (só faz sentido pra Shopify, que expõe variante
+com tamanho/disponibilidade estruturados; JSON-LD genérico não tem isso,
+ver adapters/jsonld.py)."""
 from __future__ import annotations
 
 import json
 import logging
 import re
 import time
-from urllib.parse import urljoin
+from urllib.parse import quote
 
-import requests
-from bs4 import BeautifulSoup
-
-from . import config
+from .. import config
+from .common import fetch
 
 log = logging.getLogger("scraper.adapters")
 
-_PRICE_RE = re.compile(r"[\d][\d.,]*\d|\d")
 _SIZE_RE = re.compile(r"(\d{1,2}(?:\.5)?)")
 
 
@@ -68,215 +61,6 @@ def _min_price_in_size_range(variants: list[dict], site: dict, title: str = "") 
         if config.MIN_US_SIZE <= size <= config.MAX_US_SIZE:
             candidates.append(float(v["price"]))
     return min(candidates) if candidates else None
-
-
-def fetch(url: str, extra_headers: dict | None = None) -> str | None:
-    headers = {**config.HTTP_HEADERS, **extra_headers} if extra_headers else config.HTTP_HEADERS
-    try:
-        resp = requests.get(url, headers=headers, timeout=config.REQUEST_TIMEOUT_SECONDS)
-        if resp.status_code != 200:
-            log.warning("GET %s -> HTTP %s", url, resp.status_code)
-            return None
-        return resp.text
-    except requests.RequestException as exc:
-        log.warning("Falha ao buscar %s: %s", url, exc)
-        return None
-
-
-def parse_price_text(text: str) -> float | None:
-    """Converte um texto de preço em número, lidando com separadores
-    de milhar/decimal que variam por local (1,234.56 vs 1.234,56)."""
-    match = _PRICE_RE.search(text.replace("\xa0", " "))
-    if not match:
-        return None
-    raw = match.group(0)
-
-    if "," in raw and "." in raw:
-        if raw.rfind(",") > raw.rfind("."):
-            raw = raw.replace(".", "").replace(",", ".")
-        else:
-            raw = raw.replace(",", "")
-    elif "," in raw:
-        tail = raw.split(",")[-1]
-        raw = raw.replace(",", ".") if len(tail) == 2 else raw.replace(",", "")
-    elif "." in raw:
-        # "." isolado só é separador decimal quando sobram exatamente 2
-        # dígitos depois dele (centavos) -- ninguém escreve preço com 1 ou
-        # 3+ casas decimais. Qualquer outra contagem é separador de milhar
-        # (comum em ARS/PYG/JPY: "249.999" = 249999, não 249,999). Vale
-        # pra qualquer moeda, não só as que a gente já sabia que usam "."
-        # como milhar -- é assim que descobrimos o bug real do ARS, que
-        # não estava nessa lista antes e gerava preços 1000x menores.
-        tail = raw.split(".")[-1]
-        if len(tail) != 2:
-            raw = raw.replace(".", "")
-
-    try:
-        return float(raw)
-    except ValueError:
-        return None
-
-
-def extract_jsonld_products(html: str, page_url: str) -> list[dict]:
-    """Procura blocos <script type="application/ld+json"> com schema.org
-    Product/Offer -- a forma mais estável de extrair preço, pois não
-    depende de classes CSS que mudam a cada redesign."""
-    soup = BeautifulSoup(html, "lxml")
-    results = []
-
-    def _walk(node):
-        if isinstance(node, dict):
-            types = node.get("@type")
-            types = [types] if isinstance(types, str) else (types or [])
-            if "Product" in types:
-                name = node.get("name")
-                offers = node.get("offers")
-                offer_list = offers if isinstance(offers, list) else [offers] if offers else []
-                for offer in offer_list:
-                    if not isinstance(offer, dict):
-                        continue
-                    price = offer.get("price") or offer.get("lowPrice")
-                    currency = offer.get("priceCurrency")
-                    if name and price and currency:
-                        try:
-                            price_val = float(str(price).replace(",", ""))
-                        except ValueError:
-                            continue
-                        results.append({
-                            "title": name.strip(),
-                            "price": price_val,
-                            "currency": currency,
-                            "url": node.get("url") or page_url,
-                        })
-            for value in node.values():
-                _walk(value)
-        elif isinstance(node, list):
-            for item in node:
-                _walk(item)
-
-    for tag in soup.find_all("script", {"type": "application/ld+json"}):
-        try:
-            data = json.loads(tag.string or "")
-        except (json.JSONDecodeError, TypeError):
-            continue
-        _walk(data)
-
-    return results
-
-
-def discover_links(html: str, base_url: str, pattern: str, limit: int) -> list[str]:
-    soup = BeautifulSoup(html, "lxml")
-    seen, links = set(), []
-    for a in soup.find_all("a", href=True):
-        href = a["href"]
-        if pattern in href:
-            full = urljoin(base_url, href.split("?")[0])
-            if full not in seen:
-                seen.add(full)
-                links.append(full)
-        if len(links) >= limit:
-            break
-    return links
-
-
-def scrape_jsonld_site(site: dict) -> list[dict]:
-    """Para lojas Shopify/Magento/etc. que expõem schema.org Product:
-    tenta primeiro extrair JSON-LD direto da página de listagem; se não
-    houver, visita cada página de produto individualmente."""
-    listings: list[dict] = []
-    for listing_url in site["listing_urls"]:
-        html = fetch(listing_url)
-        if not html:
-            continue
-
-        found = extract_jsonld_products(html, listing_url)
-        if found:
-            listings.extend(found)
-            continue
-
-        product_links = discover_links(
-            html, site["base_url"], site["product_link_pattern"], config.MAX_PRODUCTS_PER_SITE
-        )
-        for link in product_links:
-            time.sleep(config.REQUEST_DELAY_SECONDS)
-            product_html = fetch(link)
-            if not product_html:
-                continue
-            listings.extend(extract_jsonld_products(product_html, link))
-
-    return listings
-
-
-def scrape_mizuno_jp(site: dict) -> list[dict]:
-    """jpn.mizuno.com não expõe JSON-LD nem API pública conhecida. A
-    página de categoria é carregada via ajax (view=ajax_new), então
-    manda X-Requested-With como um navegador mandaria. Varre links de
-    produto (goods-detail/goods-id no href) e usa o preço em ienes mais
-    próximo de cada link como heurística, na falta de algo mais estável."""
-    listings: list[dict] = []
-    extra_headers = {"X-Requested-With": "XMLHttpRequest", "Referer": site["base_url"] + "/"}
-    for listing_url in site["listing_urls"]:
-        html = fetch(listing_url, extra_headers=extra_headers)
-        if not html:
-            log.info("Mizuno Japan: fetch devolveu vazio/None pra %s", listing_url)
-            continue
-
-        found = extract_jsonld_products(html, listing_url)
-        if found:
-            listings.extend(found)
-            continue
-
-        soup = BeautifulSoup(html, "lxml")
-        all_anchors = soup.find_all("a", href=True)
-        anchors = [
-            a for a in all_anchors
-            if "goods-detail" in a["href"] or "goods-id" in a["href"]
-        ]
-        # diagnóstico temporário: a página confirmadamente tem chuteiras (o
-        # usuário mandou o link direto), mas o adaptador sempre voltou 0 --
-        # o primeiro round de diagnóstico (commit anterior) mostrou que o
-        # fetch traz HTML de verdade (219KB, 755 links), só que os
-        # primeiros 15 hrefs são todos menu/navegação, não produto. Agora
-        # busca "goods" em QUALQUER lugar do href (não só goods-detail/
-        # goods-id) pra achar o padrão real de link de produto, se existir
-        # nessa resposta.
-        goods_like = [a["href"] for a in all_anchors if "goods" in a["href"].lower()]
-        log.info(
-            "Mizuno Japan: HTML com %d chars, %d links no total, %d batem goods-detail/goods-id, "
-            "%d contêm 'goods' em qualquer lugar. Amostra 'goods': %s",
-            len(html), len(all_anchors), len(anchors), len(goods_like), goods_like[:20],
-        )
-        if not goods_like:
-            log.info("Mizuno Japan: nenhum href com 'goods' -- amostra geral: %s",
-                      [a["href"] for a in all_anchors[15:35]])
-        seen_urls = set()
-        for a in anchors:
-            href = urljoin(site["base_url"], a["href"].split("?")[0])
-            if href in seen_urls:
-                continue
-
-            title = a.get_text(strip=True)
-            price = None
-            scope = a.find_parent(["li", "div"])
-            for _ in range(4):
-                if not scope:
-                    break
-                text = scope.get_text(" ", strip=True)
-                yen_match = re.search(r"[¥￥]\s*([\d,]{3,})|([\d,]{3,})\s*円", text)
-                if yen_match:
-                    price = parse_price_text(yen_match.group(1) or yen_match.group(2))
-                if (not title or len(title) < 4) and len(text) >= 4:
-                    title = text[:80]
-                if price:
-                    break
-                scope = scope.find_parent(["li", "div"])
-
-            if title and price:
-                seen_urls.add(href)
-                listings.append({"title": title, "price": price, "currency": "JPY", "url": href})
-            if len(listings) >= config.MAX_PRODUCTS_PER_SITE:
-                break
-    return listings
 
 
 def fetch_shopify_collection_handles(collection_products_url: str) -> set[str]:
@@ -416,8 +200,6 @@ def search_shopify(site: dict, query: str) -> list[dict]:
     instante (confirmado com dado real, ver comentário de
     _shopify_price_cache), e o catálogo geral é a fonte mais confiável por
     varrer o produto uma vez só, direto do /products.json paginado."""
-    from urllib.parse import quote
-
     url = (
         f"{site['base_url']}/search/suggest.json"
         f"?q={quote(query)}&resources[type]=product&resources[limit]=3"
@@ -468,11 +250,3 @@ def search_shopify(site: dict, query: str) -> list[dict]:
             "url": f"{site['base_url']}/products/{handle}",
         })
     return listings
-
-
-ADAPTERS = {
-    "shopify_jsonld": scrape_jsonld_site,
-    "generic_jsonld": scrape_jsonld_site,
-    "shopify_products_json": scrape_shopify_products_json,
-    "mizuno_jp": scrape_mizuno_jp,
-}

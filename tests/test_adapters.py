@@ -1,9 +1,9 @@
-"""Suíte de regressão pra scraper/adapters.py -- foco no filtro de tamanho
+"""Suíte de regressão pra scraper/adapters/shopify.py -- foco no filtro de tamanho
 Shopify (_parse_us_size / _min_price_in_size_range) e no cache que evita a
 inconsistência entre /products.json e /products/<handle>.json, os dois
 bugs reais corrigidos nesta sessão pro Kakari Elite Black e Kakari RS SG
 Black/Grey da Rugbystuff."""
-from scraper import adapters
+from scraper.adapters import shopify
 
 SITE_GBP = {"id": "rugbystuff", "currency": "GBP"}
 
@@ -21,8 +21,8 @@ def test_adidas_uk_para_us_soma_meio_tamanho_nao_um():
     adidas_variant = _variant("UK 8")
     outra_marca_variant = _variant("UK 8")
 
-    adidas_size = adapters._parse_us_size(adidas_variant, SITE_GBP, "Adidas Kakari Elite SG Black")
-    outra_size = adapters._parse_us_size(outra_marca_variant, SITE_GBP, "Canterbury Phoenix 2.0")
+    adidas_size = shopify._parse_us_size(adidas_variant, SITE_GBP, "Adidas Kakari Elite SG Black")
+    outra_size = shopify._parse_us_size(outra_marca_variant, SITE_GBP, "Canterbury Phoenix 2.0")
 
     assert adidas_size == 8.5
     assert outra_size == 9.0
@@ -41,7 +41,7 @@ def test_kakari_rs_sg_black_grey_so_uk13_fica_fora_da_faixa():
         _variant("UK 13", available=True),
         _variant("UK 14", available=False), _variant("UK 15", available=False),
     ]
-    price = adapters._min_price_in_size_range(
+    price = shopify._min_price_in_size_range(
         variants, SITE_GBP, "Adidas Kakari RS SG Rugby Boots Black/Grey"
     )
     assert price is None
@@ -49,7 +49,7 @@ def test_kakari_rs_sg_black_grey_so_uk13_fica_fora_da_faixa():
 
 def test_variante_normal_dentro_da_faixa_ainda_funciona():
     variants = [_variant("UK 9", price="58.00"), _variant("UK 10", price="58.00")]
-    price = adapters._min_price_in_size_range(
+    price = shopify._min_price_in_size_range(
         variants, SITE_GBP, "Adidas Kakari Elite SG Rugby Boots Black"
     )
     assert price == 58.0
@@ -63,8 +63,8 @@ def test_busca_da_watchlist_reaproveita_veredito_da_varredura_geral():
     (_shopify_price_cache) tem que fazer a busca herdar o preço=None já
     calculado pela varredura geral em vez de reconsultar."""
     handle = "adidas-kakari-rs-sg-rugby-boots-black-grey"
-    adapters._shopify_price_cache[SITE_GBP["id"]] = {handle: None}
+    shopify._shopify_price_cache[SITE_GBP["id"]] = {handle: None}
 
-    cache = adapters._shopify_price_cache.get(SITE_GBP["id"], {})
+    cache = shopify._shopify_price_cache.get(SITE_GBP["id"], {})
     assert handle in cache
     assert cache[handle] is None
