@@ -81,7 +81,7 @@ def _append_listings(new_rows, listings, rates, *, block_height, timestamp, toda
         price_usd = fx.to_usd(item["price"], item["currency"], rates)
         if price_usd is None:
             continue
-        info = normalize.normalize_title(item["title"])
+        info = normalize.normalize_title(item["title"], default_brand=site.get("default_brand"))
         new_rows.append({
             "block_height": block_height if block_height is not None else "",
             "timestamp": timestamp,

@@ -266,6 +266,54 @@ a ser descartado (`_SKU_CODE_RE`) — não é nome de produto.
      parecido -- é bem provável que seja o mesmo produto (Lovell só
      omitiu "Avaglide" nesse título específico), mas sem uma fonte
      direta confirmando fica separado por enquanto, em vez de assumir.
+6. Usuário apontou que o problema era estrutural, não só do RS15:
+   várias lojas nomeiam o mesmo produto de jeitos diferentes, e o site
+   tratava cada grafia como um modelo à parte. Rodei uma varredura no
+   catálogo inteiro (não só RS15) procurando grupos que provavelmente
+   são o mesmo produto -- por marca+versão, com um "fold" agressivo do
+   texto do modelo (removendo palavra de cor conhecida + variações) --
+   e confirmei cada candidato contra o título bruto antes de mexer:
+   - **Nomes de cor de duas palavras vazando**: "Jet Black" (Canterbury),
+     "Blanc De Blanc White" (Canterbury), "White/Lava Orange" e
+     "White/Metallic Grey" (Mizuno), "Yellow Flare"/"Black Onyx"/
+     "Purple Haze"/"Orange Blaze"/"Cool Mint White" (Oxen),
+     "Evening Primrose" (Mizuno) -- só a cor "de verdade" (Black/White/
+     Orange/...) já era removida; o modificador do lado ("Jet"/"Blanc"/
+     "Lava"/...) ficava e virava "modelo". Cada palavra nova em
+     `noise_words` só depois de conferir que só aparece em contexto de
+     cor no catálogo inteiro (não é nome de produto em lugar nenhum).
+   - **Marca não detectada**: a Canterbury tem uma leva de produtos no
+     próprio site oficial (`canterbury.com`) cujo título nunca menciona
+     "Canterbury" -- só "Adult Unisex <Produto> ..." (às vezes com
+     "CCC", abreviação interna da loja). Isso espalhava "Stampede
+     Groundbreak"/"Speed Falcon 2.0"/"Phoenix 2.0" numa marca
+     "Outra marca" à parte. `sites.json` ganhou o campo `default_brand`
+     (Canterbury/Gilbert/Mizuno nas 3 lojas oficiais de marca única do
+     catálogo: canterbury.com, gilbertrugby.com, jpn.mizuno.com) --
+     usado só quando o título não menciona nenhuma marca conhecida, já
+     que o próprio domínio garante de qual marca é.
+   - **Erro de digitação da loja**: TradeInn escreve "Stamped
+     Groundbreak" (sem o "e") em 51 linhas -- confirmado que é o mesmo
+     produto "Stampede Groundbreak", corrigido com um replace pontual.
+   - **Sufixo de tamanho sobrando**: todo produto do site oficial da
+     Canterbury tem "- 6" grudado no fim do título (mesmo dígito
+     sempre -- provavelmente o tamanho da variante selecionada por
+     padrão na página, não parte do nome) -- removido.
+   - **Travas de reposição sendo tratadas como chuteira**: a busca
+     "boots" da Rugby Goods (Japão) -- mesma loja que já tinha vazado
+     um chaveiro antes -- também inclui duas travas de reposição
+     avulsas ("... スタッド (アディパワーカカリ用)" = "... studs (for
+     Adipower Kakari)"). Não é uma chuteira completa; as 80 linhas
+     correspondentes foram removidas do histórico (mesmo tratamento já
+     dado às "Gift Card" da Pro:Direct Rugby).
+
+   O que ficou de propósito **sem mesclar**, por falta de confirmação
+   direta (mesma prudência do item 5): "Morelia Neo IV" vs "...MD" vs
+   "...Mix" (podem ser variantes reais de trava/encaixe da Mizuno);
+   "Monarcida Neo III Select" vs "...SI" (sigla sem confirmação do que
+   significa); "Speed Falcon" vs "Speed Falcon 2.0" (números de versão
+   diferentes = gerações diferentes, mesmo padrão de "Phoenix" vs
+   "Phoenix 2.0"/"Phoenix 2").
 
 Depois de cada correção, `price_history.csv` inteiro é reprocessado
 (recalculando marca/modelo/versão a partir do `title` já gravado, sem

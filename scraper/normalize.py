@@ -34,6 +34,13 @@ _SIZE_RE = re.compile(
 # sufixo numérico tipo "-15"/"X-15").
 _COLORWAY_SUFFIX_RE = re.compile(r"\s*-\s*[A-Za-zÀ-ÿ][A-Za-zÀ-ÿ/ ]*$")
 
+# A canterbury.com (site canterbury_global) grava o título do JSON-LD com
+# "- 6" no final em todo produto (mesmo dígito sempre, provavelmente o
+# tamanho da variante default do produto na página) -- não é parte do
+# nome, é sobra da estrutura da página. Roda DEPOIS da canonização do
+# RS15 (que já não deixa nada terminando em hífen+número perdido).
+_TRAILING_SIZE_SUFFIX_RE = re.compile(r"\s*-\s*\d{1,2}\s*$")
+
 # Mesmo problema, mas sem hífen algum: o feed products.json da Shopify
 # costuma trazer o título sem separador nenhum antes da cor (o hífen que
 # aparece na página é só formatação do tema) -- ex: "Adidas Kakari Elite
@@ -72,6 +79,10 @@ _RS15_BARE_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Erro de digitação da própria TradeInn (confirmado: 51 linhas, sempre esse
+# site) -- "Stamped Groundbreak" em vez de "Stampede Groundbreak".
+_STAMPED_TYPO_RE = re.compile(r"\bstamped\s+groundbreak\b", re.IGNORECASE)
+
 # "Solar Turbo" é nome de cor da adidas (sempre aparece grudado numa cor de
 # verdade, ex: "Solar Turbo Pink") -- não é um tier real como "Elite"/"Pro",
 # mas como não começa com "Team" o _ADIDAS_TEAM_COLOR_RE acima não pega.
@@ -102,6 +113,7 @@ _NON_BOOT_WORDS = [
     "bag", "bolsa", "towel", "toalha", "cap", "beanie", "gorro",
     "gift card", "gift voucher", "e-gift", "vale-presente", "tarjeta de regalo",
     "キーリング", "キーホルダー", "ジャージ", "ボール", "ソックス", "靴下", "グローブ",
+    "スタッド",
 ]
 
 
@@ -210,29 +222,39 @@ def is_explicitly_non_boot(text: str) -> bool:
     return any(word in text.lower() for word in _NON_BOOT_WORDS)
 
 
-def normalize_title(title: str) -> dict:
+def normalize_title(title: str, default_brand: str | None = None) -> dict:
     """Retorna {brand, model, version} a partir de um título de produto.
 
     Heurística best-effort: encontra a primeira marca conhecida no texto,
     remove ruído (tamanhos, gênero, palavras genéricas) do restante e usa
     as primeiras palavras significativas como "modelo", com tokens de
     versão conhecidos (ano, Elite/Pro/Team, V1/V2...) destacados à parte.
+
+    `default_brand` (de `sites.json`, campo "default_brand") é usado só
+    quando o título não menciona nenhuma marca conhecida -- pra lojas
+    oficiais de marca única (ex: canterbury.com, gilbertrugby.com,
+    jpn.mizuno.com) cujo próprio domínio já garante a marca, sem
+    depender do texto do título (a Canterbury, por exemplo, tem uma
+    leva de produtos com título só "Adult Unisex <Produto> ...", sem
+    "Canterbury" em lugar nenhum).
     """
     clean = title.strip()
     lower = clean.lower()
 
-    brand = next((b for b in _BRANDS if b.lower() in lower), None)
+    brand = next((b for b in _BRANDS if b.lower() in lower), None) or default_brand
 
     working = clean
     if brand:
         working = re.sub(re.escape(brand), "", working, flags=re.IGNORECASE)
 
+    working = _STAMPED_TYPO_RE.sub("Stampede Groundbreak", working)
     working = _COLORWAY_SUFFIX_RE.sub("", working)
     working = _ADIDAS_TEAM_COLOR_RE.sub("", working)
     working = _ADIDAS_SOLAR_TURBO_RE.sub("", working)
     working = _RS15_CANON_RE.sub("Adizero RS15", working)
     if brand == "adidas":
         working = _RS15_BARE_RE.sub("Adizero RS15", working)
+    working = _TRAILING_SIZE_SUFFIX_RE.sub("", working)
     working = _SIZE_RE.sub(" ", working)
 
     words = [w for w in re.split(r"[\s\-/]+", working) if w]
