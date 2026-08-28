@@ -335,6 +335,48 @@ gráfico acima dela, que segue o mesmo filtro) tem três controles:
 Tudo client-side (`app.js`), sem round-trip nenhum — os três filtros
 combinam entre si (ex: só "Mizuno" + "Elite", ordenado por preço).
 
+## Idioma (Português, Español, English)
+
+O seletor de idioma fica no cabeçalho, ao lado do botão de tema —
+português brasileiro (padrão), espanhol paraguaio e inglês dos EUA. A
+escolha fica salva no navegador (`localStorage`, mesmo mecanismo do
+tema) e sobrevive a um F5.
+
+Como funciona (`site/app.js`):
+- `I18N` é um dicionário `{idioma: {chave: texto}}` com todo o texto
+  fixo da interface (títulos, cabeçalhos de tabela, textos de estado
+  vazio/erro, rótulos de filtro...); `t(chave, variáveis)` busca a
+  string certa e substitui `{placeholder}` quando precisa (ex: o
+  limiar de oferta, a contagem de modelos).
+- Trocar o idioma não busca os dados de novo — `main()` guarda o que já
+  foi buscado (`state`) e só re-renderiza tudo em cima do que já tem.
+- Formatação de número/data/moeda usa o idioma escolhido diretamente
+  como *locale* do `Intl` (`"pt-BR"`/`"es-PY"`/`"en-US"` já são tags
+  BCP-47 válidas) — por isso "39,5%" vira "39.5%" em inglês, e a
+  moeda muda de "US$" pra "$".
+
+**O que É traduzido**: toda a interface (abas, tabelas, filtros,
+gráficos, banners, estados vazios/erro) e os campos de ficha técnica
+pesquisados manualmente (`scraper/model_specs.json` — cabedal, travas
+e encaixe dos 14 modelos curados, cada campo já gravado nos 3
+idiomas).
+
+**O que NÃO é traduzido**, de propósito:
+- Nomes de marca/modelo/versão em si (ex: "adidas Kakari Elite", tier
+  "Elite"/"Pro"/"Ultimate") e tipo de solado ("Soft Ground"/"Firm
+  Ground"...) — são termos técnicos/de marca usados internacionalmente
+  como estão, sem tradução, igual a loja de verdade venderia. A única
+  exceção é a versão "Padrão" (fallback quando o título não tem tier
+  nenhum), que vira "Estándar"/"Standard".
+- Cabedal/travas extraídos automaticamente do título (não vêm de
+  `model_specs.json`, ex: "Sintético" sozinho, "6 travas (Alumínio)")
+  — cobrem a maioria dos 131 modelos (só 14 têm ficha curada). O
+  "Cabedal" tem os 4 valores fixos possíveis traduzidos; "Travas"
+  (frase montada livremente pelo `normalize.py` a partir do título) só
+  sai em português mesmo com outro idioma selecionado — traduzir isso
+  de forma confiável exigiria reescrever como esse campo é montado no
+  backend, fora do escopo de só trocar o idioma da interface.
+
 ## O alerta de oferta
 
 Em `scraper/config.py`:

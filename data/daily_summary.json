@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-28T12:09:19.889417+00:00",
+  "generated_at": "2026-08-28T12:25:56.106015+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-08-28",
@@ -66,9 +66,21 @@
       "discount_pct": 0.5002,
       "is_deal": true,
       "ground_type": "Soft Ground",
-      "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
-      "stud_type": "8 travas fixas, com ferramenta de aperto inclusa",
-      "width_fit": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
+      "upper_material": {
+        "pt-BR": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
+        "es-PY": "Cuero genuino en la mayor parte (algunas versiones/años usan sintético + refuerzo de cuero)",
+        "en-US": "Mostly genuine leather (some versions/years use synthetic + leather reinforcement)"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas fixas, com ferramenta de aperto inclusa",
+        "es-PY": "8 tapones fijos, con herramienta de ajuste incluida",
+        "en-US": "8 fixed studs, with a tightening tool included"
+      },
+      "width_fit": {
+        "pt-BR": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
+        "es-PY": "Regular a ajustado — las reseñas indican calce \"true to size\"; quienes tienen pie ancho tienden a subir medio número",
+        "en-US": "Regular to snug — reviews report a \"true to size\" fit; people with wide feet tend to go up half a size"
+      },
       "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com",
       "in_comparar": true
     },
@@ -445,9 +457,21 @@
       "discount_pct": 0.3509,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "upper_material": {
+        "pt-BR": "Sintético \"Primeskin\"",
+        "es-PY": "Sintético \"Primeskin\"",
+        "en-US": "Synthetic \"Primeskin\""
+      },
+      "stud_type": {
+        "pt-BR": "6 travas de rosca em alumínio, arredondadas",
+        "es-PY": "6 tapones de rosca de aluminio, redondeados",
+        "en-US": "6 rounded aluminium screw-in studs"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+        "es-PY": "Ancho — se vende como \"2E Super Wide\" / \"Super Wide last\"",
+        "en-US": "Wide — sold as \"2E Super Wide\" / \"Super Wide last\""
+      },
       "spec_source": "mizuno.com.au, worldrugbyshop.com",
       "in_comparar": false
     },
@@ -588,9 +612,21 @@
       "discount_pct": 0.3357,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Mesh respirável",
-      "stud_type": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
-      "width_fit": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+      "upper_material": {
+        "pt-BR": "Mesh respirável",
+        "es-PY": "Mesh transpirable",
+        "en-US": "Breathable mesh"
+      },
+      "stud_type": {
+        "pt-BR": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
+        "es-PY": "Tapones de rosca de aluminio, 18mm (la cantidad exacta varía según la fuente)",
+        "en-US": "Aluminium screw-in studs, 18mm (exact count varies by source)"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+        "es-PY": "Ancho — Canterbury describe al Stampede como el modelo de calce más ancho de la marca (\"wide-fit PowerLast\")",
+        "en-US": "Wide — Canterbury describes the Stampede as the brand's widest-fitting model (\"wide-fit PowerLast\")"
+      },
       "spec_source": "canterburyusa.com, rugbystuff.com",
       "in_comparar": false
     },
@@ -677,9 +713,21 @@
       "discount_pct": 0.3087,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Sintético \"TPU Skin\"",
-      "stud_type": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
-      "width_fit": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+      "upper_material": {
+        "pt-BR": "Sintético \"TPU Skin\"",
+        "es-PY": "Sintético \"TPU Skin\"",
+        "en-US": "Synthetic \"TPU Skin\""
+      },
+      "stud_type": {
+        "pt-BR": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
+        "es-PY": "Tapones de rosca de aluminio, 18mm (la cantidad exacta varía según la fuente)",
+        "en-US": "Aluminium screw-in studs, 18mm (exact count varies by source)"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+        "es-PY": "Ancho — Canterbury describe al Stampede como el modelo de calce más ancho de la marca (\"wide-fit PowerLast\")",
+        "en-US": "Wide — Canterbury describes the Stampede as the brand's widest-fitting model (\"wide-fit PowerLast\")"
+      },
       "spec_source": "canterburyusa.com, rugbystuff.com",
       "in_comparar": true
     },
@@ -772,9 +820,21 @@
       "discount_pct": 0.3058,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "upper_material": {
+        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
+        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
+      },
+      "stud_type": {
+        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
+        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
+        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
+      },
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com",
       "in_comparar": false
     },
@@ -917,9 +977,21 @@
       "discount_pct": 0.2694,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Sintético com colarinho em tricô",
-      "stud_type": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
-      "width_fit": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+      "upper_material": {
+        "pt-BR": "Sintético com colarinho em tricô",
+        "es-PY": "Sintético con cuello de punto",
+        "en-US": "Synthetic with a knit collar"
+      },
+      "stud_type": {
+        "pt-BR": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
+        "es-PY": "Tapones de rosca de aluminio, 18mm (la cantidad exacta varía según la fuente)",
+        "en-US": "Aluminium screw-in studs, 18mm (exact count varies by source)"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+        "es-PY": "Ancho — Canterbury describe al Stampede como el modelo de calce más ancho de la marca (\"wide-fit PowerLast\")",
+        "en-US": "Wide — Canterbury describes the Stampede as the brand's widest-fitting model (\"wide-fit PowerLast\")"
+      },
       "spec_source": "canterburyusa.com, rugbystuff.com",
       "in_comparar": true
     },
@@ -1436,8 +1508,16 @@
       "discount_pct": 0.0969,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "PU com metassock integrado em Lycra",
-      "stud_type": "8 travas (configuração frente/linha 5)",
+      "upper_material": {
+        "pt-BR": "PU com metassock integrado em Lycra",
+        "es-PY": "PU con metasock integrado en Lycra",
+        "en-US": "PU with an integrated Lycra metasock"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas (configuração frente/linha 5)",
+        "es-PY": "8 tapones (configuración frente/línea 5)",
+        "en-US": "8 studs (front/row-5 configuration)"
+      },
       "width_fit": null,
       "spec_source": "rugbystuff.com (largura não confirmada especificamente pra este modelo -- só a coleção Oxen em geral é anunciada como \"wide fit\")",
       "in_comparar": false
@@ -1765,8 +1845,16 @@
       "discount_pct": 0.044,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "PU com metassock integrado em Lycra",
-      "stud_type": "8 travas (configuração frente/linha 5)",
+      "upper_material": {
+        "pt-BR": "PU com metassock integrado em Lycra",
+        "es-PY": "PU con metasock integrado en Lycra",
+        "en-US": "PU with an integrated Lycra metasock"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas (configuração frente/linha 5)",
+        "es-PY": "8 tapones (configuración frente/línea 5)",
+        "en-US": "8 studs (front/row-5 configuration)"
+      },
       "width_fit": null,
       "spec_source": "rugbystuff.com (largura não confirmada especificamente pra este modelo -- só a coleção Oxen em geral é anunciada como \"wide fit\")",
       "in_comparar": false
@@ -1811,9 +1899,21 @@
       "discount_pct": 0.0343,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "upper_material": {
+        "pt-BR": "Sintético \"Primeskin\"",
+        "es-PY": "Sintético \"Primeskin\"",
+        "en-US": "Synthetic \"Primeskin\""
+      },
+      "stud_type": {
+        "pt-BR": "6 travas de rosca em alumínio, arredondadas",
+        "es-PY": "6 tapones de rosca de aluminio, redondeados",
+        "en-US": "6 rounded aluminium screw-in studs"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+        "es-PY": "Ancho — se vende como \"2E Super Wide\" / \"Super Wide last\"",
+        "en-US": "Wide — sold as \"2E Super Wide\" / \"Super Wide last\""
+      },
       "spec_source": "mizuno.com.au, worldrugbyshop.com",
       "in_comparar": false
     },
@@ -2946,9 +3046,21 @@
       "discount_pct": 0.0022,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Sintético ripstop (parte reciclado)",
-      "stud_type": "8 travas moldadas, solado dividido flexível",
-      "width_fit": "Larga (avaliação geral da linha Kakari em comparativos de terceiros — a página oficial não afirma isso especificamente para o Z.1)",
+      "upper_material": {
+        "pt-BR": "Sintético ripstop (parte reciclado)",
+        "es-PY": "Sintético ripstop (parcialmente reciclado)",
+        "en-US": "Ripstop synthetic (partly recycled)"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas moldadas, solado dividido flexível",
+        "es-PY": "8 tapones moldeados, suela dividida flexible",
+        "en-US": "8 moulded studs, flexible split sole"
+      },
+      "width_fit": {
+        "pt-BR": "Larga (avaliação geral da linha Kakari em comparativos de terceiros — a página oficial não afirma isso especificamente para o Z.1)",
+        "es-PY": "Ancho (evaluación general de la línea Kakari en comparativas de terceros — la página oficial no lo afirma específicamente para el Z.1)",
+        "en-US": "Wide (general assessment of the Kakari line in third-party comparisons — the official page doesn't state this specifically for the Z.1)"
+      },
       "spec_source": "worldrugbyshop.com; comparativos em rugbydome.com/rugbyboots.net",
       "in_comparar": true
     },
@@ -3125,9 +3237,21 @@
       "discount_pct": 0.0021,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "upper_material": {
+        "pt-BR": "Sintético \"Primeskin\"",
+        "es-PY": "Sintético \"Primeskin\"",
+        "en-US": "Synthetic \"Primeskin\""
+      },
+      "stud_type": {
+        "pt-BR": "6 travas de rosca em alumínio, arredondadas",
+        "es-PY": "6 tapones de rosca de aluminio, redondeados",
+        "en-US": "6 rounded aluminium screw-in studs"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+        "es-PY": "Ancho — se vende como \"2E Super Wide\" / \"Super Wide last\"",
+        "en-US": "Wide — sold as \"2E Super Wide\" / \"Super Wide last\""
+      },
       "spec_source": "mizuno.com.au, worldrugbyshop.com",
       "in_comparar": false
     },
@@ -3447,9 +3571,21 @@
       "discount_pct": 0.0019,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Microfibra leve",
-      "stud_type": "Travas tipo \"blade\", tecnologia D2 Flex",
-      "width_fit": "Larga — \"wide-fitting last\" citado explicitamente para o Viper Elite AG",
+      "upper_material": {
+        "pt-BR": "Microfibra leve",
+        "es-PY": "Microfibra liviana",
+        "en-US": "Lightweight microfiber"
+      },
+      "stud_type": {
+        "pt-BR": "Travas tipo \"blade\", tecnologia D2 Flex",
+        "es-PY": "Tapones tipo \"blade\", tecnología D2 Flex",
+        "en-US": "\"Blade\"-type studs, D2 Flex technology"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado explicitamente para o Viper Elite AG",
+        "es-PY": "Ancho — se menciona explícitamente \"wide-fitting last\" para el Viper Elite AG",
+        "en-US": "Wide — \"wide-fitting last\" explicitly cited for the Viper Elite AG"
+      },
       "spec_source": "sportsdirect.com, therugbystore.co.uk",
       "in_comparar": false
     },
@@ -3493,9 +3629,21 @@
       "discount_pct": 0.0018,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "upper_material": {
+        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
+        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
+      },
+      "stud_type": {
+        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
+        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
+        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
+      },
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com",
       "in_comparar": false
     },
@@ -3790,8 +3938,16 @@
       "discount_pct": 0.0014,
       "is_deal": false,
       "ground_type": "Artificial Ground",
-      "upper_material": "PU com metassock integrado em Lycra",
-      "stud_type": "8 travas (configuração frente/linha 5)",
+      "upper_material": {
+        "pt-BR": "PU com metassock integrado em Lycra",
+        "es-PY": "PU con metasock integrado en Lycra",
+        "en-US": "PU with an integrated Lycra metasock"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas (configuração frente/linha 5)",
+        "es-PY": "8 tapones (configuración frente/línea 5)",
+        "en-US": "8 studs (front/row-5 configuration)"
+      },
       "width_fit": null,
       "spec_source": "rugbystuff.com (largura não confirmada especificamente pra este modelo -- só a coleção Oxen em geral é anunciada como \"wide fit\")",
       "in_comparar": false
@@ -3831,9 +3987,21 @@
       "discount_pct": 0.0014,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "upper_material": {
+        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
+        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
+      },
+      "stud_type": {
+        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
+        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
+        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
+      },
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com",
       "in_comparar": false
     },
@@ -4230,9 +4398,21 @@
       "discount_pct": 0.0006,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Mesh respirável",
-      "stud_type": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
-      "width_fit": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+      "upper_material": {
+        "pt-BR": "Mesh respirável",
+        "es-PY": "Mesh transpirable",
+        "en-US": "Breathable mesh"
+      },
+      "stud_type": {
+        "pt-BR": "Travas de rosca em alumínio, 18mm (contagem exata varia conforme a fonte)",
+        "es-PY": "Tapones de rosca de aluminio, 18mm (la cantidad exacta varía según la fuente)",
+        "en-US": "Aluminium screw-in studs, 18mm (exact count varies by source)"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — Canterbury descreve o Stampede como o modelo de encaixe mais largo da marca (\"wide-fit PowerLast\")",
+        "es-PY": "Ancho — Canterbury describe al Stampede como el modelo de calce más ancho de la marca (\"wide-fit PowerLast\")",
+        "en-US": "Wide — Canterbury describes the Stampede as the brand's widest-fitting model (\"wide-fit PowerLast\")"
+      },
       "spec_source": "canterburyusa.com, rugbystuff.com",
       "in_comparar": false
     },
@@ -4706,9 +4886,21 @@
       "discount_pct": 0.0003,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
-      "stud_type": "8 travas fixas, com ferramenta de aperto inclusa",
-      "width_fit": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
+      "upper_material": {
+        "pt-BR": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
+        "es-PY": "Cuero genuino en la mayor parte (algunas versiones/años usan sintético + refuerzo de cuero)",
+        "en-US": "Mostly genuine leather (some versions/years use synthetic + leather reinforcement)"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas fixas, com ferramenta de aperto inclusa",
+        "es-PY": "8 tapones fijos, con herramienta de ajuste incluida",
+        "en-US": "8 fixed studs, with a tightening tool included"
+      },
+      "width_fit": {
+        "pt-BR": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
+        "es-PY": "Regular a ajustado — las reseñas indican calce \"true to size\"; quienes tienen pie ancho tienden a subir medio número",
+        "en-US": "Regular to snug — reviews report a \"true to size\" fit; people with wide feet tend to go up half a size"
+      },
       "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com",
       "in_comparar": true
     },
@@ -4798,9 +4990,21 @@
       "discount_pct": -0.0003,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "upper_material": {
+        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
+        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
+      },
+      "stud_type": {
+        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
+        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
+        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
+      },
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com",
       "in_comparar": false
     },
@@ -4844,9 +5048,21 @@
       "discount_pct": -0.0003,
       "is_deal": false,
       "ground_type": "Artificial Ground",
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "upper_material": {
+        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
+        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
+      },
+      "stud_type": {
+        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
+        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
+        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
+      },
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com",
       "in_comparar": false
     },
@@ -4890,9 +5106,21 @@
       "discount_pct": -0.0003,
       "is_deal": false,
       "ground_type": "Artificial Ground",
-      "upper_material": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-      "stud_type": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-      "width_fit": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+      "upper_material": {
+        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
+        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
+      },
+      "stud_type": {
+        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
+        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
+        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
+      },
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com",
       "in_comparar": false
     },
@@ -4936,9 +5164,21 @@
       "discount_pct": -0.0004,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "upper_material": {
+        "pt-BR": "Sintético \"Primeskin\"",
+        "es-PY": "Sintético \"Primeskin\"",
+        "en-US": "Synthetic \"Primeskin\""
+      },
+      "stud_type": {
+        "pt-BR": "6 travas de rosca em alumínio, arredondadas",
+        "es-PY": "6 tapones de rosca de aluminio, redondeados",
+        "en-US": "6 rounded aluminium screw-in studs"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+        "es-PY": "Ancho — se vende como \"2E Super Wide\" / \"Super Wide last\"",
+        "en-US": "Wide — sold as \"2E Super Wide\" / \"Super Wide last\""
+      },
       "spec_source": "mizuno.com.au, worldrugbyshop.com",
       "in_comparar": false
     },
@@ -4982,9 +5222,21 @@
       "discount_pct": -0.0006,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
-      "stud_type": "8 travas fixas, com ferramenta de aperto inclusa",
-      "width_fit": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
+      "upper_material": {
+        "pt-BR": "Couro genuíno na maior parte (algumas versões/anos usam sintético + reforço em couro)",
+        "es-PY": "Cuero genuino en la mayor parte (algunas versiones/años usan sintético + refuerzo de cuero)",
+        "en-US": "Mostly genuine leather (some versions/years use synthetic + leather reinforcement)"
+      },
+      "stud_type": {
+        "pt-BR": "8 travas fixas, com ferramenta de aperto inclusa",
+        "es-PY": "8 tapones fijos, con herramienta de ajuste incluida",
+        "en-US": "8 fixed studs, with a tightening tool included"
+      },
+      "width_fit": {
+        "pt-BR": "Regular a ajustada — reviews indicam encaixe \"true to size\"; quem tem pé largo tende a subir meio número",
+        "es-PY": "Regular a ajustado — las reseñas indican calce \"true to size\"; quienes tienen pie ancho tienden a subir medio número",
+        "en-US": "Regular to snug — reviews report a \"true to size\" fit; people with wide feet tend to go up half a size"
+      },
       "spec_source": "worldrugbyshop.com, adidas.com; nota de fit em rugbydome.com",
       "in_comparar": true
     },
@@ -5258,9 +5510,21 @@
       "discount_pct": -0.0014,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Sintético com \"metassock\" integrado em Lycra (efeito meia)",
-      "stud_type": "6 ou 8 travas moldadas (Soft Ground)",
-      "width_fit": "Larga — vendido como \"Wide Fit\" pela marca/varejista, recomendado para pés largos",
+      "upper_material": {
+        "pt-BR": "Sintético com \"metassock\" integrado em Lycra (efeito meia)",
+        "es-PY": "Sintético con \"metasock\" integrado en Lycra (efecto media)",
+        "en-US": "Synthetic with an integrated Lycra \"metasock\" (sock-like feel)"
+      },
+      "stud_type": {
+        "pt-BR": "6 ou 8 travas moldadas (Soft Ground)",
+        "es-PY": "6 u 8 tapones moldeados (Soft Ground)",
+        "en-US": "6 or 8 moulded studs (Soft Ground)"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — vendido como \"Wide Fit\" pela marca/varejista, recomendado para pés largos",
+        "es-PY": "Ancho — se vende como \"Wide Fit\" por la marca/tienda, recomendado para pies anchos",
+        "en-US": "Wide — sold as \"Wide Fit\" by the brand/retailer, recommended for wide feet"
+      },
       "spec_source": "rugbystuff.com, oxensports.com",
       "in_comparar": true
     },
@@ -5483,9 +5747,21 @@
       "discount_pct": -0.0568,
       "is_deal": false,
       "ground_type": null,
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "upper_material": {
+        "pt-BR": "Sintético \"Primeskin\"",
+        "es-PY": "Sintético \"Primeskin\"",
+        "en-US": "Synthetic \"Primeskin\""
+      },
+      "stud_type": {
+        "pt-BR": "6 travas de rosca em alumínio, arredondadas",
+        "es-PY": "6 tapones de rosca de aluminio, redondeados",
+        "en-US": "6 rounded aluminium screw-in studs"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+        "es-PY": "Ancho — se vende como \"2E Super Wide\" / \"Super Wide last\"",
+        "en-US": "Wide — sold as \"2E Super Wide\" / \"Super Wide last\""
+      },
       "spec_source": "mizuno.com.au, worldrugbyshop.com",
       "in_comparar": true
     },
@@ -5730,9 +6006,21 @@
       "discount_pct": 0.0,
       "is_deal": false,
       "ground_type": "Soft Ground",
-      "upper_material": "Sintético \"Primeskin\"",
-      "stud_type": "6 travas de rosca em alumínio, arredondadas",
-      "width_fit": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+      "upper_material": {
+        "pt-BR": "Sintético \"Primeskin\"",
+        "es-PY": "Sintético \"Primeskin\"",
+        "en-US": "Synthetic \"Primeskin\""
+      },
+      "stud_type": {
+        "pt-BR": "6 travas de rosca em alumínio, arredondadas",
+        "es-PY": "6 tapones de rosca de aluminio, redondeados",
+        "en-US": "6 rounded aluminium screw-in studs"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — vendido como \"2E Super Wide\" / \"Super Wide last\"",
+        "es-PY": "Ancho — se vende como \"2E Super Wide\" / \"Super Wide last\"",
+        "en-US": "Wide — sold as \"2E Super Wide\" / \"Super Wide last\""
+      },
       "spec_source": "mizuno.com.au, worldrugbyshop.com",
       "in_comparar": true
     },
