@@ -1,5 +1,5 @@
 // Funções de renderização (banner, stats, gráfico, tabelas, comparador,
-// histórico/favoritos) -- todas leem o idioma atual via i18n.js.
+// histórico/favoritos) -- todas leem o idioma atual via i18n.ts.
 "use strict";
 
 import {
@@ -7,12 +7,13 @@ import {
   fmtUSD, fmtPct, fmtDate, fmtBlockAxis, fmtBlockFull, cssVar, compareStrings,
   getCurrentLang,
 } from "./i18n.js";
+import type { Summary, Alerts, Model, Watchlist } from "./types.js";
 
-let chartInstance = null;
-const activeCharts = {}; // containerId -> Chart[] (Histórico e Favoritos usam a mesma renderWatchlist)
+let chartInstance: any = null;
+const activeCharts: Record<string, any[]> = {}; // containerId -> Chart[] (Histórico e Favoritos usam a mesma renderWatchlist)
 
-export function renderBanner(summary, alerts, thresholdText) {
-  const slot = document.getElementById("bannerSlot");
+export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: string): void {
+  const slot = document.getElementById("bannerSlot") as HTMLElement;
   const deals = alerts.deals || [];
 
   if (summary.totals.models_tracked === 0) {
@@ -49,27 +50,27 @@ export function renderBanner(summary, alerts, thresholdText) {
     </div>`;
 }
 
-export function renderStats(summary) {
+export function renderStats(summary: Summary): void {
   const tt = summary.totals;
-  const tiles = [
+  const tiles: Array<[string, number]> = [
     [t("stat_models"), tt.models_tracked],
     [t("stat_sources"), tt.sources],
     [t("stat_deals_today"), tt.deals_today],
     [t("stat_observations"), tt.observations],
   ];
-  document.getElementById("statsSlot").innerHTML = tiles.map(([label, value]) => `
+  (document.getElementById("statsSlot") as HTMLElement).innerHTML = tiles.map(([label, value]) => `
     <div class="stat-tile">
       <div class="label">${label}</div>
       <div class="value">${value.toLocaleString(getCurrentLang())}</div>
     </div>`).join("");
 }
 
-export function renderChart(models, selectedKey) {
+export function renderChart(models: Model[], selectedKey: string | undefined): void {
   const model = models.find((m) => m.key === selectedKey) || models[0];
   if (!model) return;
   window.__rbpmSelectedKey = model.key;
 
-  const container = document.querySelector(".chart-container");
+  const container = document.querySelector(".chart-container") as HTMLElement | null;
   if (typeof Chart === "undefined") {
     if (container) {
       container.style.height = "auto";
@@ -77,13 +78,14 @@ export function renderChart(models, selectedKey) {
     }
     return;
   }
-  if (!document.getElementById("priceChart")) return;
+  const canvas = document.getElementById("priceChart") as HTMLCanvasElement | null;
+  if (!canvas) return;
 
   const labels = model.history.map((h) => fmtDate(h.date));
   const avgData = model.history.map((h) => h.avg_price_usd);
   const minData = model.history.map((h) => h.min_price_usd);
 
-  const ctx = document.getElementById("priceChart").getContext("2d");
+  const ctx = canvas.getContext("2d");
   if (chartInstance) chartInstance.destroy();
 
   chartInstance = new Chart(ctx, {
@@ -130,14 +132,14 @@ export function renderChart(models, selectedKey) {
           bodyColor: cssVar("--text-secondary"),
           borderColor: cssVar("--border"),
           borderWidth: 1,
-          callbacks: { label: (item) => `${item.dataset.label}: ${fmtUSD(item.parsed.y)}` },
+          callbacks: { label: (item: any) => `${item.dataset.label}: ${fmtUSD(item.parsed.y)}` },
         },
       },
       scales: {
         x: { grid: { color: cssVar("--gridline") }, ticks: { color: cssVar("--text-muted") } },
         y: {
           grid: { color: cssVar("--gridline") },
-          ticks: { color: cssVar("--text-muted"), callback: (v) => fmtUSD(v) },
+          ticks: { color: cssVar("--text-muted"), callback: (v: number) => fmtUSD(v) },
         },
       },
     },
@@ -146,7 +148,7 @@ export function renderChart(models, selectedKey) {
   window.__rbpmChart = chartInstance;
 }
 
-export function renderTableRows(models) {
+export function renderTableRows(models: Model[]): string {
   const rows = models.map((m) => `
     <tr>
       <td data-label="${t("th_brand")}">${m.brand}</td>
@@ -174,15 +176,21 @@ export function renderTableRows(models) {
     </div>`;
 }
 
+export interface PainelFilters {
+  brand: string;
+  version: string;
+  sort: string;
+}
+
 // Marca/versão selecionadas ("" = todas) + critério de ordenação --
 // pedido do usuário: poder ver só "as elites" ou só "adidas", e ordenar
 // por variação/preço médio, não só por nome.
-export function applyPainelFilters(models, filters) {
+export function applyPainelFilters(models: Model[], filters: PainelFilters): Model[] {
   let out = models;
   if (filters.brand) out = out.filter((m) => m.brand === filters.brand);
   if (filters.version) out = out.filter((m) => m.version === filters.version);
 
-  const byName = (a, b) =>
+  const byName = (a: Model, b: Model) =>
     compareStrings(a.brand, b.brand) || compareStrings(a.model, b.model) || compareStrings(a.version, b.version);
   const sorted = [...out];
   if (filters.sort === "discount") {
@@ -197,12 +205,12 @@ export function applyPainelFilters(models, filters) {
   return sorted;
 }
 
-export function renderMain(summary) {
+export function renderMain(summary: Summary): void {
   const models = summary.models;
   window.__rbpmModels = models;
 
   if (models.length === 0) {
-    document.getElementById("mainContent").innerHTML = `
+    (document.getElementById("mainContent") as HTMLElement).innerHTML = `
       <div class="card empty-state">
         <div class="icon">🏉</div>
         <h2>${t("empty_no_history_title")}</h2>
@@ -216,7 +224,7 @@ export function renderMain(summary) {
   const brandOptions = brands.map((b) => `<option value="${b}">${b}</option>`).join("");
   const versionOptions = versions.map((v) => `<option value="${v}">${trVersion(v)}</option>`).join("");
 
-  document.getElementById("mainContent").innerHTML = `
+  (document.getElementById("mainContent") as HTMLElement).innerHTML = `
     <div class="card">
       <h2>${t("main_chart_title")}</h2>
       <div class="chart-controls">
@@ -244,14 +252,14 @@ export function renderMain(summary) {
       <div id="modelsTableSlot"></div>
     </div>`;
 
-  const modelSelectEl = document.getElementById("modelSelect");
-  const filterBrandEl = document.getElementById("filterBrand");
-  const filterVersionEl = document.getElementById("filterVersion");
-  const sortByEl = document.getElementById("sortBy");
-  const tableSlot = document.getElementById("modelsTableSlot");
-  const tableCount = document.getElementById("tableCount");
+  const modelSelectEl = document.getElementById("modelSelect") as HTMLSelectElement;
+  const filterBrandEl = document.getElementById("filterBrand") as HTMLSelectElement;
+  const filterVersionEl = document.getElementById("filterVersion") as HTMLSelectElement;
+  const sortByEl = document.getElementById("sortBy") as HTMLSelectElement;
+  const tableSlot = document.getElementById("modelsTableSlot") as HTMLElement;
+  const tableCount = document.getElementById("tableCount") as HTMLElement;
 
-  function refresh() {
+  function refresh(): void {
     const visible = applyPainelFilters(models, {
       brand: filterBrandEl.value, version: filterVersionEl.value, sort: sortByEl.value,
     });
@@ -279,7 +287,7 @@ export function renderMain(summary) {
     renderChart(models, nextSelected.key);
   }
 
-  modelSelectEl.addEventListener("change", (e) => renderChart(models, e.target.value));
+  modelSelectEl.addEventListener("change", (e) => renderChart(models, (e.target as HTMLSelectElement).value));
   filterBrandEl.addEventListener("change", refresh);
   filterVersionEl.addEventListener("change", refresh);
   sortByEl.addEventListener("change", refresh);
@@ -287,7 +295,13 @@ export function renderMain(summary) {
   refresh();
 }
 
-export function getCompareRows() {
+export interface CompareRow {
+  label: string;
+  get: (m: Model) => string;
+  numeric?: (m: Model) => number | null;
+}
+
+export function getCompareRows(): CompareRow[] {
   return [
     { label: t("th_brand"), get: (m) => m.brand },
     { label: t("th_model"), get: (m) => m.model },
@@ -307,7 +321,7 @@ export function getCompareRows() {
   ];
 }
 
-export function renderCompareTable(models, keyA, keyB) {
+export function renderCompareTable(models: Model[], keyA: string, keyB: string): void {
   const a = models.find((m) => m.key === keyA);
   const b = models.find((m) => m.key === keyB);
   const slot = document.getElementById("compareTableSlot");
@@ -344,7 +358,7 @@ export function renderCompareTable(models, keyA, keyB) {
   const sources = [
     a.spec_source ? t("compare_source_a", { source: a.spec_source }) : null,
     b.spec_source ? t("compare_source_b", { source: b.spec_source }) : null,
-  ].filter(Boolean);
+  ].filter((s): s is string => Boolean(s));
   const sourceNote = sources.length
     ? `<p class="watchlist-meta" style="margin-top:10px">${sources.join(" · ")}</p>`
     : "";
@@ -359,7 +373,7 @@ export function renderCompareTable(models, keyA, keyB) {
     ${sourceNote}`;
 }
 
-export function renderCompare(models) {
+export function renderCompare(models: Model[]): void {
   const slot = document.getElementById("compareContent");
   if (!slot) return;
 
@@ -390,8 +404,8 @@ export function renderCompare(models) {
       <div id="compareTableSlot"></div>
     </div>`;
 
-  const selA = document.getElementById("compareSelectA");
-  const selB = document.getElementById("compareSelectB");
+  const selA = document.getElementById("compareSelectA") as HTMLSelectElement;
+  const selB = document.getElementById("compareSelectB") as HTMLSelectElement;
   selA.value = models[0].key;
   selB.value = (models.find((m) => m.key !== models[0].key) || models[0]).key;
   const rerender = () => renderCompareTable(models, selA.value, selB.value);
@@ -403,7 +417,7 @@ export function renderCompare(models) {
 // Serve tanto a aba "Histórico" (scraper/watchlist.json) quanto "Favoritos"
 // (scraper/favorites.json) -- mesmo formato de dados, só muda o contêiner
 // e o prefixo do id de cada canvas (pra não colidir entre as duas abas).
-export function renderWatchlist(watchlist, containerId, chartPrefix) {
+export function renderWatchlist(watchlist: Watchlist, containerId: string, chartPrefix: string): void {
   if (containerId === "watchlistContent") window.__rbpmWatchlist = watchlist;
   else window.__rbpmFavorites = watchlist;
 
@@ -450,11 +464,11 @@ export function renderWatchlist(watchlist, containerId, chartPrefix) {
       </div>`;
   });
 
-  document.getElementById(containerId).innerHTML = header + `<div class="watchlist-grid">${cards.join("")}</div>`;
+  (document.getElementById(containerId) as HTMLElement).innerHTML = header + `<div class="watchlist-grid">${cards.join("")}</div>`;
 
   models.forEach((m, idx) => {
     if (!m.versions.length) return;
-    const canvas = document.getElementById(`${chartPrefix}${idx}`);
+    const canvas = document.getElementById(`${chartPrefix}${idx}`) as HTMLCanvasElement | null;
     if (!canvas || typeof Chart === "undefined") return;
 
     const allTimestamps = [...new Set(m.versions.flatMap((v) => v.history.map((h) => h.timestamp)))].sort();
@@ -494,14 +508,14 @@ export function renderWatchlist(watchlist, containerId, chartPrefix) {
             bodyColor: cssVar("--text-secondary"),
             borderColor: cssVar("--border"),
             borderWidth: 1,
-            callbacks: { label: (item) => `${item.dataset.label}: ${fmtUSD(item.parsed.y)}` },
+            callbacks: { label: (item: any) => `${item.dataset.label}: ${fmtUSD(item.parsed.y)}` },
           },
         },
         scales: {
           x: { grid: { color: cssVar("--gridline") }, ticks: { color: cssVar("--text-muted") } },
           y: {
             grid: { color: cssVar("--gridline") },
-            ticks: { color: cssVar("--text-muted"), callback: (v) => fmtUSD(v) },
+            ticks: { color: cssVar("--text-muted"), callback: (v: number) => fmtUSD(v) },
           },
         },
       },

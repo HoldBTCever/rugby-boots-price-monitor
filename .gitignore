@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 data/fx_cache.json
 data/last_run.json
+
+# Saída compilada do TypeScript (site/src/*.ts) -- gerada pelo passo
+# "Compile TypeScript" do workflow de deploy antes de publicar no Pages,
+# nunca deve ser commitada (o .ts em site/src/ é a fonte de verdade).
+site/js/
