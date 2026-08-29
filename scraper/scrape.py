@@ -128,7 +128,15 @@ def run() -> dict:
     if block_height is None:
         log.warning("Não consegui a altura do bloco atual -- coletando mesmo assim.")
 
-    sites = json.loads(config.SITES_CONFIG.read_text(encoding="utf-8"))
+    all_sites = json.loads(config.SITES_CONFIG.read_text(encoding="utf-8"))
+    # Loja com "disabled": true continua listada em sites.json (pra
+    # aparecer na aba Fontes com o motivo) mas não é raspada de verdade --
+    # ex: prodirectrugby usa JSON-LD genérico, sem dado de tamanho por
+    # variante, então não dá pra filtrar US 9-12 nela (mesmo problema
+    # estrutural do RugbyGoods, corrigido removendo aquele; aqui a loja
+    # some da coleta mas fica documentada em vez de desaparecer sem
+    # explicação).
+    sites = [s for s in all_sites if not s.get("disabled")]
     rates = fx.get_usd_rates()
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)

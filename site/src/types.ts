@@ -117,6 +117,8 @@ export interface Source {
   currency: string;
   base_url: string;
   active: boolean;
+  disabled: boolean;
+  disabled_reason_key: string | null;
 }
 
 export interface SourcesData {

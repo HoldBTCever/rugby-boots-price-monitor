@@ -29,12 +29,32 @@ workflow rodar de verdade contra as lojas.
 
 | Região | Loja | Adaptador |
 |---|---|---|
-| EUA | World Rugby Shop, Rugby Imports | `/products.json` (catálogo Shopify) |
-| Europa (Reino Unido) | Lovell Rugby, Gilbert Rugby, Absolute Rugby, JustRugby, Rugby Heaven, Rugbystuff | `/products.json` (catálogo Shopify) |
-| Europa (Reino Unido) | Canterbury, Pro:Direct Rugby, Rugbystore.co.uk, Kitlocker, M&M Direct | JSON-LD |
+| EUA | World Rugby Shop | `/products.json` (catálogo Shopify) |
+| Europa (Reino Unido) | Lovell Rugby, Gilbert Rugby, JustRugby, Rugby Heaven, Rugbystuff | `/products.json` (catálogo Shopify) |
+| Europa (Reino Unido) | Canterbury, Rugbystore.co.uk | JSON-LD |
+| Europa (Reino Unido) | Pro:Direct Rugby **(desativada)** | JSON-LD |
 | Europa (Espanha) | TradeInn | JSON-LD |
-| Japão | Mizuno Japan, Rugby Goods (Rugby Online Japan) | HTML da categoria / JSON-LD |
 | Argentina | Durban Rugby, Rugbier Store | JSON-LD |
+
+Pro:Direct Rugby fica listada (aba "Fontes" do site) mas não é raspada:
+usa `generic_jsonld`, que só extrai nome/preço/moeda do schema.org
+Product, sem tamanho por variante — não dá pra aplicar o filtro US 9–12
+nela (pedido do usuário: "escreva que está desativada por
+impossibilitar exclusão de tamanhos estranhos de chuteira. O site foca
+em chuteiras tamanho 9 a 12 US"). Marcada com `"disabled": true` +
+`"disabled_reason_key"` em `sites.json` -- `scrape.py` pula lojas
+desativadas na raspagem, mas `aggregate.py` continua incluindo na lista
+pública de fontes, com o motivo, em vez de simplesmente sumir sem
+explicação.
+
+Absolute Rugby, Kitlocker, M&M Direct, Mizuno Japan e Rugby Imports
+foram removidas de `sites.json` (pedido do usuário) -- nenhuma delas
+vinha contribuindo preço nenhum (bloqueio, catálogo sem chuteira de
+verdade, ou adaptador que nunca achou link de produto real; ver
+`scraper/adapters/mizuno.py`, removido junto). Rugby Goods (Rugby
+Online Japan) também não está mais na lista: removida antes por não
+expor tamanho por variante (mesmo problema estrutural do Pro:Direct),
+ver histórico de correções mais abaixo.
 
 A Rakuten Ichiba foi removida por falta de confiabilidade dos dados
 extraídos. A Decathlon foi removida por bloqueio anti-bot ativo (HTTP
@@ -63,22 +83,23 @@ indício de bloqueio anti-bot ativo que já tirou a Decathlon e a
 MercadoLibre da lista, só que descoberto antes de tentar em vez de
 depois.
 
-Algumas fontes JSON-LD (Canterbury, Pro:Direct Rugby, Rugbystore.co.uk,
-Kitlocker, Rugby Goods, M&M Direct) usam `generic_jsonld` com o padrão
-de link de produto ainda não 100% confirmado — podem devolver 0
-resultados até o padrão real ser validado nos logs do Actions; isso é
-preferível a inventar dado.
+Algumas fontes JSON-LD (Canterbury, Rugbystore.co.uk) usam
+`generic_jsonld` com o padrão de link de produto ainda não 100%
+confirmado — podem devolver 0 resultados até o padrão real ser validado
+nos logs do Actions; isso é preferível a inventar dado.
 
 Adicione, remova ou ajuste lojas em `scraper/sites.json` — cada entrada
 define região, moeda, URL(s) de listagem e qual adaptador usar
-(`scraper/adapters.py`). Sites que expõem dados estruturados schema.org
+(`scraper/adapters/`). Sites que expõem dados estruturados schema.org
 (`shopify_jsonld` / `generic_jsonld`) são os mais estáveis, pois não
-dependem de classes CSS que mudam a cada redesign.
+dependem de classes CSS que mudam a cada redesign. `"disabled": true`
+(+ `"disabled_reason_key"`) tira uma loja da raspagem sem apagar a
+entrada -- ela continua aparecendo na aba "Fontes" do site, com o
+motivo, em vez de só sumir sem explicação (hoje: só Pro:Direct Rugby).
 
-Sites com `"supports_search": true` (hoje: World Rugby Shop, Rugby
-Imports, Lovell Rugby, Gilbert Rugby, Absolute Rugby, JustRugby, Rugby
-Heaven, Rugbystuff — todas Shopify confirmado) também recebem uma **busca ativa**
-por cada item da
+Sites com `"supports_search": true` (hoje: World Rugby Shop, Lovell
+Rugby, Gilbert Rugby, JustRugby, Rugby Heaven, Rugbystuff — todas
+Shopify confirmado) também recebem uma **busca ativa** por cada item da
 `scraper/watchlist.json`, via API nativa de busca do Shopify
 (`/search/suggest.json`) — não depende só do item aparecer sozinho na
 varredura geral do catálogo. Se uma loja não vende aquele modelo
@@ -107,8 +128,11 @@ da Rugby Goods (Japão) devolveu um chaveiro de chuteira
 chuteiras da Pro:Direct Rugby vinha devolvendo só "Gift Card" desde
 sempre — nenhuma linha real de chuteira nunca veio de lá (todas as
 linhas gravadas até agora eram gift card; removidas de
-`price_history.csv`, e a fonte só volta a aparecer se um dia devolver
-uma chuteira de verdade). A Rugby Goods também ganhou
+`price_history.csv`). Pro:Direct Rugby foi desativada depois por um
+motivo diferente e mais definitivo (ver "Lojas monitoradas" acima): o
+adaptador `generic_jsonld` não expõe tamanho por variante, então não
+dava pra garantir o filtro US 9–12 mesmo se ela começasse a devolver
+chuteira de verdade. A Rugby Goods também ganhou
 `trust_category: true`: a maioria dos títulos lá segue o padrão "marca +
 modelo + cor + SKU" sem nenhuma palavra de chuteira (nem "boot" nem os
 equivalentes em katakana ブーツ/スパイク aparecem em toda listagem) —
@@ -120,8 +144,8 @@ pra usar como pista extra (o JSON-LD dessa loja não expõe categoria).
 Só entram no histórico chuteiras disponíveis em algum tamanho entre
 **US 9 e US 12** (masculino) — configurável em `config.MIN_US_SIZE` /
 `config.MAX_US_SIZE`. Isso só é possível com precisão nas lojas Shopify
-(World Rugby Shop, Rugby Imports, Lovell Rugby, Gilbert Rugby, Absolute
-Rugby, JustRugby, Rugby Heaven), porque a Shopify expõe o tamanho de
+(World Rugby Shop, Lovell Rugby, Gilbert Rugby, JustRugby, Rugby
+Heaven), porque a Shopify expõe o tamanho de
 cada variante do produto; o preço salvo é o menor entre as variantes
 disponíveis dentro da faixa, e um produto sem nenhum tamanho ali é
 descartado inteiro. Lojas do Reino Unido numeram no padrão britânico —
@@ -137,21 +161,24 @@ diagnóstico mostrou que a única variante disponível na faixa era UK 8 —
 que a conversão genérica (+1) lia como "US 9" (dentro do filtro), mas
 o tamanho americano real da adidas pra UK 8 é 8.5 (fora do filtro).
 Corrigido em `_parse_us_size()`/`_min_price_in_size_range()`
-(`scraper/adapters.py`), que agora recebem o título do produto pra
+(`scraper/adapters/shopify.py`), que agora recebem o título do produto pra
 aplicar a conversão certa por marca. Como o histórico não guarda a
 lista de variantes de cada dia (só o preço final já calculado), não dá
 pra recalcular retroativamente quais linhas antigas de produtos adidas
 em lojas GBP foram afetadas — o fix vale a partir da próxima raspagem.
 
-As demais fontes (JSON-LD genérico como Canterbury/Pro:Direct/Rugbystore/
-Kitlocker/Rugby Goods/Durban Rugby/Rugbier Store/TradeInn, Mizuno Japan)
-não expõem tamanho por variante nos dados que os adaptadores capturam
-hoje — continuam contribuindo sem esse filtro, porque descartá-las por
-completo derrubaria fontes que já encontraram itens reais da watchlist
-(ex: TradeInn e Rugby Heaven acharam a Mizuno Waitangi e a Canterbury
-Stampede). Se isso não for aceitável, ou se quiser que essas fontes
-também sejam restritas a US 9–12 assim que eu conseguir extrair tamanho
-delas, é só pedir.
+As demais fontes JSON-LD genérico (Canterbury, Rugbystore.co.uk, Durban
+Rugby, Rugbier Store, TradeInn) não expõem tamanho por variante nos
+dados que os adaptadores capturam hoje — continuam contribuindo sem
+esse filtro, porque descartá-las por completo derrubaria fontes que já
+encontraram itens reais da watchlist (ex: TradeInn e Rugby Heaven
+acharam a Mizuno Waitangi e a Canterbury Stampede). Se isso não for
+aceitável, ou se quiser que essas fontes também sejam restritas a
+US 9–12 assim que eu conseguir extrair tamanho delas, é só pedir --
+já aconteceu uma vez com a Rugby Goods e outra com a Pro:Direct Rugby
+(ambas desativadas/removidas por esse motivo, ver "Lojas monitoradas"
+acima), quando o padrão de promoção/catálogo delas deixou esse problema
+visível o bastante pra valer a pena.
 
 ## Filtros de solado e faixa etária
 

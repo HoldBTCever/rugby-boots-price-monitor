@@ -42,7 +42,11 @@ def _build_sources(active_names: set[str]) -> list[dict]:
     moeda, link da loja), mais "active": se essa loja contribuiu algum
     preço dentro da janela de 90 dias (mesmo critério de "Fuentes activas"
     no card de estatísticas, pra não ter dois números diferentes pra a
-    mesma ideia)."""
+    mesma ideia). "disabled"/"disabled_reason_key" passam direto de
+    sites.json -- loja desativada deliberadamente (ex: prodirectrugby,
+    JSON-LD genérico sem dado de tamanho por variante, não dá pra filtrar
+    US 9-12) continua listada, mas com o motivo em vez de simplesmente
+    não aparecer."""
     if not config.SITES_CONFIG.exists():
         return []
     sites = json.loads(config.SITES_CONFIG.read_text(encoding="utf-8"))
@@ -55,6 +59,8 @@ def _build_sources(active_names: set[str]) -> list[dict]:
             "currency": s["currency"],
             "base_url": s["base_url"],
             "active": s["name"] in active_names,
+            "disabled": bool(s.get("disabled")),
+            "disabled_reason_key": s.get("disabled_reason_key"),
         }
         for s in sites
     ]

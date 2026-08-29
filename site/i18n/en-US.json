@@ -106,6 +106,8 @@
   "th_source_status": "Status",
   "source_active": "Active",
   "source_inactive": "No recent data",
+  "source_disabled": "Disabled",
+  "source_disabled_reason_prodirect": "Disabled: this store doesn't expose per-variant size data (only name and price), so there's no way to exclude sizes outside the range this site focuses on (US 9 to 12) — the same issue that led to removing other sources earlier.",
   "error_load_sources": "Couldn't load the sources",
   "enum_version_padrao": "Standard",
   "enum_upper_kangaroo": "Kangaroo leather",

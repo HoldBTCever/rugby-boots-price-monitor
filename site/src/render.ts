@@ -707,19 +707,26 @@ export function renderSources(data: SourcesData): void {
   const sites = [...data.sites].sort((a, b) =>
     Number(b.active) - Number(a.active) || compareStrings(a.name, b.name));
 
-  const rows = sites.map((s) => `
+  const rows = sites.map((s) => {
+    let statusHtml: string;
+    if (s.disabled) {
+      const reason = s.disabled_reason_key ? t(s.disabled_reason_key) : "";
+      statusHtml = `<span class="badge disabled">${t("source_disabled")}</span>${reason ? `<p class="source-reason">${reason}</p>` : ""}`;
+    } else if (s.active) {
+      statusHtml = `<span class="badge active">${t("source_active")}</span>`;
+    } else {
+      statusHtml = `<span class="badge inactive">${t("source_inactive")}</span>`;
+    }
+    return `
     <tr>
       <td data-label="${t("th_source_name")}">
         <a href="${s.base_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-weight:600">${s.name}</a>
       </td>
       <td data-label="${t("th_source_region")}">${s.region}</td>
       <td data-label="${t("th_source_currency")}">${s.currency}</td>
-      <td data-label="${t("th_source_status")}">
-        ${s.active
-          ? `<span class="badge active">${t("source_active")}</span>`
-          : `<span class="badge inactive">${t("source_inactive")}</span>`}
-      </td>
-    </tr>`).join("");
+      <td data-label="${t("th_source_status")}">${statusHtml}</td>
+    </tr>`;
+  }).join("");
 
   slot.innerHTML = `
     <div class="card">
