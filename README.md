@@ -13,7 +13,8 @@ scraper/scrape.py      -> só roda de verdade se o bloco mudou desde a última c
                            visita cada loja configurada, extrai produtos e preços,
                            converte para USD e adiciona uma linha em data/price_history.csv
                            (com o bloco e o timestamp em America/Asuncion)
-scraper/aggregate.py   -> calcula a média móvel (90 dias) por modelo/versão,
+scraper/aggregate.py   -> carrega price_history.csv num SQLite em memória (scraper/db.py)
+                           e calcula a média móvel (90 dias) por modelo/versão via SQL,
                            gera data/daily_summary.json, data/alerts.json e
                            data/watchlist.json (lista fixa de modelos, aba "Histórico",
                            agrupado por bloco)
@@ -648,6 +649,41 @@ Duas mitigações:
    `push` do workflow (seção acima), isso força um run novo sem
    depender do cron travado. `scraper/.heartbeat` não é lido por nenhum
    código do scraper -- existe só pra isso.
+
+## Agregação via SQLite (scraper/db.py)
+
+`data/price_history.csv` continua sendo a fonte de verdade committada no
+git -- é texto puro, então dois runs concorrentes escrevendo nele (o
+scrape normal e o empurrão do agendador, por exemplo) resolvem conflito
+de merge linha a linha sozinhos, sem precisar de lock nem de ferramenta
+binária. Um `.db` do SQLite commitado a cada bloco teria o problema
+oposto: um arquivo binário conflita inteiro (não linha a linha) toda vez
+que dois runs mexem nele ao mesmo tempo, descartando mais execuções.
+
+`scraper/aggregate.py` carrega o CSV inteiro num SQLite **em memória**
+(`scraper/db.py`, tabela recriada do zero a cada execução, nunca salva em
+disco nem commitada) e faz as agregações pesadas -- média por modelo,
+série histórica por data, contagem de solado/cabedal/trava mais comum --
+via `SELECT ... GROUP BY` em vez do laço Python manual que existia antes.
+A lista curada da watchlist/favoritos (`scraper/watchlist.py`, uma dúzia
+de entradas que casam contra o título bruto do produto) continua em
+Python puro -- é pequena o bastante pra não valer a complexidade de virar
+SQL.
+
+Validado campo a campo contra a versão anterior (Python puro) usando o
+mesmo `price_history.csv` real: `alerts.json`, `watchlist.json`,
+`favorites.json` e `sources.json` saíram byte a byte idênticos;
+`daily_summary.json` teve 13 divergências de exatamente 1 centavo, todas
+no `avg_price_usd` da série histórica por data (nunca no preço médio
+principal do modelo, nem no desconto, nem na classificação de oferta).
+Causa confirmada manualmente: o `SUM()` do SQLite soma com compensação de
+erro de ponto flutuante (mais preciso), enquanto o Python somava um valor
+por vez num loop -- quando o valor real cai bem em cima de um limite tipo
+X,945, os dois algoritmos de soma (matematicamente equivalentes, mas com
+erro de arredondamento acumulado diferente) podem desempatar
+`round(..., 2)` pra lados opostos. Não faz sentido reproduzir a imprecisão
+do Python só pra bater com o passado -- o resultado do SQLite é, se
+alguma coisa, mais correto.
 
 ## Limitações conhecidas
 

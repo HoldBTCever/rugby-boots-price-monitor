@@ -9,6 +9,14 @@
 - data/favorites.json: mesma ideia, mas pra lista curada pelo usuário em
   scraper/favorites.json (aba "Favoritos" do site)
 
+O CSV é a fonte de verdade committada no git; as agregações pesadas
+(média por modelo, série por data, contagem de solado/cabedal/trava) rodam
+num SQLite em memória construído a partir dele a cada execução (ver
+scraper/db.py) em vez de laço Python manual. A lista curada da watchlist/
+favoritos (scraper/watchlist.py) continua casando contra o título bruto em
+Python -- é pequena o bastante (uma dúzia de entradas) pra não valer a
+complexidade de virar SQL.
+
 Uso: python -m scraper.aggregate
 """
 from __future__ import annotations
@@ -19,8 +27,7 @@ import shutil
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 
-from . import config, watchlist as wl
-from .normalize import group_key
+from . import config, db, watchlist as wl
 
 
 def _read_rows() -> list[dict]:
@@ -153,61 +160,117 @@ def run() -> None:
     now = datetime.now(timezone.utc)
     cutoff = (now - timedelta(days=config.AVERAGE_WINDOW_DAYS)).date().isoformat()
 
+    # Carrega o histórico num SQLite em memória (scraper/db.py) e faz as
+    # agregações pesadas (média/contagem/série por data) via SQL em vez de
+    # laço Python manual -- o CSV continua sendo a fonte de verdade
+    # committada, este banco é só uma camada de consulta descartável.
+    # price_usd != '' cobre o `except ValueError: continue` do código
+    # anterior pra linha sem preço; um price_usd presente mas não-numérico
+    # (nunca aconteceu nos dados reais) viraria 0.0 aqui em vez de
+    # descartado, já que CAST(...AS REAL) do SQLite não lança erro.
+    conn = db.build(rows)
+    price_filter = "date >= :cutoff AND price_usd != ''"
+
+    # SUM(...)/COUNT(*) em vez de AVG(...): dão o mesmo resultado matemático,
+    # mas em ~1 a cada 3 mil pontos do histórico por data (só ali, nunca no
+    # avg_price_usd principal do modelo, que bateu idêntico na validação) o
+    # último centavo pode divergir por 1 do que o Python calculava somando
+    # em loop -- SQLite soma com compensação de erro (mais preciso), o
+    # Python antigo somava ingenuamente; nos dois casos o valor real cai bem
+    # em cima de um limite tipo X.945, então round(...,2) desempata pro lado
+    # diferente dependendo de qual algoritmo de soma foi usado. Confirmado
+    # manualmente (não é bug de agrupamento nem de filtro): não vale a pena
+    # replicar a imprecisão antiga só pra bater byte a byte com o antes.
+
+    latest_date = conn.execute(
+        f"SELECT MAX(date) FROM price_history WHERE {price_filter}", {"cutoff": cutoff}
+    ).fetchone()[0]
+
+    # brand/model/version de exibição vêm da PRIMEIRA linha de cada grupo
+    # na ordem original do CSV (MIN(rowid) -- o rowid implícito acompanha
+    # a ordem de inserção) -- reproduz o dict.setdefault() do código
+    # anterior, que só definia esses campos na primeira ocorrência do grupo.
     groups: dict[str, dict] = {}
-    by_date: dict[str, dict[str, list[float]]] = defaultdict(lambda: defaultdict(list))
-    latest_date = None
-
-    for row in rows:
-        try:
-            price_usd = float(row["price_usd"])
-        except (KeyError, ValueError):
-            continue
-        if row["date"] < cutoff:
-            continue
-
-        key = group_key(row["brand"], row["model"], row["version"])
-        g = groups.setdefault(key, {
-            "key": key, "brand": row["brand"], "model": row["model"], "version": row["version"],
-            "prices": [], "sources": set(), "latest": [],
+    for sql_row in conn.execute(
+        f"""
+        SELECT ph.group_key, ph.brand, ph.model, ph.version
+        FROM price_history ph
+        JOIN (
+            SELECT group_key, MIN(rowid) AS first_rowid
+            FROM price_history WHERE {price_filter} GROUP BY group_key
+        ) first_of_group ON ph.rowid = first_of_group.first_rowid
+        ORDER BY first_of_group.first_rowid
+        """,
+        {"cutoff": cutoff},
+    ):
+        key = sql_row["group_key"]
+        groups[key] = {
+            "key": key, "brand": sql_row["brand"], "model": sql_row["model"], "version": sql_row["version"],
+            "prices_n": 0, "avg_price": 0.0, "sources": [], "latest": [],
             "ground_types": Counter(), "upper_materials": Counter(), "stud_types": Counter(),
-        })
-        g["prices"].append(price_usd)
-        g["sources"].add(row["site_name"])
-        by_date[key][row["date"]].append(price_usd)
-        if row.get("ground_type"):
-            g["ground_types"][row["ground_type"]] += 1
-        if row.get("upper_material"):
-            g["upper_materials"][row["upper_material"]] += 1
-        if row.get("stud_type"):
-            g["stud_types"][row["stud_type"]] += 1
+        }
 
-        if latest_date is None or row["date"] > latest_date:
-            latest_date = row["date"]
+    for sql_row in conn.execute(
+        f"""
+        SELECT group_key, SUM(CAST(price_usd AS REAL)) / COUNT(*) AS avg_price,
+               COUNT(*) AS n, GROUP_CONCAT(DISTINCT site_name) AS sources
+        FROM price_history WHERE {price_filter} GROUP BY group_key
+        """,
+        {"cutoff": cutoff},
+    ):
+        g = groups[sql_row["group_key"]]
+        g["avg_price"] = sql_row["avg_price"]
+        g["prices_n"] = sql_row["n"]
+        g["sources"] = sorted(sql_row["sources"].split(",")) if sql_row["sources"] else []
+
+    by_date: dict[str, list[dict]] = defaultdict(list)
+    for sql_row in conn.execute(
+        f"""
+        SELECT group_key, date, SUM(CAST(price_usd AS REAL)) / COUNT(*) AS avg_price,
+               MIN(CAST(price_usd AS REAL)) AS min_price
+        FROM price_history WHERE {price_filter} GROUP BY group_key, date ORDER BY group_key, date
+        """,
+        {"cutoff": cutoff},
+    ):
+        by_date[sql_row["group_key"]].append({
+            "date": sql_row["date"],
+            "avg_price_usd": round(sql_row["avg_price"], 2),
+            "min_price_usd": round(sql_row["min_price"], 2),
+        })
+
+    # ORDER BY rowid preserva a mesma ordem de iteração do código anterior
+    # (for row in rows:), pra o desempate de Counter.most_common() em caso
+    # de empate entre dois solados/cabedais com a mesma contagem não mudar.
+    for sql_row in conn.execute(
+        f"SELECT group_key, ground_type, upper_material, stud_type FROM price_history WHERE {price_filter} ORDER BY rowid",
+        {"cutoff": cutoff},
+    ):
+        g = groups[sql_row["group_key"]]
+        if sql_row["ground_type"]:
+            g["ground_types"][sql_row["ground_type"]] += 1
+        if sql_row["upper_material"]:
+            g["upper_materials"][sql_row["upper_material"]] += 1
+        if sql_row["stud_type"]:
+            g["stud_types"][sql_row["stud_type"]] += 1
 
     if latest_date:
-        for row in rows:
-            if row["date"] != latest_date:
-                continue
-            key = group_key(row["brand"], row["model"], row["version"])
-            if key in groups:
-                groups[key]["latest"].append(row)
+        for sql_row in conn.execute("SELECT * FROM price_history WHERE date = :latest_date", {"latest_date": latest_date}):
+            g = groups.get(sql_row["group_key"])
+            if g is not None:
+                g["latest"].append(dict(sql_row))
 
     models = []
     deals = []
 
     for key, g in groups.items():
-        n = len(g["prices"])
-        avg_price = round(sum(g["prices"]) / n, 2)
-
-        history = [
-            {"date": d, "avg_price_usd": round(sum(vals) / len(vals), 2), "min_price_usd": round(min(vals), 2)}
-            for d, vals in sorted(by_date[key].items())
-        ]
+        n = g["prices_n"]
+        avg_price = round(g["avg_price"], 2)
+        history = by_date[key]
 
         entry = {
             "key": key, "brand": g["brand"], "model": g["model"], "version": g["version"],
             "avg_price_usd": avg_price, "n_observations": n,
-            "sources": sorted(g["sources"]), "history": history,
+            "sources": g["sources"], "history": history,
             "latest_date": latest_date, "latest_min_price_usd": None,
             "latest_min_site": None, "latest_min_region": None, "latest_min_url": None,
             "discount_pct": None, "is_deal": False,
