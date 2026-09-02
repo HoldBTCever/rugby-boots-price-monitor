@@ -20,7 +20,13 @@ ALERTS_JSON = DATA_DIR / "alerts.json"
 WATCHLIST_JSON = DATA_DIR / "watchlist.json"
 FAVORITES_JSON = DATA_DIR / "favorites.json"
 SOURCES_JSON = DATA_DIR / "sources.json"
+FX_RATES_JSON = DATA_DIR / "fx_rates.json"
 FX_CACHE_JSON = DATA_DIR / "fx_cache.json"
+
+# Moedas oferecidas no seletor de moeda de exibição do site -- USD (nativa
+# dos dados) mais uma por região monitorada (BRL não é moeda de nenhuma
+# loja hoje, mas é a moeda do usuário/maior público de fala portuguesa).
+DISPLAY_CURRENCIES = ["USD", "BRL", "ARS", "PYG", "EUR", "GBP", "JPY"]
 SCRAPE_LOG_JSON = DATA_DIR / "last_run.json"
 
 # Uma chuteira é considerada "oferta" quando o preço encontrado hoje está

@@ -43,6 +43,21 @@ def _load_model_specs() -> list[dict]:
     return json.loads(config.MODEL_SPECS_CONFIG.read_text(encoding="utf-8"))
 
 
+def _build_fx_rates() -> dict:
+    """Cotação do dia (USD -> outras moedas) pro seletor de moeda de
+    exibição do site -- reaproveita o cache que scraper/fx.py já grava em
+    data/fx_cache.json a cada raspagem (nunca busca de novo aqui). Só
+    repassa as moedas em config.DISPLAY_CURRENCIES; se o cache ainda não
+    existir (primeira execução) ou faltar alguma moeda, o site cai de
+    volta pra USD nessa opção (ver currency.ts)."""
+    if not config.FX_CACHE_JSON.exists():
+        return {"date": None, "rates": {}}
+    cache = json.loads(config.FX_CACHE_JSON.read_text(encoding="utf-8"))
+    all_rates = cache.get("rates") or {}
+    rates = {c: all_rates[c] for c in config.DISPLAY_CURRENCIES if c in all_rates}
+    return {"date": cache.get("date"), "rates": rates}
+
+
 def _build_sources(active_names: set[str]) -> list[dict]:
     """Lista pública das lojas monitoradas (aba "Fontes" do site) -- os
     mesmos campos não-sensíveis de scraper/sites.json (nome, região, país,
@@ -368,6 +383,7 @@ def run() -> None:
         "generated_at": now.isoformat(),
         "sites": _build_sources(set(all_sources)),
     }
+    fx_rates_out = _build_fx_rates()
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
     config.DAILY_SUMMARY_JSON.write_text(json.dumps(summary, indent=2, ensure_ascii=False), encoding="utf-8")
@@ -375,6 +391,7 @@ def run() -> None:
     config.WATCHLIST_JSON.write_text(json.dumps(watchlist_out, indent=2, ensure_ascii=False), encoding="utf-8")
     config.FAVORITES_JSON.write_text(json.dumps(favorites_out, indent=2, ensure_ascii=False), encoding="utf-8")
     config.SOURCES_JSON.write_text(json.dumps(sources_out, indent=2, ensure_ascii=False), encoding="utf-8")
+    config.FX_RATES_JSON.write_text(json.dumps(fx_rates_out, indent=2, ensure_ascii=False), encoding="utf-8")
 
     config.SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
     shutil.copy(config.DAILY_SUMMARY_JSON, config.SITE_DATA_DIR / "daily_summary.json")
@@ -382,6 +399,7 @@ def run() -> None:
     shutil.copy(config.WATCHLIST_JSON, config.SITE_DATA_DIR / "watchlist.json")
     shutil.copy(config.FAVORITES_JSON, config.SITE_DATA_DIR / "favorites.json")
     shutil.copy(config.SOURCES_JSON, config.SITE_DATA_DIR / "sources.json")
+    shutil.copy(config.FX_RATES_JSON, config.SITE_DATA_DIR / "fx_rates.json")
 
     found = sum(1 for m in watchlist_out["models"] if m["versions"])
     found_fav = sum(1 for m in favorites_out["models"] if m["versions"])

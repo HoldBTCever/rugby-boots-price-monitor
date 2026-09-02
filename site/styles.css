@@ -66,6 +66,16 @@
 
 * { box-sizing: border-box; }
 
+/* Pula pro <main> sem passar por cabeçalho/abas -- só visível quando
+   recebe foco de teclado (Tab), como é padrão em "skip to content". */
+.skip-link {
+  position: absolute; top: -40px; left: 8px; z-index: 100;
+  background: var(--series-1); color: #fff;
+  padding: 8px 14px; border-radius: 8px; font-size: 0.85rem;
+  text-decoration: none; transition: top 0.15s ease;
+}
+.skip-link:focus { top: 8px; }
+
 body {
   margin: 0;
   background: var(--page-plane);
@@ -196,6 +206,19 @@ h1 { font-size: 1.5rem; margin: 0 0 4px; }
 }
 .card h2 { font-size: 1rem; margin: 0 0 12px; }
 
+.card-title-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px;
+}
+.card-title-row h2 { margin: 0; }
+.chart-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.icon-btn {
+  background: var(--surface-1); color: var(--text-secondary);
+  border: 1px solid var(--border); border-radius: 8px;
+  width: 32px; height: 32px; line-height: 1; font-size: 0.95rem;
+  cursor: pointer; display: inline-flex; align-items: center; justify-content: center;
+}
+.icon-btn:hover { color: var(--text-primary); border-color: var(--series-1); }
+
 /* Skeleton animado enquanto os dados ainda não chegaram -- substitui o
    "Carregando dados..." de texto puro que deixava banner/stats/tabela
    em branco até o fetch terminar. */
@@ -265,6 +288,35 @@ tr:last-child td { border-bottom: none; }
 .badge.disabled { background: var(--status-warning); color: #1a1a19; }
 .source-reason { margin: 6px 0 0; color: var(--text-muted); font-size: 0.8rem; max-width: 320px; }
 .table-scroll { overflow-x: auto; }
+
+/* Cabeçalho de coluna clicável (alternativa ao <select> #sortBy, sempre
+   em sincronia com ele -- ver sortableHeader() em render.ts). */
+.sortable-th { padding: 0; }
+.sort-th-btn {
+  background: none; border: none; cursor: pointer; width: 100%; height: 100%;
+  padding: 9px 8px; margin: 0; text-align: inherit; font: inherit;
+  color: var(--text-muted); font-weight: 600; font-size: 0.76rem;
+  text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap;
+}
+.sortable-th.num .sort-th-btn { text-align: right; }
+.sort-th-btn:hover { color: var(--text-secondary); }
+.sort-th-btn.active { color: var(--series-1); }
+
+/* Nome do modelo na tabela também abre o gráfico correspondente acima
+   (ver .row-model-link em renderTableRows/render.ts). */
+.row-model-link {
+  background: none; border: none; cursor: pointer; padding: 0; margin: 0;
+  font: inherit; color: var(--series-1); text-decoration: none; text-align: inherit;
+}
+.row-model-link:hover { text-decoration: underline; }
+
+/* Modo compacto: menos preenchimento e fonte menor por linha, pra ver
+   mais modelos de uma vez na tela (ver #compactMode em render.ts). */
+.table-compact th, .table-compact td { padding: 4px 8px; font-size: 0.8rem; }
+.table-compact .sort-th-btn { padding: 4px 8px; }
+@media (max-width: 700px) {
+  .table-compact .responsive-table td { padding: 4px 0; }
+}
 
 /* Marcador pessoal (★) por linha na tabela do Painel -- salvo só no
    navegador de quem está vendo, sem relação com a aba Favoritos. */

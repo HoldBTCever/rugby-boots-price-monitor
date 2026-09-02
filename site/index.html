@@ -4,14 +4,31 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Monitor de Precios — Botines de Rugby</title>
+<meta name="description" content="Monitoreo diario de precios de botines de rugby en tiendas de EE. UU., Reino Unido/Europa, Japón, Argentina y Paraguay. Alerta automática cuando un modelo cae 39,5% o más por debajo de su promedio histórico." />
+<link rel="canonical" href="https://holdbtcever.github.io/rugby-boots-price-monitor/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Monitor de Precios — Botines de Rugby" />
+<meta property="og:title" content="Monitor de Precios — Botines de Rugby" />
+<meta property="og:description" content="Monitoreo diario de precios de botines de rugby en varias regiones, con alerta automática de oferta." />
+<meta property="og:url" content="https://holdbtcever.github.io/rugby-boots-price-monitor/" />
+<meta property="og:image" content="https://holdbtcever.github.io/rugby-boots-price-monitor/icons/icon-512.png" />
+<meta property="og:locale" content="es_PY" />
+<meta property="og:locale:alternate" content="pt_BR" />
+<meta property="og:locale:alternate" content="en_US" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Monitor de Precios — Botines de Rugby" />
+<meta name="twitter:description" content="Monitoreo diario de precios de botines de rugby en varias regiones, con alerta automática de oferta." />
+<meta name="twitter:image" content="https://holdbtcever.github.io/rugby-boots-price-monitor/icons/icon-512.png" />
 <link rel="stylesheet" href="styles.css" />
 <link rel="manifest" href="manifest.json" />
 <link rel="icon" href="icons/icon-192.png" />
 <link rel="apple-touch-icon" href="icons/icon-192.png" />
 <meta name="theme-color" content="#2a78d6" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1/dist/chartjs-plugin-zoom.min.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#mainContent" data-i18n="skip_to_content">Ir al contenido</a>
 <div class="wrap">
   <header class="top">
     <div>
@@ -25,39 +42,42 @@
         <option value="es-PY">🇵🇾 Español</option>
         <option value="en-US">🇺🇸 English</option>
       </select>
+      <select id="currencySelect" class="lang-select" aria-label="Moneda / Currency / Moeda"></select>
       <button class="theme-toggle" id="themeToggle" type="button">🌓 <span data-i18n="theme_toggle_label">Tema</span></button>
     </div>
   </header>
 
-  <nav class="tabs" id="tabs">
-    <button class="tab-btn active" data-tab="painel" type="button" data-i18n="tab_painel">Panel</button>
+  <nav class="tabs" id="tabs" aria-label="Secciones">
+    <button class="tab-btn active" data-tab="painel" type="button" data-i18n="tab_painel" aria-current="page">Panel</button>
     <button class="tab-btn" data-tab="historico" type="button" data-i18n="tab_historico">Histórico</button>
     <button class="tab-btn" data-tab="comparar" type="button" data-i18n="tab_comparar">Comparar</button>
     <button class="tab-btn" data-tab="favoritos" type="button" data-i18n="tab_favoritos">Favoritos ⭐</button>
     <button class="tab-btn" data-tab="fontes" type="button" data-i18n="tab_fontes">Fuentes</button>
   </nav>
 
-  <section id="tab-painel" class="tab-panel">
-    <div id="bannerSlot"></div>
-    <section class="stats" id="statsSlot"></section>
-    <div id="mainContent"></div>
-  </section>
+  <main>
+    <section id="tab-painel" class="tab-panel">
+      <div id="bannerSlot"></div>
+      <section class="stats" id="statsSlot" aria-label="Estadísticas"></section>
+      <div id="mainContent"></div>
+    </section>
 
-  <section id="tab-historico" class="tab-panel" hidden>
-    <div id="watchlistContent"></div>
-  </section>
+    <section id="tab-historico" class="tab-panel" hidden>
+      <div id="watchlistContent"></div>
+    </section>
 
-  <section id="tab-comparar" class="tab-panel" hidden>
-    <div id="compareContent"></div>
-  </section>
+    <section id="tab-comparar" class="tab-panel" hidden>
+      <div id="compareContent"></div>
+    </section>
 
-  <section id="tab-favoritos" class="tab-panel" hidden>
-    <div id="favoritesContent"></div>
-  </section>
+    <section id="tab-favoritos" class="tab-panel" hidden>
+      <div id="favoritesContent"></div>
+    </section>
 
-  <section id="tab-fontes" class="tab-panel" hidden>
-    <div id="sourcesContent"></div>
-  </section>
+    <section id="tab-fontes" class="tab-panel" hidden>
+      <div id="sourcesContent"></div>
+    </section>
+  </main>
 
   <footer>
     <p id="footerIntro">Los precios se convierten a USD el día de la recolección. Un botín se destaca como oferta cuando su menor

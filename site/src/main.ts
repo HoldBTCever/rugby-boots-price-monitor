@@ -3,8 +3,27 @@
 "use strict";
 
 import { getCurrentLang, setCurrentLang, loadI18n, applyStaticTranslations, t, fmtPct, sortModels } from "./i18n.js";
+import { setFxRates, getCurrentCurrency, setCurrentCurrency, availableCurrencies } from "./currency.js";
 import { renderBanner, renderStats, renderChart, renderMain, renderCompare, renderWatchlist, renderSkeleton, renderSources } from "./render.js";
-import type { Lang, Summary, Alerts, Watchlist, SourcesData } from "./types.js";
+import type { Lang, Summary, Alerts, Watchlist, SourcesData, FxRates } from "./types.js";
+
+// ---- moeda de exibição ----
+// currencySelectEl começa vazio (só sabe as moedas depois de buscar
+// fx_rates.json em main()) -- populateCurrencySelect() preenche as
+// <option> e reflete a moeda atual salva, chamada de dentro de main()
+// toda vez (idempotente: reconstrói as options do zero).
+const currencySelectEl = document.getElementById("currencySelect") as HTMLSelectElement;
+function populateCurrencySelect(): void {
+  const current = getCurrentCurrency();
+  currencySelectEl.innerHTML = availableCurrencies()
+    .map((c) => `<option value="${c}">${c}</option>`)
+    .join("");
+  currencySelectEl.value = current;
+}
+currencySelectEl.addEventListener("change", () => {
+  setCurrentCurrency(currencySelectEl.value);
+  main();
+});
 
 // ---- tema ----
 const themeToggle = document.getElementById("themeToggle") as HTMLButtonElement;
@@ -38,8 +57,12 @@ langSelect.addEventListener("change", () => {
 const TAB_NAMES = ["painel", "historico", "comparar", "favoritos", "fontes"];
 document.querySelectorAll(".tab-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach((b) => {
+      b.classList.remove("active");
+      b.removeAttribute("aria-current");
+    });
     btn.classList.add("active");
+    btn.setAttribute("aria-current", "page");
     const tabName = (btn as HTMLElement).dataset.tab;
     TAB_NAMES.forEach((name) => {
       (document.getElementById(`tab-${name}`) as HTMLElement).hidden = tabName !== name;
@@ -65,14 +88,15 @@ interface AppState {
   watchlist: Watchlist | null;
   favorites: Watchlist | null;
   sources: SourcesData | null;
+  fxRates: FxRates | null;
   errors: Record<string, Error>;
 }
 
-// Busca os 5 arquivos de dados só uma vez (state.loaded); troca de idioma
-// chama main() de novo, mas só re-renderiza em cima do que já foi
-// buscado, sem round-trip novo à rede.
+// Busca os 6 arquivos de dados só uma vez (state.loaded); troca de idioma
+// ou de moeda chama main() de novo, mas só re-renderiza em cima do que já
+// foi buscado, sem round-trip novo à rede.
 const state: AppState = {
-  loaded: false, summary: null, alerts: null, watchlist: null, favorites: null, sources: null, errors: {},
+  loaded: false, summary: null, alerts: null, watchlist: null, favorites: null, sources: null, fxRates: null, errors: {},
 };
 
 async function main(): Promise<void> {
@@ -115,8 +139,20 @@ async function main(): Promise<void> {
       state.errors.sources = err as Error;
     }
 
+    try {
+      const fxRes = await fetch("data/fx_rates.json", { cache: "no-store" });
+      state.fxRates = await fxRes.json();
+    } catch (err) {
+      // Cotação é só um extra (seletor de moeda) -- se falhar, o site
+      // continua funcionando normal em USD, sem card de erro pra isso.
+      state.fxRates = null;
+    }
+
     state.loaded = true;
   }
+
+  setFxRates(state.fxRates);
+  populateCurrencySelect();
 
   if (state.errors.main || !state.summary) {
     (document.getElementById("lastUpdated") as HTMLElement).textContent = t("no_collection_yet");

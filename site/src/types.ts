@@ -125,3 +125,12 @@ export interface SourcesData {
   generated_at: string | null;
   sites: Source[];
 }
+
+// Cotação do dia (USD -> outras moedas), gerada por
+// scraper.aggregate._build_fx_rates() a partir do cache de scraper/fx.py.
+// "rates" pode vir sem alguma moeda (ex: primeira execução sem cache
+// ainda) -- currency.ts cai de volta pra USD nesse caso.
+export interface FxRates {
+  date: string | null;
+  rates: Partial<Record<string, number>>;
+}

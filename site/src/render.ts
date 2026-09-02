@@ -4,13 +4,49 @@
 
 import {
   t, trVersion, trUpper, pickLocalized,
-  fmtUSD, fmtPct, fmtDate, fmtBlockAxis, fmtBlockFull, cssVar, compareStrings,
+  fmtPct, fmtDate, fmtBlockAxis, fmtBlockFull, cssVar, compareStrings,
   getCurrentLang,
 } from "./i18n.js";
-import type { Summary, Alerts, Model, Watchlist, Deal, SourcesData } from "./types.js";
+import { fmtMoney, getCurrentCurrency, setCurrentCurrency, availableCurrencies } from "./currency.js";
+import type { Summary, Alerts, Model, Watchlist, Deal, SourcesData, FxRates } from "./types.js";
 
 let chartInstance: any = null;
 const activeCharts: Record<string, any[]> = {}; // containerId -> Chart[] (Histórico e Favoritos usam a mesma renderWatchlist)
+
+// Zoom (roda do mouse/pinça) + pan (arrastar) via chartjs-plugin-zoom
+// (carregado por <script> no index.html, como o próprio Chart.js) --
+// mesma configuração pros dois lugares que desenham linha de preço
+// (renderChart do Painel e renderWatchlist do Histórico/Favoritos).
+// Duplo clique reseta pro zoom original em qualquer gráfico, sem
+// precisar de um botão visível em cada card (seriam muitos botões
+// pequenos repetidos na grade do Histórico/Favoritos).
+function zoomPluginOptions(): object {
+  return {
+    pan: { enabled: true, mode: "x" },
+    zoom: { wheel: { enabled: true }, pinch: { enabled: true }, mode: "x" },
+  };
+}
+
+function attachDblClickReset(canvas: HTMLCanvasElement, chart: any): void {
+  canvas.addEventListener("dblclick", () => chart.resetZoom());
+}
+
+// URL compartilhável/favoritável de um modelo específico -- usada tanto
+// pro hash da página (deep link, ver applyHashModel em main.ts) quanto
+// pro botão compartilhar/copiar link. Preserva origin+pathname reais
+// (funciona tanto local quanto no subcaminho do GitHub Pages) e troca só
+// o hash, nunca cria entrada nova no histórico do navegador (replaceState),
+// senão cada troca de modelo no seletor viraria um passo de "voltar".
+export function modelUrl(key: string): string {
+  return `${location.origin}${location.pathname}${location.search}#modelo=${encodeURIComponent(key)}`;
+}
+export function updateModelHash(key: string): void {
+  history.replaceState(null, "", modelUrl(key));
+}
+export function modelKeyFromHash(): string | null {
+  const m = /^#modelo=(.+)$/.exec(location.hash);
+  return m ? decodeURIComponent(m[1]) : null;
+}
 
 // Marcador pessoal (★) na tabela do Painel -- deliberadamente NÃO chamado
 // de "favorito" pra não confundir com a aba Favoritos (lista curada vinda
@@ -88,7 +124,7 @@ export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: st
   if (summary.totals.models_tracked === 0) {
     slot.innerHTML = `
       <div class="banner">
-        <h2><span class="dot" style="background:var(--status-warning)"></span> ${t("banner_none_title")}</h2>
+        <h2><span class="dot" aria-hidden="true" style="background:var(--status-warning)"></span> ${t("banner_none_title")}</h2>
         <p>${t("banner_none_body")}</p>
       </div>`;
     return;
@@ -97,7 +133,7 @@ export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: st
   if (deals.length === 0) {
     slot.innerHTML = `
       <div class="banner good">
-        <h2><span class="dot"></span> ${t("banner_no_deals_title")}</h2>
+        <h2><span class="dot" aria-hidden="true"></span> ${t("banner_no_deals_title")}</h2>
         <p>${t("banner_no_deals_body", { threshold: thresholdText })}</p>
       </div>`;
     return;
@@ -112,13 +148,13 @@ export function renderBanner(summary: Summary, alerts: Alerts, thresholdText: st
         — <a href="${d.url}" target="_blank" rel="noopener">${d.site_name}</a>
         <span style="color:var(--text-muted)">(${d.region})</span></span>
       ${spark ? `<span class="deal-sparkline" style="color:var(--status-critical)">${spark}</span>` : ""}
-      <span class="deal-pct">${fmtPct(d.discount_pct)} ${t("deal_below")} · ${fmtUSD(d.deal_price_usd)} <span style="color:var(--text-muted); font-weight:400">${t("deal_vs_avg")} ${fmtUSD(d.avg_price_usd)}</span></span>
+      <span class="deal-pct">${fmtPct(d.discount_pct)} ${t("deal_below")} · ${fmtMoney(d.deal_price_usd)} <span style="color:var(--text-muted); font-weight:400">${t("deal_vs_avg")} ${fmtMoney(d.avg_price_usd)}</span></span>
     </li>`;
   }).join("");
 
   slot.innerHTML = `
     <div class="banner critical">
-      <h2><span class="dot"></span> ${t(deals.length === 1 ? "deals_found_singular" : "deals_found_plural", { n: deals.length })}</h2>
+      <h2><span class="dot" aria-hidden="true"></span> ${t(deals.length === 1 ? "deals_found_singular" : "deals_found_plural", { n: deals.length })}</h2>
       <p>${t("banner_deals_body", { threshold: thresholdText })}</p>
       <ul class="deal-list">${items}</ul>
     </div>`;
@@ -143,6 +179,7 @@ export function renderChart(models: Model[], selectedKey: string | undefined): v
   const model = models.find((m) => m.key === selectedKey) || models[0];
   if (!model) return;
   window.__rbpmSelectedKey = model.key;
+  updateModelHash(model.key);
 
   const container = document.querySelector(".chart-container") as HTMLElement | null;
   if (typeof Chart === "undefined") {
@@ -206,33 +243,51 @@ export function renderChart(models: Model[], selectedKey: string | undefined): v
           bodyColor: cssVar("--text-secondary"),
           borderColor: cssVar("--border"),
           borderWidth: 1,
-          callbacks: { label: (item: any) => `${item.dataset.label}: ${fmtUSD(item.parsed.y)}` },
+          callbacks: { label: (item: any) => `${item.dataset.label}: ${fmtMoney(item.parsed.y)}` },
         },
+        zoom: zoomPluginOptions(),
       },
       scales: {
         x: { grid: { color: cssVar("--gridline") }, ticks: { color: cssVar("--text-muted") } },
         y: {
           grid: { color: cssVar("--gridline") },
-          ticks: { color: cssVar("--text-muted"), callback: (v: number) => fmtUSD(v) },
+          ticks: { color: cssVar("--text-muted"), callback: (v: number) => fmtMoney(v) },
         },
       },
     },
   });
+  attachDblClickReset(canvas, chartInstance);
 
   window.__rbpmChart = chartInstance;
 }
 
-export function renderTableRows(models: Model[], starred: Set<string>): string {
+// Cabeçalho clicável de coluna ordenável -- alterna entre asc/desc quando
+// já é a coluna ativa (aria-sort reflete o estado real pra leitor de
+// tela), ou vai pro sentido padrão dessa coluna na primeira vez (preço/
+// desconto começam do "maior" primeiro, nome começa A-Z). O <select>
+// #sortBy (mesmo valor, ver renderMain) continua a fonte única da
+// verdade -- clicar aqui só muda o valor dele e dispara o mesmo refresh,
+// pra quem prefere teclado/dropdown não perder nenhuma opção.
+function sortableHeader(label: string, ascValue: string, descValue: string, defaultValue: string, currentSort: string, extraClass = ""): string {
+  const isActive = currentSort === ascValue || currentSort === descValue;
+  const ariaSort = currentSort === ascValue ? "ascending" : currentSort === descValue ? "descending" : "none";
+  const nextValue = currentSort === defaultValue ? (defaultValue === ascValue ? descValue : ascValue) : defaultValue;
+  const arrow = currentSort === ascValue ? " ▲" : currentSort === descValue ? " ▼" : "";
+  return `<th class="${extraClass} sortable-th" aria-sort="${ariaSort}">` +
+    `<button type="button" class="sort-th-btn${isActive ? " active" : ""}" data-sort-next="${nextValue}">${label}${arrow}</button></th>`;
+}
+
+export function renderTableRows(models: Model[], starred: Set<string>, currentSort: string): string {
   const rows = models.map((m) => {
     const isStarred = starred.has(m.key);
     return `
     <tr>
-      <td data-label="${t("label_star_col")}"><button type="button" class="star-btn${isStarred ? " starred" : ""}" data-star-key="${m.key}" aria-label="${t("label_star_col")}">${isStarred ? "★" : "☆"}</button></td>
+      <td data-label="${t("label_star_col")}"><button type="button" class="star-btn${isStarred ? " starred" : ""}" data-star-key="${m.key}" aria-label="${t(isStarred ? "label_unstar" : "label_star")}" aria-pressed="${isStarred}">${isStarred ? "★" : "☆"}</button></td>
       <td data-label="${t("th_brand")}">${m.brand}</td>
-      <td data-label="${t("th_model")}">${m.model}</td>
+      <td data-label="${t("th_model")}"><button type="button" class="row-model-link" data-model-key="${m.key}" aria-label="${t("label_view_chart", { model: `${m.brand} ${m.model}` })}">${m.model}</button></td>
       <td data-label="${t("th_version")}">${trVersion(m.version)}</td>
-      <td class="num" data-label="${t("th_avg_usd")}">${fmtUSD(m.avg_price_usd)}</td>
-      <td class="num" data-label="${t("th_min_today")}">${fmtUSD(m.latest_min_price_usd)}</td>
+      <td class="num" data-label="${t("th_avg_usd")}">${fmtMoney(m.avg_price_usd)}</td>
+      <td class="num" data-label="${t("th_min_today")}">${fmtMoney(m.latest_min_price_usd)}</td>
       <td class="num" data-label="${t("th_variation")}">${fmtPct(m.discount_pct)}</td>
       <td data-label="${t("th_min_source")}">${m.latest_min_site ? `<a href="${m.latest_min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none">${m.latest_min_site}</a>` : "—"}</td>
       <td data-label="${t("th_status")}">${m.is_deal ? `<span class="badge deal">${t("badge_deal")}</span>` : ""}</td>
@@ -244,10 +299,14 @@ export function renderTableRows(models: Model[], starred: Set<string>): string {
       <table class="responsive-table">
         <thead>
           <tr>
-            <th></th>
-            <th>${t("th_brand")}</th><th>${t("th_model")}</th><th>${t("th_version")}</th>
-            <th class="num">${t("th_avg_usd")}</th><th class="num">${t("th_min_today")}</th>
-            <th class="num">${t("th_variation")}</th><th>${t("th_min_source")}</th><th></th>
+            <th scope="col"></th>
+            ${sortableHeader(t("th_brand"), "name", "name_desc", "name", currentSort)}
+            <th scope="col">${t("th_model")}</th>
+            <th scope="col">${t("th_version")}</th>
+            ${sortableHeader(t("th_avg_usd"), "avg_asc", "avg_desc", "avg_desc", currentSort, "num")}
+            ${sortableHeader(t("th_min_today"), "min_asc", "min_desc", "min_desc", currentSort, "num")}
+            ${sortableHeader(t("th_variation"), "discount_asc", "discount", "discount", currentSort, "num")}
+            <th scope="col">${t("th_min_source")}</th><th scope="col"></th>
           </tr>
         </thead>
         <tbody>${rows}</tbody>
@@ -280,12 +339,23 @@ export function applyPainelFilters(models: Model[], filters: PainelFilters, star
   const byName = (a: Model, b: Model) =>
     compareStrings(a.brand, b.brand) || compareStrings(a.model, b.model) || compareStrings(a.version, b.version);
   const sorted = [...out];
+  // Cabeçalho de coluna clicável (renderTableRows/sortableHeader) e o
+  // <select> #sortBy escrevem no mesmo `filters.sort` -- um só lugar
+  // decide a ordenação de verdade, os dois controles só mudam esse valor.
   if (filters.sort === "discount") {
     sorted.sort((a, b) => (b.discount_pct ?? -Infinity) - (a.discount_pct ?? -Infinity) || byName(a, b));
+  } else if (filters.sort === "discount_asc") {
+    sorted.sort((a, b) => (a.discount_pct ?? Infinity) - (b.discount_pct ?? Infinity) || byName(a, b));
   } else if (filters.sort === "avg_desc") {
     sorted.sort((a, b) => (b.avg_price_usd ?? -Infinity) - (a.avg_price_usd ?? -Infinity) || byName(a, b));
   } else if (filters.sort === "avg_asc") {
     sorted.sort((a, b) => (a.avg_price_usd ?? Infinity) - (b.avg_price_usd ?? Infinity) || byName(a, b));
+  } else if (filters.sort === "min_desc") {
+    sorted.sort((a, b) => (b.latest_min_price_usd ?? -Infinity) - (a.latest_min_price_usd ?? -Infinity) || byName(a, b));
+  } else if (filters.sort === "min_asc") {
+    sorted.sort((a, b) => (a.latest_min_price_usd ?? Infinity) - (b.latest_min_price_usd ?? Infinity) || byName(a, b));
+  } else if (filters.sort === "name_desc") {
+    sorted.sort((a, b) => -byName(a, b));
   } else {
     sorted.sort(byName);
   }
@@ -334,12 +404,20 @@ export function renderMain(summary: Summary): void {
 
   (document.getElementById("mainContent") as HTMLElement).innerHTML = `
     <div class="card">
-      <h2>${t("main_chart_title")}</h2>
+      <div class="card-title-row">
+        <h2>${t("main_chart_title")}</h2>
+        <div class="chart-actions">
+          <button type="button" id="resetZoomBtn" class="icon-btn" title="${t("action_reset_zoom")}" aria-label="${t("action_reset_zoom")}">⤢</button>
+          <button type="button" id="shareModelBtn" class="icon-btn" title="${t("action_share")}" aria-label="${t("action_share")}">🔗</button>
+        </div>
+      </div>
+      <p class="watchlist-meta" id="shareFeedback" role="status" aria-live="polite"></p>
       <div class="chart-controls">
         <label for="modelSelect">${t("label_model")}</label>
         <select id="modelSelect"></select>
       </div>
-      <div class="chart-container"><canvas id="priceChart"></canvas></div>
+      <p class="watchlist-meta">${t("hint_zoom_pan")}</p>
+      <div class="chart-container"><canvas id="priceChart" role="img" aria-label="${t("main_chart_title")}"></canvas></div>
     </div>
     <div class="card">
       <h2>${t("main_table_title")}</h2>
@@ -353,13 +431,18 @@ export function renderMain(summary: Summary): void {
         <label for="sortBy">${t("label_sort_by")}</label>
         <select id="sortBy">
           <option value="name">${t("sort_name")}</option>
+          <option value="name_desc">${t("sort_name_desc")}</option>
           <option value="discount">${t("sort_discount")}</option>
+          <option value="discount_asc">${t("sort_discount_asc")}</option>
           <option value="avg_desc">${t("sort_avg_desc")}</option>
           <option value="avg_asc">${t("sort_avg_asc")}</option>
+          <option value="min_desc">${t("sort_min_desc")}</option>
+          <option value="min_asc">${t("sort_min_asc")}</option>
         </select>
         <label class="checkbox-label"><input type="checkbox" id="filterStarredOnly" /> ${t("label_starred_only")}</label>
+        <label class="checkbox-label"><input type="checkbox" id="compactMode" /> ${t("label_compact_mode")}</label>
       </div>
-      <p class="watchlist-meta" id="tableCount"></p>
+      <p class="watchlist-meta" id="tableCount" role="status" aria-live="polite"></p>
       <div id="modelsTableSlot"></div>
       <div id="tablePagination"></div>
     </div>`;
@@ -370,12 +453,24 @@ export function renderMain(summary: Summary): void {
   const filterVersionEl = document.getElementById("filterVersion") as HTMLSelectElement;
   const sortByEl = document.getElementById("sortBy") as HTMLSelectElement;
   const filterStarredOnlyEl = document.getElementById("filterStarredOnly") as HTMLInputElement;
+  const compactModeEl = document.getElementById("compactMode") as HTMLInputElement;
   const tableSlot = document.getElementById("modelsTableSlot") as HTMLElement;
   const tableCount = document.getElementById("tableCount") as HTMLElement;
   const paginationSlot = document.getElementById("tablePagination") as HTMLElement;
+  const shareFeedback = document.getElementById("shareFeedback") as HTMLElement;
 
   let currentPage = 1;
   const starred = loadStarred();
+
+  // Modo compacto (menos preenchimento/fonte menor por linha) é uma
+  // preferência pessoal salva no navegador -- classe fica no contêiner
+  // #modelsTableSlot em vez de dentro de renderTableRows porque só ele
+  // sobrevive entre um refresh() e outro (o innerHTML de dentro é
+  // recriado a cada filtro/ordenação/página).
+  try {
+    compactModeEl.checked = localStorage.getItem("rbpm-compact") === "1";
+  } catch (e) {}
+  tableSlot.classList.toggle("table-compact", compactModeEl.checked);
 
   function refresh(): void {
     const visible = applyPainelFilters(models, {
@@ -392,7 +487,7 @@ export function renderMain(summary: Summary): void {
     const pageItems = paginate(visible, currentPage);
 
     tableSlot.innerHTML = pageItems.length
-      ? renderTableRows(pageItems, starred)
+      ? renderTableRows(pageItems, starred, sortByEl.value)
       : `<p class="watchlist-empty">${t("no_match_filter")}</p>`;
     paginationSlot.innerHTML = renderPagination(visible.length, currentPage);
     document.getElementById("pagePrev")?.addEventListener("click", () => { currentPage--; refresh(); });
@@ -403,6 +498,28 @@ export function renderMain(summary: Summary): void {
         if (starred.has(key)) starred.delete(key); else starred.add(key);
         saveStarred(starred);
         refresh();
+      });
+    });
+    // Cabeçalho de coluna clicável -- só muda o valor do <select> #sortBy
+    // e reaproveita o mesmo caminho de refresh, pra ordenação por
+    // teclado/dropdown e por clique no cabeçalho nunca desincronizarem.
+    tableSlot.querySelectorAll<HTMLButtonElement>(".sort-th-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        sortByEl.value = btn.dataset.sortNext as string;
+        refreshFromFilterChange();
+      });
+    });
+    // Nome do modelo na tabela também seleciona no gráfico acima (deep
+    // link por modelo) -- mesmo efeito de escolher no <select>, só que
+    // sem precisar rolar até lá primeiro.
+    tableSlot.querySelectorAll<HTMLButtonElement>(".row-model-link").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const key = btn.dataset.modelKey as string;
+        if (modelSelectEl.querySelector(`option[value="${CSS.escape(key)}"]`)) {
+          modelSelectEl.value = key;
+        }
+        renderChart(models, key);
+        document.querySelector(".chart-container")?.scrollIntoView({ behavior: "smooth", block: "center" });
       });
     });
 
@@ -420,7 +537,12 @@ export function renderMain(summary: Summary): void {
     modelSelectEl.innerHTML = visible.map((m) =>
       `<option value="${m.key}">${m.brand} ${m.model} — ${trVersion(m.version)}${m.is_deal ? " 🔻" : ""}</option>`
     ).join("");
-    const nextSelected = visible.find((m) => m.key === prevSelected) || visible.find((m) => m.is_deal) || visible[0];
+    // Na primeira renderização, um link compartilhado (#modelo=...) tem
+    // prioridade sobre "primeira oferta"/"primeiro da lista" -- é assim
+    // que abrir um link direto de modelo cai exatamente nele.
+    const hashKey = modelKeyFromHash();
+    const fromHash = hashKey ? visible.find((m) => m.key === hashKey) : undefined;
+    const nextSelected = fromHash || visible.find((m) => m.key === prevSelected) || visible.find((m) => m.is_deal) || visible[0];
     modelSelectEl.value = nextSelected.key;
     renderChart(models, nextSelected.key);
   }
@@ -436,6 +558,34 @@ export function renderMain(summary: Summary): void {
   filterVersionEl.addEventListener("change", refreshFromFilterChange);
   sortByEl.addEventListener("change", refreshFromFilterChange);
   filterStarredOnlyEl.addEventListener("change", refreshFromFilterChange);
+  compactModeEl.addEventListener("change", () => {
+    tableSlot.classList.toggle("table-compact", compactModeEl.checked);
+    try { localStorage.setItem("rbpm-compact", compactModeEl.checked ? "1" : "0"); } catch (e) {}
+  });
+
+  document.getElementById("resetZoomBtn")?.addEventListener("click", () => window.__rbpmChart?.resetZoom());
+  document.getElementById("shareModelBtn")?.addEventListener("click", async () => {
+    const key = window.__rbpmSelectedKey;
+    if (!key) return;
+    const url = modelUrl(key);
+    const model = models.find((m) => m.key === key);
+    const shareTitle = model ? `${model.brand} ${model.model} — ${trVersion(model.version)}` : t("site_title");
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: shareTitle, url });
+        return;
+      } catch (e) {
+        return; // usuário cancelou o share nativo -- não cai pro clipboard
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      shareFeedback.textContent = t("share_copied");
+      setTimeout(() => { shareFeedback.textContent = ""; }, 3000);
+    } catch (e) {
+      shareFeedback.textContent = url; // clipboard indisponível -- mostra o link pra copiar manualmente
+    }
+  });
 
   refresh();
 }
@@ -451,8 +601,8 @@ export function getCompareRows(): CompareRow[] {
     { label: t("th_brand"), get: (m) => m.brand },
     { label: t("th_model"), get: (m) => m.model },
     { label: t("th_version"), get: (m) => trVersion(m.version) },
-    { label: t("row_avg_price"), get: (m) => fmtUSD(m.avg_price_usd), numeric: (m) => m.avg_price_usd },
-    { label: t("row_min_today"), get: (m) => fmtUSD(m.latest_min_price_usd), numeric: (m) => m.latest_min_price_usd },
+    { label: t("row_avg_price"), get: (m) => fmtMoney(m.avg_price_usd), numeric: (m) => m.avg_price_usd },
+    { label: t("row_min_today"), get: (m) => fmtMoney(m.latest_min_price_usd), numeric: (m) => m.latest_min_price_usd },
     {
       label: t("th_min_source"),
       get: (m) => m.latest_min_site
@@ -487,7 +637,7 @@ export function renderCompareTable(models: Model[], keyA: string, keyB: string):
         const arrow = diff === 0 ? "" : (diff < 0 ? t("b_cheaper") : t("a_cheaper"));
         diffCell = diff === 0
           ? t("no_difference")
-          : `${fmtUSD(Math.abs(diff))}${pct != null ? " (" + fmtPct(pct) + ")" : ""} — ${arrow}`;
+          : `${fmtMoney(Math.abs(diff))}${pct != null ? " (" + fmtPct(pct) + ")" : ""} — ${arrow}`;
         if (diff < 0) cheaperSide = "b";
         else if (diff > 0) cheaperSide = "a";
       }
@@ -516,7 +666,7 @@ export function renderCompareTable(models: Model[], keyA: string, keyB: string):
   slot.innerHTML = `
     <div class="table-scroll">
       <table class="responsive-table">
-        <thead><tr><th>${t("th_attribute")}</th><th>${t("th_boot_a")}</th><th>${t("th_boot_b")}</th><th>${t("th_difference")}</th></tr></thead>
+        <thead><tr><th scope="col">${t("th_attribute")}</th><th scope="col">${t("th_boot_a")}</th><th scope="col">${t("th_boot_b")}</th><th scope="col">${t("th_difference")}</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
@@ -614,9 +764,9 @@ export function renderWatchlist(watchlist: Watchlist, containerId: string, chart
         <td data-label="${t("th_version")}"><span class="version-swatch" style="background:var(--cat-${(i % 8) + 1})"></span>${trVersion(v.version)}</td>
         <td data-label="${t("th_block")}">${l && l.block_height ? "#" + l.block_height.toLocaleString(lang) : "—"}</td>
         <td data-label="${t("th_datetime")}">${l ? fmtBlockFull(l.timestamp) : "—"}</td>
-        <td class="num" data-label="${t("th_avg")}">${l ? fmtUSD(l.avg_price_usd) : "—"}</td>
-        <td class="num" data-label="${t("th_max")}">${l ? fmtUSD(l.max_price_usd) : "—"}${l && l.max_site ? `<br><a href="${l.max_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.max_site}</a>` : ""}</td>
-        <td class="num" data-label="${t("th_min")}">${l ? fmtUSD(l.min_price_usd) : "—"}${l && l.min_site ? `<br><a href="${l.min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.min_site}</a>` : ""}</td>
+        <td class="num" data-label="${t("th_avg")}">${l ? fmtMoney(l.avg_price_usd) : "—"}</td>
+        <td class="num" data-label="${t("th_max")}">${l ? fmtMoney(l.max_price_usd) : "—"}${l && l.max_site ? `<br><a href="${l.max_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.max_site}</a>` : ""}</td>
+        <td class="num" data-label="${t("th_min")}">${l ? fmtMoney(l.min_price_usd) : "—"}${l && l.min_site ? `<br><a href="${l.min_url}" target="_blank" rel="noopener" style="color:var(--series-1); text-decoration:none; font-size:0.78rem">${l.min_site}</a>` : ""}</td>
       </tr>`;
     }).join("");
 
@@ -626,7 +776,7 @@ export function renderWatchlist(watchlist: Watchlist, containerId: string, chart
         <div class="chart-container"><canvas id="${chartPrefix}${idx}"></canvas></div>
         <div class="table-scroll">
           <table class="version-table responsive-table">
-            <thead><tr><th>${t("th_version")}</th><th>${t("th_block")}</th><th>${t("th_datetime")}</th><th class="num">${t("th_avg")}</th><th class="num">${t("th_max")}</th><th class="num">${t("th_min")}</th></tr></thead>
+            <thead><tr><th scope="col">${t("th_version")}</th><th scope="col">${t("th_block")}</th><th scope="col">${t("th_datetime")}</th><th scope="col" class="num">${t("th_avg")}</th><th scope="col" class="num">${t("th_max")}</th><th scope="col" class="num">${t("th_min")}</th></tr></thead>
             <tbody>${rows}</tbody>
           </table>
         </div>
@@ -677,18 +827,20 @@ export function renderWatchlist(watchlist: Watchlist, containerId: string, chart
             bodyColor: cssVar("--text-secondary"),
             borderColor: cssVar("--border"),
             borderWidth: 1,
-            callbacks: { label: (item: any) => `${item.dataset.label}: ${fmtUSD(item.parsed.y)}` },
+            callbacks: { label: (item: any) => `${item.dataset.label}: ${fmtMoney(item.parsed.y)}` },
           },
+          zoom: zoomPluginOptions(),
         },
         scales: {
           x: { grid: { color: cssVar("--gridline") }, ticks: { color: cssVar("--text-muted") } },
           y: {
             grid: { color: cssVar("--gridline") },
-            ticks: { color: cssVar("--text-muted"), callback: (v: number) => fmtUSD(v) },
+            ticks: { color: cssVar("--text-muted"), callback: (v: number) => fmtMoney(v) },
           },
         },
       },
     });
+    attachDblClickReset(canvas, chart);
     activeCharts[containerId].push(chart);
   });
 }
@@ -736,8 +888,8 @@ export function renderSources(data: SourcesData): void {
         <table class="responsive-table">
           <thead>
             <tr>
-              <th>${t("th_source_name")}</th><th>${t("th_source_region")}</th>
-              <th>${t("th_source_currency")}</th><th>${t("th_source_status")}</th>
+              <th scope="col">${t("th_source_name")}</th><th scope="col">${t("th_source_region")}</th>
+              <th scope="col">${t("th_source_currency")}</th><th scope="col">${t("th_source_status")}</th>
             </tr>
           </thead>
           <tbody>${rows}</tbody>

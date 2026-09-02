@@ -89,8 +89,6 @@ export function applyStaticTranslations(): void {
   });
 }
 
-export const fmtUSD = (v: number | null | undefined): string =>
-  v == null ? "—" : v.toLocaleString(currentLang, { style: "currency", currency: "USD" });
 export const fmtPct = (v: number | null | undefined): string =>
   v == null ? "—" : (v * 100).toLocaleString(currentLang, { maximumFractionDigits: 1 }) + "%";
 export const fmtDate = (iso: string | null | undefined): string =>
