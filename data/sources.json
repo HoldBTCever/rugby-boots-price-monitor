@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T10:48:28.659426+00:00",
+  "generated_at": "2026-09-02T11:05:47.415284+00:00",
   "sites": [
     {
       "id": "worldrugbyshop",
@@ -130,6 +130,17 @@
       "currency": "ARS",
       "base_url": "https://www.rugbierstore.com.ar",
       "active": true,
+      "disabled": false,
+      "disabled_reason_key": null
+    },
+    {
+      "id": "puma_eu",
+      "name": "Puma",
+      "region": "Europe (DE)",
+      "country": "DE",
+      "currency": "EUR",
+      "base_url": "https://eu.puma.com",
+      "active": false,
       "disabled": false,
       "disabled_reason_key": null
     }

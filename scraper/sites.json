@@ -180,5 +180,19 @@
     "adapter": "generic_jsonld",
     "product_link_pattern": "/productos/",
     "trust_category": true
+  },
+  {
+    "id": "puma_eu",
+    "name": "Puma",
+    "default_brand": "Puma",
+    "region": "Europe (DE)",
+    "country": "DE",
+    "currency": "EUR",
+    "base_url": "https://eu.puma.com",
+    "listing_urls": [
+      "https://eu.puma.com/de/en/search?q=rugby"
+    ],
+    "adapter": "generic_jsonld",
+    "product_link_pattern": "/pd/"
   }
 ]

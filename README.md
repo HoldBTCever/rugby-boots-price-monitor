@@ -34,6 +34,7 @@ workflow rodar de verdade contra as lojas.
 | Europa (Reino Unido) | Canterbury, Rugbystore.co.uk | JSON-LD |
 | Europa (Reino Unido) | Pro:Direct Rugby **(desativada)** | JSON-LD |
 | Europa (Espanha) | TradeInn | JSON-LD |
+| Europa (Alemanha) | Puma | JSON-LD |
 | Argentina | Durban Rugby, Rugbier Store | JSON-LD |
 
 Pro:Direct Rugby fica listada (aba "Fontes" do site) mas não é raspada:
@@ -168,8 +169,8 @@ pra recalcular retroativamente quais linhas antigas de produtos adidas
 em lojas GBP foram afetadas — o fix vale a partir da próxima raspagem.
 
 As demais fontes JSON-LD genérico (Canterbury, Rugbystore.co.uk, Durban
-Rugby, Rugbier Store, TradeInn) não expõem tamanho por variante nos
-dados que os adaptadores capturam hoje — continuam contribuindo sem
+Rugby, Rugbier Store, TradeInn, Puma) não expõem tamanho por variante
+nos dados que os adaptadores capturam hoje — continuam contribuindo sem
 esse filtro, porque descartá-las por completo derrubaria fontes que já
 encontraram itens reais da watchlist (ex: TradeInn e Rugby Heaven
 acharam a Mizuno Waitangi e a Canterbury Stampede). Se isso não for
@@ -179,6 +180,32 @@ já aconteceu uma vez com a Rugby Goods e outra com a Pro:Direct Rugby
 (ambas desativadas/removidas por esse motivo, ver "Lojas monitoradas"
 acima), quando o padrão de promoção/catálogo delas deixou esse problema
 visível o bastante pra valer a pena.
+
+A Puma (`puma_eu`, `eu.puma.com`) foi adicionada a partir da URL de
+busca `https://eu.puma.com/de/en/search?q=rugby` (pedido do usuário),
+com `product_link_pattern: "/pd/"` -- é best-effort igual Canterbury e
+Rugbystore.co.uk quando entraram: não deu pra confirmar o padrão real
+de link de produto nem se a página de busca expõe JSON-LD direto,
+porque acesso de rede externa está bloqueado neste ambiente de sessão
+(proxy de egress nega até domínios triviais como google.com, não é
+algo específico da Puma). Pode voltar 0 resultados até validar nos
+logs do próximo run do Actions -- mesma lógica de "isso é preferível a
+inventar dado" usada nas outras fontes JSON-LD.
+
+Não foram adicionadas as demais lojas menores citadas numa pesquisa do
+usuário no Gemini (The Sport Shop NZ, TR7Store, TruSports Australia,
+Smiths Sports Shoes, SPT Football, Unisport Store) porque nenhuma URL
+real foi fornecida pra elas -- só o nome da marca/loja apareceu no
+texto da pesquisa. Diferente da Puma (onde a URL exata veio do
+usuário), inventar um domínio pra essas lojas seria adivinhação pura,
+sem nenhuma garantia de que o site existe nesse endereço; me manda o
+link de cada uma (ideal: a URL de uma página de produto de chuteira de
+rugby) que eu adiciono do mesmo jeito. Também não foram adicionadas as
+lojas/marcas de chuteira de couro de canguru clássicas dessa mesma
+pesquisa (adidas Copa Mundial, Pantofola d'Oro, Adler Japan, Lotto
+Stadio, eBay) -- são chuteiras de futebol de campo, fora do escopo
+deste projeto (monitor de chuteiras de RUGBY), mesmo critério já usado
+pra excluir a Puma Future 8 Pro antes.
 
 ## Filtros de solado e faixa etária
 
