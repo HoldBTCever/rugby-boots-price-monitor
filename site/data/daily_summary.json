@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-03T13:49:07.001866+00:00",
+  "generated_at": "2026-09-03T13:54:14.500819+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-09-03",
   "totals": {
-    "models_tracked": 131,
+    "models_tracked": 130,
     "sources": 12,
-    "deals_today": 2,
+    "deals_today": 3,
     "observations": 43535
   },
   "sources": [
@@ -97,6 +97,83 @@
       "ground_type": null,
       "upper_material": null,
       "stud_type": "8 travas",
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "adidas|adizero rs15|elite",
+      "brand": "adidas",
+      "model": "Adizero RS15",
+      "version": "Elite",
+      "avg_price_usd": 183.9,
+      "n_observations": 1448,
+      "sources": [
+        "Lovell Rugby",
+        "Rugby Heaven",
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 158.79,
+          "min_price_usd": 79.08
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 176.08,
+          "min_price_usd": 75.03
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 184.68,
+          "min_price_usd": 77.46
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 185.12,
+          "min_price_usd": 77.46
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 186.27,
+          "min_price_usd": 102.99
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 186.25,
+          "min_price_usd": 102.95
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 186.28,
+          "min_price_usd": 102.95
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 192.25,
+          "min_price_usd": 102.79
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 192.23,
+          "min_price_usd": 102.49
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 191.76,
+          "min_price_usd": 102.49
+        }
+      ],
+      "latest_date": "2026-09-03",
+      "latest_min_price_usd": 102.49,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/rs15-elite-soft-ground-rugby-boots",
+      "discount_pct": 0.4427,
+      "is_deal": true,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
       "width_fit": null,
       "spec_source": null
     },
@@ -1053,83 +1130,6 @@
       "latest_min_region": "USA",
       "latest_min_url": "https://www.worldrugbyshop.com/products/canterbury-phoenix-raze-sg-black-white",
       "discount_pct": 0.2831,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|adizero rs15|elite",
-      "brand": "adidas",
-      "model": "Adizero RS15",
-      "version": "Elite",
-      "avg_price_usd": 140.91,
-      "n_observations": 835,
-      "sources": [
-        "Lovell Rugby",
-        "Rugby Heaven",
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 127.68,
-          "min_price_usd": 79.08
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 138.08,
-          "min_price_usd": 75.03
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 140.73,
-          "min_price_usd": 77.46
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 142.11,
-          "min_price_usd": 77.46
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 145.0,
-          "min_price_usd": 102.99
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 144.99,
-          "min_price_usd": 102.95
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 145.13,
-          "min_price_usd": 102.95
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 144.86,
-          "min_price_usd": 102.79
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 144.64,
-          "min_price_usd": 102.49
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 144.28,
-          "min_price_usd": 102.49
-        }
-      ],
-      "latest_date": "2026-09-03",
-      "latest_min_price_usd": 102.49,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/rs15-elite-soft-ground-rugby-boots",
-      "discount_pct": 0.2727,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2453,82 +2453,6 @@
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-speed-raze-sg-rugby-boots-white-black",
       "discount_pct": 0.1054,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "adidas|adizero rs15|ultimate",
-      "brand": "adidas",
-      "model": "Adizero RS15",
-      "version": "Ultimate",
-      "avg_price_usd": 242.45,
-      "n_observations": 613,
-      "sources": [
-        "Lovell Rugby",
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 236.56,
-          "min_price_usd": 207.23
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 235.57,
-          "min_price_usd": 148.69
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 239.62,
-          "min_price_usd": 157.65
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 238.89,
-          "min_price_usd": 156.29
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 237.85,
-          "min_price_usd": 157.2
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 237.82,
-          "min_price_usd": 157.13
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 237.71,
-          "min_price_usd": 157.11
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 251.49,
-          "min_price_usd": 157.11
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 251.72,
-          "min_price_usd": 217.11
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 251.1,
-          "min_price_usd": 217.11
-        }
-      ],
-      "latest_date": "2026-09-03",
-      "latest_min_price_usd": 217.11,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-rs15-ultimate-sg-rugby-boots-black-grey",
-      "discount_pct": 0.1045,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -9263,10 +9187,10 @@
       "spec_source": null
     },
     {
-      "key": "adidas|kakari lace up heel|elite low",
+      "key": "adidas|kakari lace up heel|elite",
       "brand": "adidas",
       "model": "Kakari Lace Up Heel",
-      "version": "Elite Low",
+      "version": "Elite",
       "avg_price_usd": 104.07,
       "n_observations": 199,
       "sources": [

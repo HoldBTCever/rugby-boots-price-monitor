@@ -146,6 +146,24 @@ def test_katakana_kakari_e_kakari_elite_traduzem_pra_nomenclatura_da_marca():
     assert z1["model"] == "Kakari Z.1"
 
 
+def test_ultimate_e_elite_low_convergem_pra_categoria_elite():
+    """Pedido do usuário: "adidas Adizero RS15 Ultimate" e "adidas Kakari
+    ... Lace Up Low Heel" (versão bruta "Elite Low") devem entrar na
+    mesma categoria "Elite" das demais chuteiras Elite -- "Ultimate" é o
+    mesmo tier de ponta da linha RS15, e "Low" no Kakari é só o corte do
+    cano (altura do tornozelo), não um tier à parte."""
+    rs15 = normalize.normalize_title("adidas Adizero Rs15 Ultimate Adults Soft Ground Rugby Boots")
+    assert rs15 == {"brand": "adidas", "model": "Adizero RS15", "version": "Elite"}
+
+    kakari = normalize.normalize_title("adidas Kakari Elite Rugby Boots Lace Up Low Heel")
+    assert kakari == {"brand": "adidas", "model": "Kakari Lace Up Heel", "version": "Elite"}
+
+    # mesmo grupo que a versão Elite "normal" da linha RS15 (sem isso,
+    # "Ultimate" virava um group_key separado, fragmentando o histórico).
+    elite_normal = normalize.normalize_title("adidas Adizero RS15 Elite SG Rugby Boots White/Red")
+    assert normalize.group_key(**rs15) == normalize.group_key(**elite_normal)
+
+
 def test_katakana_avant_puma():
     result = normalize.normalize_title("PUMA アヴァント SG ラグビースパイク レッド/106715")
     assert result["brand"] == "Puma"

@@ -11,6 +11,19 @@ _catalog = json.loads(config.CATALOG_CONFIG.read_text(encoding="utf-8"))
 _BRANDS = _catalog["brands"]
 _NOISE = {w.lower() for w in _catalog["noise_words"]}
 _VERSION_TOKENS = {w.lower() for w in _catalog["version_tokens"]}
+# Tokens de versão que lojas diferentes usam pro mesmo tier de mercado --
+# ex: "Ultimate" na linha Adizero RS15 da adidas é o mesmo tier de ponta
+# que "Elite" nas outras versões da linha (pedido do usuário: RS15
+# "Ultimate" deve entrar na mesma categoria "Elite" das demais chuteiras
+# Elite, em vez de virar um grupo "Ultimate" à parte).
+_VERSION_ALIASES = {k.lower(): v.lower() for k, v in _catalog.get("version_aliases", {}).items()}
+# "Low"/"Mid"/"High" no catálogo indicam corte do cano (altura do
+# tornozelo), não um tier de mercado à parte -- quando aparecem junto de
+# "Elite" (podendo já vir de um alias acima, ex: "Ultimate" -> "Elite"),
+# o corte é só um detalhe do modelo específico, não motivo pra virar um
+# grupo separado. Pedido do usuário: "Kakari Elite ... Lace Up Low Heel"
+# deve virar versão "Elite", não "Elite Low".
+_CUT_HEIGHT_TOKENS = {"low", "mid", "high"}
 
 _YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
 # Só remove um número quando vem com uma palavra de tamanho do lado (prefixo
@@ -311,15 +324,20 @@ def normalize_title(title: str, default_brand: str | None = None) -> dict:
         if not wl or wl in _NOISE or _SKU_CODE_RE.match(stripped) or _PURE_DIGIT_SKU_RE.match(stripped):
             continue
         if wl in _VERSION_TOKENS or _YEAR_RE.fullmatch(wl):
-            # Capitaliza sempre (independente de como a loja escreveu --
-            # "ELITE"/"elite"/"Elite" são o mesmo tier) pra não fragmentar
-            # o agrupamento por causa só de maiúscula/minúscula.
-            version_parts.append(w.capitalize())
+            canon = _VERSION_ALIASES.get(wl, wl)
+            if canon not in version_parts:
+                version_parts.append(canon)
         else:
             model_parts.append(w)
 
+    if "elite" in version_parts:
+        version_parts = [v for v in version_parts if v not in _CUT_HEIGHT_TOKENS]
+
     model = " ".join(model_parts[:4]).strip() or "Modelo não identificado"
-    version = " ".join(version_parts).strip() or "Padrão"
+    # Capitaliza sempre (independente de como a loja escreveu --
+    # "ELITE"/"elite"/"Elite" são o mesmo tier) pra não fragmentar o
+    # agrupamento por causa só de maiúscula/minúscula.
+    version = " ".join(v.capitalize() for v in version_parts).strip() or "Padrão"
 
     return {
         "brand": brand or "Outra marca",
