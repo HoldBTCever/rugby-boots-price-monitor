@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-09-20T06:27:25.636250+00:00",
+  "generated_at": "2026-09-20T11:46:51.455296+00:00",
   "threshold_pct": 0.395,
   "window_days": 90,
   "latest_date": "2026-09-20",
   "totals": {
     "models_tracked": 136,
     "sources": 12,
-    "deals_today": 4,
-    "observations": 109517
+    "deals_today": 5,
+    "observations": 109782
   },
   "sources": [
     "Canterbury",
@@ -29,8 +29,8 @@
       "brand": "adidas",
       "model": "Kakari",
       "version": "Padrão",
-      "avg_price_usd": 95.5,
-      "n_observations": 2799,
+      "avg_price_usd": 95.49,
+      "n_observations": 2806,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven",
@@ -192,7 +192,7 @@
       "model": "Adizero RS15",
       "version": "Elite",
       "avg_price_usd": 189.0,
-      "n_observations": 3752,
+      "n_observations": 3761,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven",
@@ -353,8 +353,8 @@
       "brand": "adidas",
       "model": "Kakari",
       "version": "Elite",
-      "avg_price_usd": 118.18,
-      "n_observations": 3931,
+      "avg_price_usd": 118.19,
+      "n_observations": 3938,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven",
@@ -527,8 +527,8 @@
       "brand": "Oxen",
       "model": "Raptor 6 Stud",
       "version": "Pro",
-      "avg_price_usd": 70.23,
-      "n_observations": 810,
+      "avg_price_usd": 70.22,
+      "n_observations": 812,
       "sources": [
         "Lovell Rugby",
         "Rugbystuff"
@@ -675,7 +675,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/oxen-rptr-pro-6-stud-2",
-      "discount_pct": 0.4289,
+      "discount_pct": 0.4288,
       "is_deal": true,
       "ground_type": null,
       "upper_material": {
@@ -696,12 +696,173 @@
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
     },
     {
+      "key": "mizuno|monarcida neo iii si|padrão",
+      "brand": "Mizuno",
+      "model": "Monarcida Neo III SI",
+      "version": "Padrão",
+      "avg_price_usd": 92.76,
+      "n_observations": 731,
+      "sources": [
+        "Rugbystuff",
+        "TradeInn"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 54.99,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 80.63,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 95.4,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 95.16,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 97.62,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 93.24,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 95.55,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 91.33,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 94.85,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 95.98,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 91.27,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 96.18,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 98.81,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 93.14,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 93.96,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 95.88,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 91.16,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 89.78,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 89.7,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 89.71,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 101.24,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 96.47,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 92.21,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 91.75,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 91.18,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 107.78,
+          "min_price_usd": 54.99
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 100.33,
+          "min_price_usd": 54.99
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 54.99,
+      "latest_min_site": "TradeInn",
+      "latest_min_region": "Europe (ES)",
+      "latest_min_url": "https://www.tradeinn.com/rugby/en/mizuno-monarcida-neo-iii-rugby-si-rugby-boots/142125247/p",
+      "discount_pct": 0.4072,
+      "is_deal": true,
+      "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "adidas|kakari 26|padrão",
       "brand": "adidas",
       "model": "Kakari 26",
       "version": "Padrão",
-      "avg_price_usd": 203.91,
-      "n_observations": 844,
+      "avg_price_usd": 203.9,
+      "n_observations": 846,
       "sources": [
         "Lovell Rugby"
       ],
@@ -860,8 +1021,8 @@
       "brand": "Mizuno",
       "model": "Morelia Neo V Beta",
       "version": "Padrão",
-      "avg_price_usd": 187.22,
-      "n_observations": 1179,
+      "avg_price_usd": 187.21,
+      "n_observations": 1182,
       "sources": [
         "Rugbystuff"
       ],
@@ -993,7 +1154,7 @@
         },
         {
           "date": "2026-09-20",
-          "avg_price_usd": 183.61,
+          "avg_price_usd": 183.39,
           "min_price_usd": 123.0
         }
       ],
@@ -1015,8 +1176,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak",
       "version": "Pro",
-      "avg_price_usd": 130.9,
-      "n_observations": 3418,
+      "avg_price_usd": 130.89,
+      "n_observations": 3429,
       "sources": [
         "Canterbury",
         "Lovell Rugby",
@@ -1166,7 +1327,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-stampede-groundbreak-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.3361,
+      "discount_pct": 0.336,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": {
@@ -1192,7 +1353,7 @@
       "model": "Adizero RS15",
       "version": "Padrão",
       "avg_price_usd": 99.99,
-      "n_observations": 3510,
+      "n_observations": 3518,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven",
@@ -1354,7 +1515,7 @@
       "model": "Adizero RS15",
       "version": "Pro",
       "avg_price_usd": 298.54,
-      "n_observations": 1690,
+      "n_observations": 1694,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven",
@@ -1515,8 +1676,8 @@
       "brand": "Canterbury",
       "model": "Speed",
       "version": "Padrão",
-      "avg_price_usd": 227.74,
-      "n_observations": 1266,
+      "avg_price_usd": 227.73,
+      "n_observations": 1269,
       "sources": [
         "Lovell Rugby"
       ],
@@ -1675,8 +1836,8 @@
       "brand": "Gilbert",
       "model": "Sidestep X20 Power 6S",
       "version": "Padrão",
-      "avg_price_usd": 77.61,
-      "n_observations": 1248,
+      "avg_price_usd": 77.6,
+      "n_observations": 1251,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -1822,7 +1983,7 @@
       "latest_min_site": "Gilbert Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.gilbertrugby.com/products/sidestep-x20-power-6s-boots-2",
-      "discount_pct": 0.2766,
+      "discount_pct": 0.2765,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -1836,7 +1997,7 @@
       "model": "Speed Falcon 2.0",
       "version": "Elite",
       "avg_price_usd": 218.21,
-      "n_observations": 1755,
+      "n_observations": 1760,
       "sources": [
         "JustRugby",
         "Rugbystore.co.uk",
@@ -1997,8 +2158,8 @@
       "brand": "Canterbury",
       "model": "Phoenix 2.0",
       "version": "Elite",
-      "avg_price_usd": 178.99,
-      "n_observations": 5078,
+      "avg_price_usd": 179.01,
+      "n_observations": 5091,
       "sources": [
         "Canterbury",
         "Rugby Heaven",
@@ -2146,7 +2307,7 @@
       "latest_min_site": "TradeInn",
       "latest_min_region": "Europe (ES)",
       "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-phoenix-2.0-elite-sg-rugby-boots/142194388/p",
-      "discount_pct": 0.2626,
+      "discount_pct": 0.2627,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -2160,7 +2321,7 @@
       "model": "Stampede Groundbreak",
       "version": "Team",
       "avg_price_usd": 101.25,
-      "n_observations": 3422,
+      "n_observations": 3431,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven",
@@ -2300,7 +2461,7 @@
         },
         {
           "date": "2026-09-20",
-          "avg_price_usd": 100.87,
+          "avg_price_usd": 99.99,
           "min_price_usd": 76.21
         }
       ],
@@ -2335,7 +2496,7 @@
       "model": "Speed Falcon 2.0",
       "version": "Pro",
       "avg_price_usd": 132.11,
-      "n_observations": 1915,
+      "n_observations": 1921,
       "sources": [
         "Canterbury",
         "JustRugby",
@@ -2497,8 +2658,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak",
       "version": "Elite",
-      "avg_price_usd": 192.97,
-      "n_observations": 2267,
+      "avg_price_usd": 192.95,
+      "n_observations": 2273,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven",
@@ -2647,7 +2808,7 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-stampede-groundbreak-elite-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.238,
+      "discount_pct": 0.2379,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": {
@@ -2673,7 +2834,7 @@
       "model": "Phoenix 2.0",
       "version": "Team",
       "avg_price_usd": 99.39,
-      "n_observations": 2702,
+      "n_observations": 2711,
       "sources": [
         "Canterbury",
         "Rugby Heaven",
@@ -2835,7 +2996,7 @@
       "model": "Morelia Neo IV Beta",
       "version": "Elite",
       "avg_price_usd": 218.09,
-      "n_observations": 1237,
+      "n_observations": 1240,
       "sources": [
         "Rugby Heaven",
         "Rugbystuff"
@@ -2995,8 +3156,8 @@
       "brand": "Mizuno",
       "model": "Waitangi",
       "version": "Club",
-      "avg_price_usd": 109.51,
-      "n_observations": 548,
+      "avg_price_usd": 109.56,
+      "n_observations": 549,
       "sources": [
         "Rugbystuff",
         "TradeInn"
@@ -3134,7 +3295,7 @@
         },
         {
           "date": "2026-09-20",
-          "avg_price_usd": 110.85,
+          "avg_price_usd": 119.8,
           "min_price_usd": 83.99
         }
       ],
@@ -3143,7 +3304,7 @@
       "latest_min_site": "TradeInn",
       "latest_min_region": "Europe (ES)",
       "latest_min_url": "https://www.tradeinn.com/rugby/en/mizuno-waitangi-club-rugby-boots/142670387/p",
-      "discount_pct": 0.233,
+      "discount_pct": 0.2334,
       "is_deal": false,
       "ground_type": null,
       "upper_material": {
@@ -3169,7 +3330,7 @@
       "model": "Cage Torq 6S",
       "version": "Padrão",
       "avg_price_usd": 83.92,
-      "n_observations": 832,
+      "n_observations": 834,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -3329,7 +3490,7 @@
       "model": "Phoenix 2.0",
       "version": "Pro",
       "avg_price_usd": 120.38,
-      "n_observations": 4147,
+      "n_observations": 4158,
       "sources": [
         "Canterbury",
         "Rugby Heaven",
@@ -3468,7 +3629,7 @@
         },
         {
           "date": "2026-09-20",
-          "avg_price_usd": 122.11,
+          "avg_price_usd": 121.15,
           "min_price_usd": 97.99
         }
       ],
@@ -3491,7 +3652,7 @@
       "model": "Monarcida NEO III Select",
       "version": "Padrão",
       "avg_price_usd": 81.21,
-      "n_observations": 2532,
+      "n_observations": 2538,
       "sources": [
         "Rugby Heaven"
       ],
@@ -3651,7 +3812,7 @@
       "model": "Phoenix Raze",
       "version": "Padrão",
       "avg_price_usd": 97.03,
-      "n_observations": 2110,
+      "n_observations": 2115,
       "sources": [
         "Canterbury",
         "Lovell Rugby",
@@ -3813,8 +3974,8 @@
       "brand": "Mizuno",
       "model": "A 3 Mix Sn62",
       "version": "Padrão",
-      "avg_price_usd": 447.42,
-      "n_observations": 422,
+      "avg_price_usd": 447.26,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -3960,7 +4121,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-japan-mix-sn62",
-      "discount_pct": 0.1454,
+      "discount_pct": 0.1451,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -3973,8 +4134,8 @@
       "brand": "Mizuno",
       "model": "Alpha Elte",
       "version": "Padrão",
-      "avg_price_usd": 447.42,
-      "n_observations": 422,
+      "avg_price_usd": 447.26,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -4120,7 +4281,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-japan-mix-sn62-1",
-      "discount_pct": 0.1454,
+      "discount_pct": 0.1451,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -4133,8 +4294,8 @@
       "brand": "Oxen",
       "model": "Meta X 6 Stud",
       "version": "Padrão",
-      "avg_price_usd": 152.07,
-      "n_observations": 2441,
+      "avg_price_usd": 152.06,
+      "n_observations": 2447,
       "sources": [
         "Rugby Heaven",
         "Rugbystuff"
@@ -4281,7 +4442,7 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/oxen-meta-x-soft-ground-rugby-boots-yellow-ox26ms6syf",
-      "discount_pct": 0.1209,
+      "discount_pct": 0.1208,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": {
@@ -4302,8 +4463,8 @@
       "brand": "Canterbury",
       "model": "Phoenix",
       "version": "Team",
-      "avg_price_usd": 68.97,
-      "n_observations": 1555,
+      "avg_price_usd": 68.98,
+      "n_observations": 1558,
       "sources": [
         "Lovell Rugby",
         "Rugbystuff"
@@ -4450,7 +4611,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-phoenix-team-sg-rugby-boots-orange-white",
-      "discount_pct": 0.1083,
+      "discount_pct": 0.1084,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -4464,7 +4625,7 @@
       "model": "Morelia Neo III Beta",
       "version": "Padrão",
       "avg_price_usd": 148.88,
-      "n_observations": 844,
+      "n_observations": 846,
       "sources": [
         "Rugby Heaven"
       ],
@@ -4623,8 +4784,8 @@
       "brand": "Mizuno",
       "model": "Morelia Neo V Beta",
       "version": "Elite",
-      "avg_price_usd": 290.0,
-      "n_observations": 2416,
+      "avg_price_usd": 289.98,
+      "n_observations": 2422,
       "sources": [
         "Rugby Heaven",
         "Rugbystuff"
@@ -4762,7 +4923,7 @@
         },
         {
           "date": "2026-09-20",
-          "avg_price_usd": 285.67,
+          "avg_price_usd": 285.22,
           "min_price_usd": 260.7
         }
       ],
@@ -4784,8 +4945,8 @@
       "brand": "Canterbury",
       "model": "Speed Falcon 2.0",
       "version": "Team",
-      "avg_price_usd": 121.16,
-      "n_observations": 1337,
+      "avg_price_usd": 121.15,
+      "n_observations": 1341,
       "sources": [
         "Rugby Heaven",
         "Rugbystuff"
@@ -4945,8 +5106,8 @@
       "brand": "Puma",
       "model": "Avant II H8 Men",
       "version": "Padrão",
-      "avg_price_usd": 98.03,
-      "n_observations": 285,
+      "avg_price_usd": 98.0,
+      "n_observations": 286,
       "sources": [
         "Puma"
       ],
@@ -5052,7 +5213,7 @@
       "latest_min_site": "Puma",
       "latest_min_region": "Europe (DE)",
       "latest_min_url": "https://eu.puma.com/de/en/pd/avant-ii-h8-rugby-boots-men/109112",
-      "discount_pct": 0.0874,
+      "discount_pct": 0.0871,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -5065,8 +5226,8 @@
       "brand": "Mizuno",
       "model": "Monarcida Neo 3",
       "version": "Club",
-      "avg_price_usd": 140.99,
-      "n_observations": 422,
+      "avg_price_usd": 140.97,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -5212,7 +5373,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-morelia-neo-pro-adults-rugby-boots",
-      "discount_pct": 0.0801,
+      "discount_pct": 0.08,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -5226,7 +5387,7 @@
       "model": "Meta X 8 Stud",
       "version": "Padrão",
       "avg_price_usd": 173.68,
-      "n_observations": 869,
+      "n_observations": 871,
       "sources": [
         "Rugby Heaven",
         "Rugbystuff"
@@ -5390,12 +5551,148 @@
       "spec_source": "rugbystuff.com (largura não confirmada especificamente pra este modelo -- só a coleção Oxen em geral é anunciada como \"wide fit\")"
     },
     {
+      "key": "canterbury|speed falcon|pro",
+      "brand": "Canterbury",
+      "model": "Speed Falcon",
+      "version": "Pro",
+      "avg_price_usd": 98.99,
+      "n_observations": 320,
+      "sources": [
+        "Rugby Heaven",
+        "TradeInn"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 88.49,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 88.75,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 88.49,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 88.97,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 88.49,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 88.49,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 91.86,
+          "min_price_usd": 88.49
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 92.99,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 92.99,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 92.99,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 93.53,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 92.99,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 92.99,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 92.99,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 92.99,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 109.33,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 113.02,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 111.76,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 116.78,
+          "min_price_usd": 92.99
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 116.25,
+          "min_price_usd": 106.99
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 116.1,
+          "min_price_usd": 106.99
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 114.81,
+          "min_price_usd": 92.99
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 92.99,
+      "latest_min_site": "TradeInn",
+      "latest_min_region": "Europe (ES)",
+      "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-speed-falcon-pro-sg-rugby-boots/142194409/p",
+      "discount_pct": 0.0606,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "mizuno|α alpha iii mix|elite",
       "brand": "Mizuno",
       "model": "α Alpha III Mix",
       "version": "Elite",
-      "avg_price_usd": 288.28,
-      "n_observations": 786,
+      "avg_price_usd": 288.27,
+      "n_observations": 788,
       "sources": [
         "Rugbystuff"
       ],
@@ -5550,7 +5847,7 @@
       "model": "Waitangi PS",
       "version": "Padrão",
       "avg_price_usd": 118.66,
-      "n_observations": 972,
+      "n_observations": 974,
       "sources": [
         "Rugby Heaven"
       ],
@@ -5722,7 +6019,7 @@
       "model": "Speed Falcon Ellie Kundunne",
       "version": "Padrão",
       "avg_price_usd": 157.8,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -5881,8 +6178,8 @@
       "brand": "Gilbert",
       "model": "Sidestep Icon 6 Stud",
       "version": "Padrão",
-      "avg_price_usd": 101.54,
-      "n_observations": 393,
+      "avg_price_usd": 101.53,
+      "n_observations": 394,
       "sources": [
         "Rugbystuff"
       ],
@@ -6023,7 +6320,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/gilbert-sidestep-icon-6-stud-rugby-boots-white-black",
-      "discount_pct": 0.0256,
+      "discount_pct": 0.0255,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -6036,8 +6333,8 @@
       "brand": "Gilbert",
       "model": "Sidestep Icon 8 Stud",
       "version": "Padrão",
-      "avg_price_usd": 101.54,
-      "n_observations": 393,
+      "avg_price_usd": 101.53,
+      "n_observations": 394,
       "sources": [
         "Rugbystuff"
       ],
@@ -6178,7 +6475,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/gilbert-sidestep-icon-8-stud-rugby-boots-black-white",
-      "discount_pct": 0.0256,
+      "discount_pct": 0.0255,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -6191,8 +6488,8 @@
       "brand": "Oxen",
       "model": "Meta X",
       "version": "Padrão",
-      "avg_price_usd": 156.32,
-      "n_observations": 901,
+      "avg_price_usd": 156.31,
+      "n_observations": 903,
       "sources": [
         "Rugbystuff"
       ],
@@ -6354,8 +6651,8 @@
       "brand": "Oxen",
       "model": "Raptor 8 Stud",
       "version": "Elite",
-      "avg_price_usd": 156.31,
-      "n_observations": 894,
+      "avg_price_usd": 156.3,
+      "n_observations": 896,
       "sources": [
         "Rugbystuff"
       ],
@@ -6496,7 +6793,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/oxen-raptor-elite-8-stud-rugby-boots-white-black",
-      "discount_pct": 0.0249,
+      "discount_pct": 0.0248,
       "is_deal": false,
       "ground_type": null,
       "upper_material": {
@@ -6517,12 +6814,167 @@
       "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
     },
     {
+      "key": "mizuno|morelia neo v beta|pro",
+      "brand": "Mizuno",
+      "model": "Morelia Neo V Beta",
+      "version": "Pro",
+      "avg_price_usd": 202.87,
+      "n_observations": 394,
+      "sources": [
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 205.84,
+          "min_price_usd": 205.41
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 205.27,
+          "min_price_usd": 204.05
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 204.43,
+          "min_price_usd": 203.29
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 203.29,
+          "min_price_usd": 203.28
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 203.27,
+          "min_price_usd": 203.18
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 203.17,
+          "min_price_usd": 203.15
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 203.09,
+          "min_price_usd": 202.87
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 202.5,
+          "min_price_usd": 200.93
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 202.33,
+          "min_price_usd": 202.27
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 202.75,
+          "min_price_usd": 202.75
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 202.81,
+          "min_price_usd": 202.8
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 202.8,
+          "min_price_usd": 202.78
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 202.8,
+          "min_price_usd": 202.78
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 203.09,
+          "min_price_usd": 203.08
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 203.15,
+          "min_price_usd": 203.13
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 203.22,
+          "min_price_usd": 202.77
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 202.78,
+          "min_price_usd": 202.77
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 202.84,
+          "min_price_usd": 202.84
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 202.85,
+          "min_price_usd": 202.85
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 202.77,
+          "min_price_usd": 202.44
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 201.04,
+          "min_price_usd": 200.8
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 200.22,
+          "min_price_usd": 198.68
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 198.9,
+          "min_price_usd": 198.68
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 198.18,
+          "min_price_usd": 197.8
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 195.83,
+          "min_price_usd": 173.76
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 198.55,
+          "min_price_usd": 197.88
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 197.88,
+      "latest_min_site": "Rugbystuff",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugbystuff.com/products/mizuno-morelia-neo-v-pro-mix-rugby-boots-white-lava-orange-evening-primrose",
+      "discount_pct": 0.0246,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "oxen|oxford raptor stud|elite",
       "brand": "Oxen",
       "model": "Oxford Raptor Stud",
       "version": "Elite",
       "avg_price_usd": 63.01,
-      "n_observations": 613,
+      "n_observations": 614,
       "sources": [
         "Lovell Rugby"
       ],
@@ -6693,8 +7145,8 @@
       "brand": "Gilbert",
       "model": "Icon Players 8",
       "version": "Padrão",
-      "avg_price_usd": 160.16,
-      "n_observations": 422,
+      "avg_price_usd": 160.15,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -6840,7 +7292,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/gilbert-icon-players-8-soft-ground-rugby-boots-adults",
-      "discount_pct": 0.0233,
+      "discount_pct": 0.0232,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -6854,7 +7306,7 @@
       "model": "Predator League Lucid",
       "version": "Padrão",
       "avg_price_usd": 109.48,
-      "n_observations": 786,
+      "n_observations": 788,
       "sources": [
         "Rugbystuff"
       ],
@@ -7008,8 +7460,8 @@
       "brand": "Oxen",
       "model": "Raptor",
       "version": "Elite",
-      "avg_price_usd": 151.89,
-      "n_observations": 476,
+      "avg_price_usd": 151.88,
+      "n_observations": 477,
       "sources": [
         "Lovell Rugby"
       ],
@@ -7155,7 +7607,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/oxen-raptor-elite-adults-artificial-ground-rugby-boots",
-      "discount_pct": 0.0229,
+      "discount_pct": 0.0228,
       "is_deal": false,
       "ground_type": "Artificial Ground",
       "upper_material": {
@@ -7180,8 +7632,8 @@
       "brand": "Canterbury",
       "model": "Speed",
       "version": "Elite",
-      "avg_price_usd": 210.71,
-      "n_observations": 422,
+      "avg_price_usd": 210.69,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -7327,7 +7779,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-speed-elite-soft-ground-rugby-boots",
-      "discount_pct": 0.0228,
+      "discount_pct": 0.0227,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -7340,8 +7792,8 @@
       "brand": "adidas",
       "model": "Adizero RS15 Avaglide Rise",
       "version": "Padrão",
-      "avg_price_usd": 109.43,
-      "n_observations": 184,
+      "avg_price_usd": 109.41,
+      "n_observations": 185,
       "sources": [
         "Rugbystuff"
       ],
@@ -7447,7 +7899,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-rs15-avaglide-rise-sg-womens-rugby-boots-ice-blue",
-      "discount_pct": 0.0226,
+      "discount_pct": 0.0224,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -7460,8 +7912,8 @@
       "brand": "Gilbert",
       "model": "Icon Vapour 8 Stud",
       "version": "Padrão",
-      "avg_price_usd": 132.66,
-      "n_observations": 393,
+      "avg_price_usd": 132.65,
+      "n_observations": 394,
       "sources": [
         "Rugbystuff"
       ],
@@ -7602,7 +8054,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/gilbert-icon-vapour-8-stud-rugby-boots-black",
-      "discount_pct": 0.0224,
+      "discount_pct": 0.0223,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -7616,7 +8068,7 @@
       "model": "Speed Fleece2 T",
       "version": "Padrão",
       "avg_price_usd": 131.26,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -7775,8 +8227,8 @@
       "brand": "Mizuno",
       "model": "Alpha",
       "version": "Elite",
-      "avg_price_usd": 243.34,
-      "n_observations": 422,
+      "avg_price_usd": 243.33,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -7922,7 +8374,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-a-3-elite-mix-sn62",
-      "discount_pct": 0.022,
+      "discount_pct": 0.0219,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -7935,8 +8387,8 @@
       "brand": "Mizuno",
       "model": "Morellia Neo V Softground",
       "version": "Elite",
-      "avg_price_usd": 308.48,
-      "n_observations": 422,
+      "avg_price_usd": 308.47,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -8095,8 +8547,8 @@
       "brand": "Mizuno",
       "model": "Neo MX Lace",
       "version": "Elite",
-      "avg_price_usd": 308.48,
-      "n_observations": 422,
+      "avg_price_usd": 308.47,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -8255,8 +8707,8 @@
       "brand": "Canterbury",
       "model": "Phoenix 2",
       "version": "Elite",
-      "avg_price_usd": 150.06,
-      "n_observations": 422,
+      "avg_price_usd": 150.05,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -8415,8 +8867,8 @@
       "brand": "Mizuno",
       "model": "Waitangi",
       "version": "Padrão",
-      "avg_price_usd": 215.55,
-      "n_observations": 505,
+      "avg_price_usd": 215.54,
+      "n_observations": 506,
       "sources": [
         "Lovell Rugby"
       ],
@@ -8587,8 +9039,8 @@
       "brand": "Mizuno",
       "model": "Morelia Neo V Elte",
       "version": "Padrão",
-      "avg_price_usd": 288.89,
-      "n_observations": 422,
+      "avg_price_usd": 288.88,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -8734,162 +9186,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-m-neo-elte-ag-sn63",
-      "discount_pct": 0.0189,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "mizuno|morelia neo v beta|pro",
-      "brand": "Mizuno",
-      "model": "Morelia Neo V Beta",
-      "version": "Pro",
-      "avg_price_usd": 202.88,
-      "n_observations": 393,
-      "sources": [
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 205.84,
-          "min_price_usd": 205.41
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 205.27,
-          "min_price_usd": 204.05
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 204.43,
-          "min_price_usd": 203.29
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 203.29,
-          "min_price_usd": 203.28
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 203.27,
-          "min_price_usd": 203.18
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 203.17,
-          "min_price_usd": 203.15
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 203.09,
-          "min_price_usd": 202.87
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 202.5,
-          "min_price_usd": 200.93
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 202.33,
-          "min_price_usd": 202.27
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 202.75,
-          "min_price_usd": 202.75
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 202.81,
-          "min_price_usd": 202.8
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 202.8,
-          "min_price_usd": 202.78
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 202.8,
-          "min_price_usd": 202.78
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 203.09,
-          "min_price_usd": 203.08
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 203.15,
-          "min_price_usd": 203.13
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 203.22,
-          "min_price_usd": 202.77
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 202.78,
-          "min_price_usd": 202.77
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 202.84,
-          "min_price_usd": 202.84
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 202.85,
-          "min_price_usd": 202.85
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 202.77,
-          "min_price_usd": 202.44
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 201.04,
-          "min_price_usd": 200.8
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 200.22,
-          "min_price_usd": 198.68
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 198.9,
-          "min_price_usd": 198.68
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 198.18,
-          "min_price_usd": 197.8
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 195.83,
-          "min_price_usd": 173.76
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 199.21,
-          "min_price_usd": 199.21
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 199.21,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/mizuno-morelia-neo-v-pro-mix-rugby-boots-white-lava-orange-evening-primrose",
-      "discount_pct": 0.0181,
+      "discount_pct": 0.0188,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -8903,7 +9200,7 @@
       "model": "Speed Falcon",
       "version": "Elite",
       "avg_price_usd": 125.25,
-      "n_observations": 476,
+      "n_observations": 477,
       "sources": [
         "Rugbystuff"
       ],
@@ -9057,8 +9354,8 @@
       "brand": "Canterbury",
       "model": "Speed Falcon 2.0 Mountain",
       "version": "Team",
-      "avg_price_usd": 127.81,
-      "n_observations": 128,
+      "avg_price_usd": 127.8,
+      "n_observations": 129,
       "sources": [
         "Rugbystuff"
       ],
@@ -9134,7 +9431,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-speed-falcon-2-0-team-sg-rugby-boots-mountain-spring-blue",
-      "discount_pct": 0.0167,
+      "discount_pct": 0.0166,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -9147,8 +9444,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak Mountain Spring",
       "version": "Team",
-      "avg_price_usd": 127.81,
-      "n_observations": 128,
+      "avg_price_usd": 127.8,
+      "n_observations": 129,
       "sources": [
         "Rugbystuff"
       ],
@@ -9224,7 +9521,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-stampede-groundbreak-team-sg-rugby-boots-mountain-spring-blue",
-      "discount_pct": 0.0167,
+      "discount_pct": 0.0166,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": {
@@ -9250,7 +9547,7 @@
       "model": "Speedster 6 Stud Aqua",
       "version": "Padrão",
       "avg_price_usd": 135.95,
-      "n_observations": 393,
+      "n_observations": 394,
       "sources": [
         "Rugbystuff"
       ],
@@ -9404,8 +9701,8 @@
       "brand": "Oxen",
       "model": "Raptor",
       "version": "Pro",
-      "avg_price_usd": 118.27,
-      "n_observations": 476,
+      "avg_price_usd": 118.26,
+      "n_observations": 477,
       "sources": [
         "Lovell Rugby"
       ],
@@ -9551,7 +9848,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/oxen-raptor-pro-artificial-ground-rugby-boots",
-      "discount_pct": 0.0165,
+      "discount_pct": 0.0164,
       "is_deal": false,
       "ground_type": "Artificial Ground",
       "upper_material": {
@@ -9577,7 +9874,7 @@
       "model": "Phoenix Genesis",
       "version": "Team",
       "avg_price_usd": 67.87,
-      "n_observations": 616,
+      "n_observations": 618,
       "sources": [
         "Rugby Heaven",
         "TradeInn"
@@ -9737,8 +10034,8 @@
       "brand": "Canterbury",
       "model": "Stampede Groundbreak Mountain Spring",
       "version": "Elite",
-      "avg_price_usd": 248.46,
-      "n_observations": 128,
+      "avg_price_usd": 248.43,
+      "n_observations": 129,
       "sources": [
         "Rugbystuff"
       ],
@@ -9814,7 +10111,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-stampede-groundbreak-elite-sg-rugby-boots-mountain-spring-blue",
-      "discount_pct": 0.0153,
+      "discount_pct": 0.0151,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": {
@@ -9839,8 +10136,8 @@
       "brand": "Canterbury",
       "model": "Phoenix 2",
       "version": "Pro",
-      "avg_price_usd": 118.08,
-      "n_observations": 422,
+      "avg_price_usd": 118.07,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -9986,7 +10283,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/canterbury-mens-phoenix-2-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.0149,
+      "discount_pct": 0.0148,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -9999,8 +10296,8 @@
       "brand": "Canterbury",
       "model": "Speed",
       "version": "Pro",
-      "avg_price_usd": 118.08,
-      "n_observations": 422,
+      "avg_price_usd": 118.07,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -10146,7 +10443,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-speed-pro-soft-ground-rugby-boots",
-      "discount_pct": 0.0149,
+      "discount_pct": 0.0148,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -10159,8 +10456,8 @@
       "brand": "Gilbert",
       "model": "Icon Power 8",
       "version": "Padrão",
-      "avg_price_usd": 118.08,
-      "n_observations": 422,
+      "avg_price_usd": 118.07,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -10306,7 +10603,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/gilbert-icon-power-8-adults-soft-ground-rugby-boots",
-      "discount_pct": 0.0149,
+      "discount_pct": 0.0148,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -10320,7 +10617,7 @@
       "model": "Phoenix 2",
       "version": "Team",
       "avg_price_usd": 73.26,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -10479,8 +10776,8 @@
       "brand": "adidas",
       "model": "Kakari Z.1",
       "version": "Padrão",
-      "avg_price_usd": 183.05,
-      "n_observations": 588,
+      "avg_price_usd": 183.04,
+      "n_observations": 589,
       "sources": [
         "Rugby Heaven"
       ],
@@ -10652,7 +10949,7 @@
       "model": "Rapid",
       "version": "Padrão",
       "avg_price_usd": 55.56,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -10807,184 +11104,12 @@
       "spec_source": null
     },
     {
-      "key": "oxen|raptor k|elite",
-      "brand": "Oxen",
-      "model": "Raptor K",
-      "version": "Elite",
-      "avg_price_usd": 135.43,
-      "n_observations": 476,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 136.32,
-          "min_price_usd": 136.31
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 136.32,
-          "min_price_usd": 136.01
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 135.99,
-          "min_price_usd": 135.88
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 135.87,
-          "min_price_usd": 135.5
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 135.5,
-          "min_price_usd": 135.49
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 135.48,
-          "min_price_usd": 135.43
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 135.43,
-          "min_price_usd": 135.41
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 135.37,
-          "min_price_usd": 135.22
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 135.18,
-          "min_price_usd": 134.82
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 134.86,
-          "min_price_usd": 134.82
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 135.14,
-          "min_price_usd": 135.14
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 135.18,
-          "min_price_usd": 135.17
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 135.17,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 135.18,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 135.36,
-          "min_price_usd": 135.36
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 135.4,
-          "min_price_usd": 135.39
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 135.45,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 135.17,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 135.2,
-          "min_price_usd": 135.2
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 135.21,
-          "min_price_usd": 135.21
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 135.16,
-          "min_price_usd": 134.93
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 134.9,
-          "min_price_usd": 134.74
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 134.65,
-          "min_price_usd": 134.21
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 134.21,
-          "min_price_usd": 134.21
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 133.62,
-          "min_price_usd": 133.62
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 133.64,
-          "min_price_usd": 133.64
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 133.67,
-          "min_price_usd": 133.67
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 133.67,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/oxen-raptor-elite-k-leather-adults-multi-ground-rugby-boots",
-      "discount_pct": 0.013,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": {
-        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
-        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
-        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
-      },
-      "stud_type": {
-        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
-        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
-        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
-      },
-      "width_fit": {
-        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
-        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
-        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
-      },
-      "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
-    },
-    {
       "key": "oxen|viper|elite",
       "brand": "Oxen",
       "model": "Viper",
       "version": "Elite",
       "avg_price_usd": 67.7,
-      "n_observations": 476,
+      "n_observations": 477,
       "sources": [
         "Rugby Heaven"
       ],
@@ -11151,12 +11276,184 @@
       "spec_source": "sportsdirect.com, therugbystore.co.uk"
     },
     {
+      "key": "oxen|raptor k|elite",
+      "brand": "Oxen",
+      "model": "Raptor K",
+      "version": "Elite",
+      "avg_price_usd": 135.42,
+      "n_observations": 477,
+      "sources": [
+        "Rugby Heaven"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 136.32,
+          "min_price_usd": 136.31
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 136.32,
+          "min_price_usd": 136.01
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 135.99,
+          "min_price_usd": 135.88
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 135.87,
+          "min_price_usd": 135.5
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 135.5,
+          "min_price_usd": 135.49
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 135.48,
+          "min_price_usd": 135.43
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 135.43,
+          "min_price_usd": 135.41
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 135.37,
+          "min_price_usd": 135.22
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 135.18,
+          "min_price_usd": 134.82
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 134.86,
+          "min_price_usd": 134.82
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 135.14,
+          "min_price_usd": 135.14
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 135.18,
+          "min_price_usd": 135.17
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 135.17,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 135.18,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 135.36,
+          "min_price_usd": 135.36
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 135.4,
+          "min_price_usd": 135.39
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 135.45,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 135.17,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 135.2,
+          "min_price_usd": 135.2
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 135.21,
+          "min_price_usd": 135.21
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 135.16,
+          "min_price_usd": 134.93
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 134.9,
+          "min_price_usd": 134.74
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 134.65,
+          "min_price_usd": 134.21
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 134.21,
+          "min_price_usd": 134.21
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 133.62,
+          "min_price_usd": 133.62
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 133.64,
+          "min_price_usd": 133.64
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 133.67,
+          "min_price_usd": 133.67
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 133.67,
+      "latest_min_site": "Rugby Heaven",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugby-heaven.co.uk/products/oxen-raptor-elite-k-leather-adults-multi-ground-rugby-boots",
+      "discount_pct": 0.0129,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": {
+        "pt-BR": "Couro de canguru premium (Elite) ou couro sintético premium (demais versões)",
+        "es-PY": "Cuero de canguro premium (Elite) o cuero sintético premium (demás versiones)",
+        "en-US": "Premium kangaroo leather (Elite) or premium synthetic leather (other versions)"
+      },
+      "stud_type": {
+        "pt-BR": "Mistura de travas moldadas e metálicas; versão Elite AG usa liga de alumínio",
+        "es-PY": "Mezcla de tapones moldeados y metálicos; la versión Elite AG usa aleación de aluminio",
+        "en-US": "Mix of moulded and metal studs; the Elite AG version uses an aluminium alloy"
+      },
+      "width_fit": {
+        "pt-BR": "Larga — \"wide-fitting last\" citado para o Raptor Elite",
+        "es-PY": "Ancho — se menciona \"wide-fitting last\" para el Raptor Elite",
+        "en-US": "Wide — \"wide-fitting last\" cited for the Raptor Elite"
+      },
+      "spec_source": "oxensports.com, rugbystuff.com, sportsdirect.com"
+    },
+    {
       "key": "mizuno|waitangi ii cl|padrão",
       "brand": "Mizuno",
       "model": "Waitangi II CL",
       "version": "Padrão",
       "avg_price_usd": 81.19,
-      "n_observations": 882,
+      "n_observations": 884,
       "sources": [
         "Rugby Heaven"
       ],
@@ -11323,332 +11620,12 @@
       "spec_source": "mizuno.com.au, worldrugbyshop.com"
     },
     {
-      "key": "gilbert|sidestep x20 power 8s|padrão",
-      "brand": "Gilbert",
-      "model": "Sidestep X20 Power 8S",
-      "version": "Padrão",
-      "avg_price_usd": 87.99,
-      "n_observations": 1248,
-      "sources": [
-        "Gilbert Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 88.62,
-          "min_price_usd": 88.61
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 88.63,
-          "min_price_usd": 88.41
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 88.4,
-          "min_price_usd": 88.32
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 88.31,
-          "min_price_usd": 88.08
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 88.08,
-          "min_price_usd": 88.07
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 88.06,
-          "min_price_usd": 88.03
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 88.03,
-          "min_price_usd": 88.02
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 87.99,
-          "min_price_usd": 87.89
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 87.86,
-          "min_price_usd": 87.64
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 87.66,
-          "min_price_usd": 87.64
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 87.84,
-          "min_price_usd": 87.84
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 87.87,
-          "min_price_usd": 87.87
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 87.87,
-          "min_price_usd": 87.86
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 87.87,
-          "min_price_usd": 87.86
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 87.99,
-          "min_price_usd": 87.99
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 88.02,
-          "min_price_usd": 88.01
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 88.05,
-          "min_price_usd": 87.86
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 87.86,
-          "min_price_usd": 87.86
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 87.88,
-          "min_price_usd": 87.88
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 87.89,
-          "min_price_usd": 87.89
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 87.86,
-          "min_price_usd": 87.71
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 87.69,
-          "min_price_usd": 87.58
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 87.58,
-          "min_price_usd": 87.58
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 87.24,
-          "min_price_usd": 87.24
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 86.86,
-          "min_price_usd": 86.86
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 86.87,
-          "min_price_usd": 86.87
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 86.89,
-          "min_price_usd": 86.89
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 86.89,
-      "latest_min_site": "Gilbert Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.gilbertrugby.com/products/sidestep-x20-power-8s-boots-senior-copy",
-      "discount_pct": 0.0125,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "gilbert|cage pace msx|pro",
-      "brand": "Gilbert",
-      "model": "Cage Pace MSX",
-      "version": "Pro",
-      "avg_price_usd": 90.02,
-      "n_observations": 416,
-      "sources": [
-        "Gilbert Rugby"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 90.66,
-          "min_price_usd": 90.65
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 90.67,
-          "min_price_usd": 90.45
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 90.44,
-          "min_price_usd": 90.36
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 90.35,
-          "min_price_usd": 90.11
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 90.11,
-          "min_price_usd": 90.11
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 90.1,
-          "min_price_usd": 90.06
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 90.06,
-          "min_price_usd": 90.05
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 90.02,
-          "min_price_usd": 89.92
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 89.89,
-          "min_price_usd": 89.66
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 89.68,
-          "min_price_usd": 89.66
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 89.87,
-          "min_price_usd": 89.87
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 89.9,
-          "min_price_usd": 89.89
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 89.89,
-          "min_price_usd": 89.89
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 89.9,
-          "min_price_usd": 89.89
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 90.02,
-          "min_price_usd": 90.02
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 90.05,
-          "min_price_usd": 90.04
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 90.08,
-          "min_price_usd": 89.88
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 89.88,
-          "min_price_usd": 89.88
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 89.91,
-          "min_price_usd": 89.91
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 89.92,
-          "min_price_usd": 89.92
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 89.88,
-          "min_price_usd": 89.73
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 89.71,
-          "min_price_usd": 89.61
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 89.61,
-          "min_price_usd": 89.61
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 89.26,
-          "min_price_usd": 89.26
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 88.86,
-          "min_price_usd": 88.86
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 88.88,
-          "min_price_usd": 88.88
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 88.9,
-          "min_price_usd": 88.9
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 88.9,
-      "latest_min_site": "Gilbert Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.gilbertrugby.com/products/cage-pro-pace-msx-boots",
-      "discount_pct": 0.0124,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "gilbert|icon players 2.0 8s|padrão",
       "brand": "Gilbert",
       "model": "Icon Players 2.0 8S",
       "version": "Padrão",
-      "avg_price_usd": 162.45,
-      "n_observations": 416,
+      "avg_price_usd": 162.44,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -11808,7 +11785,7 @@
       "model": "Icon Power X 8",
       "version": "Padrão",
       "avg_price_usd": 115.06,
-      "n_observations": 832,
+      "n_observations": 834,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -11968,7 +11945,7 @@
       "model": "Icon Vapour 6S",
       "version": "Padrão",
       "avg_price_usd": 115.06,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -12128,7 +12105,7 @@
       "model": "Icon Vapour 8S",
       "version": "Padrão",
       "avg_price_usd": 115.06,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -12288,7 +12265,7 @@
       "model": "Icon X 6 Stud",
       "version": "Padrão",
       "avg_price_usd": 108.29,
-      "n_observations": 832,
+      "n_observations": 834,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -12448,7 +12425,7 @@
       "model": "Quantum Pace",
       "version": "Padrão",
       "avg_price_usd": 67.66,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugby Heaven"
       ],
@@ -12608,7 +12585,7 @@
       "model": "Sidestep Icon MSX",
       "version": "Padrão",
       "avg_price_usd": 54.14,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -12768,7 +12745,7 @@
       "model": "Sidestep X15 6 Stud",
       "version": "Padrão",
       "avg_price_usd": 67.66,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugby Heaven"
       ],
@@ -12928,7 +12905,7 @@
       "model": "Sidestep X20 Lo MSX",
       "version": "Padrão",
       "avg_price_usd": 54.14,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -13083,12 +13060,172 @@
       "spec_source": null
     },
     {
+      "key": "gilbert|sidestep x20 power 8s|padrão",
+      "brand": "Gilbert",
+      "model": "Sidestep X20 Power 8S",
+      "version": "Padrão",
+      "avg_price_usd": 87.98,
+      "n_observations": 1251,
+      "sources": [
+        "Gilbert Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 88.62,
+          "min_price_usd": 88.61
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 88.63,
+          "min_price_usd": 88.41
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 88.4,
+          "min_price_usd": 88.32
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 88.31,
+          "min_price_usd": 88.08
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 88.08,
+          "min_price_usd": 88.07
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 88.06,
+          "min_price_usd": 88.03
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 88.03,
+          "min_price_usd": 88.02
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 87.99,
+          "min_price_usd": 87.89
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 87.86,
+          "min_price_usd": 87.64
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 87.66,
+          "min_price_usd": 87.64
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 87.84,
+          "min_price_usd": 87.84
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 87.87,
+          "min_price_usd": 87.87
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 87.87,
+          "min_price_usd": 87.86
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 87.87,
+          "min_price_usd": 87.86
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 87.99,
+          "min_price_usd": 87.99
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 88.02,
+          "min_price_usd": 88.01
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 88.05,
+          "min_price_usd": 87.86
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 87.86,
+          "min_price_usd": 87.86
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 87.88,
+          "min_price_usd": 87.88
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 87.89,
+          "min_price_usd": 87.89
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 87.86,
+          "min_price_usd": 87.71
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 87.69,
+          "min_price_usd": 87.58
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 87.58,
+          "min_price_usd": 87.58
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 87.24,
+          "min_price_usd": 87.24
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 86.86,
+          "min_price_usd": 86.86
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 86.87,
+          "min_price_usd": 86.87
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 86.89,
+          "min_price_usd": 86.89
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 86.89,
+      "latest_min_site": "Gilbert Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.gilbertrugby.com/products/sidestep-x20-power-8s-boots-senior-copy",
+      "discount_pct": 0.0124,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "gilbert|speedster 6s|padrão",
       "brand": "Gilbert",
       "model": "Speedster 6S",
       "version": "Padrão",
       "avg_price_usd": 121.83,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -13248,7 +13385,7 @@
       "model": "Monarcida Neo II Select",
       "version": "Padrão",
       "avg_price_usd": 67.66,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugby Heaven"
       ],
@@ -13403,332 +13540,12 @@
       "spec_source": null
     },
     {
-      "key": "mizuno|morelia neo iv|elite",
-      "brand": "Mizuno",
-      "model": "Morelia Neo IV",
-      "version": "Elite",
-      "avg_price_usd": 169.19,
-      "n_observations": 422,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 170.4,
-          "min_price_usd": 170.39
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 170.43,
-          "min_price_usd": 170.01
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 169.99,
-          "min_price_usd": 169.85
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 169.83,
-          "min_price_usd": 169.38
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 169.38,
-          "min_price_usd": 169.37
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 169.36,
-          "min_price_usd": 169.29
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 169.28,
-          "min_price_usd": 169.27
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 169.21,
-          "min_price_usd": 169.03
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 168.97,
-          "min_price_usd": 168.53
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 168.58,
-          "min_price_usd": 168.53
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 168.93,
-          "min_price_usd": 168.93
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 168.98,
-          "min_price_usd": 168.97
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 168.97,
-          "min_price_usd": 168.96
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 168.98,
-          "min_price_usd": 168.96
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 169.21,
-          "min_price_usd": 169.2
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 169.26,
-          "min_price_usd": 169.25
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 169.32,
-          "min_price_usd": 168.95
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 168.96,
-          "min_price_usd": 168.95
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 169.0,
-          "min_price_usd": 169.0
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 169.02,
-          "min_price_usd": 169.02
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 168.95,
-          "min_price_usd": 168.67
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 168.63,
-          "min_price_usd": 168.43
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 168.32,
-          "min_price_usd": 167.77
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 167.77,
-          "min_price_usd": 167.77
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 167.03,
-          "min_price_usd": 167.03
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 167.06,
-          "min_price_usd": 167.06
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 167.1,
-          "min_price_usd": 167.1
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 167.1,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-iv-elite-adults-soft-ground-rugby-boots-white-p1gc254237",
-      "discount_pct": 0.0124,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "mizuno|morelia neo iv mix|pro",
-      "brand": "Mizuno",
-      "model": "Morelia Neo IV Mix",
-      "version": "Pro",
-      "avg_price_usd": 135.35,
-      "n_observations": 422,
-      "sources": [
-        "Rugby Heaven"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 136.32,
-          "min_price_usd": 136.31
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 136.34,
-          "min_price_usd": 136.01
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 135.99,
-          "min_price_usd": 135.88
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 135.87,
-          "min_price_usd": 135.5
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 135.5,
-          "min_price_usd": 135.49
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 135.48,
-          "min_price_usd": 135.43
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 135.43,
-          "min_price_usd": 135.41
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 135.37,
-          "min_price_usd": 135.22
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 135.18,
-          "min_price_usd": 134.82
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 134.86,
-          "min_price_usd": 134.82
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 135.14,
-          "min_price_usd": 135.14
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 135.18,
-          "min_price_usd": 135.17
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 135.17,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 135.18,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 135.36,
-          "min_price_usd": 135.36
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 135.4,
-          "min_price_usd": 135.39
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 135.45,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 135.17,
-          "min_price_usd": 135.16
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 135.2,
-          "min_price_usd": 135.2
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 135.21,
-          "min_price_usd": 135.21
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 135.16,
-          "min_price_usd": 134.93
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 134.9,
-          "min_price_usd": 134.74
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 134.65,
-          "min_price_usd": 134.21
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 134.21,
-          "min_price_usd": 134.21
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 133.62,
-          "min_price_usd": 133.62
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 133.64,
-          "min_price_usd": 133.64
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 133.67,
-          "min_price_usd": 133.67
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 133.67,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-iv-pro-mix-adults-sg-rugby-boots-white-p1gc263450",
-      "discount_pct": 0.0124,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "adidas|predator xp grass|padrão",
       "brand": "adidas",
       "model": "Predator XP Grass",
       "version": "Padrão",
       "avg_price_usd": 108.27,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugby Heaven"
       ],
@@ -13888,7 +13705,7 @@
       "model": "Speed Infinite",
       "version": "Pro",
       "avg_price_usd": 108.28,
-      "n_observations": 844,
+      "n_observations": 846,
       "sources": [
         "Rugby Heaven"
       ],
@@ -14043,12 +13860,172 @@
       "spec_source": null
     },
     {
+      "key": "gilbert|cage pace msx|pro",
+      "brand": "Gilbert",
+      "model": "Cage Pace MSX",
+      "version": "Pro",
+      "avg_price_usd": 90.01,
+      "n_observations": 417,
+      "sources": [
+        "Gilbert Rugby"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 90.66,
+          "min_price_usd": 90.65
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 90.67,
+          "min_price_usd": 90.45
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 90.44,
+          "min_price_usd": 90.36
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 90.35,
+          "min_price_usd": 90.11
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 90.11,
+          "min_price_usd": 90.11
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 90.1,
+          "min_price_usd": 90.06
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 90.06,
+          "min_price_usd": 90.05
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 90.02,
+          "min_price_usd": 89.92
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 89.89,
+          "min_price_usd": 89.66
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 89.68,
+          "min_price_usd": 89.66
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 89.87,
+          "min_price_usd": 89.87
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 89.9,
+          "min_price_usd": 89.89
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 89.89,
+          "min_price_usd": 89.89
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 89.9,
+          "min_price_usd": 89.89
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 90.02,
+          "min_price_usd": 90.02
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 90.05,
+          "min_price_usd": 90.04
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 90.08,
+          "min_price_usd": 89.88
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 89.88,
+          "min_price_usd": 89.88
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 89.91,
+          "min_price_usd": 89.91
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 89.92,
+          "min_price_usd": 89.92
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 89.88,
+          "min_price_usd": 89.73
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 89.71,
+          "min_price_usd": 89.61
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 89.61,
+          "min_price_usd": 89.61
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 89.26,
+          "min_price_usd": 89.26
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 88.86,
+          "min_price_usd": 88.86
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 88.88,
+          "min_price_usd": 88.88
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 88.9,
+          "min_price_usd": 88.9
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 88.9,
+      "latest_min_site": "Gilbert Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.gilbertrugby.com/products/cage-pro-pace-msx-boots",
+      "discount_pct": 0.0123,
+      "is_deal": false,
+      "ground_type": null,
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "gilbert|icon 6s|padrão",
       "brand": "Gilbert",
       "model": "Icon 6S",
       "version": "Padrão",
       "avg_price_usd": 94.75,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -14208,7 +14185,7 @@
       "model": "Icon 8S",
       "version": "Padrão",
       "avg_price_usd": 94.75,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -14368,7 +14345,7 @@
       "model": "Morelia II Astroturf",
       "version": "Club",
       "avg_price_usd": 40.6,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugby Heaven"
       ],
@@ -14528,7 +14505,7 @@
       "model": "Morelia NEO IV",
       "version": "Pro",
       "avg_price_usd": 108.28,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugby Heaven"
       ],
@@ -14683,12 +14660,332 @@
       "spec_source": null
     },
     {
+      "key": "mizuno|morelia neo iv|elite",
+      "brand": "Mizuno",
+      "model": "Morelia Neo IV",
+      "version": "Elite",
+      "avg_price_usd": 169.18,
+      "n_observations": 423,
+      "sources": [
+        "Rugby Heaven"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 170.4,
+          "min_price_usd": 170.39
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 170.43,
+          "min_price_usd": 170.01
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 169.99,
+          "min_price_usd": 169.85
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 169.83,
+          "min_price_usd": 169.38
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 169.38,
+          "min_price_usd": 169.37
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 169.36,
+          "min_price_usd": 169.29
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 169.28,
+          "min_price_usd": 169.27
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 169.21,
+          "min_price_usd": 169.03
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 168.97,
+          "min_price_usd": 168.53
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 168.58,
+          "min_price_usd": 168.53
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 168.93,
+          "min_price_usd": 168.93
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 168.98,
+          "min_price_usd": 168.97
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 168.97,
+          "min_price_usd": 168.96
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 168.98,
+          "min_price_usd": 168.96
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 169.21,
+          "min_price_usd": 169.2
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 169.26,
+          "min_price_usd": 169.25
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 169.32,
+          "min_price_usd": 168.95
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 168.96,
+          "min_price_usd": 168.95
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 169.0,
+          "min_price_usd": 169.0
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 169.02,
+          "min_price_usd": 169.02
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 168.95,
+          "min_price_usd": 168.67
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 168.63,
+          "min_price_usd": 168.43
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 168.32,
+          "min_price_usd": 167.77
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 167.77,
+          "min_price_usd": 167.77
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 167.03,
+          "min_price_usd": 167.03
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 167.06,
+          "min_price_usd": 167.06
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 167.1,
+          "min_price_usd": 167.1
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 167.1,
+      "latest_min_site": "Rugby Heaven",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-iv-elite-adults-soft-ground-rugby-boots-white-p1gc254237",
+      "discount_pct": 0.0123,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "mizuno|morelia neo iv mix|pro",
+      "brand": "Mizuno",
+      "model": "Morelia Neo IV Mix",
+      "version": "Pro",
+      "avg_price_usd": 135.34,
+      "n_observations": 423,
+      "sources": [
+        "Rugby Heaven"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 136.32,
+          "min_price_usd": 136.31
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 136.34,
+          "min_price_usd": 136.01
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 135.99,
+          "min_price_usd": 135.88
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 135.87,
+          "min_price_usd": 135.5
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 135.5,
+          "min_price_usd": 135.49
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 135.48,
+          "min_price_usd": 135.43
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 135.43,
+          "min_price_usd": 135.41
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 135.37,
+          "min_price_usd": 135.22
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 135.18,
+          "min_price_usd": 134.82
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 134.86,
+          "min_price_usd": 134.82
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 135.14,
+          "min_price_usd": 135.14
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 135.18,
+          "min_price_usd": 135.17
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 135.17,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 135.18,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 135.36,
+          "min_price_usd": 135.36
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 135.4,
+          "min_price_usd": 135.39
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 135.45,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 135.17,
+          "min_price_usd": 135.16
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 135.2,
+          "min_price_usd": 135.2
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 135.21,
+          "min_price_usd": 135.21
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 135.16,
+          "min_price_usd": 134.93
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 134.9,
+          "min_price_usd": 134.74
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 134.65,
+          "min_price_usd": 134.21
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 134.21,
+          "min_price_usd": 134.21
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 133.62,
+          "min_price_usd": 133.62
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 133.64,
+          "min_price_usd": 133.64
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 133.67,
+          "min_price_usd": 133.67
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 133.67,
+      "latest_min_site": "Rugby Heaven",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.rugby-heaven.co.uk/products/mizuno-morelia-neo-iv-pro-mix-adults-sg-rugby-boots-white-p1gc263450",
+      "discount_pct": 0.0123,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
       "key": "puma|avant|padrão",
       "brand": "Puma",
       "model": "Avant",
       "version": "Padrão",
       "avg_price_usd": 60.85,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugby Heaven"
       ],
@@ -14848,7 +15145,7 @@
       "model": "Slider",
       "version": "Padrão",
       "avg_price_usd": 27.06,
-      "n_observations": 416,
+      "n_observations": 417,
       "sources": [
         "Gilbert Rugby"
       ],
@@ -15007,8 +15304,8 @@
       "brand": "Mizuno",
       "model": "Mr Neo 4 E",
       "version": "Padrão",
-      "avg_price_usd": 266.29,
-      "n_observations": 422,
+      "avg_price_usd": 266.28,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -15168,7 +15465,7 @@
       "model": "Waitangi",
       "version": "Pro",
       "avg_price_usd": 215.83,
-      "n_observations": 894,
+      "n_observations": 896,
       "sources": [
         "Rugbystuff"
       ],
@@ -15335,7 +15632,7 @@
       "model": "Stampede",
       "version": "Team",
       "avg_price_usd": 119.16,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Rugbier Store"
       ],
@@ -15507,7 +15804,7 @@
       "model": "Argie Brochero",
       "version": "Padrão",
       "avg_price_usd": 57.92,
-      "n_observations": 421,
+      "n_observations": 422,
       "sources": [
         "Durban Rugby"
       ],
@@ -15667,7 +15964,7 @@
       "model": "Alpha Softgtound",
       "version": "Elite",
       "avg_price_usd": 265.53,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -15827,7 +16124,7 @@
       "model": "Adizero RS15 Avaglide",
       "version": "Padrão",
       "avg_price_usd": 213.14,
-      "n_observations": 429,
+      "n_observations": 430,
       "sources": [
         "Lovell Rugby",
         "Rugbystuff"
@@ -15987,8 +16284,8 @@
       "brand": "adidas",
       "model": "Adizero RS15 Elt",
       "version": "Padrão",
-      "avg_price_usd": 60.9,
-      "n_observations": 32,
+      "avg_price_usd": 60.92,
+      "n_observations": 33,
       "sources": [
         "Lovell Rugby"
       ],
@@ -16029,7 +16326,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-rs-15-elt-sg-2",
-      "discount_pct": -0.0099,
+      "discount_pct": -0.0095,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -16042,8 +16339,8 @@
       "brand": "Mizuno",
       "model": "Alpha V",
       "version": "Elite",
-      "avg_price_usd": 277.53,
-      "n_observations": 422,
+      "avg_price_usd": 277.55,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -16189,7 +16486,168 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mizuno-m-alpha-e-mx-sn63",
-      "discount_pct": -0.0213,
+      "discount_pct": -0.0212,
+      "is_deal": false,
+      "ground_type": "Soft Ground",
+      "upper_material": null,
+      "stud_type": null,
+      "width_fit": null,
+      "spec_source": null
+    },
+    {
+      "key": "adidas|kakari rs|padrão",
+      "brand": "adidas",
+      "model": "Kakari Rs",
+      "version": "Padrão",
+      "avg_price_usd": 230.64,
+      "n_observations": 1483,
+      "sources": [
+        "Lovell Rugby",
+        "Rugbystuff"
+      ],
+      "history": [
+        {
+          "date": "2026-08-25",
+          "avg_price_usd": 156.12,
+          "min_price_usd": 128.16
+        },
+        {
+          "date": "2026-08-26",
+          "avg_price_usd": 181.06,
+          "min_price_usd": 92.08
+        },
+        {
+          "date": "2026-08-27",
+          "avg_price_usd": 192.89,
+          "min_price_usd": 95.13
+        },
+        {
+          "date": "2026-08-28",
+          "avg_price_usd": 221.99,
+          "min_price_usd": 95.13
+        },
+        {
+          "date": "2026-08-29",
+          "avg_price_usd": 268.79,
+          "min_price_usd": 242.58
+        },
+        {
+          "date": "2026-08-30",
+          "avg_price_usd": 268.76,
+          "min_price_usd": 242.47
+        },
+        {
+          "date": "2026-08-31",
+          "avg_price_usd": 268.65,
+          "min_price_usd": 242.43
+        },
+        {
+          "date": "2026-09-01",
+          "avg_price_usd": 248.98,
+          "min_price_usd": 179.87
+        },
+        {
+          "date": "2026-09-02",
+          "avg_price_usd": 246.51,
+          "min_price_usd": 179.35
+        },
+        {
+          "date": "2026-09-03",
+          "avg_price_usd": 246.39,
+          "min_price_usd": 179.35
+        },
+        {
+          "date": "2026-09-04",
+          "avg_price_usd": 247.19,
+          "min_price_usd": 179.77
+        },
+        {
+          "date": "2026-09-05",
+          "avg_price_usd": 246.98,
+          "min_price_usd": 181.17
+        },
+        {
+          "date": "2026-09-06",
+          "avg_price_usd": 246.92,
+          "min_price_usd": 179.8
+        },
+        {
+          "date": "2026-09-07",
+          "avg_price_usd": 247.59,
+          "min_price_usd": 179.8
+        },
+        {
+          "date": "2026-09-08",
+          "avg_price_usd": 248.08,
+          "min_price_usd": 181.42
+        },
+        {
+          "date": "2026-09-09",
+          "avg_price_usd": 248.29,
+          "min_price_usd": 181.46
+        },
+        {
+          "date": "2026-09-10",
+          "avg_price_usd": 247.95,
+          "min_price_usd": 179.79
+        },
+        {
+          "date": "2026-09-11",
+          "avg_price_usd": 246.94,
+          "min_price_usd": 179.79
+        },
+        {
+          "date": "2026-09-12",
+          "avg_price_usd": 247.01,
+          "min_price_usd": 181.2
+        },
+        {
+          "date": "2026-09-13",
+          "avg_price_usd": 247.03,
+          "min_price_usd": 181.22
+        },
+        {
+          "date": "2026-09-14",
+          "avg_price_usd": 246.49,
+          "min_price_usd": 179.5
+        },
+        {
+          "date": "2026-09-15",
+          "avg_price_usd": 246.02,
+          "min_price_usd": 179.24
+        },
+        {
+          "date": "2026-09-16",
+          "avg_price_usd": 257.75,
+          "min_price_usd": 179.24
+        },
+        {
+          "date": "2026-09-17",
+          "avg_price_usd": 262.36,
+          "min_price_usd": 236.26
+        },
+        {
+          "date": "2026-09-18",
+          "avg_price_usd": 261.32,
+          "min_price_usd": 235.22
+        },
+        {
+          "date": "2026-09-19",
+          "avg_price_usd": 256.09,
+          "min_price_usd": 172.43
+        },
+        {
+          "date": "2026-09-20",
+          "avg_price_usd": 261.61,
+          "min_price_usd": 236.65
+        }
+      ],
+      "latest_date": "2026-09-20",
+      "latest_min_price_usd": 236.65,
+      "latest_min_site": "Lovell Rugby",
+      "latest_min_region": "Europe (UK)",
+      "latest_min_url": "https://www.lovellsports.com/products/kakari-rs-rugby-boots-soft-ground",
+      "discount_pct": -0.0261,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -16202,8 +16660,8 @@
       "brand": "Mizuno",
       "model": "M Alpha E Sn63",
       "version": "Padrão",
-      "avg_price_usd": 267.08,
-      "n_observations": 422,
+      "avg_price_usd": 267.09,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -16358,173 +16816,12 @@
       "spec_source": null
     },
     {
-      "key": "adidas|kakari rs|padrão",
-      "brand": "adidas",
-      "model": "Kakari Rs",
-      "version": "Padrão",
-      "avg_price_usd": 230.58,
-      "n_observations": 1480,
-      "sources": [
-        "Lovell Rugby",
-        "Rugbystuff"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 156.12,
-          "min_price_usd": 128.16
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 181.06,
-          "min_price_usd": 92.08
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 192.89,
-          "min_price_usd": 95.13
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 221.99,
-          "min_price_usd": 95.13
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 268.79,
-          "min_price_usd": 242.58
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 268.76,
-          "min_price_usd": 242.47
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 268.65,
-          "min_price_usd": 242.43
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 248.98,
-          "min_price_usd": 179.87
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 246.51,
-          "min_price_usd": 179.35
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 246.39,
-          "min_price_usd": 179.35
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 247.19,
-          "min_price_usd": 179.77
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 246.98,
-          "min_price_usd": 181.17
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 246.92,
-          "min_price_usd": 179.8
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 247.59,
-          "min_price_usd": 179.8
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 248.08,
-          "min_price_usd": 181.42
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 248.29,
-          "min_price_usd": 181.46
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 247.95,
-          "min_price_usd": 179.79
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 246.94,
-          "min_price_usd": 179.79
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 247.01,
-          "min_price_usd": 181.2
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 247.03,
-          "min_price_usd": 181.22
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 246.49,
-          "min_price_usd": 179.5
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 246.02,
-          "min_price_usd": 179.24
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 257.75,
-          "min_price_usd": 179.24
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 262.36,
-          "min_price_usd": 236.26
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 261.32,
-          "min_price_usd": 235.22
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 256.09,
-          "min_price_usd": 172.43
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 261.61,
-          "min_price_usd": 236.65
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 236.65,
-      "latest_min_site": "Lovell Rugby",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.lovellsports.com/products/kakari-rs-rugby-boots-soft-ground",
-      "discount_pct": -0.0263,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
       "key": "adidas|antoine dupont adizero rs15|pro",
       "brand": "adidas",
       "model": "Antoine Dupont Adizero RS15",
       "version": "Pro",
-      "avg_price_usd": 323.63,
-      "n_observations": 688,
+      "avg_price_usd": 323.65,
+      "n_observations": 689,
       "sources": [
         "Rugbystore.co.uk",
         "Rugbystuff"
@@ -16671,7 +16968,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/adidas-adizero-ad9-rs15-pro-sg-rugby-boots-white-red",
-      "discount_pct": -0.037,
+      "discount_pct": -0.0369,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -16684,8 +16981,8 @@
       "brand": "Canterbury",
       "model": "Speed Infinite",
       "version": "Team",
-      "avg_price_usd": 74.32,
-      "n_observations": 409,
+      "avg_price_usd": 74.34,
+      "n_observations": 410,
       "sources": [
         "Rugby Heaven",
         "TradeInn"
@@ -16817,7 +17114,7 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-speed-infinite-team-adults-soft-ground-rugby-boots",
-      "discount_pct": -0.0793,
+      "discount_pct": -0.079,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -16830,8 +17127,8 @@
       "brand": "Puma",
       "model": "Avant II H8 Men",
       "version": "Pro",
-      "avg_price_usd": 94.48,
-      "n_observations": 284,
+      "avg_price_usd": 94.51,
+      "n_observations": 285,
       "sources": [
         "Puma"
       ],
@@ -16937,7 +17234,7 @@
       "latest_min_site": "Puma",
       "latest_min_region": "Europe (DE)",
       "latest_min_url": "https://eu.puma.com/de/en/pd/avant-pro-ii-h8-rugby-boots-men/108966",
-      "discount_pct": -0.0805,
+      "discount_pct": -0.0802,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -16950,8 +17247,8 @@
       "brand": "adidas",
       "model": "Kakari RS Lace Up",
       "version": "Padrão",
-      "avg_price_usd": 219.99,
-      "n_observations": 422,
+      "avg_price_usd": 220.04,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -17097,7 +17394,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/adidas-kakari-rs-sg",
-      "discount_pct": -0.0818,
+      "discount_pct": -0.0816,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -17111,7 +17408,7 @@
       "model": "Speed Falcon",
       "version": "Team",
       "avg_price_usd": 67.96,
-      "n_observations": 1327,
+      "n_observations": 1328,
       "sources": [
         "Lovell Rugby",
         "Rugbystuff",
@@ -17250,7 +17547,7 @@
         },
         {
           "date": "2026-09-20",
-          "avg_price_usd": 74.77,
+          "avg_price_usd": 74.36,
           "min_price_usd": 73.54
         }
       ],
@@ -17272,8 +17569,8 @@
       "brand": "Canterbury",
       "model": "Phoenix",
       "version": "Elite",
-      "avg_price_usd": 113.38,
-      "n_observations": 630,
+      "avg_price_usd": 113.4,
+      "n_observations": 631,
       "sources": [
         "Rugbystuff"
       ],
@@ -17414,7 +17711,7 @@
       "latest_min_site": "Rugbystuff",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugbystuff.com/products/canterbury-phoenix-elite-sg-rugby-boots-orange-white",
-      "discount_pct": -0.0848,
+      "discount_pct": -0.0847,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -17427,8 +17724,8 @@
       "brand": "Kooga",
       "model": "Power",
       "version": "Padrão",
-      "avg_price_usd": 64.58,
-      "n_observations": 422,
+      "avg_price_usd": 64.6,
+      "n_observations": 423,
       "sources": [
         "Lovell Rugby"
       ],
@@ -17574,7 +17871,7 @@
       "latest_min_site": "Lovell Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.lovellsports.com/products/mens-power-sg-rugby-boots",
-      "discount_pct": -0.1387,
+      "discount_pct": -0.1384,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -17587,8 +17884,8 @@
       "brand": "Canterbury",
       "model": "Speed Raze",
       "version": "Padrão",
-      "avg_price_usd": 58.89,
-      "n_observations": 826,
+      "avg_price_usd": 58.9,
+      "n_observations": 827,
       "sources": [
         "Rugbystuff",
         "TradeInn"
@@ -17735,7 +18032,7 @@
       "latest_min_site": "TradeInn",
       "latest_min_region": "Europe (ES)",
       "latest_min_url": "https://www.tradeinn.com/rugby/en/canterbury-speed-raze-soft-ground-rugby-boots/140770607/p",
-      "discount_pct": -0.1715,
+      "discount_pct": -0.1713,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -17748,8 +18045,8 @@
       "brand": "Gilbert",
       "model": "Icon Players 8 Stud",
       "version": "Padrão",
-      "avg_price_usd": 136.53,
-      "n_observations": 563,
+      "avg_price_usd": 136.57,
+      "n_observations": 564,
       "sources": [
         "Gilbert Rugby",
         "Rugbystuff"
@@ -17896,7 +18193,7 @@
       "latest_min_site": "Gilbert Rugby",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.gilbertrugby.com/products/icon-players-8s-boots-white",
-      "discount_pct": -0.1751,
+      "discount_pct": -0.1747,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -17909,8 +18206,8 @@
       "brand": "Puma",
       "model": "Avant Men",
       "version": "Padrão",
-      "avg_price_usd": 66.05,
-      "n_observations": 285,
+      "avg_price_usd": 66.1,
+      "n_observations": 286,
       "sources": [
         "Puma"
       ],
@@ -18016,304 +18313,7 @@
       "latest_min_site": "Puma",
       "latest_min_region": "Europe (DE)",
       "latest_min_url": "https://eu.puma.com/de/en/pd/avant-rugby-boots-men/106715",
-      "discount_pct": -0.1808,
-      "is_deal": false,
-      "ground_type": null,
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "canterbury|speed falcon|pro",
-      "brand": "Canterbury",
-      "model": "Speed Falcon",
-      "version": "Pro",
-      "avg_price_usd": 98.88,
-      "n_observations": 317,
-      "sources": [
-        "Rugby Heaven",
-        "TradeInn"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 88.49,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 88.75,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 88.49,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 88.97,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 88.49,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 88.49,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 91.86,
-          "min_price_usd": 88.49
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 92.99,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 92.99,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 92.99,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 93.53,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 92.99,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 92.99,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 92.99,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 92.99,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 109.33,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 113.02,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 111.76,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 116.78,
-          "min_price_usd": 92.99
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 116.25,
-          "min_price_usd": 106.99
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 116.1,
-          "min_price_usd": 106.99
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 120.26,
-          "min_price_usd": 120.26
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 120.26,
-      "latest_min_site": "Rugby Heaven",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-speed-falcon-pro-adults-sg-rugby-boots-q-b000189989-black",
-      "discount_pct": -0.2162,
-      "is_deal": false,
-      "ground_type": "Soft Ground",
-      "upper_material": null,
-      "stud_type": null,
-      "width_fit": null,
-      "spec_source": null
-    },
-    {
-      "key": "mizuno|monarcida neo iii si|padrão",
-      "brand": "Mizuno",
-      "model": "Monarcida Neo III SI",
-      "version": "Padrão",
-      "avg_price_usd": 92.77,
-      "n_observations": 729,
-      "sources": [
-        "Rugbystuff",
-        "TradeInn"
-      ],
-      "history": [
-        {
-          "date": "2026-08-25",
-          "avg_price_usd": 54.99,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-08-26",
-          "avg_price_usd": 80.63,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-08-27",
-          "avg_price_usd": 95.4,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-08-28",
-          "avg_price_usd": 95.16,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-08-29",
-          "avg_price_usd": 97.62,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-08-30",
-          "avg_price_usd": 93.24,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-08-31",
-          "avg_price_usd": 95.55,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-01",
-          "avg_price_usd": 91.33,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-02",
-          "avg_price_usd": 94.85,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-03",
-          "avg_price_usd": 95.98,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-04",
-          "avg_price_usd": 91.27,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-05",
-          "avg_price_usd": 96.18,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-06",
-          "avg_price_usd": 98.81,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-07",
-          "avg_price_usd": 93.14,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-08",
-          "avg_price_usd": 93.96,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-09",
-          "avg_price_usd": 95.88,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-10",
-          "avg_price_usd": 91.16,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-11",
-          "avg_price_usd": 89.78,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-12",
-          "avg_price_usd": 89.7,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-13",
-          "avg_price_usd": 89.71,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-14",
-          "avg_price_usd": 101.24,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-15",
-          "avg_price_usd": 96.47,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-16",
-          "avg_price_usd": 92.21,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-17",
-          "avg_price_usd": 91.75,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-18",
-          "avg_price_usd": 91.18,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-19",
-          "avg_price_usd": 107.78,
-          "min_price_usd": 54.99
-        },
-        {
-          "date": "2026-09-20",
-          "avg_price_usd": 123.0,
-          "min_price_usd": 123.0
-        }
-      ],
-      "latest_date": "2026-09-20",
-      "latest_min_price_usd": 123.0,
-      "latest_min_site": "Rugbystuff",
-      "latest_min_region": "Europe (UK)",
-      "latest_min_url": "https://www.rugbystuff.com/products/mizuno-monarcida-neo-iii-si-rugby-boots-black-lava-orange",
-      "discount_pct": -0.3259,
+      "discount_pct": -0.1799,
       "is_deal": false,
       "ground_type": null,
       "upper_material": null,
@@ -18326,8 +18326,8 @@
       "brand": "Canterbury",
       "model": "Phoenix Genesis",
       "version": "Elite",
-      "avg_price_usd": 103.62,
-      "n_observations": 186,
+      "avg_price_usd": 104.0,
+      "n_observations": 187,
       "sources": [
         "Lovell Rugby",
         "Rugby Heaven"
@@ -18429,7 +18429,7 @@
       "latest_min_site": "Rugby Heaven",
       "latest_min_region": "Europe (UK)",
       "latest_min_url": "https://www.rugby-heaven.co.uk/products/canterbury-phoenix-genesis-elite-adults-sg-rugby-boots-q-b000134bs2-orange",
-      "discount_pct": -0.6767,
+      "discount_pct": -0.6706,
       "is_deal": false,
       "ground_type": "Soft Ground",
       "upper_material": null,
@@ -19138,7 +19138,7 @@
       "model": "Waitangi Wide",
       "version": "Pro",
       "avg_price_usd": 224.99,
-      "n_observations": 422,
+      "n_observations": 423,
       "sources": [
         "World Rugby Shop"
       ],
