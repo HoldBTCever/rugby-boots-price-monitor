@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-08T14:57:42.219545+00:00",
+  "generated_at": "2026-10-08T20:35:59.908407+00:00",
   "window_days": 90,
   "latest_date": "2026-10-08",
-  "latest_block": 970502,
+  "latest_block": 970525,
   "models": [
     {
       "label": "Mizuno Waitangi SG",
       "versions": [
         {
           "version": "Club",
-          "avg_price_usd": 115.97,
-          "n_observations": 791,
+          "avg_price_usd": 116.11,
+          "n_observations": 795,
           "history": [
             {
               "block_height": 964033,
@@ -4983,12 +4983,23 @@
               "min_price_usd": 80.49,
               "min_site": "TradeInn",
               "min_url": "https://www.tradeinn.com/rugby/en/mizuno-waitangi-club-rugby-boots/142670387/p"
+            },
+            {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 144.03,
+              "max_price_usd": 171.83,
+              "max_site": "Rugbystuff",
+              "max_url": "https://www.rugbystuff.com/products/mizuno-waitangi-club-rugby-boots-black-silver",
+              "min_price_usd": 80.49,
+              "min_site": "TradeInn",
+              "min_url": "https://www.tradeinn.com/rugby/en/mizuno-waitangi-club-rugby-boots/142670387/p"
             }
           ],
           "latest": {
-            "block_height": 970502,
-            "timestamp": "2026-10-08T11:53:21.135334-03:00",
-            "avg_price_usd": 142.19,
+            "block_height": 970525,
+            "timestamp": "2026-10-08T17:31:54.380235-03:00",
+            "avg_price_usd": 144.03,
             "max_price_usd": 171.83,
             "max_site": "Rugbystuff",
             "max_url": "https://www.rugbystuff.com/products/mizuno-waitangi-club-rugby-boots-black-silver",
@@ -5000,7 +5011,7 @@
         {
           "version": "Padrão",
           "avg_price_usd": 125.85,
-          "n_observations": 2757,
+          "n_observations": 2761,
           "history": [
             {
               "block_height": 964033,
@@ -10701,6 +10712,17 @@
               "min_url": "https://www.rugby-heaven.co.uk/products/mizuno-waitangi-ii-cl-adults-soft-ground-rugby-boots"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 129.19,
+              "max_price_usd": 206.2,
+              "max_site": "Lovell Rugby",
+              "max_url": "https://www.lovellsports.com/products/mizuno-waitangi-rugby-boot",
+              "min_price_usd": 79.28,
+              "min_site": "Rugby Heaven",
+              "min_url": "https://www.rugby-heaven.co.uk/products/mizuno-waitangi-ii-cl-adults-soft-ground-rugby-boots"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 122.41,
@@ -10727,7 +10749,7 @@
         {
           "version": "Pro",
           "avg_price_usd": 218.42,
-          "n_observations": 1654,
+          "n_observations": 1658,
           "history": [
             {
               "block_height": 964033,
@@ -16428,6 +16450,17 @@
               "min_url": "https://www.rugbystuff.com/products/mizuno-waitangi-pro-rugby-boots-black-silver"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 216.92,
+              "max_price_usd": 224.99,
+              "max_site": "World Rugby Shop",
+              "max_url": "https://www.worldrugbyshop.com/products/mizuno-waitangi-pro-sg-wide-fit-white-metalic-gray",
+              "min_price_usd": 208.84,
+              "min_site": "Rugbystuff",
+              "min_url": "https://www.rugbystuff.com/products/mizuno-waitangi-pro-rugby-boots-black-silver"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 219.74,
@@ -16458,8 +16491,8 @@
       "versions": [
         {
           "version": "Padrão",
-          "avg_price_usd": 182.49,
-          "n_observations": 685,
+          "avg_price_usd": 182.48,
+          "n_observations": 686,
           "history": [
             {
               "block_height": 964033,
@@ -22160,6 +22193,17 @@
               "min_url": "https://www.rugby-heaven.co.uk/products/adidas-kakari-z-1-soft-ground-rugby-boots"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 178.43,
+              "max_price_usd": 178.43,
+              "max_site": "Rugby Heaven",
+              "max_url": "https://www.rugby-heaven.co.uk/products/adidas-kakari-z-1-soft-ground-rugby-boots",
+              "min_price_usd": 178.43,
+              "min_site": "Rugby Heaven",
+              "min_url": "https://www.rugby-heaven.co.uk/products/adidas-kakari-z-1-soft-ground-rugby-boots"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 182.03,
@@ -22190,8 +22234,8 @@
       "versions": [
         {
           "version": "Elite",
-          "avg_price_usd": 119.61,
-          "n_observations": 4959,
+          "avg_price_usd": 119.64,
+          "n_observations": 4968,
           "history": [
             {
               "block_height": 964033,
@@ -27892,6 +27936,17 @@
               "min_url": "https://www.lovellsports.com/products/kakari-elite-soft-ground-rugby-boots-1"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 137.13,
+              "max_price_usd": 179.99,
+              "max_site": "World Rugby Shop",
+              "max_url": "https://www.worldrugbyshop.com/products/kakari-elite-sg-by-adidas-core-black-white-core-black",
+              "min_price_usd": 99.13,
+              "min_site": "Lovell Rugby",
+              "min_url": "https://www.lovellsports.com/products/kakari-elite-soft-ground-rugby-boots-1"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 122.87,
@@ -27923,7 +27978,7 @@
         {
           "version": "Padrão",
           "avg_price_usd": 249.99,
-          "n_observations": 94,
+          "n_observations": 96,
           "history": [
             {
               "block_height": 969049,
@@ -28441,11 +28496,22 @@
               "min_price_usd": 249.99,
               "min_site": "World Rugby Shop",
               "min_url": "https://www.worldrugbyshop.com/products/kakari-z-2-sg-by-adidas-black-white-carbon"
+            },
+            {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 249.99,
+              "max_price_usd": 249.99,
+              "max_site": "World Rugby Shop",
+              "max_url": "https://www.worldrugbyshop.com/products/kakari-z-2-sg-by-adidas-black-white-carbon",
+              "min_price_usd": 249.99,
+              "min_site": "World Rugby Shop",
+              "min_url": "https://www.worldrugbyshop.com/products/kakari-z-2-sg-by-adidas-black-white-carbon"
             }
           ],
           "latest": {
-            "block_height": 970502,
-            "timestamp": "2026-10-08T11:53:21.135334-03:00",
+            "block_height": 970525,
+            "timestamp": "2026-10-08T17:31:54.380235-03:00",
             "avg_price_usd": 249.99,
             "max_price_usd": 249.99,
             "max_site": "World Rugby Shop",
@@ -28462,8 +28528,8 @@
       "versions": [
         {
           "version": "Elite",
-          "avg_price_usd": 197.96,
-          "n_observations": 3146,
+          "avg_price_usd": 197.99,
+          "n_observations": 3156,
           "history": [
             {
               "block_height": 964033,
@@ -34164,6 +34230,17 @@
               "min_url": "https://www.rugby-heaven.co.uk/products/canterbury-stampede-groundbreak-elite-adults-soft-ground-rugby-boots"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 207.64,
+              "max_price_usd": 251.99,
+              "max_site": "World Rugby Shop",
+              "max_url": "https://www.worldrugbyshop.com/products/stampede-groundbreak-elite-sg-by-canterbury-white",
+              "min_price_usd": 145.37,
+              "min_site": "Rugby Heaven",
+              "min_url": "https://www.rugby-heaven.co.uk/products/canterbury-stampede-groundbreak-elite-adults-soft-ground-rugby-boots"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 194.9,
@@ -34189,8 +34266,8 @@
         },
         {
           "version": "Pro",
-          "avg_price_usd": 134.56,
-          "n_observations": 2722,
+          "avg_price_usd": 134.59,
+          "n_observations": 2731,
           "history": [
             {
               "block_height": 964033,
@@ -39891,6 +39968,17 @@
               "min_url": "https://www.lovellsports.com/products/canterbury-mens-stampede-groundbreak-pro-soft-ground-rugby-boots"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 141.62,
+              "max_price_usd": 162.99,
+              "max_site": "World Rugby Shop",
+              "max_url": "https://www.worldrugbyshop.com/products/stampede-groundbreak-pro-sg-by-canterbury-red-dahlia",
+              "min_price_usd": 113.67,
+              "min_site": "Lovell Rugby",
+              "min_url": "https://www.lovellsports.com/products/canterbury-mens-stampede-groundbreak-pro-soft-ground-rugby-boots"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 133.16,
@@ -39917,7 +40005,7 @@
         {
           "version": "Team",
           "avg_price_usd": 104.62,
-          "n_observations": 5120,
+          "n_observations": 5134,
           "history": [
             {
               "block_height": 964033,
@@ -45618,6 +45706,17 @@
               "min_url": "https://www.rugbystuff.com/products/canterbury-stampede-groundbreak-team-sg-rugby-boots-white-black"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 107.81,
+              "max_price_usd": 131.99,
+              "max_site": "World Rugby Shop",
+              "max_url": "https://www.worldrugbyshop.com/products/stampede-groundbreak-team-sg-by-canterbury-white",
+              "min_price_usd": 75.34,
+              "min_site": "Rugbystuff",
+              "min_url": "https://www.rugbystuff.com/products/canterbury-stampede-groundbreak-team-sg-rugby-boots-white-black"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 104.9,
@@ -46584,8 +46683,8 @@
       "versions": [
         {
           "version": "Elite",
-          "avg_price_usd": 128.78,
-          "n_observations": 2917,
+          "avg_price_usd": 128.8,
+          "n_observations": 2921,
           "history": [
             {
               "block_height": 964033,
@@ -52286,6 +52385,17 @@
               "min_url": "https://www.rugby-heaven.co.uk/products/oxen-raptor-elite-k-leather-adults-multi-ground-rugby-boots"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 144.07,
+              "max_price_usd": 149.36,
+              "max_site": "Rugbystuff",
+              "max_url": "https://www.rugbystuff.com/products/oxen-raptor-elite-8-stud-rugby-boots-white-black",
+              "min_price_usd": 132.15,
+              "min_site": "Rugby Heaven",
+              "min_url": "https://www.rugby-heaven.co.uk/products/oxen-raptor-elite-k-leather-adults-multi-ground-rugby-boots"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 131.61,
@@ -52312,7 +52422,7 @@
         {
           "version": "Pro",
           "avg_price_usd": 88.03,
-          "n_observations": 1481,
+          "n_observations": 1482,
           "history": [
             {
               "block_height": 964033,
@@ -58013,6 +58123,17 @@
               "min_url": "https://www.rugbystuff.com/products/oxen-raptor-pro-6-stud-rugby-boots-black-white"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 89.88,
+              "max_price_usd": 89.88,
+              "max_site": "Rugbystuff",
+              "max_url": "https://www.rugbystuff.com/products/oxen-raptor-pro-6-stud-rugby-boots-black-white",
+              "min_price_usd": 89.88,
+              "min_site": "Rugbystuff",
+              "min_url": "https://www.rugbystuff.com/products/oxen-raptor-pro-6-stud-rugby-boots-black-white"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 83.61,
@@ -58044,7 +58165,7 @@
         {
           "version": "Elite",
           "avg_price_usd": 67.46,
-          "n_observations": 573,
+          "n_observations": 574,
           "history": [
             {
               "block_height": 964033,
@@ -63745,6 +63866,17 @@
               "min_url": "https://www.rugby-heaven.co.uk/products/oxen-viper-elite-adults-multi-ground-rugby-boots"
             },
             {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
+              "avg_price_usd": 66.06,
+              "max_price_usd": 66.06,
+              "max_site": "Rugby Heaven",
+              "max_url": "https://www.rugby-heaven.co.uk/products/oxen-viper-elite-adults-multi-ground-rugby-boots",
+              "min_price_usd": 66.06,
+              "min_site": "Rugby Heaven",
+              "min_url": "https://www.rugby-heaven.co.uk/products/oxen-viper-elite-adults-multi-ground-rugby-boots"
+            },
+            {
               "block_height": null,
               "timestamp": "2026-09-03T10:57:23.431354-03:00",
               "avg_price_usd": 67.4,
@@ -63775,8 +63907,8 @@
       "versions": [
         {
           "version": "Padrão",
-          "avg_price_usd": 156.55,
-          "n_observations": 5181,
+          "avg_price_usd": 156.54,
+          "n_observations": 5191,
           "history": [
             {
               "block_height": 964033,
@@ -69468,6 +69600,17 @@
             {
               "block_height": 970502,
               "timestamp": "2026-10-08T11:53:21.135334-03:00",
+              "avg_price_usd": 151.47,
+              "max_price_usd": 178.44,
+              "max_site": "Rugbystuff",
+              "max_url": "https://www.rugbystuff.com/products/oxen-meta-x-8-stud-rugby-boots-black-onyx",
+              "min_price_usd": 132.17,
+              "min_site": "Rugby Heaven",
+              "min_url": "https://www.rugby-heaven.co.uk/products/oxen-meta-x-soft-ground-rugby-boots-yellow-ox26ms6syf"
+            },
+            {
+              "block_height": 970525,
+              "timestamp": "2026-10-08T17:31:54.380235-03:00",
               "avg_price_usd": 151.47,
               "max_price_usd": 178.44,
               "max_site": "Rugbystuff",
